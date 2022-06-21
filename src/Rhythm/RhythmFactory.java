@@ -19,12 +19,16 @@ public class RhythmFactory {
     // example rhythm 3
     static int[] rhythmData3 = {24,0,2,4,6,9,12,14,16,18};
 
+    // Complex Rhythm Example 1
+    static int[] rhythmData4 = {96,0,24,30,36,42,48,56,64,72,84,87,90};
+
     public static Rhythm getRhythm(int rhythmNumber){
 
         switch (rhythmNumber){
             case 1 -> {return new Rhythm(rhythmData1);}
             case 2 -> {return new Rhythm(rhythmData2);}
-            default -> {return new Rhythm(rhythmData3);}
+            case 3 -> {return new Rhythm(rhythmData3);}
+            default -> {return new Rhythm(rhythmData4);}
         }
 
     }
