@@ -10,7 +10,7 @@ public class RhythmPlayer {
     private double bpm;
 
 
-    RhythmPlayer(double bpm){
+    public RhythmPlayer(double bpm){
         this.bpm = bpm;
     }
 
@@ -24,14 +24,14 @@ public class RhythmPlayer {
 
     public void playRhythm(Rhythm r) throws InterruptedException {
         double[] absoluteRhythm = r.getAbsoluteRhythm(bpm);
-        double[] rhythmToPlay = getCumulativeOnsets(absoluteRhythm);
+        double[] rhythmToPlay = getIncrementalOnsets(absoluteRhythm);
         for(double onsetDelay : rhythmToPlay){
             Thread.sleep((long)onsetDelay);
             BeepFactory.getBeep();
         }
     }
 
-    public double[] getCumulativeOnsets(double[] absoluteRhythm){
+    public double[] getIncrementalOnsets(double[] absoluteRhythm){
         double[] cumulativeOnsets = new double[absoluteRhythm.length];
         double prevOnset = 0.0;
         for (int i = 0; i< absoluteRhythm.length; i++){
@@ -43,8 +43,8 @@ public class RhythmPlayer {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        RhythmPlayer rp = new RhythmPlayer(100);
-        Rhythm r = RhythmFactory.getRhythm(4);
+        RhythmPlayer rp = new RhythmPlayer(80);
+        Rhythm r = RhythmFactory.getRhythm(2);
         Metronome.playMetronome(rp.getBpm());
         rp.playRhythm(r);
 
