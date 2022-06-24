@@ -17,7 +17,6 @@ public class Driver {
 
     public static void main(String[] args) throws InterruptedException {
 
-
         RhythmPlayer rhythmPlayer = new RhythmPlayer(bpm);
         RhythmListener listener = new RhythmListener();
 
@@ -28,9 +27,6 @@ public class Driver {
         Thread.sleep(2500); // 4 beats of user input
 
         System.out.println(RhythmListener.userInput);
-
-
-
 
 
 
