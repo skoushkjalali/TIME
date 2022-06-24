@@ -11,16 +11,13 @@ import java.util.ArrayList;
 public class MockGUI extends KeyAdapter {
 
     JFrame jFrame;
-    public static ArrayList<Long> userTaps;
     Long startTime;
 
 
     MockGUI() {
-        Driver.waitForUserInput = true;
         jFrame = new JFrame();
         jFrame.setVisible(true);
         jFrame.addKeyListener(this);
-        userTaps = new ArrayList<>();
         startTime = System.currentTimeMillis();
     }
 
@@ -34,15 +31,8 @@ public class MockGUI extends KeyAdapter {
     @Override
     public void keyPressed(KeyEvent e) {
         System.out.println("PRESSED!");
-        userTaps.add((System.currentTimeMillis() - startTime));
-
+        RhythmListener.userInput.add((System.currentTimeMillis() - startTime));
     }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-    }
-
-
 
     public static void getUserTaps() {
         MockGUI gui = new MockGUI();
