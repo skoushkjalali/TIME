@@ -3,12 +3,12 @@ package Scorer;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
-
+import static org.junit.jupiter.api.Assertions.*;
 
 
 class ScorerTest {
 
-    Scorer scorer = new Scorer();
+    Scorer scorer = new Scorer(40, 2000);
     int[] sampleRhythm1 = {0, 100, 200, 300};
     int[] sampleRhythm2 = {0, 500, 1000, 2000};
     int[] sampleRhythm3 = {200, 201, 202, 203};
@@ -29,6 +29,90 @@ class ScorerTest {
     // very low score
     ArrayList<Long> userInput9 = new ArrayList<>(List.of(200L, 500L, 600L, 500L));
     ArrayList<Long> userInput10 = new ArrayList<>(List.of(-300L, 0L, 50L, 2000L));
+
+
+    @Test
+    void testCalcDelta1(){
+        long delta = scorer.calculateDelta(0, 0 );
+        assertEquals(0, delta);
+    }
+
+    @Test
+    void testCalcDelta2(){
+        long delta = scorer.calculateDelta(0, 40 );
+        assertEquals(40, delta);
+    }
+
+    @Test
+    void testCalcDelta3(){
+        long delta = scorer.calculateDelta(0, 100 );
+        assertEquals(100, delta);
+    }
+
+    @Test
+    void testCalcDelta4(){
+        long delta = scorer.calculateDelta(0, -100 );
+        assertEquals(100, delta);
+    }
+
+    @Test
+    void testCalcDelta5(){
+        long delta = scorer.calculateDelta(1250, 1000 );
+        assertEquals(250, delta);
+    }
+
+    @Test
+    void testCalcDelta6(){
+        long delta = scorer.calculateDelta(100, -2000 );
+        assertEquals(2100, delta);
+    }
+
+
+
+    @Test
+    void testCalcEffectiveDelta1(){
+        long effectiveDelta = scorer.calculateEffectiveDelta(40);
+        assertEquals(40, effectiveDelta);
+    }
+
+    @Test
+    void testCalcEffectiveDelta2(){
+        long effectiveDelta = scorer.calculateEffectiveDelta(39);
+        assertEquals(0, effectiveDelta);
+    }
+
+    @Test
+    void testCalcEffectiveDelta3(){
+        long effectiveDelta = scorer.calculateEffectiveDelta(41);
+        assertEquals(41, effectiveDelta);
+    }
+
+    @Test
+    void testCalcEffectiveDelta4(){
+        long effectiveDelta = scorer.calculateEffectiveDelta(100);
+        assertEquals(100, effectiveDelta);
+    }
+
+    @Test
+    void testCalcEffectiveDelta5(){
+        long effectiveDelta = scorer.calculateEffectiveDelta(2000);
+        assertEquals(2000, effectiveDelta);
+    }
+
+    @Test
+    void testCalcEffectiveDelta6(){
+        long effectiveDelta = scorer.calculateEffectiveDelta(2001);
+        assertEquals(2000, effectiveDelta);
+    }
+
+    @Test
+    void testCalcEffectiveDelta7(){
+        long effectiveDelta = scorer.calculateEffectiveDelta(2100);
+        assertEquals(2000, effectiveDelta);
+    }
+
+
+
 
     @Test
     void scoreEqualK100Percent1() {
