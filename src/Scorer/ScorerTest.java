@@ -29,11 +29,18 @@ class ScorerTest {
     ArrayList<Long> userInput10 = new ArrayList<>(List.of(40L, 140L, 240L, 340L));
     ArrayList<Long> userInput11 = new ArrayList<>(List.of(80L, 180L, 280L, 380L));
 
-    // middling score
-//    ArrayList<Long> userInput11 = new ArrayList<>(List.of(200L, 500L, 600L, 500L));
-//    ArrayList<Long> userInput12 = new ArrayList<>(List.of(-300L, 0L, 50L, 2000L));
+    // zero percent
+    ArrayList<Long> userInput12 = new ArrayList<>(List.of(2000L, 2500L, 3000L, 4000L));
+    ArrayList<Long> userInput13 = new ArrayList<>(List.of(3000L, 4000L, 5000L, 6000L));
 
-    // zero score
+
+    // middling scores int[] sampleRhythm3 = {200, 201, 202, 203};
+    ArrayList<Long> userInput14 = new ArrayList<>(List.of(10L, 150L, 300L, 1400L));
+    ArrayList<Long> userInput15 = new ArrayList<>(List.of(220L, 300L, 2200L, 2210L));
+    ArrayList<Long> userInput16 = new ArrayList<>(List.of(200L, 240L, 500L, 590L));
+    ArrayList<Long> userInput17 = new ArrayList<>(List.of(0L, 100L, 300L, 700L));
+
+
 
 
 
@@ -118,8 +125,6 @@ class ScorerTest {
     }
 
 
-
-
     @Test
     void scoreEqualK100Percent1() {
         double score = scorer.scoreEqualK(sampleRhythm1, userInput1);
@@ -186,6 +191,46 @@ class ScorerTest {
         double score = scorer.scoreEqualK(sampleRhythm1, userInput11);
         assertEquals(0.96, score);
     }
+
+    @Test
+    void scoreEqualK0Percent1(){
+        double score = scorer.scoreEqualK(sampleRhythm2, userInput12);
+        assertEquals(0.0, score);
+    }
+
+    @Test
+    void scoreEqualK0Percent2(){
+        double score = scorer.scoreEqualK(sampleRhythm2, userInput13);
+        assertEquals(0.0, score);
+    }
+
+
+    @Test
+    void scoreEqualKMiddlingScores1(){
+        double score = scorer.scoreEqualK(sampleRhythm3, userInput14);
+        assertEquals(0.81, score);
+    }
+
+    @Test
+    void scoreEqualKMiddlingScores2(){
+        double score = scorer.scoreEqualK(sampleRhythm3, userInput15);
+        assertEquals(0.49, score);
+    }
+
+    @Test
+    void scoreEqualKMiddlingScores3(){
+        double score = scorer.scoreEqualK(sampleRhythm3, userInput16);
+        assertEquals(0.91, score);
+    }
+
+    @Test
+    void scoreEqualKMiddlingScores4(){
+        double score = scorer.scoreEqualK(sampleRhythm3, userInput17);
+        assertEquals(0.89, score);
+    }
+
+
+
 
 
 
