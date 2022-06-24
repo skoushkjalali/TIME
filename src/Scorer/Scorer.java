@@ -2,6 +2,8 @@ package Scorer;
 
 import java.util.ArrayList;
 
+import static java.lang.Math.round;
+
 /*
     This class will score the user input against the sample
  */
@@ -38,15 +40,18 @@ public class Scorer {
       user taps as there are onsets in the sample rhythm.
   */
     public double scoreEqualK(int[] sampleRhythm, ArrayList<Long> userInput){
-//        double sumOfDeltas = 0;
-//
-//        for(int i = 0; i< sampleRhythm.length; i++){
-//            long delta = calculateDelta(sampleRhythm[i], userInput.get(i));
-//            sumOfDeltas += delta;
-//        }
+        double sumOfScores = 0.0;
 
+        for(int i = 0; i< sampleRhythm.length; i++){
+            long delta = calculateDelta(sampleRhythm[i], userInput.get(i));
+            long effectiveDelta = calculateEffectiveDelta(delta);
+            double onsetScore = 1 - ((double) effectiveDelta / (double) UPPER_BOUND);
+            sumOfScores += onsetScore;
+        }
 
-        return 0.0;
+        double score = sumOfScores / sampleRhythm.length;
+
+        return Math.round(score*100)/100.0;
     }
 
     public long calculateDelta(int sampleOnset, long userOnset){
