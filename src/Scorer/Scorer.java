@@ -13,7 +13,7 @@ public class Scorer {
     int UPPER_BOUND;
 
 
-    Scorer(int LOWER_BOUND, int UPPER_BOUND){
+    public Scorer(int LOWER_BOUND, int UPPER_BOUND){
         this.LOWER_BOUND = LOWER_BOUND;
         this.UPPER_BOUND = UPPER_BOUND;
     }
@@ -39,7 +39,7 @@ public class Scorer {
      This method scores user input against the sample rhythm when there are the same number of
       user taps as there are onsets in the sample rhythm.
   */
-    public double scoreEqualK(int[] sampleRhythm, ArrayList<Long> userInput){
+    public double scoreEqualK(double[] sampleRhythm, ArrayList<Long> userInput){
         double sumOfScores = 0.0;
 
         for(int i = 0; i< sampleRhythm.length; i++){
@@ -54,7 +54,7 @@ public class Scorer {
         return Math.round(score*100)/100.0;
     }
 
-    public long calculateDelta(int sampleOnset, long userOnset){
+    public long calculateDelta(double sampleOnset, long userOnset){
         return Math.abs((long) sampleOnset - userOnset);
     }
 

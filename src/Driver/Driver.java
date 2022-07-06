@@ -2,7 +2,7 @@ package Driver;
 
 
 import Rhythm.*;
-
+import Scorer.Scorer;
 
 
 import java.util.ArrayList;
@@ -19,14 +19,19 @@ public class Driver {
 
         RhythmPlayer rhythmPlayer = new RhythmPlayer(bpm);
         RhythmListener listener = new RhythmListener();
+        Scorer scorer = new Scorer(40, 2000);
 
-        Rhythm r = RhythmFactory.getRhythm(2);
+        Rhythm r = RhythmFactory.getRhythm(3);
         Metronome.playMetronome(bpm);
         rhythmPlayer.playRhythm(r);
         listener.userTaps();
-        Thread.sleep(2500); // 4 beats of user input
-
+        Thread.sleep(4500); // 4 beats of user input
         System.out.println(RhythmListener.userInput);
+        System.out.println(scorer.scoreEqualK(r.getAbsoluteRhythm(bpm), RhythmListener.userInput ));
+
+
+
+
 
 
 

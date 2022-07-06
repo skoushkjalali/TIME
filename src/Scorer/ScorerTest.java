@@ -9,10 +9,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class ScorerTest {
 
     Scorer scorer = new Scorer(40, 2000);
-    int[] sampleRhythm1 = {0, 100, 200, 300};
-    int[] sampleRhythm2 = {0, 500, 1000, 2000};
-    int[] sampleRhythm3 = {200, 201, 202, 203};
-    int[] sampleRhythm4 = {1000, 1050, 1250, 1500};
+    double[] sampleRhythm1 = {0, 100, 200, 300};
+    double[] sampleRhythm2 = {0, 500, 1000, 2000};
+    double[] sampleRhythm3 = {200, 201, 202, 203};
+    double[] sampleRhythm4 = {1000, 1050, 1250, 1500};
 
     // Full marks
     ArrayList<Long> userInput1 = new ArrayList<>(List.of(0L, 100L, 200L, 300L));
@@ -228,10 +228,6 @@ class ScorerTest {
         double score = scorer.scoreEqualK(sampleRhythm3, userInput17);
         assertEquals(0.89, score);
     }
-
-
-
-
 
 
 
