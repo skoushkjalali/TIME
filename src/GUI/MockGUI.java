@@ -1,12 +1,11 @@
-package Rhythm;
+package GUI;
 
 
-import Driver.Driver;
+import Rhythm.RhythmListener;
 
 import javax.swing.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 
 public class MockGUI extends KeyAdapter {
 

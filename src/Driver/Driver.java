@@ -6,6 +6,7 @@ import Scorer.Scorer;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Driver {
 
@@ -17,16 +18,22 @@ public class Driver {
 
     public static void main(String[] args) throws InterruptedException {
 
+        // setup the player, listener and scorer
         RhythmPlayer rhythmPlayer = new RhythmPlayer(bpm);
         RhythmListener listener = new RhythmListener();
         Scorer scorer = new Scorer(40, 2000);
 
-        Rhythm r = RhythmFactory.getRhythm(3);
+        // select a rhythm
+        Rhythm r = RhythmFactory.getRhythm(4);
         Metronome.playMetronome(bpm);
+
+
+
         rhythmPlayer.playRhythm(r);
         listener.userTaps();
         Thread.sleep(4500); // 4 beats of user input
         System.out.println(RhythmListener.userInput);
+        System.out.println(Arrays.toString(r.getAbsoluteRhythm(bpm)));
         System.out.println(scorer.scoreEqualK(r.getAbsoluteRhythm(bpm), RhythmListener.userInput ));
 
 
