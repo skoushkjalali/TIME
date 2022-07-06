@@ -12,6 +12,7 @@ class MetronomeTest {
 
     @Test
     void testMetronome() throws InterruptedException {
+
         Metronome.playMetronome(100);
        System.out.println(Arrays.toString(Metronome.beepLocations));
        assertTrue(Metronome.beepLocations[0] <= 605 && Metronome.beepLocations[0] >= 595);
