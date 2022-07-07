@@ -22,7 +22,7 @@ public class Scorer {
         This method scores user input against the sample rhythm when there are fewer user input taps than
         there are onsets in the sample rhythm.
      */
-    public double scoreTooFewUserTaps(int[] sampleRhythm, ArrayList<Long> userInput){
+    public double scoreTooFewUserTaps(double[] sampleRhythm, ArrayList<Integer> userInput){
         return 0.0;
     }
 
@@ -30,7 +30,7 @@ public class Scorer {
      This method scores user input against the sample rhythm when there are more user input taps than
      there are onsets in the sample rhythm.
   */
-    public double scoreTooManyUserTaps(int[] sampleRhythm, ArrayList<Long> userInput){
+    public double scoreTooManyUserTaps(double[] sampleRhythm, ArrayList<Integer> userInput){
         return 0.0;
     }
 
@@ -43,9 +43,9 @@ public class Scorer {
         double sumOfScores = 0.0;
 
         for(int i = 0; i< sampleRhythm.length; i++){
-            long delta = calculateDelta(sampleRhythm[i], userInput.get(i));
-            long effectiveDelta = calculateEffectiveDelta(delta);
-            double onsetScore = 1 - ((double) effectiveDelta / (double) UPPER_BOUND);
+            double delta = calculateDelta(sampleRhythm[i], userInput.get(i));
+            double effectiveDelta = calculateEffectiveDelta(delta);
+            double onsetScore = 1 - (effectiveDelta / (double) UPPER_BOUND);
             sumOfScores += onsetScore;
         }
 
@@ -55,11 +55,11 @@ public class Scorer {
 
     }
 
-    public long calculateDelta(double sampleOnset, long userOnset){
-        return Math.abs((long) sampleOnset - userOnset);
+    public double calculateDelta(double sampleOnset, double userOnset){
+        return Math.abs(sampleOnset - userOnset);
     }
 
-    public long calculateEffectiveDelta(long delta){
+    public double calculateEffectiveDelta(double delta){
         if(delta > UPPER_BOUND) return UPPER_BOUND;
         if(delta < LOWER_BOUND) return 0;
         return delta;

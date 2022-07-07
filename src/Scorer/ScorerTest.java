@@ -46,37 +46,37 @@ class ScorerTest {
 
     @Test
     void testCalcDelta1(){
-        long delta = scorer.calculateDelta(0, 0 );
+        double delta = scorer.calculateDelta(0, 0 );
         assertEquals(0, delta);
     }
 
     @Test
     void testCalcDelta2(){
-        long delta = scorer.calculateDelta(0, 40 );
+        double delta = scorer.calculateDelta(0, 40 );
         assertEquals(40, delta);
     }
 
     @Test
     void testCalcDelta3(){
-        long delta = scorer.calculateDelta(0, 100 );
+        double delta = scorer.calculateDelta(0, 100 );
         assertEquals(100, delta);
     }
 
     @Test
     void testCalcDelta4(){
-        long delta = scorer.calculateDelta(0, -100 );
+        double delta = scorer.calculateDelta(0, -100 );
         assertEquals(100, delta);
     }
 
     @Test
     void testCalcDelta5(){
-        long delta = scorer.calculateDelta(1250, 1000 );
+        double delta = scorer.calculateDelta(1250, 1000 );
         assertEquals(250, delta);
     }
 
     @Test
     void testCalcDelta6(){
-        long delta = scorer.calculateDelta(100, -2000 );
+        double delta = scorer.calculateDelta(100, -2000 );
         assertEquals(2100, delta);
     }
 
@@ -84,43 +84,43 @@ class ScorerTest {
 
     @Test
     void testCalcEffectiveDelta1(){
-        long effectiveDelta = scorer.calculateEffectiveDelta(40);
+        double effectiveDelta = scorer.calculateEffectiveDelta(40);
         assertEquals(40, effectiveDelta);
     }
 
     @Test
     void testCalcEffectiveDelta2(){
-        long effectiveDelta = scorer.calculateEffectiveDelta(39);
+        double effectiveDelta = scorer.calculateEffectiveDelta(39);
         assertEquals(0, effectiveDelta);
     }
 
     @Test
     void testCalcEffectiveDelta3(){
-        long effectiveDelta = scorer.calculateEffectiveDelta(41);
+        double effectiveDelta = scorer.calculateEffectiveDelta(41);
         assertEquals(41, effectiveDelta);
     }
 
     @Test
     void testCalcEffectiveDelta4(){
-        long effectiveDelta = scorer.calculateEffectiveDelta(100);
+        double effectiveDelta = scorer.calculateEffectiveDelta(100);
         assertEquals(100, effectiveDelta);
     }
 
     @Test
     void testCalcEffectiveDelta5(){
-        long effectiveDelta = scorer.calculateEffectiveDelta(2000);
+        double effectiveDelta = scorer.calculateEffectiveDelta(2000);
         assertEquals(2000, effectiveDelta);
     }
 
     @Test
     void testCalcEffectiveDelta6(){
-        long effectiveDelta = scorer.calculateEffectiveDelta(2001);
+        double effectiveDelta = scorer.calculateEffectiveDelta(2001);
         assertEquals(2000, effectiveDelta);
     }
 
     @Test
     void testCalcEffectiveDelta7(){
-        long effectiveDelta = scorer.calculateEffectiveDelta(2100);
+        double effectiveDelta = scorer.calculateEffectiveDelta(2100);
         assertEquals(2000, effectiveDelta);
     }
 
