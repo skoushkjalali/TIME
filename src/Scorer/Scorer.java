@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import static java.lang.Math.round;
 
 /*
-    This class will score the user input against the sample
+    This class will score the user input against the sample.
  */
 public class Scorer {
 
@@ -16,6 +16,20 @@ public class Scorer {
     public Scorer(int LOWER_BOUND, int UPPER_BOUND){
         this.LOWER_BOUND = LOWER_BOUND;
         this.UPPER_BOUND = UPPER_BOUND;
+    }
+
+
+    /*
+        This method returns the correct scoring function result depending on the number of taps in the user input
+        in relation to the sample input.
+        Equal number of taps to the sample returns scoreEqualK(sampleRhythm, userInput), else
+        scoreEqualK(sampleRhythm, userInput).
+     */
+    public double scoreInput(double[] sampleRhythm, ArrayList<Integer> userInput){
+        if (userInput.size() == sampleRhythm.length){
+            return scoreEqualK(sampleRhythm, userInput);
+        }
+        return scoreUnEqualK(sampleRhythm, userInput);
     }
 
 
