@@ -231,14 +231,57 @@ class ScorerTest {
 
 
 
+    double[] sampleRhythm5 = {533.34, 1200, 1733.34, 1866.67, 2266.67};
+    ArrayList<Integer> userInput18 = new ArrayList<>(List.of(160, 507, 693, 1360, 1653, 1947, 2187));
+
+    double[] sampleRhythm6 = {0, 300, 600, 900};
+    ArrayList<Integer> userInput19 = new ArrayList<>(List.of(300, 350, 600, 650, 750, 800));
+
+
+    double[] sampleRhythm7 = {1000, 2000, 2500};
+    ArrayList<Integer> userInput20 = new ArrayList<>(List.of(50,100,150,200,250,300,350,400,450));
+    ArrayList<Integer> userInput21 = new ArrayList<>(List.of(1000, 2000, 2500, 4500));
+
+
+
+
     @Test
-    void scoreTooFewUserTaps() {
-//            double score = scorer.scoreTooFewUserTaps(sampleRhythm1, )
+    void scoreTooManyUserTapsZeroPercent1() {
+        double score = scorer.scoreTooManyUserTaps(sampleRhythm7, userInput20);
+        assertEquals(0.0, score);
+    }
+
+    @Test
+    void scoreTooManyUserTapsZeroPercent2() {
+        double score = scorer.scoreTooManyUserTaps(sampleRhythm7, userInput21);
+        assertEquals(0.0, score);
+    }
+
+    @Test
+    void scoreTooManyUserTaps1() {
+        double score = scorer.scoreTooManyUserTaps(sampleRhythm5, userInput18);
+        assertEquals(0.53, score);
+    }
+
+    @Test
+    void scoreTooManyUserTaps2() {
+        double score = scorer.scoreTooManyUserTaps(sampleRhythm6, userInput19);
+        assertEquals(0.83, score);
+    }
+
+    @Test
+    void scoreTooManyUserTapsCloseButNoCigar() {
+        double[] sampleRhythm = {500, 1000.8, 1074.5, 1900};
+        ArrayList<Integer> userInput = new ArrayList<>(List.of(500, 1000, 1075, 2000, 1975));
+
+        double score = scorer.scoreTooManyUserTaps(sampleRhythm, userInput);
+        assertEquals(0.91, score);
     }
 
 
     @Test
-    void scoreTooManyUserTaps() {
+    void scoreTooFewUserTaps() {
+
     }
 
 
