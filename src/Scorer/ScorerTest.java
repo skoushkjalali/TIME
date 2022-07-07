@@ -15,30 +15,30 @@ class ScorerTest {
     double[] sampleRhythm4 = {1000, 1050, 1250, 1500};
 
     // Full marks
-    ArrayList<Long> userInput1 = new ArrayList<>(List.of(0L, 100L, 200L, 300L));
-    ArrayList<Long> userInput2 = new ArrayList<>(List.of(39L, 61L, 239L, 261L));
-    ArrayList<Long> userInput3 = new ArrayList<>(List.of(39L, 99L, 199L, 299L));
-    ArrayList<Long> userInput4 = new ArrayList<>(List.of(8L, 90L, 192L, 286L));
-    ArrayList<Long> userInput5 = new ArrayList<>(List.of(-20L, 70L, 165L, 268L));
-    ArrayList<Long> userInput6 = new ArrayList<>(List.of(-30L, 102L, 198L, 336L));
+    ArrayList<Integer> userInput1 = new ArrayList<>(List.of(0, 100, 200, 300));
+    ArrayList<Integer> userInput2 = new ArrayList<>(List.of(39, 61, 239, 261));
+    ArrayList<Integer> userInput3 = new ArrayList<>(List.of(39, 99, 199, 299));
+    ArrayList<Integer> userInput4 = new ArrayList<>(List.of(8, 90, 192, 286));
+    ArrayList<Integer> userInput5 = new ArrayList<>(List.of(-20, 70, 165, 268));
+    ArrayList<Integer> userInput6 = new ArrayList<>(List.of(-30, 102, 198, 336));
 
     // not full score but very close
-    ArrayList<Long> userInput7 = new ArrayList<>(List.of(-40L, 140L, 200L, 300L));
-    ArrayList<Long> userInput8 = new ArrayList<>(List.of(40L, 100L, 240L, 300L));
-    ArrayList<Long> userInput9 = new ArrayList<>(List.of(40L, 140L, 240L, 300L));
-    ArrayList<Long> userInput10 = new ArrayList<>(List.of(40L, 140L, 240L, 340L));
-    ArrayList<Long> userInput11 = new ArrayList<>(List.of(80L, 180L, 280L, 380L));
+    ArrayList<Integer> userInput7 = new ArrayList<>(List.of(-40, 140, 200, 300));
+    ArrayList<Integer> userInput8 = new ArrayList<>(List.of(40, 100, 240, 300));
+    ArrayList<Integer> userInput9 = new ArrayList<>(List.of(40, 140, 240, 300));
+    ArrayList<Integer> userInput10 = new ArrayList<>(List.of(40, 140, 240, 340));
+    ArrayList<Integer> userInput11 = new ArrayList<>(List.of(80, 180, 280, 380));
 
     // zero percent
-    ArrayList<Long> userInput12 = new ArrayList<>(List.of(2000L, 2500L, 3000L, 4000L));
-    ArrayList<Long> userInput13 = new ArrayList<>(List.of(3000L, 4000L, 5000L, 6000L));
+    ArrayList<Integer> userInput12 = new ArrayList<>(List.of(2000, 2500, 3000, 4000));
+    ArrayList<Integer> userInput13 = new ArrayList<>(List.of(3000, 4000, 5000, 6000));
 
 
     // middling scores int[] sampleRhythm3 = {200, 201, 202, 203};
-    ArrayList<Long> userInput14 = new ArrayList<>(List.of(10L, 150L, 300L, 1400L));
-    ArrayList<Long> userInput15 = new ArrayList<>(List.of(220L, 300L, 2200L, 2210L));
-    ArrayList<Long> userInput16 = new ArrayList<>(List.of(200L, 240L, 500L, 590L));
-    ArrayList<Long> userInput17 = new ArrayList<>(List.of(0L, 100L, 300L, 700L));
+    ArrayList<Integer> userInput14 = new ArrayList<>(List.of(10, 150, 300, 1400));
+    ArrayList<Integer> userInput15 = new ArrayList<>(List.of(220, 300, 2200, 2210));
+    ArrayList<Integer> userInput16 = new ArrayList<>(List.of(200, 240, 500, 590));
+    ArrayList<Integer> userInput17 = new ArrayList<>(List.of(0, 100, 300, 700));
 
 
 
@@ -231,12 +231,9 @@ class ScorerTest {
 
 
 
-
-
-
     @Test
     void scoreTooFewUserTaps() {
-
+//            double score = scorer.scoreTooFewUserTaps(sampleRhythm1, )
     }
 
 

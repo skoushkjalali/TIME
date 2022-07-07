@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public class RhythmListener {
 
-    public static ArrayList<Long> userInput = new ArrayList<>();
+    public static ArrayList<Integer> userInput = new ArrayList<>();
 
 
     public void userTaps(){
@@ -16,7 +16,7 @@ public class RhythmListener {
         UserTapFactory.getUserTaps();
     }
 
-    public ArrayList<Long> getUserInput(){
+    public ArrayList<Integer> getUserInput(){
         return  userInput;
     }
 

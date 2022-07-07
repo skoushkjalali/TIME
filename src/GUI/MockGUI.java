@@ -12,7 +12,6 @@ public class MockGUI extends KeyAdapter {
     JFrame jFrame;
     Long startTime;
 
-
     MockGUI() {
         jFrame = new JFrame();
         jFrame.setVisible(true);
@@ -30,7 +29,7 @@ public class MockGUI extends KeyAdapter {
     @Override
     public void keyPressed(KeyEvent e) {
         System.out.println("PRESSED!");
-        RhythmListener.userInput.add((System.currentTimeMillis() - startTime));
+        RhythmListener.userInput.add((int) (System.currentTimeMillis() - startTime));
     }
 
     public static void getUserTaps() {

@@ -39,7 +39,7 @@ public class Scorer {
      This method scores user input against the sample rhythm when there are the same number of
       user taps as there are onsets in the sample rhythm.
   */
-    public double scoreEqualK(double[] sampleRhythm, ArrayList<Long> userInput){
+    public double scoreEqualK(double[] sampleRhythm, ArrayList<Integer> userInput){
         double sumOfScores = 0.0;
 
         for(int i = 0; i< sampleRhythm.length; i++){
@@ -52,6 +52,7 @@ public class Scorer {
         double score = sumOfScores / sampleRhythm.length;
 
         return Math.round(score*100)/100.0;
+
     }
 
     public long calculateDelta(double sampleOnset, long userOnset){
