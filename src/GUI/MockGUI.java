@@ -17,7 +17,7 @@ public class MockGUI extends KeyAdapter {
     JFrame jFrame;
     Long startTime;
 
-    MockGUI() {
+    public MockGUI() {
         jFrame = new JFrame();
         jFrame.setVisible(true);
         jFrame.addKeyListener(this);

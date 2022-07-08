@@ -1,5 +1,6 @@
 package Main;
 
+import GUI.MockGUI;
 import Rhythm.Rhythm;
 import Rhythm.RhythmListener;
 import Rhythm.RhythmPlayer;
@@ -14,7 +15,7 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
 
         // select a rhythm
-        Rhythm r = RhythmFactory.getRhythm(4);
+        Rhythm r = RhythmFactory.getRhythm(0);
 
         // pass rhythm, bpm, scoring bounds into gameDriver
         Driver gameDriver = new Driver(100, 40, 1000, r);

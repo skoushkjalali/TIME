@@ -121,12 +121,4 @@ public class Scorer {
         return delta;
     }
 
-
-
-
-
-
-
-
-
 }

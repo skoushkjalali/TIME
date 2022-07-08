@@ -10,6 +10,9 @@ import java.util.ArrayList;
  */
 public class RhythmFactory {
 
+    // just 4 beats
+    static int[] rhythmData0 = {4,0,1,2,3};
+
     // example rhythm 1
     static int[] rhythmData1 = {8,0,3,4,6,7};
 
@@ -22,9 +25,11 @@ public class RhythmFactory {
     // Complex Rhythm Example 1
     static int[] rhythmData4 = {96,0,24,30,36,42,48,56,64,72,84,87,90};
 
+
     public static Rhythm getRhythm(int rhythmNumber){
 
         switch (rhythmNumber){
+            case 0 -> {return new Rhythm(rhythmData0);}
             case 1 -> {return new Rhythm(rhythmData1);}
             case 2 -> {return new Rhythm(rhythmData2);}
             case 3 -> {return new Rhythm(rhythmData3);}

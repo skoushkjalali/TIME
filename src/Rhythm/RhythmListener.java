@@ -1,6 +1,8 @@
 package Rhythm;
 
 
+import GUI.MockGUI;
+
 import java.util.ArrayList;
 
 /*
@@ -38,12 +40,6 @@ public class RhythmListener {
         return shiftedInput;
 
     }
-
-
-
-
-
-
 
 }
 
