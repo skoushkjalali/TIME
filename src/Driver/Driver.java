@@ -24,17 +24,14 @@ public class Driver {
         Scorer scorer = new Scorer(40, 2000);
 
         // select a rhythm
-        Rhythm r = RhythmFactory.getRhythm(4);
+        Rhythm r = RhythmFactory.getRhythm(1);
         Metronome.playMetronome(bpm);
-
-
-
         rhythmPlayer.playRhythm(r);
         listener.userTaps();
         Thread.sleep(4500); // 4 beats of user input
         System.out.println(RhythmListener.userInput);
         System.out.println(Arrays.toString(r.getAbsoluteRhythm(bpm)));
-        System.out.println(scorer.scoreEqualK(r.getAbsoluteRhythm(bpm), RhythmListener.userInput ));
+        System.out.println(scorer.scoreInput(r.getAbsoluteRhythm(bpm), RhythmListener.userInput ));
 
 
 

@@ -10,6 +10,7 @@ public class RhythmPlayer {
     private double bpm;
 
 
+
     public RhythmPlayer(double bpm){
         this.bpm = bpm;
     }
@@ -25,10 +26,19 @@ public class RhythmPlayer {
     public void playRhythm(Rhythm r) throws InterruptedException {
         double[] absoluteRhythm = r.getAbsoluteRhythm(bpm);
         double[] rhythmToPlay = getIncrementalOnsets(absoluteRhythm);
+
+        double barDurationInMilliSecs = (60 / bpm) * 1000 * 4;
+        long lastIOI = (long)(barDurationInMilliSecs - absoluteRhythm[absoluteRhythm.length-1]);
+
+
+        // play the onsets of the rhythm
         for(double onsetDelay : rhythmToPlay){
             Thread.sleep((long)onsetDelay);
             BeepFactory.getBeep();
         }
+        // wait for the length of time between the last onset and the end of the bar
+        Thread.sleep(lastIOI);
+
     }
 
     public double[] getIncrementalOnsets(double[] absoluteRhythm){
