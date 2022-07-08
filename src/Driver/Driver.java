@@ -10,8 +10,8 @@ import Scorer.Scorer;
  */
 public class Driver {
 
-    private final int bpm;
-    private final int barDurationInMilliSecs;
+    private int bpm = 100; // default
+    private final int barDurationInMilliSecs = (int)((60 / (float)bpm) * 1000 * 4);
 
     private final int LOWER_BOUND;
     private final int UPPER_BOUND;
@@ -19,11 +19,13 @@ public class Driver {
     Rhythm sampleRhythm;
 
     public Driver(int bpm, int lowerBound, int upperBound, Rhythm sampleRhythm){
-        this.bpm = bpm;
+        // bpm = 0 breaks the application
+        if(bpm > 0){
+            this.bpm = bpm;
+        }
         this.LOWER_BOUND = lowerBound;
         this.UPPER_BOUND = upperBound;
         this.sampleRhythm = sampleRhythm;
-        this.barDurationInMilliSecs = (int)((60 / (float)bpm) * 1000 * 4);
     }
 
     public int getBpm() {

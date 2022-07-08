@@ -15,10 +15,11 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
 
         // select a rhythm
-        Rhythm r = RhythmFactory.getRhythm(0);
+
+        Rhythm r = RhythmFactory.getRhythm(3);
 
         // pass rhythm, bpm, scoring bounds into gameDriver
-        Driver gameDriver = new Driver(100, 40, 1000, r);
+        Driver gameDriver = new Driver(100, 30, 800, r);
 
         // set up the player, listener and scorer,
         RhythmPlayer rhythmPlayer = new RhythmPlayer(gameDriver.getBpm());
