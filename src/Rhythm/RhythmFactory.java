@@ -30,19 +30,5 @@ public class RhythmFactory {
             case 3 -> {return new Rhythm(rhythmData3);}
             default -> {return new Rhythm(rhythmData4);}
         }
-
     }
-
-
-
-
-
-    
-
-
-
-
-
-
-
 }

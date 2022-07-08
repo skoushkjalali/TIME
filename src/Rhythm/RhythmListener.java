@@ -11,6 +11,11 @@ public class RhythmListener {
     public static ArrayList<Integer> userInput = new ArrayList<>();
 
 
+    /*
+        This method first clears the static variable userTaps, then captures any user inputs by calling
+        UserTapFactory.getUserTaps().
+        The implementation of getUserTaps() is able to change without recompiling this class.
+     */
     public void userTaps(){
         userInput.clear();
         UserTapFactory.getUserTaps();

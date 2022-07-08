@@ -8,6 +8,9 @@ import Scorer.Scorer;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/*
+    This class drives the game.
+ */
 public class Driver {
 
     private static final int bpm = 100;

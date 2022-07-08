@@ -9,6 +9,9 @@ import javax.swing.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+/*
+    This is a mock class that is to be used to allow keyboard user input functionality.
+ */
 public class MockGUI extends KeyAdapter {
 
     JFrame jFrame;

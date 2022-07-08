@@ -3,7 +3,7 @@ package Rhythm;
 
 
 /*
-    This class receives a ready-made rhythm from Rhythm Factory and plays it.
+    This class receives a ready-made rhythm object from RhythmFactory and plays it.
  */
 public class RhythmPlayer {
 
@@ -23,9 +23,14 @@ public class RhythmPlayer {
         return this.bpm;
     }
 
+
+    /*
+        This method takes a Rhythm object as @param r and plays the rhythm at the bpm passed to
+        RhythmPlayer in the constructor.
+     */
     public void playRhythm(Rhythm r) throws InterruptedException {
         double[] absoluteRhythm = r.getAbsoluteRhythm(bpm);
-        double[] rhythmToPlay = getIncrementalOnsets(absoluteRhythm);
+        double[] rhythmToPlay = getIOIs(absoluteRhythm);
 
         double barDurationInMilliSecs = (60 / bpm) * 1000 * 4;
         long lastIOI = (long)(barDurationInMilliSecs - absoluteRhythm[absoluteRhythm.length-1]);
@@ -41,26 +46,19 @@ public class RhythmPlayer {
 
     }
 
-    public double[] getIncrementalOnsets(double[] absoluteRhythm){
-        double[] cumulativeOnsets = new double[absoluteRhythm.length];
+    /*
+        This method converts the absolute onset locations passed in as @param absoluteRhythm to their respective
+        absolute IOIs (inter onset intervals) in milliseconds. This is the duration between the previous onset and
+        the current onset.
+     */
+    public double[] getIOIs(double[] absoluteRhythm){
+        double[] IOIs = new double[absoluteRhythm.length];
         double prevOnset = 0.0;
         for (int i = 0; i< absoluteRhythm.length; i++){
-            cumulativeOnsets[i] = absoluteRhythm[i] - prevOnset;
+            IOIs[i] = absoluteRhythm[i] - prevOnset;
             prevOnset = absoluteRhythm[i];
         }
-        return cumulativeOnsets;
+        return IOIs;
 
     }
-
-    public static void main(String[] args) throws InterruptedException {
-        RhythmPlayer rp = new RhythmPlayer(80);
-        Rhythm r = RhythmFactory.getRhythm(2);
-        Metronome.playMetronome(rp.getBpm());
-        rp.playRhythm(r);
-
-    }
-
-
-
-
 }

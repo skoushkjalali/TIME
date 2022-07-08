@@ -7,6 +7,9 @@ package Rhythm;
  */
 public class BeepFactory {
 
+    /*
+        This method generates a beep sound.
+     */
     public static void getBeep(){
         java.awt.Toolkit.getDefaultToolkit().beep();
     }

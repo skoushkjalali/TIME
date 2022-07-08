@@ -9,9 +9,16 @@ import java.util.List;
     segments = rhythmData[0] is the number of equal time segments in the rhythm.
  */
 public class Rhythm {
+    // the relative representation of all onset locations in arbitrary segments.
     private final int[] onsets;
+    // the number of segments in the relative representation.
     private final int segments;
 
+    /*
+        Constructor for Rhythm object.
+        The first entry in rhythmData is always the number of segments in the rhythm representation.
+        The remaining data are the onsets.
+     */
     Rhythm(int[] rhythmData){
         this.segments = rhythmData[0];
         this.onsets = Arrays.copyOfRange(rhythmData,1, rhythmData.length);
@@ -40,7 +47,6 @@ public class Rhythm {
 
         // array holds the temporal location of each onset from a zero point in time.
         return Arrays.stream(onsets).mapToDouble(o -> o*durationOfEachBit).toArray();
-
     }
 
 
