@@ -5,38 +5,46 @@ import Rhythm.*;
 import Scorer.Scorer;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 /*
     This class drives the game.
  */
 public class Driver {
 
-    private static final int bpm = 100;
-    private static final int barDurationInMilliSecs = (int)((60 / (float)bpm) * 1000 * 4);
+    private final int bpm;
+    private final int barDurationInMilliSecs;
 
-    public static void main(String[] args) throws InterruptedException {
+    private final int LOWER_BOUND;
+    private final int UPPER_BOUND;
 
-        // setup the player, listener and scorer,
-        RhythmPlayer rhythmPlayer = new RhythmPlayer(bpm);
-        RhythmListener listener = new RhythmListener();
-        Scorer scorer = new Scorer(40, 1000);
+    Rhythm sampleRhythm;
 
-        // select a rhythm
-        Rhythm r = RhythmFactory.getRhythm(4);
-        listener.userTaps();
-
-        // play 4 clicks of metronome
-        Metronome.playMetronome(bpm);
-
-        // play the selected rhythm
-        rhythmPlayer.playRhythm(r);
-
-        // wait to get userInput from keyboard, including waiting for enough time for the input
-        Thread.sleep(barDurationInMilliSecs+1000);
-        double score = scorer.scoreInput(r.getAbsoluteRhythm(bpm), listener.getShiftedUserInput(bpm, 2));
-        System.out.println(score);
-
+    public Driver(int bpm, int lowerBound, int upperBound, Rhythm sampleRhythm){
+        this.bpm = bpm;
+        this.LOWER_BOUND = lowerBound;
+        this.UPPER_BOUND = upperBound;
+        this.sampleRhythm = sampleRhythm;
+        this.barDurationInMilliSecs = (int)((60 / (float)bpm) * 1000 * 4);
     }
+
+    public int getBpm() {
+        return bpm;
+    }
+
+    public int getBarDurationInMilliSecs() {
+        return barDurationInMilliSecs;
+    }
+
+    public int getLOWER_BOUND() {
+        return LOWER_BOUND;
+    }
+
+    public int getUPPER_BOUND() {
+        return UPPER_BOUND;
+    }
+
+    public Rhythm getSampleRhythm() {
+        return sampleRhythm;
+    }
+
+
 }
