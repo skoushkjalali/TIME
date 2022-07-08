@@ -1,6 +1,8 @@
 package GUI;
 
 
+import Rhythm.BeepFactory;
+import Rhythm.RhythmFactory;
 import Rhythm.RhythmListener;
 
 import javax.swing.*;
@@ -28,7 +30,7 @@ public class MockGUI extends KeyAdapter {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        System.out.println("PRESSED!");
+        BeepFactory.getBeep();
         RhythmListener.userInput.add((int) (System.currentTimeMillis() - startTime));
     }
 
