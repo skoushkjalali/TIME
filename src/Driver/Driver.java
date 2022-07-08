@@ -22,16 +22,26 @@ public class Driver {
         RhythmPlayer rhythmPlayer = new RhythmPlayer(bpm);
         RhythmListener listener = new RhythmListener();
         Scorer scorer = new Scorer(40, 2000);
+        int barDurationInMilliSecs = (int)(60 / (float)bpm) * 1000 * 4;
 
         // select a rhythm
         Rhythm r = RhythmFactory.getRhythm(1);
-        Metronome.playMetronome(bpm);
-        rhythmPlayer.playRhythm(r);
         listener.userTaps();
-        Thread.sleep(4500); // 4 beats of user input
+        System.out.println("Listening");
+        // play 4 clicks of metronome
+        Metronome.playMetronome(bpm);
+
+        // play the selected rhythm
+        rhythmPlayer.playRhythm(r);
+
+        // wait to get userInput from keyboard, including waiting for enough time for the input
+        Thread.sleep(4500);
+
+
         System.out.println(RhythmListener.userInput);
+        System.out.println(listener.getShiftedUserInput(bpm, 2));
         System.out.println(Arrays.toString(r.getAbsoluteRhythm(bpm)));
-        System.out.println(scorer.scoreInput(r.getAbsoluteRhythm(bpm), RhythmListener.userInput ));
+        System.out.println(scorer.scoreInput(r.getAbsoluteRhythm(bpm), listener.getShiftedUserInput(bpm, 2)));
 
 
 
