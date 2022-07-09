@@ -29,6 +29,9 @@ public class Scorer {
         if (userInput.size() == sampleRhythm.length){
             return scoreEqualK(sampleRhythm, userInput);
         }
+        if(userInput.size() > sampleRhythm.length){
+            return scoreTooManyTaps(sampleRhythm, userInput);
+        }
         return scoreUnEqualK(sampleRhythm, userInput);
     }
 
@@ -53,18 +56,9 @@ public class Scorer {
         // iterate through each user tap
         for (int userTap : userInput) {
 
-            // initialise first onset and delta as a benchmark to test against
-            double onsetToMapTo = sampleRhythm[0];
-            double smallestDelta = Math.abs(sampleRhythm[0] - userTap);
+            // get sample onset to map to
+            double onsetToMapTo = getNearestOnset(sampleRhythm, userTap);
 
-            // find the nearest sample onset
-            for (double onset : sampleRhythm) {
-                double delta = Math.abs(userTap - onset);
-                if (delta < smallestDelta) {
-                    smallestDelta = delta;
-                    onsetToMapTo = onset;
-                }
-            }
             // calculate effective delta using this mapping
             double delta = calculateDelta(onsetToMapTo, userTap);
             double effectiveDelta = calculateEffectiveDelta(delta);
@@ -88,11 +82,43 @@ public class Scorer {
         return Math.round(result*100)/100.0;
     }
 
+
+    /*
+        This method scores user input against the sample rhythm when there are more user input taps than
+        there are onsets in the sample rhythm.
+
+        The method calculates effective delta for each present tap using its nearest sample onset.
+        It then calculates an onset handicap for each tap as the percentage of the upper bound
+        effective delta represents. This handicap is then summed, and subtracted from 100, with a floor of 0.
+     */
+    public double scoreTooManyTaps(double[] sampleRhythm, ArrayList<Integer> userInput){
+        double tooManyTapsScore = 1.0;
+
+        // iterate through each user tap
+        for (int userTap : userInput) {
+            // get sample onset to map to
+            double onsetToMapTo = getNearestOnset(sampleRhythm, userTap);
+
+            // calculate effective delta using this mapping
+            double delta = calculateDelta(onsetToMapTo, userTap);
+            double effectiveDelta = calculateEffectiveDelta(delta);
+
+            // calculate onset handicap
+            double onsetHandicap = effectiveDelta / (float) UPPER_BOUND;
+
+            // update score
+            tooManyTapsScore -= onsetHandicap;
+
+        }
+        // cap the lowest score possible at 0
+        double result = Math.max(tooManyTapsScore, 0);
+        return Math.round(result*100)/100.0;
+    }
+
     /*
         This method returns the sample onset in the sample rhythm that is the closest to
         @param userInputOnset.
      */
-
     public double getNearestOnset(double[] sampleRhythm, int userOnset) {
 
         // initialise first onset and delta as a benchmark to test against
