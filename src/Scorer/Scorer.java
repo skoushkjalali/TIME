@@ -61,7 +61,6 @@ public class Scorer {
 
             // calculate onset handicap and onset score
             double onsetScore = 1 - (effectiveDelta / (float) UPPER_BOUND);
-            double onsetHandicap = effectiveDelta / (float) UPPER_BOUND;
 
             // update score
             tooFewTapsScore += onsetScore * onsetWeight;
