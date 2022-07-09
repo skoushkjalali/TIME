@@ -231,7 +231,7 @@ class ScorerTest {
     void scoreTooManyUserTapsZeroPercent1() {
         double[] sampleRhythm7 = {1000, 2000, 2500};
         ArrayList<Integer> userInput20 = new ArrayList<>(List.of(50,100,150,200,250,300,350,400,450));
-        double score = scorer.scoreUnEqualK(sampleRhythm7, userInput20);
+        double score = scorer.scoreInput(sampleRhythm7, userInput20);
         assertEquals(0.0, score);
     }
 
@@ -239,7 +239,7 @@ class ScorerTest {
     void scoreTooManyUserTapsZeroPercent2() {
         double[] sampleRhythm7 = {1000, 2000, 2500};
         ArrayList<Integer> userInput21 = new ArrayList<>(List.of(1000, 2000, 2500, 4500));
-        double score = scorer.scoreUnEqualK(sampleRhythm7, userInput21);
+        double score = scorer.scoreInput(sampleRhythm7, userInput21);
         assertEquals(0.0, score);
     }
 
@@ -247,15 +247,16 @@ class ScorerTest {
     void scoreTooManyUserTaps1() {
         double[] sampleRhythm5 = {533.34, 1200, 1733.34, 1866.67, 2266.67};
         ArrayList<Integer> userInput18 = new ArrayList<>(List.of(160, 507, 693, 1360, 1653, 1947, 2187));
-        double score = scorer.scoreUnEqualK(sampleRhythm5, userInput18);
+        double score = scorer.scoreInput(sampleRhythm5, userInput18);
         assertEquals(0.53, score);
     }
+
 
     @Test
     void scoreTooManyUserTaps2() {
         double[] sampleRhythm6 = {0, 300, 600, 900};
         ArrayList<Integer> userInput19 = new ArrayList<>(List.of(300, 350, 600, 650, 750, 800));
-        double score = scorer.scoreUnEqualK(sampleRhythm6, userInput19);
+        double score = scorer.scoreInput(sampleRhythm6, userInput19);
         assertEquals(0.83, score);
     }
 
@@ -264,7 +265,7 @@ class ScorerTest {
         double[] sampleRhythm = {500, 1000.8, 1074.5, 1900};
         ArrayList<Integer> userInput = new ArrayList<>(List.of(500, 1000, 1075, 2000, 1975));
 
-        double score = scorer.scoreUnEqualK(sampleRhythm, userInput);
+        double score = scorer.scoreInput(sampleRhythm, userInput);
         assertEquals(0.91, score);
     }
 
@@ -274,7 +275,7 @@ class ScorerTest {
         double[] sampleRhythm = {100, 900, 1000, 1500, 2000};
         ArrayList<Integer> userInput = new ArrayList<>(List.of(348, 1036));
 
-        double score = scorer.scoreUnEqualK(sampleRhythm, userInput);
+        double score = scorer.scoreInput(sampleRhythm, userInput);
         assertEquals(0.38, score);
     }
 
@@ -283,7 +284,7 @@ class ScorerTest {
         double[] sampleRhythm = {100, 900, 1000, 1500, 2000};
         ArrayList<Integer> userInput = new ArrayList<>(List.of());
 
-        double score = scorer.scoreUnEqualK(sampleRhythm, userInput);
+        double score = scorer.scoreInput(sampleRhythm, userInput);
         assertEquals(0.0, score);
     }
 
@@ -292,7 +293,7 @@ class ScorerTest {
         double[] sampleRhythm = {100, 900, 1000, 1500, 2000};
         ArrayList<Integer> userInput = new ArrayList<>(List.of(-2000));
 
-        double score = scorer.scoreUnEqualK(sampleRhythm, userInput);
+        double score = scorer.scoreInput(sampleRhythm, userInput);
         assertEquals(0.0, score);
     }
 
@@ -301,7 +302,7 @@ class ScorerTest {
         double[] sampleRhythm = {100, 900, 1000, 1500, 2000};
         ArrayList<Integer> userInput = new ArrayList<>(List.of(120,940,1000,1500));
 
-        double score = scorer.scoreUnEqualK(sampleRhythm, userInput);
+        double score = scorer.scoreInput(sampleRhythm, userInput);
         assertEquals(0.8, score);
     }
 
@@ -310,7 +311,7 @@ class ScorerTest {
         double[] sampleRhythm = {100, 900, 1000, 1500, 2000};
         ArrayList<Integer> userInput = new ArrayList<>(List.of(100,900, 1000));
 
-        double score = scorer.scoreUnEqualK(sampleRhythm, userInput);
+        double score = scorer.scoreInput(sampleRhythm, userInput);
         assertEquals(0.6, score);
     }
 
@@ -319,7 +320,7 @@ class ScorerTest {
         double[] sampleRhythm = {50, 100, 274, 800};
         ArrayList<Integer> userInput = new ArrayList<>(List.of(-300, 900));
 
-        double score = scorer.scoreUnEqualK(sampleRhythm, userInput);
+        double score = scorer.scoreInput(sampleRhythm, userInput);
         assertEquals(0.44, score);
     }
 
@@ -358,15 +359,7 @@ class ScorerTest {
     }
 
     @Test
-    void testScoreInputTooMany1() {
-        double[] sampleRhythm5 = {533.34, 1200, 1733.34, 1866.67, 2266.67};
-        ArrayList<Integer> userInput18 = new ArrayList<>(List.of(160, 507, 693, 1360, 1653, 1947, 2187));
-        double score = scorer.scoreInput(sampleRhythm5, userInput18);
-        assertEquals(0.53, score);
-    }
-
-    @Test
-    void testScoreInputTooMany2() {
+    void testScoreInputTooMany() {
         double[] sampleRhythm6 = {0, 300, 600, 900};
         ArrayList<Integer> userInput19 = new ArrayList<>(List.of(300, 350, 600, 650, 750, 800));
         double score = scorer.scoreInput(sampleRhythm6, userInput19);

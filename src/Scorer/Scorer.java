@@ -29,29 +29,25 @@ public class Scorer {
         if (userInput.size() == sampleRhythm.length){
             return scoreEqualK(sampleRhythm, userInput);
         }
-        if(userInput.size() > sampleRhythm.length){
+        else if(userInput.size() > sampleRhythm.length){
             return scoreTooManyTaps(sampleRhythm, userInput);
         }
-        return scoreUnEqualK(sampleRhythm, userInput);
+        return scoreTooFewTaps(sampleRhythm, userInput);
     }
 
-
     /*
-        This method scores user input against the sample rhythm when there are fewer or greater user input taps than
+        This method scores user input against the sample rhythm when there are fewer user input taps than
         there are onsets in the sample rhythm.
 
         The method calculates effective delta for each present tap using its nearest sample onset.
-        When too many taps - it calculates an onset handicap for each tap as the percentage of the upper bound
-        effective delta represents. This handicap is then summed, and subtracted from 100, with a floor of 0.
-        When too few taps - it calculates an onset score for each tap as the percentage of the upper bound
-        effective delta represents, but then weights the score using the number of expected taps, and sums the result.
+        It then calculates an onset score for each tap as the percentage of the upper bound
+        effective delta represents, and weights the score using the number of expected taps, and sums the result.
         Thus, a score of 100 is impossible when user input is < perfect.
      */
-    public double scoreUnEqualK(double[] sampleRhythm, ArrayList<Integer> userInput){
+    public double scoreTooFewTaps(double[] sampleRhythm, ArrayList<Integer> userInput){
         double tooFewTapsScore = 0.0;
         double onsetWeight = 1.0 / sampleRhythm.length;
 
-        double tooManyTapsScore = 1.0;
 
         // iterate through each user tap
         for (int userTap : userInput) {
@@ -67,21 +63,11 @@ public class Scorer {
             double onsetScore = 1 - (effectiveDelta / (float) UPPER_BOUND);
             double onsetHandicap = effectiveDelta / (float) UPPER_BOUND;
 
-            // update scores
+            // update score
             tooFewTapsScore += onsetScore * onsetWeight;
-            tooManyTapsScore -= onsetHandicap;
-
         }
-
-        // select the correct score based on user k (number of taps)
-        double result = tooFewTapsScore;
-        if(userInput.size() > sampleRhythm.length){
-            result = Math.max(tooManyTapsScore, 0);
-        }
-
-        return Math.round(result*100)/100.0;
+        return Math.round(tooFewTapsScore*100)/100.0;
     }
-
 
     /*
         This method scores user input against the sample rhythm when there are more user input taps than
