@@ -21,7 +21,7 @@ public class MockGUI extends KeyAdapter {
         jFrame = new JFrame();
         jFrame.setVisible(true);
         jFrame.addKeyListener(this);
-        startTime = System.currentTimeMillis();
+        startTime = System.nanoTime() / 1_000_000;
     }
 
     @Override
@@ -34,7 +34,7 @@ public class MockGUI extends KeyAdapter {
     @Override
     public void keyPressed(KeyEvent e) {
         BeepFactory.getBeep();
-        RhythmListener.userInput.add((int) (System.currentTimeMillis() - startTime));
+        RhythmListener.userInput.add((int) ((System.nanoTime() / 1_000_000) - startTime));
     }
 
     public static void getUserTaps() {

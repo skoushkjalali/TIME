@@ -8,16 +8,13 @@ import static java.lang.Math.round;
     This class will score the user input against the sample.
  */
 public class Scorer {
-
     int LOWER_BOUND;
     int UPPER_BOUND;
-
 
     public Scorer(int LOWER_BOUND, int UPPER_BOUND){
         this.LOWER_BOUND = LOWER_BOUND;
         this.UPPER_BOUND = UPPER_BOUND;
     }
-
 
     /*
         This method returns the correct scoring function result depending on the number of taps in the user input
@@ -120,7 +117,6 @@ public class Scorer {
         }
         return onsetToMapTo;
     }
-
 
     /*
      This method scores user input against the sample rhythm when there are the same number of
