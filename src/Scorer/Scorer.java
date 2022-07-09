@@ -46,9 +46,10 @@ public class Scorer {
      */
     public double scoreUnEqualK(double[] sampleRhythm, ArrayList<Integer> userInput){
         double tooFewTapsScore = 0.0;
+        double onsetWeight = 1.0 / sampleRhythm.length;
+
         double tooManyTapsScore = 1.0;
 
-        double onsetWeight = 1.0 / sampleRhythm.length;
         // iterate through each user tap
         for (int userTap : userInput) {
 
@@ -85,6 +86,28 @@ public class Scorer {
         }
 
         return Math.round(result*100)/100.0;
+    }
+
+    /*
+        This method returns the sample onset in the sample rhythm that is the closest to
+        @param userInputOnset.
+     */
+
+    public double getNearestOnset(double[] sampleRhythm, int userOnset) {
+
+        // initialise first onset and delta as a benchmark to test against
+        double onsetToMapTo = sampleRhythm[0];
+        double smallestDelta = Math.abs(sampleRhythm[0] - userOnset);
+
+        // find the nearest sample onset
+        for (double onset : sampleRhythm) {
+            double delta = Math.abs(userOnset - onset);
+            if (delta < smallestDelta) {
+                smallestDelta = delta;
+                onsetToMapTo = onset;
+            }
+        }
+        return onsetToMapTo;
     }
 
 

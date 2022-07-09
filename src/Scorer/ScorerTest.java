@@ -373,6 +373,38 @@ class ScorerTest {
         assertEquals(0.83, score);
     }
 
+    @Test
+    void testGetNearestOnset1(){
+        double[] sampleRhythm = {0, 300, 600, 900};
+        int userOnset = 34;
+        double result = scorer.getNearestOnset(sampleRhythm, userOnset);
+        assertEquals(0, result);
+    }
+
+    @Test
+    void testGetNearestOnset2(){
+        double[] sampleRhythm = {0, 1000, 2000, 2500};
+        int userOnset = 2001;
+        double result = scorer.getNearestOnset(sampleRhythm, userOnset);
+        assertEquals(2000, result);
+    }
+
+    @Test
+    void testGetNearestOnset3(){
+        double[] sampleRhythm = {0, 100, 500, 1000};
+        int userOnset = 750;
+        double result = scorer.getNearestOnset(sampleRhythm, userOnset);
+        assertEquals(500, result);
+    }
+
+    @Test
+    void testGetNearestOnset4(){
+        double[] sampleRhythm = {0, 150, 450, 600};
+        int userOnset = -70;
+        double result = scorer.getNearestOnset(sampleRhythm, userOnset);
+        assertEquals(0, result);
+    }
+
 
 
 
