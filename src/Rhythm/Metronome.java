@@ -12,7 +12,7 @@ public class Metronome {
      */
     public static void playMetronome(double bpm) {
         long durationOfBeatInMilliSecs = (long) ((4 / bpm) * 60 * 1000) / 4;
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 4; i++) {
             BeepFactory.getBeep();
             long time = System.nanoTime();
             while (System.nanoTime() != time + durationOfBeatInMilliSecs * 1000000) {
@@ -28,13 +28,19 @@ public class Metronome {
      */
     public static void playMetronomeTester(double bpm) {
         long durationOfBeat = (long) ( (4 / bpm) * 60 * 1000) / 4;
+
         for(int i = 0; i<4; i++){
-            BeepFactory.getBeep();
             long time = System.nanoTime();
+            BeepFactory.getBeep();
             while(System.nanoTime() != time + durationOfBeat*1000000){
                 // wait
                 }
             beepLocations[i] = ((System.nanoTime() - time) / 1_000_000);
+
+
+
+
+
         }
     }
 

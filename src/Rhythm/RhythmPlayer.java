@@ -28,21 +28,33 @@ public class RhythmPlayer {
         This method takes a Rhythm object as @param r and plays the rhythm at the bpm passed to
         RhythmPlayer in the constructor.
      */
-    public void playRhythm(Rhythm r) throws InterruptedException {
+    public void playRhythm(Rhythm r){
         double[] absoluteRhythm = r.getAbsoluteRhythm(bpm);
         double[] rhythmToPlay = getIOIs(absoluteRhythm);
 
         double barDurationInMilliSecs = (60 / bpm) * 1000 * 4;
         long lastIOI = (long)(barDurationInMilliSecs - absoluteRhythm[absoluteRhythm.length-1]);
 
-
         // play the onsets of the rhythm
         for(double onsetDelay : rhythmToPlay){
-            Thread.sleep((long)onsetDelay);
+
+            // if onsetDelay = 0, more than 1 nanosecond passes between line X and line Y, causing
+            // the targeted nanosecond to be missed by the while loop, so we get stuck in an infinite loop.
+            if(onsetDelay!=0.0) {
+                long endOfWaitTime = System.nanoTime() + ((long) onsetDelay * 1_000_000);
+                while (System.nanoTime() != endOfWaitTime) {
+                    //wait for the prescribed number of nanoseconds
+                }
+            }
             BeepFactory.getBeep();
         }
         // wait for the length of time between the last onset and the end of the bar
-        Thread.sleep(lastIOI);
+        // if this isn't here then the first beat of the next bar will be shifted forwards by the duration of the
+        // lastIOI, leading to incorrect scoring of the user input.
+        long endOfWaitTime = System.nanoTime() + (lastIOI * 1_000_000);
+        while (System.nanoTime() != endOfWaitTime) {
+            //wait for the prescribed number of nanoseconds
+        }
 
     }
 

@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ScorerTest {
     Scorer scorer = new Scorer(40, 2000);
 
+
     @Test
     void testCalcDelta1(){
         double delta = scorer.calculateDelta(0, 0 );
