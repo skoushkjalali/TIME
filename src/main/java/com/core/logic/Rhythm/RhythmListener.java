@@ -4,21 +4,17 @@ package com.core.logic.Rhythm;
 import java.util.ArrayList;
 
 /*
-    This class receives keyboard input representing a rhythm and records the temporal locations of the keyboard taps
+    This class receives keyboard input from the UI representing a rhythm and records the temporal locations of the keyboard taps
  */
 public class RhythmListener {
 
+    public static long startTime;
+
     public static ArrayList<Integer> userInput = new ArrayList<>();
 
-
-    /*
-        This method first clears the static variable userTaps, then captures any user inputs by calling
-        UserTapFactory.getUserTaps().
-        The implementation of getUserTaps() is able to change without recompiling this class.
-     */
-    public void userTaps(){
+    public void setupForNewRhythmInput(){
+        startTime = System.nanoTime() / 1_000_000;
         userInput.clear();
-        UserTapFactory.getUserTaps();
     }
 
     /*
@@ -36,7 +32,6 @@ public class RhythmListener {
             shiftedInput.add(tap - shift);
         }
         return shiftedInput;
-
     }
 
 }

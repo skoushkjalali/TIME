@@ -1,12 +1,12 @@
-package com.core.logic.Driver;
+package com.core.logic.Level;
 
 import com.core.logic.Rhythm.*;
 
 
 /*
-    This class drives the game.
+    This class represents a level of a rhythm at a prescribed bpm.
  */
-public class Driver {
+public class Level {
 
     private int bpm = 100; // default
     private final int barDurationInMilliSecs = (int)((60 / (float)bpm) * 1000 * 4);
@@ -16,7 +16,7 @@ public class Driver {
 
     Rhythm sampleRhythm;
 
-    public Driver(int bpm, int lowerBound, int upperBound, Rhythm sampleRhythm){
+    public Level(int bpm, int lowerBound, int upperBound, Rhythm sampleRhythm){
         // bpm = 0 breaks the application
         if(bpm > 0){
             this.bpm = bpm;
@@ -41,11 +41,5 @@ public class Driver {
     public int getUPPER_BOUND() {
         return UPPER_BOUND;
     }
-
-    public Rhythm getSampleRhythm() {
-        return sampleRhythm;
-    }
-
-
 
 }
