@@ -18,7 +18,7 @@ public class Rhythm {
         The first entry in rhythmData is always the number of segments in the rhythm representation.
         The remaining data are the onsets.
      */
-    Rhythm(int[] rhythmData){
+    public Rhythm(int[] rhythmData){
         this.segments = rhythmData[0];
         this.onsets = Arrays.copyOfRange(rhythmData,1, rhythmData.length);
     }

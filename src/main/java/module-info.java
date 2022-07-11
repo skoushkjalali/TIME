@@ -1,4 +1,4 @@
-module com.javafx.timegui {
+module time {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.desktop;
@@ -7,4 +7,8 @@ module com.javafx.timegui {
 
     opens com.javafx.gui to javafx.fxml;
     exports com.javafx.gui;
+    exports com.core.logic.Rhythm;
 }
+
+
+
