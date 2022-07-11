@@ -1,7 +1,7 @@
-package Rhythm;
+package com.core.logic.Rhythm;
 
 
-import GUI.MockGUI;
+import com.core.logic.GUI.MockGUI;
 
 /*
     This class is responsible for selecting the implementation that allows capture of user taps from the

@@ -1,7 +1,4 @@
-package Rhythm;
-
-import java.util.ArrayList;
-import java.util.Arrays;
+package com.core.logic.Rhythm;
 
 /*
     This is a mock class to allow RhythmListener and RhythmPlayer to bew built and tested.

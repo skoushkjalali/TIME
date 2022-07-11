@@ -1,4 +1,4 @@
-package Rhythm;
+package com.core.logic.Rhythm;
 
 
 
@@ -52,8 +52,10 @@ public class RhythmPlayer {
         // if this isn't here then the first beat of the next bar will be shifted forwards by the duration of the
         // lastIOI, leading to incorrect scoring of the user input.
         long endOfWaitTime = System.nanoTime() + (lastIOI * 1_000_000);
-        while (System.nanoTime() != endOfWaitTime) {
-            //wait for the prescribed number of nanoseconds
+        if(lastIOI != 0) {
+            while (System.nanoTime() != endOfWaitTime) {
+                //wait for the prescribed number of nanoseconds
+            }
         }
 
     }

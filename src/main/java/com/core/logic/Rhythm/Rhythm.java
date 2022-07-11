@@ -1,7 +1,6 @@
-package Rhythm;
+package com.core.logic.Rhythm;
 
 import java.util.Arrays;
-import java.util.List;
 
 /*
     This class represents a rhythm in its relative form, as an int array of onsets, and the corresponding number of

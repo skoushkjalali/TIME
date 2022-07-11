@@ -1,7 +1,5 @@
-package Rhythm;
+package com.core.logic.Rhythm;
 
-
-import GUI.MockGUI;
 
 import java.util.ArrayList;
 

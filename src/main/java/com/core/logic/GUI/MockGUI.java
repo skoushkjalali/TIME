@@ -1,9 +1,8 @@
-package GUI;
+package com.core.logic.GUI;
 
 
-import Rhythm.BeepFactory;
-import Rhythm.RhythmFactory;
-import Rhythm.RhythmListener;
+import com.core.logic.Rhythm.BeepFactory;
+import com.core.logic.Rhythm.RhythmListener;
 
 import javax.swing.*;
 import java.awt.event.KeyAdapter;

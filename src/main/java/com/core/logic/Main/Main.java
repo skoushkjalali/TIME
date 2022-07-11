@@ -1,21 +1,14 @@
-package Main;
+package com.core.logic.Main;
 
-import GUI.MockGUI;
-import Rhythm.Rhythm;
-import Rhythm.RhythmListener;
-import Rhythm.RhythmPlayer;
-import Rhythm.RhythmFactory;
-import Rhythm.Metronome;
-import Scorer.Scorer;
-
-import Driver.Driver;
+import com.core.logic.Driver.Driver;
+import com.core.logic.Rhythm.*;
+import com.core.logic.Scorer.Scorer;
 
 public class Main {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args){
 
-
-        for(int i = 1; i<=25;i++) {
+        for(int i = 19; i<=25;i++) {
             // run through all 25 rhythms
             Rhythm r = RhythmFactory.getRhythm(i);
 
@@ -37,7 +30,13 @@ public class Main {
             rhythmPlayer.playRhythm(r);
 
             // wait to get userInput from keyboard, including waiting for enough time for the input
-            Thread.sleep(gameDriver.getBarDurationInMilliSecs() + 1000);
+            long endOfWaitTime = System.nanoTime() + (gameDriver.getBarDurationInMilliSecs() * 1_000_000L) + 760_000_000;
+            if(endOfWaitTime != 0) {
+                while (System.nanoTime() != endOfWaitTime) {
+                    //wait for the prescribed number of nanoseconds
+                }
+            }
+
             double score = scorer.scoreInput(r.getAbsoluteRhythm(gameDriver.getBpm()), listener.getShiftedUserInput(gameDriver.getBpm(), 2));
             System.out.println("Rhythm "+i +": "+ (int)(score*100) + "%");
         }

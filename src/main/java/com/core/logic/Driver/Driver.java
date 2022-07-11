@@ -1,8 +1,7 @@
-package Driver;
+package com.core.logic.Driver;
 
 
-import Rhythm.*;
-import Scorer.Scorer;
+import com.core.logic.Rhythm.*;
 
 
 /*

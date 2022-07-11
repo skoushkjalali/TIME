@@ -1,8 +1,6 @@
-package Scorer;
+package com.core.logic.Scorer;
 
 import java.util.ArrayList;
-
-import static java.lang.Math.round;
 
 /*
     This class will score the user input against the sample.
