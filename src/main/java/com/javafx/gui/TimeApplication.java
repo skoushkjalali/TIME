@@ -18,6 +18,10 @@ public class TimeApplication extends Application {
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setMaxHeight(868);
+        stage.setMinHeight(868);
+        stage.setMaxWidth(1300);
+        stage.setMinWidth(1300);
         stage.show();
 
 
@@ -28,6 +32,8 @@ public class TimeApplication extends Application {
             RhythmListener.userInput.add((int) ((System.nanoTime() / 1_000_000) - RhythmListener.startTime));
 
         });
+
+
 
 
 
