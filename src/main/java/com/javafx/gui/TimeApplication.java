@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class TimeApplication extends Application {
+
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("time-view.fxml"));
@@ -25,6 +27,7 @@ public class TimeApplication extends Application {
             BeepFactory.getBeep();
             RhythmListener.userInput.add((int) ((System.nanoTime() / 1_000_000) - RhythmListener.startTime));
         });
+
 
         // focus is needed for keyboard taps to be registered.
         scene.getRoot().requestFocus();

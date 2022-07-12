@@ -67,15 +67,6 @@ public class RhythmFactory {
         return new Rhythm(rhythmData[n-1]);
     }
 
-//    public static void main(String[] args) {
-//        int[][] newRhythmData = rhythmData.clone();
-//        for(int i = 0; i<rhythmData.length; i++){
-//            for(int j = 2; j<rhythmData[i].length; j++){
-//                newRhythmData[i][j] += 1;
-//            }
-//        }
-//        System.out.println(Arrays.deepToString(newRhythmData));
-//    }
 
 
 

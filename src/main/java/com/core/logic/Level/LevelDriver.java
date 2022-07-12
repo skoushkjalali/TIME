@@ -10,44 +10,49 @@ import com.javafx.gui.TimeController;
  */
 public class LevelDriver {
 
-    public static void playLevel(){
+    private static int levelNumber = 1;
 
-        int LOWER_BOUND = 40;
-        int UPPER_BOUND = 750;
+    public static int getLevelNumber() {
+        return levelNumber;
+    }
 
-        for(int i = 7; i<=25;i++) {
-            // run through all 25 rhythms
-            Rhythm r = RhythmFactory.getRhythm(i);
+    public static void setLevelNumber(int levelNumber) {
+        LevelDriver.levelNumber = levelNumber;
+    }
 
-            // pass rhythm, bpm, scoring bounds into level
-            Level level = new Level(90, LOWER_BOUND, UPPER_BOUND, r);
+    public static void playLevel(int levelNo){
 
-            // set up the player, listener and scorer,
-            RhythmPlayer rhythmPlayer = new RhythmPlayer(level.getBpm());
-            RhythmListener listener = new RhythmListener();
-            listener.setupForNewRhythmInput();
-            Scorer scorer = new Scorer(level.getLOWER_BOUND(), level.getUPPER_BOUND());
+        // run through all 25 rhythms
+        Rhythm r = RhythmFactory.getRhythm(levelNo);
 
-            // play 4 clicks of metronome at the desired bpm
-            Metronome.playMetronome(level.getBpm());
+        // pass rhythm, bpm, scoring bounds into level
+        Level level = new Level(90, r);
 
-            // play the selected rhythm
-            rhythmPlayer.playRhythm(r);
+        // set up the player, listener and scorer,
+        RhythmPlayer rhythmPlayer = new RhythmPlayer(level.getBpm());
+        RhythmListener listener = new RhythmListener();
+        listener.setupForNewRhythmInput();
+        Scorer scorer = new Scorer(level.getLOWER_BOUND(), level.getUPPER_BOUND());
 
-            // wait to get userInput from keyboard. This includes additional time added to allow userInput to be late
-            // by a maximum of the upper bound.
-            long endOfWaitTime = System.nanoTime() +
-                    (level.getBarDurationInMilliSecs() * 1_000_000L) + UPPER_BOUND*1_000_000;
-            if(endOfWaitTime != 0) {
-                while (System.nanoTime() != endOfWaitTime) {
-                    //wait for the prescribed number of nanoseconds
-                }
+        // play 4 clicks of metronome at the desired bpm
+        Metronome.playMetronome(level.getBpm());
+
+        // play the selected rhythm
+        rhythmPlayer.playRhythm(r);
+
+        // wait to get userInput from keyboard. This includes additional time added to allow userInput to be late
+        // by a maximum of the upper bound.
+        long endOfWaitTime = System.nanoTime() +
+                (level.getBarDurationInMilliSecs() * 1_000_000L) + level.getUPPER_BOUND()* 1_000_000L;
+        if(endOfWaitTime != 0) {
+            while (System.nanoTime() != endOfWaitTime) {
+                //wait for the prescribed number of nanoseconds
             }
-
-            // score the input
-            double score = scorer.scoreInput(r.getAbsoluteRhythm(level.getBpm()), listener.getShiftedUserInput(level.getBpm(), 2));
-            System.out.println("Rhythm "+i +": "+ (int)(score*100) + "%");
-
         }
+
+        // score the input
+        double score = scorer.scoreInput(r.getAbsoluteRhythm(level.getBpm()), listener.getShiftedUserInput(level.getBpm(), 2));
+        System.out.println("Level "+levelNo +": "+ (int)(score*100) + "%");
+
     }
 }
