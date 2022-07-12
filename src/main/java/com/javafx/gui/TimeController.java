@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 
@@ -41,6 +42,7 @@ public class TimeController implements Initializable {
     @FXML
     private ChoiceBox<Integer> levelSelector;
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -50,6 +52,8 @@ public class TimeController implements Initializable {
         }
         // link onLevelSelection method with levelSelector ChoiceBox
         levelSelector.setOnAction(this::onLevelSelection);
+
+
     }
 
     @FXML
@@ -69,6 +73,15 @@ public class TimeController implements Initializable {
     @FXML
     public void showScore(double score){
         textArea.setText("Score: "+score*100 +"%");
+    }
+
+    @FXML
+    public void makeTapPadBlack(){
+        tapPad.setFill(Color.BLACK);
+    }
+    @FXML
+    public void makeTapPadWhite(){
+        tapPad.setFill(Color.WHITE);
     }
 
 
