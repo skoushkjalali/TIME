@@ -2,6 +2,8 @@ package com.core.logic.Level;
 
 import com.core.logic.Rhythm.*;
 import com.core.logic.Scorer.Scorer;
+import com.javafx.gui.TimeController;
+
 
 /*
     This class takes a rhythm object and creates a level to be played, and then plays the level.
@@ -42,9 +44,10 @@ public class LevelDriver {
                 }
             }
 
-            // hen score the input
+            // score the input
             double score = scorer.scoreInput(r.getAbsoluteRhythm(level.getBpm()), listener.getShiftedUserInput(level.getBpm(), 2));
             System.out.println("Rhythm "+i +": "+ (int)(score*100) + "%");
+
         }
     }
 }
