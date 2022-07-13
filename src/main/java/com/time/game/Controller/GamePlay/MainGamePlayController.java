@@ -1,15 +1,24 @@
 package com.time.game.Controller.GamePlay;
+import com.time.game.GameLogic.Level.LevelDriver;
 import com.time.game.GameLogic.Rhythm.BeepFactory;
+import com.time.game.GameLogic.Rhythm.Metronome;
 import com.time.game.GameLogic.Rhythm.RhythmListener;
 
+import com.time.game.GameLogic.Rhythm.RhythmPlayer;
+import com.time.game.GameLogic.Scorer.Scorer;
+import com.time.game.Model.Level.Level;
+import com.time.game.Model.Rhythm.RhythmFactory;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -30,19 +39,30 @@ public class MainGamePlayController implements Initializable {
     private Rectangle beat4;
 
     @FXML
-    private TextArea textArea;
-    @FXML
     private Line sampleLine;
     @FXML
     private Line userLine;
     @FXML
-    private TextArea score;
+    private Text scoreText;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // add things later if needed
-        // such as location of sample onsets?
+
+        // update the score
+        Thread t = new Thread(() -> {
+            while(true){
+                scoreText.setText("Score: "+Level.getLastScore() +"%");
+            }
+        });
+        t.start();
+
+
+        Level level = new Level(RhythmFactory.getRhythm(Level.getLevelNumber()));
+
+//         start playing level that has been selected by the user
+        Thread t1 = new Thread(() -> LevelDriver.playLevel(level));
+        t1.start();
     }
 
     @FXML
@@ -55,11 +75,6 @@ public class MainGamePlayController implements Initializable {
     @FXML
     protected void userInputKeyReleased(){
         makeTapPadWhite();
-    }
-
-    @FXML
-    protected void showScore(double score){
-        textArea.setText("Score: "+score*100 +"%");
     }
 
     @FXML
@@ -80,6 +95,8 @@ public class MainGamePlayController implements Initializable {
     protected void makeBeat1White(){
         beat1.setFill(Color.WHITE);
     }
+
+
 
 
 }

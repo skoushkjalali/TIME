@@ -1,6 +1,5 @@
 package com.time.game.Model.Level;
 
-import com.time.game.GameLogic.Level.LevelDriver;
 import com.time.game.Model.Rhythm.Rhythm;
 
 
@@ -8,8 +7,6 @@ import com.time.game.Model.Rhythm.Rhythm;
     This class represents a level of a rhythm at a prescribed bpm.
  */
 public class Level {
-
-
 
     private static int bpm = 100; // default
     private final int barDurationInMilliSecs = (int)((60 / (float)bpm) * 1000 * 4);
@@ -19,6 +16,8 @@ public class Level {
 
     private static int levelNumber = 1; // default
 
+    private static int lastScore = 0;
+
     Rhythm sampleRhythm;
 
     public Level(Rhythm sampleRhythm){
@@ -26,6 +25,13 @@ public class Level {
         this.sampleRhythm = sampleRhythm;
     }
 
+    public static int getLastScore(){
+        return Level.lastScore;
+    }
+
+    public static void setLastScore(int score){
+        Level.lastScore = score;
+    }
 
     public static int getLevelNumber() {
         return levelNumber;
@@ -63,5 +69,6 @@ public class Level {
     public int getUPPER_BOUND() {
         return UPPER_BOUND;
     }
+
 
 }

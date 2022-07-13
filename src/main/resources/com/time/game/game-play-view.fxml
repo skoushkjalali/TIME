@@ -34,6 +34,11 @@
                   <Font size="30.0" />
                </font>
             </Label>
+            <Text fx:id="scoreText" layoutX="586.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score:">
+               <font>
+                  <Font size="49.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
    </children>

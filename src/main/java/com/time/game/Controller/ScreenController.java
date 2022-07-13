@@ -29,11 +29,5 @@ public class ScreenController {
         // allows keyboard input to be monitored
         scene.getRoot().requestFocus();
 
-        // create Level object that has the corresponding Rhythm
-        Level level = new Level(RhythmFactory.getRhythm(Level.getLevelNumber()));
-
-        // start playing level that has been selected by the user
-        Thread t1 = new Thread(() -> LevelDriver.playLevel(level));
-        t1.start();
     }
 }

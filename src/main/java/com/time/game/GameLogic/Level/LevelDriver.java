@@ -1,5 +1,6 @@
 package com.time.game.GameLogic.Level;
 
+import com.time.game.Controller.GamePlay.MainGamePlayController;
 import com.time.game.GameLogic.Rhythm.Metronome;
 import com.time.game.GameLogic.Rhythm.RhythmListener;
 import com.time.game.GameLogic.Rhythm.RhythmPlayer;
@@ -17,11 +18,13 @@ public class LevelDriver {
 
     public static void playLevel(Level level){
 
+
         // set up the player, listener and scorer
         RhythmPlayer rhythmPlayer = new RhythmPlayer(level.getBpm());
         RhythmListener listener = new RhythmListener();
         listener.setupForNewRhythmInput();
         Scorer scorer = new Scorer(level.getLOWER_BOUND(), level.getUPPER_BOUND());
+
 
         // play 4 clicks of metronome at the desired bpm
         Metronome.playMetronome(level.getBpm());
@@ -40,8 +43,9 @@ public class LevelDriver {
         }
 
         // score the input
-        double score = scorer.scoreInput(level.getSampleRhythm().getAbsoluteRhythm(level.getBpm()), listener.getShiftedUserInput(level.getBpm(), 2));
-        System.out.println("Level "+Level.getLevelNumber() +": "+ (int)(score*100) + "%");
-
+        double score = scorer.scoreInput(level.getSampleRhythm().getAbsoluteRhythm(level.getBpm()),
+                listener.getShiftedUserInput(level.getBpm(), 2));
+//        System.out.println("Level "+Level.getLevelNumber() +": "+ (int)(score*100) + "%");
+        Level.setLastScore((int)(score*100));
     }
 }
