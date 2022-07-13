@@ -52,6 +52,9 @@ public class MainGamePlayController implements Initializable {
         // update the score
         Thread t = new Thread(() -> {
             while(true){
+                while(Level.isRunning()){
+                    scoreText.setText(" ");
+                }
                 scoreText.setText("Score: "+Level.getLastScore() +"%");
             }
         });

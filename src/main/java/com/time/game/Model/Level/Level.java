@@ -8,6 +8,8 @@ import com.time.game.Model.Rhythm.Rhythm;
  */
 public class Level {
 
+    private static boolean running = false;
+
     private static int bpm = 100; // default
     private final int barDurationInMilliSecs = (int)((60 / (float)bpm) * 1000 * 4);
 
@@ -71,4 +73,11 @@ public class Level {
     }
 
 
+    public static boolean isRunning() {
+        return running;
+    }
+
+    public static void setRunning(boolean status) {
+        Level.running = status;
+    }
 }

@@ -1,11 +1,8 @@
 package com.time.game.GameLogic.Level;
 
-import com.time.game.Controller.GamePlay.MainGamePlayController;
 import com.time.game.GameLogic.Rhythm.Metronome;
 import com.time.game.GameLogic.Rhythm.RhythmListener;
 import com.time.game.GameLogic.Rhythm.RhythmPlayer;
-import com.time.game.Model.Rhythm.Rhythm;
-import com.time.game.Model.Rhythm.RhythmFactory;
 import com.time.game.Model.Level.Level;
 import com.time.game.GameLogic.Scorer.Scorer;
 
@@ -17,6 +14,7 @@ public class LevelDriver {
 
 
     public static void playLevel(Level level){
+        Level.setRunning(true);
 
 
         // set up the player, listener and scorer
@@ -47,5 +45,6 @@ public class LevelDriver {
                 listener.getShiftedUserInput(level.getBpm(), 2));
 //        System.out.println("Level "+Level.getLevelNumber() +": "+ (int)(score*100) + "%");
         Level.setLastScore((int)(score*100));
+        Level.setRunning(false);
     }
 }
