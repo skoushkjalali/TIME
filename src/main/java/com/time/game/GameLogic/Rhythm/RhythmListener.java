@@ -1,4 +1,4 @@
-package com.time.game.Model.Rhythm;
+package com.time.game.GameLogic.Rhythm;
 
 
 import java.util.ArrayList;

@@ -1,6 +1,7 @@
-package com.time.game.Model.Rhythm;
+package com.time.game.GameLogic.Rhythm;
 
-
+import com.time.game.GameLogic.Rhythm.BeepFactory;
+import com.time.game.Model.Rhythm.Rhythm;
 
 /*
     This class receives a ready-made rhythm object from RhythmFactory and plays it.
@@ -57,7 +58,6 @@ public class RhythmPlayer {
                 //wait for the prescribed number of nanoseconds
             }
         }
-
     }
 
     /*

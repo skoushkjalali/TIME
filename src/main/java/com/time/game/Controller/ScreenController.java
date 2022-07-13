@@ -1,18 +1,13 @@
 package com.time.game.Controller;
 
-import com.time.game.Model.Level.LevelDriver;
+import com.time.game.GameLogic.Level.LevelDriver;
 import com.time.game.TimeApplication;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Objects;
 
 
 public class ScreenController {

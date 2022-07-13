@@ -18,6 +18,7 @@ module time {
 
     opens com.time.game.Controller to javafx.fxml;
     exports com.time.game.Controller to javafx.fxml;
+    exports com.time.game.GameLogic.Rhythm;
 
 }
 

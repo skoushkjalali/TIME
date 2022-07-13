@@ -1,5 +1,5 @@
 
-import com.time.game.Model.Rhythm.RhythmListener;
+import com.time.game.GameLogic.Rhythm.RhythmListener;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;

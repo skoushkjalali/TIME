@@ -1,4 +1,6 @@
-package com.time.game.Model.Rhythm;
+package com.time.game.GameLogic.Rhythm;
+
+import com.time.game.GameLogic.Rhythm.BeepFactory;
 
 /*
     This class plays a metronome.

@@ -1,5 +1,7 @@
 package com.time.game.Model.Rhythm;
 
+import com.time.game.Model.Rhythm.Rhythm;
+
 /*
     This is a mock class to allow RhythmListener and RhythmPlayer to bew built and tested.
     This class will be replaced with a scalable solution using a database.

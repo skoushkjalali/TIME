@@ -1,7 +1,12 @@
-package com.time.game.Model.Level;
+package com.time.game.GameLogic.Level;
 
-import com.time.game.Model.Rhythm.*;
-import com.time.game.Model.Scorer.Scorer;
+import com.time.game.GameLogic.Rhythm.Metronome;
+import com.time.game.GameLogic.Rhythm.RhythmListener;
+import com.time.game.GameLogic.Rhythm.RhythmPlayer;
+import com.time.game.Model.Rhythm.Rhythm;
+import com.time.game.Model.Rhythm.RhythmFactory;
+import com.time.game.Model.Level.Level;
+import com.time.game.GameLogic.Scorer.Scorer;
 
 
 /*

@@ -1,6 +1,6 @@
 package com.time.game.Controller.GamePlay;
-import com.time.game.Model.Rhythm.BeepFactory;
-import com.time.game.Model.Rhythm.RhythmListener;
+import com.time.game.GameLogic.Rhythm.BeepFactory;
+import com.time.game.GameLogic.Rhythm.RhythmListener;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

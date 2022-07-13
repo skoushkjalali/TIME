@@ -1,7 +1,6 @@
 package com.time.game.Controller.GamePlay;
 
-import com.time.game.Model.Rhythm.BeepFactory;
-import javafx.fxml.FXML;
+import com.time.game.GameLogic.Rhythm.BeepFactory;
 
 public class GamePlayMetronomeController {
     public static long[] beepLocations = new long[4]; // for testing
