@@ -21,7 +21,7 @@ public class LevelDriver {
 
     public static void playLevel(int levelNo){
 
-        // run through all 25 rhythms
+        // get a Rhythm object from the model corresponding to the levelNo
         Rhythm r = RhythmFactory.getRhythm(levelNo);
 
         // pass rhythm, bpm, scoring bounds into level

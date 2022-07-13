@@ -1,11 +1,10 @@
 package com.time.game.Controller.GamePlay;
-import com.time.game.Model.Level.LevelDriver;
 import com.time.game.Model.Rhythm.BeepFactory;
 import com.time.game.Model.Rhythm.RhythmListener;
-import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
+
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.paint.Color;
@@ -16,7 +15,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class GamePlayController implements Initializable {
+public class MainGamePlayController implements Initializable {
     @FXML
     private Label welcomeText;
     @FXML
@@ -38,32 +37,11 @@ public class GamePlayController implements Initializable {
     private Line userLine;
     @FXML
     private TextArea score;
-    @FXML
-    private ChoiceBox<Integer> levelSelector;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        // populate dropdown menu for levelSelector
-        for(int i = 1; i<= 25; i++) {
-            levelSelector.getItems().add(i);
-        }
-        // link onLevelSelection method with levelSelector ChoiceBox
-        levelSelector.setOnAction(this::onLevelSelection);
-    }
-
-    @FXML
-    protected void onLevelSelection(ActionEvent event ){
-        int levelSelection = levelSelector.getValue();
-        LevelDriver.setLevelNumber(levelSelection);
-    }
-
-    @FXML
-    protected void onPlayButtonClick() {
-        // start application driver
-        Thread t1 = new Thread(() -> LevelDriver.playLevel(LevelDriver.getLevelNumber()));
-        t1.start();
+        // add things later if needed
     }
 
     @FXML

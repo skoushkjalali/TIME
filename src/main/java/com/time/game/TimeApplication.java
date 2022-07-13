@@ -1,18 +1,24 @@
 package com.time.game;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TitledPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import java.io.IOException;
 
 public class TimeApplication extends Application {
 
+    public static Stage primaryStage;
+
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("game-play-view.fxml"));
-        Pane root = loader.load();
+        primaryStage = stage;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("profile-view.fxml"));
+        Parent root = loader.load();
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -20,9 +26,15 @@ public class TimeApplication extends Application {
         stage.setMinHeight(868);
         stage.setMaxWidth(1300);
         stage.setMinWidth(1300);
-        stage.setTitle("TIME");
+        stage.setTitle("Profile");
         stage.show();
+
+
+
+
     }
+
+
 
     public static void main(String[] args) {
         launch();

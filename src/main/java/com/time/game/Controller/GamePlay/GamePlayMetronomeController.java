@@ -9,8 +9,7 @@ public class GamePlayMetronomeController {
     /*
         This method plays 4 beeps at the bpm @param bpm
      */
-    @FXML
-    protected void playMetronome(double bpm) {
+    protected static void playMetronome(double bpm) {
 
         long durationOfBeatInMilliSecs = (long) ((4 / bpm) * 60 * 1000) / 4;
         for (int i = 0; i < 4; i++) {

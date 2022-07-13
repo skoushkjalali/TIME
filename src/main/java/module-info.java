@@ -12,6 +12,13 @@ module time {
     opens com.time.game.Controller.GamePlay to javafx.fxml;
     exports com.time.game.Controller.GamePlay;
 
+
+    opens com.time.game.Controller.Profile to javafx.fxml;
+    exports com.time.game.Controller.Profile;
+
+    opens com.time.game.Controller to javafx.fxml;
+    exports com.time.game.Controller to javafx.fxml;
+
 }
 
 
