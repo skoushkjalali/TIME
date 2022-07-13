@@ -1,5 +1,6 @@
 package com.time.game.Model.Level;
 
+import com.time.game.GameLogic.Level.LevelDriver;
 import com.time.game.Model.Rhythm.Rhythm;
 
 
@@ -8,25 +9,42 @@ import com.time.game.Model.Rhythm.Rhythm;
  */
 public class Level {
 
-    private int bpm = 100; // default
+
+
+    private static int bpm = 100; // default
     private final int barDurationInMilliSecs = (int)((60 / (float)bpm) * 1000 * 4);
 
     private int LOWER_BOUND = 40;
     private int UPPER_BOUND = 750;
 
+    private static int levelNumber = 1; // default
+
     Rhythm sampleRhythm;
 
-    public Level(int bpm, Rhythm sampleRhythm){
+    public Level(Rhythm sampleRhythm){
         // bpm = 0 breaks the application
-        if(bpm > 0){
-            this.bpm = bpm;
-        }
-
         this.sampleRhythm = sampleRhythm;
+    }
+
+
+    public static int getLevelNumber() {
+        return levelNumber;
+    }
+
+    public static void setLevelNumber(int levelNumber) {
+        Level.levelNumber = levelNumber;
+    }
+
+    public Rhythm getSampleRhythm() {
+        return sampleRhythm;
     }
 
     public int getBpm() {
         return bpm;
+    }
+
+    public static void setBpm(int bpm){
+        Level.bpm = bpm;
     }
 
     public int getBarDurationInMilliSecs() {

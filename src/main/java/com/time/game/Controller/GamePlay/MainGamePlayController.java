@@ -42,6 +42,7 @@ public class MainGamePlayController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // add things later if needed
+        // such as location of sample onsets?
     }
 
     @FXML

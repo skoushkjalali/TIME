@@ -10,29 +10,14 @@ import com.time.game.GameLogic.Scorer.Scorer;
 
 
 /*
-    This class takes a rhythm object and creates a level to be played, and then plays the level.
+    This class takes a Level object and plays that level.
  */
 public class LevelDriver {
 
-    private static int levelNumber = 1;
 
-    public static int getLevelNumber() {
-        return levelNumber;
-    }
+    public static void playLevel(Level level){
 
-    public static void setLevelNumber(int levelNumber) {
-        LevelDriver.levelNumber = levelNumber;
-    }
-
-    public static void playLevel(int levelNo){
-
-        // get a Rhythm object from the model corresponding to the levelNo
-        Rhythm r = RhythmFactory.getRhythm(levelNo);
-
-        // pass rhythm, bpm, scoring bounds into level
-        Level level = new Level(90, r);
-
-        // set up the player, listener and scorer,
+        // set up the player, listener and scorer
         RhythmPlayer rhythmPlayer = new RhythmPlayer(level.getBpm());
         RhythmListener listener = new RhythmListener();
         listener.setupForNewRhythmInput();
@@ -42,7 +27,7 @@ public class LevelDriver {
         Metronome.playMetronome(level.getBpm());
 
         // play the selected rhythm
-        rhythmPlayer.playRhythm(r);
+        rhythmPlayer.playRhythm(level.getSampleRhythm());
 
         // wait to get userInput from keyboard. This includes additional time added to allow userInput to be late
         // by a maximum of the upper bound.
@@ -55,8 +40,8 @@ public class LevelDriver {
         }
 
         // score the input
-        double score = scorer.scoreInput(r.getAbsoluteRhythm(level.getBpm()), listener.getShiftedUserInput(level.getBpm(), 2));
-        System.out.println("Level "+levelNo +": "+ (int)(score*100) + "%");
+        double score = scorer.scoreInput(level.getSampleRhythm().getAbsoluteRhythm(level.getBpm()), listener.getShiftedUserInput(level.getBpm(), 2));
+        System.out.println("Level "+Level.getLevelNumber() +": "+ (int)(score*100) + "%");
 
     }
 }

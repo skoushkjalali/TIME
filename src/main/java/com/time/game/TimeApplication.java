@@ -29,9 +29,6 @@ public class TimeApplication extends Application {
         stage.setTitle("Profile");
         stage.show();
 
-
-
-
     }
 
 

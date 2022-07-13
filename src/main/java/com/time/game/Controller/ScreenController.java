@@ -1,6 +1,8 @@
 package com.time.game.Controller;
 
 import com.time.game.GameLogic.Level.LevelDriver;
+import com.time.game.Model.Level.Level;
+import com.time.game.Model.Rhythm.RhythmFactory;
 import com.time.game.TimeApplication;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -27,8 +29,11 @@ public class ScreenController {
         // allows keyboard input to be monitored
         scene.getRoot().requestFocus();
 
-        // start playing level
-        Thread t1 = new Thread(() -> LevelDriver.playLevel(LevelDriver.getLevelNumber()));
+        // create Level object that has the corresponding Rhythm
+        Level level = new Level(RhythmFactory.getRhythm(Level.getLevelNumber()));
+
+        // start playing level that has been selected by the user
+        Thread t1 = new Thread(() -> LevelDriver.playLevel(level));
         t1.start();
     }
 }
