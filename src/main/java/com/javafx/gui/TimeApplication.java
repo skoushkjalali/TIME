@@ -22,6 +22,7 @@ public class TimeApplication extends Application {
         stage.setMinHeight(868);
         stage.setMaxWidth(1300);
         stage.setMinWidth(1300);
+        stage.setTitle("TIME");
         stage.show();
 
     }
