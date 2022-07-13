@@ -1,4 +1,4 @@
-package com.core.logic.Rhythm;
+package com.time.game.Model.Rhythm;
 
 
 /*

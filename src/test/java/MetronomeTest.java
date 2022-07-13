@@ -1,4 +1,4 @@
-import com.core.logic.Rhythm.Metronome;
+import com.time.game.Model.Rhythm.Metronome;
 import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.*;

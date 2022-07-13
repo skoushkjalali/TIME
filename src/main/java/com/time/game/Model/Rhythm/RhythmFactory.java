@@ -1,4 +1,4 @@
-package com.core.logic.Rhythm;
+package com.time.game.Model.Rhythm;
 
 /*
     This is a mock class to allow RhythmListener and RhythmPlayer to bew built and tested.

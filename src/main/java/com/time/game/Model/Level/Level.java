@@ -1,6 +1,6 @@
-package com.core.logic.Level;
+package com.time.game.Model.Level;
 
-import com.core.logic.Rhythm.*;
+import com.time.game.Model.Rhythm.Rhythm;
 
 
 /*

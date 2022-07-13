@@ -1,8 +1,7 @@
-package com.core.logic.Level;
+package com.time.game.Model.Level;
 
-import com.core.logic.Rhythm.*;
-import com.core.logic.Scorer.Scorer;
-import com.javafx.gui.TimeController;
+import com.time.game.Model.Rhythm.*;
+import com.time.game.Model.Scorer.Scorer;
 
 
 /*

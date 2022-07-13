@@ -1,7 +1,7 @@
-package com.javafx.gui;
-import com.core.logic.Level.LevelDriver;
-import com.core.logic.Rhythm.BeepFactory;
-import com.core.logic.Rhythm.RhythmListener;
+package com.time.game.Controller.GamePlay;
+import com.time.game.Model.Level.LevelDriver;
+import com.time.game.Model.Rhythm.BeepFactory;
+import com.time.game.Model.Rhythm.RhythmListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,12 +12,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 
-import javax.swing.plaf.ColorUIResource;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class TimeController implements Initializable {
+public class GamePlayController implements Initializable {
     @FXML
     private Label welcomeText;
     @FXML

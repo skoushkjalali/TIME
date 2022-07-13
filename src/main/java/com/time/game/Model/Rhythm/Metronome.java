@@ -1,7 +1,4 @@
-package com.core.logic.Rhythm;
-
-import com.javafx.gui.TimeController;
-import javafx.application.Platform;
+package com.time.game.Model.Rhythm;
 
 /*
     This class plays a metronome.
@@ -40,11 +37,6 @@ public class Metronome {
                 // wait
                 }
             beepLocations[i] = ((System.nanoTime() - time) / 1_000_000);
-
-
-
-
-
         }
     }
 

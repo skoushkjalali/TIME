@@ -5,9 +5,13 @@ module time {
     requires org.testng;
 
 
-    opens com.javafx.gui to javafx.fxml;
-    exports com.javafx.gui;
-    exports com.core.logic.Rhythm;
+    opens com.time.game to javafx.fxml;
+    exports com.time.game;
+    exports com.time.game.Model.Rhythm;
+
+    opens com.time.game.Controller.GamePlay to javafx.fxml;
+    exports com.time.game.Controller.GamePlay;
+
 }
 
 

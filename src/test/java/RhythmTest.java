@@ -1,4 +1,4 @@
-import com.core.logic.Rhythm.Rhythm;
+import com.time.game.Model.Rhythm.Rhythm;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
