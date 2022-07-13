@@ -24,24 +24,6 @@ public class TimeApplication extends Application {
         stage.setMinWidth(1300);
         stage.show();
 
-
-        // when a keyboard key is pressed, play a beep sound, and place a time stamp in milliseconds into
-        // RhythmListener.userTaps.
-        scene.setOnKeyPressed(keyEvent -> {
-            BeepFactory.getBeep();
-            RhythmListener.userInput.add((int) ((System.nanoTime() / 1_000_000) - RhythmListener.startTime));
-
-        });
-
-
-
-
-
-
-
-        // focus is needed for keyboard taps to be registered.
-        scene.getRoot().requestFocus();
-
     }
 
     public static void main(String[] args) {

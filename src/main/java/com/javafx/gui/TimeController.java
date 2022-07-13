@@ -1,8 +1,7 @@
 package com.javafx.gui;
 import com.core.logic.Level.LevelDriver;
-import com.core.logic.Rhythm.RhythmFactory;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import com.core.logic.Rhythm.BeepFactory;
+import com.core.logic.Rhythm.RhythmListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,6 +12,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 
+import javax.swing.plaf.ColorUIResource;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -52,16 +52,13 @@ public class TimeController implements Initializable {
         }
         // link onLevelSelection method with levelSelector ChoiceBox
         levelSelector.setOnAction(this::onLevelSelection);
-
-
     }
 
     @FXML
-    public void onLevelSelection(ActionEvent event ){
+    protected void onLevelSelection(ActionEvent event ){
         int levelSelection = levelSelector.getValue();
         LevelDriver.setLevelNumber(levelSelection);
     }
-
 
     @FXML
     protected void onPlayButtonClick() {
@@ -71,20 +68,40 @@ public class TimeController implements Initializable {
     }
 
     @FXML
-    public void showScore(double score){
+    protected void userInputKeyPressed(){
+        BeepFactory.getBeep();
+        RhythmListener.userInput.add((int) ((System.nanoTime() / 1_000_000) - RhythmListener.startTime));
+        makeTapPadBlack();
+    }
+
+    @FXML
+    protected void userInputKeyReleased(){
+        makeTapPadWhite();
+    }
+
+    @FXML
+    protected void showScore(double score){
         textArea.setText("Score: "+score*100 +"%");
     }
 
     @FXML
-    public void makeTapPadBlack(){
+    protected void makeTapPadBlack(){
         tapPad.setFill(Color.BLACK);
     }
+
     @FXML
-    public void makeTapPadWhite(){
+    protected void makeTapPadWhite(){
         tapPad.setFill(Color.WHITE);
     }
 
 
+    protected void makeBeat1Black(){
+        beat1.setFill(Color.BLACK);
+    }
+
+    protected void makeBeat1White(){
+        beat1.setFill(Color.WHITE);
+    }
 
 
 }
