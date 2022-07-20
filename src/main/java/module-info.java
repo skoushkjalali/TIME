@@ -21,6 +21,7 @@ module time {
     exports com.time.game.GameLogic.Rhythm;
 
     exports com.time.game.Model.Level;
+    exports com.time.game.GameLogic.Scorer;
 
 }
 

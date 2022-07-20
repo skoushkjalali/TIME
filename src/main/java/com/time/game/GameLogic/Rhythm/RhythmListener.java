@@ -12,6 +12,7 @@ public class RhythmListener {
 
     public static ArrayList<Integer> userInput = new ArrayList<>();
 
+
     public void setupForNewRhythmInput(){
         startTime = System.nanoTime() / 1_000_000;
         userInput.clear();

@@ -1,15 +1,12 @@
 package com.time.game.Controller.GamePlay;
-import com.time.game.GameLogic.Level.LevelDriver;
 import com.time.game.GameLogic.Rhythm.BeepFactory;
 import com.time.game.GameLogic.Rhythm.RhythmListener;
+import com.time.game.GameLogic.Scorer.Scorer;
 import com.time.game.Model.Level.Level;
 import com.time.game.Model.Rhythm.Rhythm;
 import com.time.game.Model.Rhythm.RhythmFactory;
-import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -18,11 +15,8 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
-
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.ResourceBundle;
 
 
@@ -50,6 +44,9 @@ public class MainGamePlayController implements Initializable {
     Timeline timeline;
 
     private Level level;
+
+    private RhythmListener rhythmListener;
+    private Scorer scorer;
 
     protected KeyFrame[] getMetronomeKeyFrames(int numOfBars, int flashLength){
 
@@ -103,44 +100,70 @@ public class MainGamePlayController implements Initializable {
     return sampleOnsetEvents;
     }
 
+    protected int scoreLevel(){
+        double score = scorer.scoreInput(level.getSampleRhythm().getAbsoluteRhythm(level.getBpm()),
+                rhythmListener.getShiftedUserInput(level.getBpm(), 1));
+        return (int)(score*100);
+    }
+
+    protected void markLevelAsStarted(){
+        Level.setRunning(true);
+    }
+
+    protected void markLevelAsEnded(){
+        Level.setRunning(false);
+    }
+
+    protected void setScore(){
+        Level.setLastScore(scoreLevel());
+    }
+
+
+
+
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        level = new Level(RhythmFactory.getRhythm(Level.getLevelNumber()));
+        // update the scoreText when the level has finished
+        // todo make this a Task object
+        Thread t = new Thread(() -> {
+            while(true){
+                while(Level.isRunning()){
+                    scoreText.setText(" ");
+                }
+                scoreText.setText("Score: "+Level.getLastScore() +"%");
+            }
+        });
+        t.setDaemon(true);
+        t.start();
 
+        level = new Level(RhythmFactory.getRhythm(Level.getLevelNumber()));
+        rhythmListener = new RhythmListener();
+        scorer = new Scorer(level.getLOWER_BOUND(), level.getUPPER_BOUND());
         timeline = new Timeline();
 
+        // mark level as inProgress
+        KeyFrame startLevel = new KeyFrame(Duration.millis(0), e-> markLevelAsStarted());
+        timeline.getKeyFrames().add(startLevel);
         // add all metronome clicks and flashes to timeline
-        timeline.getKeyFrames().addAll(getMetronomeKeyFrames(4,50));
+        timeline.getKeyFrames().addAll(getMetronomeKeyFrames(3,50));
+        // add all sample onsets to timeline
         timeline.getKeyFrames().addAll(getSampleRhythmKeyFrames());
 
-
-
+//         initialise start of listening to user input
+        KeyFrame userInputStartLocation = new KeyFrame(Duration.millis(level.getBarDurationInMilliSecs()),
+                e -> rhythmListener.setupForNewRhythmInput());
+        timeline.getKeyFrames().add(userInputStartLocation);
+        KeyFrame setScore = new KeyFrame(Duration.millis(level.getBarDurationInMilliSecs()*3 + level.getUPPER_BOUND()), e -> setScore());
+        timeline.getKeyFrames().add(setScore);
+        // mark level as ended
+        KeyFrame endLevel = new KeyFrame(Duration.millis((level.getBarDurationInMilliSecs()*3) + (level.getUPPER_BOUND()*1.5)),
+                e -> markLevelAsEnded());
+        timeline.getKeyFrames().add(endLevel);
         timeline.play();
 
-
-
-//        // update the score
-//        // todo make this a Task object
-//        Thread t = new Thread(() -> {
-//            while(true){
-//                while(Level.isRunning()){
-//                    scoreText.setText(" ");
-//                }
-//                scoreText.setText("Score: "+Level.getLastScore() +"%");
-//            }
-//        });
-//        t.start();
-//
-//
-//        Level level = new Level(RhythmFactory.getRhythm(Level.getLevelNumber()));
-//
-////         start playing level that has been selected by the user
-//        // todo move this over to an Animation
-//        Thread t1 = new Thread(() -> LevelDriver.playLevel(level));
-//        t1.start();
     }
 
     protected void sampleOnsetBeep(){
