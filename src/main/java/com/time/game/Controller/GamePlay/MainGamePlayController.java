@@ -85,16 +85,22 @@ public class MainGamePlayController implements Initializable {
         return metronomeEvents;
     }
 
-
+    public void setLevel(int i){
+        level = new Level(RhythmFactory.getRhythm(i));
+    }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         level = new Level(RhythmFactory.getRhythm(Level.getLevelNumber()));
-
+        
         timeline = new Timeline();
+
+        // add all metronome clicks and flashes to timeline
         timeline.getKeyFrames().addAll(getMetronomeKeyFrames(4,50));
+
+
 
 
         timeline.play();
