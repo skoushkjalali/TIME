@@ -16,7 +16,6 @@ public class LevelDriver {
     public static void playLevel(Level level){
         Level.setRunning(true);
 
-
         // set up the player, listener and scorer
         RhythmPlayer rhythmPlayer = new RhythmPlayer(level.getBpm());
         RhythmListener listener = new RhythmListener();

@@ -3,6 +3,7 @@ import com.time.game.GameLogic.Level.LevelDriver;
 import com.time.game.GameLogic.Rhythm.BeepFactory;
 import com.time.game.GameLogic.Rhythm.RhythmListener;
 import com.time.game.Model.Level.Level;
+import com.time.game.Model.Rhythm.Rhythm;
 import com.time.game.Model.Rhythm.RhythmFactory;
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
@@ -19,6 +20,7 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.ResourceBundle;
@@ -89,17 +91,30 @@ public class MainGamePlayController implements Initializable {
         level = new Level(RhythmFactory.getRhythm(i));
     }
 
+    protected ArrayList<KeyFrame> getSampleRhythmKeyFrames() {
+        int oneBarOffsetDuration = level.getBarDurationInMilliSecs();
+        ArrayList<KeyFrame> sampleOnsetEvents = new ArrayList<>();
+        Rhythm r = level.getSampleRhythm();
+        double[] sampleOnsets = r.getAbsoluteRhythm(level.getBpm());
+
+        for (var onset : sampleOnsets) {
+            sampleOnsetEvents.add(new KeyFrame(Duration.millis(onset + oneBarOffsetDuration), actionEvent -> sampleOnsetBeep()));
+        }
+    return sampleOnsetEvents;
+    }
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         level = new Level(RhythmFactory.getRhythm(Level.getLevelNumber()));
-        
+
         timeline = new Timeline();
 
         // add all metronome clicks and flashes to timeline
         timeline.getKeyFrames().addAll(getMetronomeKeyFrames(4,50));
-
+        timeline.getKeyFrames().addAll(getSampleRhythmKeyFrames());
 
 
 
@@ -126,6 +141,10 @@ public class MainGamePlayController implements Initializable {
 //        // todo move this over to an Animation
 //        Thread t1 = new Thread(() -> LevelDriver.playLevel(level));
 //        t1.start();
+    }
+
+    protected void sampleOnsetBeep(){
+        BeepFactory.getBeep();
     }
 
 

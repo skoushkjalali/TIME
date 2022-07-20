@@ -28,7 +28,6 @@ public class TimeApplication extends Application {
         stage.setMinWidth(1300);
         stage.setTitle("Profile");
         stage.show();
-
     }
 
 

@@ -10,8 +10,6 @@ public class RhythmPlayer {
 
     private double bpm;
 
-
-
     public RhythmPlayer(double bpm){
         this.bpm = bpm;
     }
