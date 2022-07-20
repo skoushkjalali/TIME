@@ -59,6 +59,10 @@ public class Level {
         return barDurationInMilliSecs;
     }
 
+    public int getBeatDurationInMilliSecs(){
+        return barDurationInMilliSecs / 4;
+    }
+
     public void setBounds(int LOWER_BOUND, int UPPER_BOUND){
         this.LOWER_BOUND = LOWER_BOUND;
         this.UPPER_BOUND = UPPER_BOUND;

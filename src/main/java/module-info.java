@@ -20,6 +20,8 @@ module time {
     exports com.time.game.Controller to javafx.fxml;
     exports com.time.game.GameLogic.Rhythm;
 
+    exports com.time.game.Model.Level;
+
 }
 
 
