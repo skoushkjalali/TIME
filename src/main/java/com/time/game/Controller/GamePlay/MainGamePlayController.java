@@ -1,20 +1,13 @@
 package com.time.game.Controller.GamePlay;
 import com.time.game.GameLogic.Level.LevelDriver;
 import com.time.game.GameLogic.Rhythm.BeepFactory;
-import com.time.game.GameLogic.Rhythm.Metronome;
 import com.time.game.GameLogic.Rhythm.RhythmListener;
-
-import com.time.game.GameLogic.Rhythm.RhythmPlayer;
-import com.time.game.GameLogic.Scorer.Scorer;
 import com.time.game.Model.Level.Level;
 import com.time.game.Model.Rhythm.RhythmFactory;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
@@ -50,6 +43,7 @@ public class MainGamePlayController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         // update the score
+        // todo make this a Task object
         Thread t = new Thread(() -> {
             while(true){
                 while(Level.isRunning()){
@@ -64,6 +58,7 @@ public class MainGamePlayController implements Initializable {
         Level level = new Level(RhythmFactory.getRhythm(Level.getLevelNumber()));
 
 //         start playing level that has been selected by the user
+        // todo move this over to an Animation
         Thread t1 = new Thread(() -> LevelDriver.playLevel(level));
         t1.start();
     }
