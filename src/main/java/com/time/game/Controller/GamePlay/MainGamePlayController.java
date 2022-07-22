@@ -39,7 +39,7 @@ public class MainGamePlayController implements Initializable {
     @FXML
     private Line userLine;
     @FXML
-    private Text scoreText;
+    private Text centralText;
 
     Timeline timeline;
 
@@ -108,10 +108,12 @@ public class MainGamePlayController implements Initializable {
 
     protected void markLevelAsStarted(){
         Level.setRunning(true);
+        centralText.setText("Listen");
     }
 
     protected void markLevelAsEnded(){
         Level.setRunning(false);
+        centralText.setText(Level.getLastScore() +"%");
     }
 
     protected void setScore(){
@@ -120,24 +122,8 @@ public class MainGamePlayController implements Initializable {
 
 
 
-
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        // update the scoreText when the level has finished
-        // todo make this a Task object
-        Thread t = new Thread(() -> {
-            while(true){
-                while(Level.isRunning()){
-                    scoreText.setText(" ");
-                }
-                scoreText.setText("Score: "+Level.getLastScore() +"%");
-            }
-        });
-        t.setDaemon(true);
-        t.start();
 
         level = new Level(RhythmFactory.getRhythm(Level.getLevelNumber()));
         rhythmListener = new RhythmListener();

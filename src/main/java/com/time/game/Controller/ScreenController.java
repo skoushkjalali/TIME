@@ -24,6 +24,7 @@ public class ScreenController {
         stage.setMinHeight(868);
         stage.setMaxWidth(1300);
         stage.setMinWidth(1300);
+        stage.setTitle("Play");
         stage.show();
 
         // allows keyboard input to be monitored
