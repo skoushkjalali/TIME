@@ -48,6 +48,8 @@ public class MainGamePlayController implements Initializable {
     private RhythmListener rhythmListener;
     private Scorer scorer;
 
+    private BeepFactory beepFactory;
+
     protected KeyFrame[] getMetronomeKeyFrames(int numOfBars, int flashLength){
 
         KeyFrame[] metronomeEvents = new KeyFrame[numOfBars*4*2];
@@ -125,6 +127,7 @@ public class MainGamePlayController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        beepFactory = new BeepFactory();
         level = new Level(RhythmFactory.getRhythm(Level.getLevelNumber()));
         rhythmListener = new RhythmListener();
         scorer = new Scorer(level.getLOWER_BOUND(), level.getUPPER_BOUND());
@@ -153,7 +156,7 @@ public class MainGamePlayController implements Initializable {
     }
 
     protected void sampleOnsetBeep(){
-        BeepFactory.getBeep();
+        beepFactory.getBeep3();
     }
 
 
@@ -161,7 +164,7 @@ public class MainGamePlayController implements Initializable {
 
     @FXML
     protected void userInputKeyPressed(){
-        BeepFactory.getBeep();
+        beepFactory.getBeep3();
         RhythmListener.userInput.add((int) ((System.nanoTime() / 1_000_000) - RhythmListener.startTime));
         makeTapPadBlack();
     }
@@ -183,9 +186,8 @@ public class MainGamePlayController implements Initializable {
 
     @FXML
     protected void makeBeat1Black() {
-        BeepFactory.getBeep();
+        beepFactory.getBeep2();
         beat1.setFill(Color.BLACK);
-
     }
 
     @FXML
@@ -196,7 +198,7 @@ public class MainGamePlayController implements Initializable {
 
     @FXML
     protected void makeBeat2Black(){
-        BeepFactory.getBeep();
+        beepFactory.getBeep2();
         beat2.setFill(Color.BLACK);
     }
 
@@ -207,7 +209,7 @@ public class MainGamePlayController implements Initializable {
 
     @FXML
     protected void makeBeat3Black(){
-        BeepFactory.getBeep();
+        beepFactory.getBeep2();
         beat3.setFill(Color.BLACK);
     }
 
@@ -218,7 +220,7 @@ public class MainGamePlayController implements Initializable {
 
     @FXML
     protected void makeBeat4Black(){
-        BeepFactory.getBeep();
+        beepFactory.getBeep2();
         beat4.setFill(Color.BLACK);
     }
 
