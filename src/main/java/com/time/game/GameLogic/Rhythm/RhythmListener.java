@@ -23,7 +23,7 @@ public class RhythmListener {
         @param bars at the speed of @param bpm. This allows RhythmListener to be setup to listen to key input before
         the first beat of the required bar.
      */
-    public ArrayList<Integer> getShiftedUserInput(double bpm, int bars){
+    public ArrayList<Integer> getShiftedUserInput(double bpm, double bars){
         // number of bars to shift the start of the bar to
         int shift = (int) ((60 / bpm) * 1000 * 4 * bars);
 

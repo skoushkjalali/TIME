@@ -121,12 +121,10 @@ public class MainGamePlayController implements Initializable {
 
     protected void startUserInput(){
         Level.setRunning(true);
-        System.out.println("start user input");
     }
 
     protected void endUserInput(){
         Level.setRunning(false);
-        System.out.println("end user input");
     }
 
     protected void setScore(){
@@ -151,38 +149,35 @@ public class MainGamePlayController implements Initializable {
         drawSampleOnsets();
 
 
-        // todo fix userinput onset drawing bug
         // add all metronome clicks and flashes to timeline
         timeline.getKeyFrames().addAll(getMetronomeKeyFrames(3,50));
         // add all sample onsets to timeline
         timeline.getKeyFrames().addAll(getSampleRhythmKeyFrames());
 
-        // start userInput 1/2 a beat before the start of the bar
-        KeyFrame startUserInput = new KeyFrame(Duration.millis((level.getBarDurationInMilliSecs()*2) - (0.5 * level.getBeatDurationInMilliSecs())), e-> startUserInput());
-        timeline.getKeyFrames().add(startUserInput);
+        // todo add explanation text during each bar
 
 
-//         initialise rhythm listener 0 marker
+
+        //  initialise rhythm listener 0 marker
         KeyFrame userInputStartLocation = new KeyFrame(Duration.millis(level.getBarDurationInMilliSecs()),
                 e -> rhythmListener.setupForNewRhythmInput());
         timeline.getKeyFrames().add(userInputStartLocation);
 
-        // end userInput 1/2 beat after end of bar
-        KeyFrame endUserInput = new KeyFrame(Duration.millis((level.getBarDurationInMilliSecs()*3) + (0.5 * level.getBeatDurationInMilliSecs())), e-> endUserInput());
+        // start userInput 1/2 a beat before the start of the 3rd Bar
+        // i.e will only draw an onset up to 1/2 a beat early
+        KeyFrame startUserInput = new KeyFrame(Duration.millis((level.getBarDurationInMilliSecs() + (0.5 * level.getBeatDurationInMilliSecs()))), e-> startUserInput());
+        timeline.getKeyFrames().add(startUserInput);
+
+        // end userInput 1/2 a beat after end of 3rd bar
+        // i.e will only draw an onset up to 1/2 a beat late
+        KeyFrame endUserInput = new KeyFrame(Duration.millis((level.getBarDurationInMilliSecs()*3) +
+                (0.5 * level.getBeatDurationInMilliSecs())), e-> endUserInput());
         timeline.getKeyFrames().add(endUserInput);
 
         // score level
-        KeyFrame setScore = new KeyFrame(Duration.millis((level.getBarDurationInMilliSecs()*3) + level.getUPPER_BOUND()), e -> setScore());
+        KeyFrame setScore = new KeyFrame(Duration.millis((level.getBarDurationInMilliSecs()*3) +
+                level.getUPPER_BOUND()), e -> setScore());
         timeline.getKeyFrames().add(setScore);
-
-//        // mark level as ended
-//        KeyFrame endLevel = new KeyFrame(Duration.millis((level.getBarDurationInMilliSecs()*3) + (level.getUPPER_BOUND()*1.5)),
-//                e -> endUserInput());
-//        timeline.getKeyFrames().add(endLevel);
-
-
-
-
         timeline.play();
 
     }
@@ -203,14 +198,18 @@ public class MainGamePlayController implements Initializable {
         }
     }
 
+    /*
+        This method draws a user tap onset during the 3rd bar of the level. It allows an onset to be draws a maximum
+        of a half a beat before the first beat, and a half a beat after the bar has ended.
+     */
     protected void drawUserOnset(){
-
         if(Level.isRunning()) {
-            double delayFromStartOfBar = (System.nanoTime() / 1_000_000.0) - (RhythmListener.startTime);
-            System.out.println(delayFromStartOfBar);
+            double delayFromStartOfBar = (System.nanoTime() / 1_000_000.0) - (RhythmListener.startTime + level.getBarDurationInMilliSecs());
             double xAxisLocation = ((delayFromStartOfBar / level.getBarDurationInMilliSecs()) * 1000) + 230;
-            System.out.println(xAxisLocation);
             drawOnsetLine(xAxisLocation, 582);
+        }
+        else{
+            centralText.setText("Don't tap yet");
         }
     }
 
