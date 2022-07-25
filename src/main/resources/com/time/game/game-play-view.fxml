@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
@@ -21,22 +20,33 @@
             <Line endX="-100.0" endY="194.0" layoutX="480.0" layoutY="420.0" opacity="0.14" startX="-100.0" strokeWidth="2.0" />
             <Line endX="-100.0" endY="194.0" layoutX="730.0" layoutY="419.0" opacity="0.14" startX="-100.0" strokeWidth="2.0" />
             <Rectangle fx:id="tapPad" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="73.0" layoutX="385.0" layoutY="700.0" stroke="BLACK" strokeType="INSIDE" width="487.4" />
-            <Text layoutX="185.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="5.0" text="1" />
-            <Text layoutX="432.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="2.0" text="2" />
-            <Text layoutX="684.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="2.0" text="3" />
-            <Text layoutX="933.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="2.0" text="4" />
+            <Text layoutX="182.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="5.0" text="1">
+               <font>
+                  <Font size="30.0" />
+               </font></Text>
+            <Text layoutX="432.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="2.0" text="2">
+               <font>
+                  <Font size="30.0" />
+               </font></Text>
+            <Text layoutX="679.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="2.0" text="3">
+               <font>
+                  <Font size="30.0" />
+               </font></Text>
+            <Text layoutX="927.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="2.0" text="4">
+               <font>
+                  <Font size="30.0" />
+               </font></Text>
             <Line fx:id="startOfBarLine" endX="-100.0" endY="194.0" layoutX="230.0" layoutY="420.0" opacity="0.14" startX="-100.0" strokeWidth="2.0" />
             <Line endX="-100.0" endY="173.0" layoutX="980.0" layoutY="439.0" opacity="0.14" startX="-100.0" startY="-21.0" strokeWidth="2.0" />
             <Line fx:id="endOfBarLine" endX="-100.0" endY="194.0" layoutX="1230.0" layoutY="420.0" opacity="0.14" startX="-100.0" strokeWidth="2.0" />
-         
-                <Label fx:id="welcomeText" layoutX="614.0" layoutY="14.0" prefHeight="50.0" prefWidth="75.0" text="TIME " wrapText="true">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Label>
-            <Text fx:id="centralText" boundsType="LOGICAL_VERTICAL_CENTER" layoutX="577.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="148.048828125">
+            <Text fx:id="centralText" boundsType="LOGICAL_VERTICAL_CENTER" layoutX="573.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="148.048828125">
                <font>
                   <Font size="49.0" />
+               </font>
+            </Text>
+            <Text fx:id="levelID" layoutX="1165.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level" wrappingWidth="115.0">
+               <font>
+                  <Font size="30.0" />
                </font>
             </Text>
          </children>

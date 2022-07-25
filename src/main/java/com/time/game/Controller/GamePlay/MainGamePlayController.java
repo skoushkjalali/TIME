@@ -28,8 +28,6 @@ public class MainGamePlayController implements Initializable {
     private Pane mainPane;
 
     @FXML
-    private Label welcomeText;
-    @FXML
     private Rectangle tapPad;
     @FXML
     private Rectangle beat1;
@@ -48,6 +46,9 @@ public class MainGamePlayController implements Initializable {
     private Line startOfBarLine;
     @FXML
     private Line endOfBarLine;
+
+    @FXML
+    private Text levelID;
 
     @FXML
     private Text centralText;
@@ -129,9 +130,9 @@ public class MainGamePlayController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
-        beepFactory = new BeepFactory();
         level = new Level(RhythmFactory.getRhythm(Level.getLevelNumber()));
+        levelID.setText("Level "+Level.getLevelNumber());
+        beepFactory = new BeepFactory();
         rhythmListener = new RhythmListener();
         scorer = new Scorer(level.getLOWER_BOUND(), level.getUPPER_BOUND());
         timeline = new Timeline();
