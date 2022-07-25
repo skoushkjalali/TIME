@@ -160,8 +160,6 @@ public class MainGamePlayController implements Initializable {
     }
 
 
-
-
     @FXML
     protected void userInputKeyPressed(){
         beepFactory.getBeep3();
@@ -228,16 +226,6 @@ public class MainGamePlayController implements Initializable {
     protected void makeBeat4White(){
         beat4.setFill(Color.WHITE);
     }
-
-
-
-
-
-
-
-
-
-
 
 
 }
