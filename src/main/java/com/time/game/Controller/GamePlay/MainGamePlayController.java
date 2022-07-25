@@ -119,19 +119,21 @@ public class MainGamePlayController implements Initializable {
         return (int)(score*100);
     }
 
-    protected void markLevelAsStarted(){
+    protected void startUserInput(){
         Level.setRunning(true);
-        centralText.setText("Listen");
+        System.out.println("start user input");
     }
 
-    protected void markLevelAsEnded(){
+    protected void endUserInput(){
         Level.setRunning(false);
-        centralText.setText(Level.getLastScore() +"%");
+        System.out.println("end user input");
     }
 
     protected void setScore(){
         Level.setLastScore(scoreLevel());
+        centralText.setText(Level.getLastScore() +"%");
     }
+
 
     public Pane getMainPane() {
         return mainPane;
@@ -148,24 +150,39 @@ public class MainGamePlayController implements Initializable {
         timeline = new Timeline();
         drawSampleOnsets();
 
-        // mark level as inProgress
-        KeyFrame startLevel = new KeyFrame(Duration.millis(0), e-> markLevelAsStarted());
-        timeline.getKeyFrames().add(startLevel);
+
+        // todo fix userinput onset drawing bug
         // add all metronome clicks and flashes to timeline
         timeline.getKeyFrames().addAll(getMetronomeKeyFrames(3,50));
         // add all sample onsets to timeline
         timeline.getKeyFrames().addAll(getSampleRhythmKeyFrames());
 
-//         initialise start of listening to user input
+        // start userInput 1/2 a beat before the start of the bar
+        KeyFrame startUserInput = new KeyFrame(Duration.millis((level.getBarDurationInMilliSecs()*2) - (0.5 * level.getBeatDurationInMilliSecs())), e-> startUserInput());
+        timeline.getKeyFrames().add(startUserInput);
+
+
+//         initialise rhythm listener 0 marker
         KeyFrame userInputStartLocation = new KeyFrame(Duration.millis(level.getBarDurationInMilliSecs()),
                 e -> rhythmListener.setupForNewRhythmInput());
         timeline.getKeyFrames().add(userInputStartLocation);
-        KeyFrame setScore = new KeyFrame(Duration.millis(level.getBarDurationInMilliSecs()*3 + level.getUPPER_BOUND()), e -> setScore());
+
+        // end userInput 1/2 beat after end of bar
+        KeyFrame endUserInput = new KeyFrame(Duration.millis((level.getBarDurationInMilliSecs()*3) + (0.5 * level.getBeatDurationInMilliSecs())), e-> endUserInput());
+        timeline.getKeyFrames().add(endUserInput);
+
+        // score level
+        KeyFrame setScore = new KeyFrame(Duration.millis((level.getBarDurationInMilliSecs()*3) + level.getUPPER_BOUND()), e -> setScore());
         timeline.getKeyFrames().add(setScore);
-        // mark level as ended
-        KeyFrame endLevel = new KeyFrame(Duration.millis((level.getBarDurationInMilliSecs()*3) + (level.getUPPER_BOUND()*1.5)),
-                e -> markLevelAsEnded());
-        timeline.getKeyFrames().add(endLevel);
+
+//        // mark level as ended
+//        KeyFrame endLevel = new KeyFrame(Duration.millis((level.getBarDurationInMilliSecs()*3) + (level.getUPPER_BOUND()*1.5)),
+//                e -> endUserInput());
+//        timeline.getKeyFrames().add(endLevel);
+
+
+
+
         timeline.play();
 
     }
@@ -182,16 +199,31 @@ public class MainGamePlayController implements Initializable {
 
     protected void drawSampleOnsets(){
         for(double onset : getSampleOnsetXCoordinates(1000, 230)){
-            Line newOnset = new Line();
-            newOnset.setLayoutX(onset);
-            newOnset.setLayoutY(467);
-            newOnset.setStartX(-100);
-            newOnset.setStartY(6);
-            newOnset.setEndX(-100);
-            newOnset.setEndY(60);
-            newOnset.setStrokeWidth(2);
-            mainPane.getChildren().add(newOnset);
+            drawOnsetLine(onset, 467);
         }
+    }
+
+    protected void drawUserOnset(){
+
+        if(Level.isRunning()) {
+            double delayFromStartOfBar = (System.nanoTime() / 1_000_000.0) - (RhythmListener.startTime);
+            System.out.println(delayFromStartOfBar);
+            double xAxisLocation = ((delayFromStartOfBar / level.getBarDurationInMilliSecs()) * 1000) + 230;
+            System.out.println(xAxisLocation);
+            drawOnsetLine(xAxisLocation, 582);
+        }
+    }
+
+    private void drawOnsetLine(double xAxisLocation, double yAxisLocation) {
+        Line newOnset = new Line();
+        newOnset.setLayoutX(xAxisLocation);
+        newOnset.setLayoutY(yAxisLocation);
+        newOnset.setStartX(-100);
+        newOnset.setStartY(6);
+        newOnset.setEndX(-100);
+        newOnset.setEndY(60);
+        newOnset.setStrokeWidth(2);
+        mainPane.getChildren().add(newOnset);
     }
 
     protected void sampleOnsetBeep(){
@@ -202,6 +234,7 @@ public class MainGamePlayController implements Initializable {
     @FXML
     protected void userInputKeyPressed(){
         beepFactory.getBeep3();
+        drawUserOnset();
         RhythmListener.userInput.add((int) ((System.nanoTime() / 1_000_000) - RhythmListener.startTime));
         makeTapPadBlack();
     }
