@@ -1,13 +1,16 @@
 package com.time.game.GameLogic.Rhythm;
 
 
+import com.time.game.Model.Rhythm.RhythmFactory;
 import javafx.scene.media.AudioClip;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /*
-    This class generates a beep sound. As development continues, the option to change the type of sound, and the
-    process by which it is generated can be done here.
+    This class generates the sounds required for the application. The option to change the
+    type of sound, and the process by which it is generated is done here.
  */
 public class BeepFactory {
 
@@ -25,16 +28,18 @@ public class BeepFactory {
         java.awt.Toolkit.getDefaultToolkit().beep();
     }
 
+    /*
+        This method generates a metronome sound
+     */
     public void getBeep2(){
         metronome1AudioClip.play();
     }
-
+    /*
+        This method generates a snare drum sound
+     */
     public void getBeep3(){
         userTap1AudioClip.play();
     }
-
-
-
 
 
 }

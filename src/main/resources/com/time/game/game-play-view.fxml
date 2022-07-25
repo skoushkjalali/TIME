@@ -10,10 +10,10 @@
 
 <AnchorPane focusTraversable="true" onKeyPressed="#userInputKeyPressed" onKeyReleased="#userInputKeyReleased" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.time.game.Controller.GamePlay.MainGamePlayController">
    <children>
-      <Pane layoutX="14.0" layoutY="20.0" prefHeight="848.0" prefWidth="1294.0">
+      <Pane fx:id="mainPane" layoutX="14.0" layoutY="20.0" prefHeight="848.0" prefWidth="1294.0">
          <children>
             <Rectangle fx:id="beat1" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="270.0" layoutX="131.0" layoutY="147.0" stroke="BLACK" strokeType="INSIDE" width="115.0" />
-            <Rectangle fx:id="beat2" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="167.0" layoutX="378.0" layoutY="250.0" stroke="BLACK" strokeType="INSIDE" width="115.0" />
+            <Rectangle fx:id="beat2" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="167.0" layoutX="378.0" layoutY="251.0" stroke="BLACK" strokeType="INSIDE" width="115.0" />
             <Rectangle fx:id="beat3" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="167.0" layoutX="630.0" layoutY="251.0" stroke="BLACK" strokeType="INSIDE" width="115.0" />
             <Rectangle fx:id="beat4" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="167.0" layoutX="879.0" layoutY="251.0" stroke="BLACK" strokeType="INSIDE" width="115.0" />
             <Line fx:id="sampleLine" endX="1132.0" layoutX="122.0" layoutY="500.0" startX="-117.0" strokeWidth="2.0" />
@@ -25,9 +25,9 @@
             <Text layoutX="432.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="2.0" text="2" />
             <Text layoutX="684.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="2.0" text="3" />
             <Text layoutX="933.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="2.0" text="4" />
-            <Line endX="-100.0" endY="194.0" layoutX="230.0" layoutY="420.0" opacity="0.14" startX="-100.0" strokeWidth="2.0" />
+            <Line fx:id="startOfBarLine" endX="-100.0" endY="194.0" layoutX="230.0" layoutY="420.0" opacity="0.14" startX="-100.0" strokeWidth="2.0" />
             <Line endX="-100.0" endY="173.0" layoutX="980.0" layoutY="439.0" opacity="0.14" startX="-100.0" startY="-21.0" strokeWidth="2.0" />
-            <Line endX="-100.0" endY="194.0" layoutX="1227.0" layoutY="420.0" opacity="0.14" startX="-100.0" strokeWidth="2.0" />
+            <Line fx:id="endOfBarLine" endX="-100.0" endY="194.0" layoutX="1230.0" layoutY="420.0" opacity="0.14" startX="-100.0" strokeWidth="2.0" />
          
                 <Label fx:id="welcomeText" layoutX="614.0" layoutY="14.0" prefHeight="50.0" prefWidth="75.0" text="TIME " wrapText="true">
                <font>

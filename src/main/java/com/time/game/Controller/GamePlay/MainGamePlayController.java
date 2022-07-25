@@ -10,6 +10,7 @@ import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
@@ -17,10 +18,15 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 
 public class MainGamePlayController implements Initializable {
+
+    @FXML
+    private Pane mainPane;
+
     @FXML
     private Label welcomeText;
     @FXML
@@ -38,6 +44,11 @@ public class MainGamePlayController implements Initializable {
     private Line sampleLine;
     @FXML
     private Line userLine;
+    @FXML
+    private Line startOfBarLine;
+    @FXML
+    private Line endOfBarLine;
+
     @FXML
     private Text centralText;
 
@@ -122,16 +133,20 @@ public class MainGamePlayController implements Initializable {
         Level.setLastScore(scoreLevel());
     }
 
-
+    public Pane getMainPane() {
+        return mainPane;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
 
         beepFactory = new BeepFactory();
         level = new Level(RhythmFactory.getRhythm(Level.getLevelNumber()));
         rhythmListener = new RhythmListener();
         scorer = new Scorer(level.getLOWER_BOUND(), level.getUPPER_BOUND());
         timeline = new Timeline();
+        drawSampleOnsets();
 
         // mark level as inProgress
         KeyFrame startLevel = new KeyFrame(Duration.millis(0), e-> markLevelAsStarted());
@@ -153,6 +168,30 @@ public class MainGamePlayController implements Initializable {
         timeline.getKeyFrames().add(endLevel);
         timeline.play();
 
+    }
+
+    /*
+        This function calculates the GUI x-coordinate locations of the sample rhythm for the level currently selected
+     */
+    protected double[] getSampleOnsetXCoordinates(double pixelsPerBar, double startOfBarXCoordinate){
+        double pixelsPerSegment = pixelsPerBar / level.getSampleRhythm().getSegments();
+
+        return Arrays.stream(level.getSampleRhythm().getRelativeRhythm()).mapToDouble(relOnset -> (pixelsPerSegment * relOnset) +
+                startOfBarXCoordinate).toArray();
+    }
+
+    protected void drawSampleOnsets(){
+        for(double onset : getSampleOnsetXCoordinates(1000, 230)){
+            Line newOnset = new Line();
+            newOnset.setLayoutX(onset);
+            newOnset.setLayoutY(467);
+            newOnset.setStartX(-100);
+            newOnset.setStartY(6);
+            newOnset.setEndX(-100);
+            newOnset.setEndY(60);
+            newOnset.setStrokeWidth(2);
+            mainPane.getChildren().add(newOnset);
+        }
     }
 
     protected void sampleOnsetBeep(){
