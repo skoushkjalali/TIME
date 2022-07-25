@@ -154,8 +154,12 @@ public class MainGamePlayController implements Initializable {
         // add all sample onsets to timeline
         timeline.getKeyFrames().addAll(getSampleRhythmKeyFrames());
 
-        // todo add explanation text during each bar
-
+        // add required user action description as text at start of each bar
+        timeline.getKeyFrames().add(new KeyFrame(Duration.ZERO, e -> centralText.setText("Ready")));
+        timeline.getKeyFrames().add(new KeyFrame(Duration.millis(level.getBarDurationInMilliSecs()),
+                e -> centralText.setText("Listen")));
+        timeline.getKeyFrames().add(new KeyFrame(Duration.millis(level.getBarDurationInMilliSecs()*2),
+                e -> centralText.setText("Play")));
 
 
         //  initialise rhythm listener 0 marker
