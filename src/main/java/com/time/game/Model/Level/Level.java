@@ -8,13 +8,13 @@ import com.time.game.Model.Rhythm.Rhythm;
  */
 public class Level {
 
-    private static boolean running = false;
+    private static boolean userInputCaptureEnabled = false;
 
     private static int bpm = 100; // default
     private final int barDurationInMilliSecs = (int)((60 / (float)bpm) * 1000 * 4);
 
-    private int LOWER_BOUND = 40;
-    private int UPPER_BOUND = 750;
+    private int LOWER_BOUND = 20;
+    private int UPPER_BOUND = 500;
 
     private static int levelNumber = 1; // default
 
@@ -77,11 +77,11 @@ public class Level {
     }
 
 
-    public static boolean isRunning() {
-        return running;
+    public static boolean isUserInputCaptureEnabled() {
+        return userInputCaptureEnabled;
     }
 
-    public static void setRunning(boolean status) {
-        Level.running = status;
+    public static void setUserInputCaptureEnabled(boolean status) {
+        Level.userInputCaptureEnabled = status;
     }
 }

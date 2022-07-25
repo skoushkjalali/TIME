@@ -119,23 +119,12 @@ public class MainGamePlayController implements Initializable {
         return (int)(score*100);
     }
 
-    protected void startUserInput(){
-        Level.setRunning(true);
-    }
-
-    protected void endUserInput(){
-        Level.setRunning(false);
-    }
-
     protected void setScore(){
         Level.setLastScore(scoreLevel());
         centralText.setText(Level.getLastScore() +"%");
     }
 
 
-    public Pane getMainPane() {
-        return mainPane;
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -169,13 +158,14 @@ public class MainGamePlayController implements Initializable {
 
         // start userInput 1/2 a beat before the start of the 3rd Bar
         // i.e will only draw an onset up to 1/2 a beat early
-        KeyFrame startUserInput = new KeyFrame(Duration.millis((level.getBarDurationInMilliSecs() + (0.5 * level.getBeatDurationInMilliSecs()))), e-> startUserInput());
+        KeyFrame startUserInput = new KeyFrame(Duration.millis(((level.getBarDurationInMilliSecs()*2) -
+                (0.5 * level.getBeatDurationInMilliSecs()))), e-> Level.setUserInputCaptureEnabled(true));
         timeline.getKeyFrames().add(startUserInput);
 
         // end userInput 1/2 a beat after end of 3rd bar
         // i.e will only draw an onset up to 1/2 a beat late
         KeyFrame endUserInput = new KeyFrame(Duration.millis((level.getBarDurationInMilliSecs()*3) +
-                (0.5 * level.getBeatDurationInMilliSecs())), e-> endUserInput());
+                (0.5 * level.getBeatDurationInMilliSecs())), e-> Level.setUserInputCaptureEnabled(false));
         timeline.getKeyFrames().add(endUserInput);
 
         // score level
@@ -207,13 +197,10 @@ public class MainGamePlayController implements Initializable {
         of a half a beat before the first beat, and a half a beat after the bar has ended.
      */
     protected void drawUserOnset(){
-        if(Level.isRunning()) {
+        if(Level.isUserInputCaptureEnabled()) {
             double delayFromStartOfBar = (System.nanoTime() / 1_000_000.0) - (RhythmListener.startTime + level.getBarDurationInMilliSecs());
             double xAxisLocation = ((delayFromStartOfBar / level.getBarDurationInMilliSecs()) * 1000) + 230;
             drawOnsetLine(xAxisLocation, 582);
-        }
-        else{
-            centralText.setText("Don't tap yet");
         }
     }
 
@@ -238,8 +225,11 @@ public class MainGamePlayController implements Initializable {
     protected void userInputKeyPressed(){
         beepFactory.getBeep3();
         drawUserOnset();
-        RhythmListener.userInput.add((int) ((System.nanoTime() / 1_000_000) - RhythmListener.startTime));
         makeTapPadBlack();
+        if(Level.isUserInputCaptureEnabled()) {
+            RhythmListener.userInput.add((int) ((System.nanoTime() / 1_000_000) - RhythmListener.startTime));
+        }
+
     }
 
     @FXML
