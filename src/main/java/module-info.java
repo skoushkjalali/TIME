@@ -23,6 +23,8 @@ module time {
 
     exports com.time.game.Model.Level;
     exports com.time.game.GameLogic.Scorer;
+    exports com.time.game.Controller.EndOfLevel;
+    opens com.time.game.Controller.EndOfLevel to javafx.fxml;
 
 }
 
