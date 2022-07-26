@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="728.0" prefWidth="1001.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.time.game.Controller.EndOfLevel.EndOfLevel">
+   <children>
+      <Button fx:id="playNextLevelButton" layoutX="529.0" layoutY="470.0" mnemonicParsing="false" text="Play Next Level">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Button>
+      <Text fx:id="levelCompletionText" layoutX="397.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level 1 Complete" textAlignment="CENTER">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <Text fx:id="levelAccuracyText" layoutX="336.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level 1 accuracy score: 97%" textAlignment="CENTER">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <Button fx:id="repeatLevelButton" layoutX="209.0" layoutY="470.0" mnemonicParsing="false" onAction="#repeatLevel" onMouseReleased="#on" text="Repeat Level">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Button>
+      <Text fx:id="aggregateAccuracyText" layoutX="316.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aggregate accuracy score: 97%" textAlignment="CENTER">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <Button fx:id="gotToProfileButton" layoutX="868.0" layoutY="603.0" mnemonicParsing="false" text="Profile -&gt;" />
+      <Button fx:id="exitButton" layoutX="883.0" layoutY="655.0" mnemonicParsing="false" text="Exit -&gt;" />
+   </children>
+</AnchorPane>
