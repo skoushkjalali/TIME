@@ -26,6 +26,10 @@ module time {
     exports com.time.game.Controller.EndOfLevel;
     opens com.time.game.Controller.EndOfLevel to javafx.fxml;
 
+    exports com.time.game.Controller.Login to javafx.fxml;
+    opens com.time.game.Controller.Login to javafx.fxml;
+
+
 }
 
 

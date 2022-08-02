@@ -23,11 +23,13 @@ public class TimeApplication extends Application {
         stage.setMinWidth(1300);
         stage.setTitle("TIME APPLICATION");
 
-        FXMLLoader profileLoader = new FXMLLoader(getClass().getResource("profile-view.fxml"));
-        Scene profileScene = new Scene(profileLoader.load());
-        stage.setScene(profileScene);
+//        FXMLLoader profileLoader = new FXMLLoader(getClass().getResource("profile-view.fxml"));
+//        Scene profileScene = new Scene(profileLoader.load());
+//        stage.setScene(profileScene);
 
-        stage.show();
+        ScreenController.changeScreen("login-view");
+
+        primaryStage.show();
     }
 
 

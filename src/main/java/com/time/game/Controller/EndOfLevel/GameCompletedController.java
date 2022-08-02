@@ -4,8 +4,6 @@ import com.time.game.Controller.ScreenController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-
-import javax.imageio.IIOException;
 import java.io.IOException;
 
 public class GameCompletedController {
