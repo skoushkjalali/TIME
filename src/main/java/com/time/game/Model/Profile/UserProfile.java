@@ -1,6 +1,4 @@
 package com.time.game.Model.Profile;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class UserProfile {

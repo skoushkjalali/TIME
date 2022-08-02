@@ -3,11 +3,13 @@ package com.time.game.Controller.Profile;
 import com.time.game.Controller.ScreenController;
 //import com.time.game.GameLogic.Level.LevelDriver;
 import com.time.game.Model.Level.Level;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,7 +24,13 @@ public class ProfileController implements Initializable {
     private Button playButton;
 
     @FXML
+    private Button exitButton;
+
+    @FXML
     private ChoiceBox<Integer> bpmSelector;
+
+    @FXML
+    private Text username;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -40,7 +48,11 @@ public class ProfileController implements Initializable {
         }
         // link onLevelSelection method with levelSelector ChoiceBox
         bpmSelector.setOnAction(this::onBpmSelection);
+    }
 
+    @FXML
+    protected void onExitButtonClicked(){
+        Platform.exit();
     }
 
     @FXML
