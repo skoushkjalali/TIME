@@ -57,7 +57,9 @@ public class RhythmFactory {
         return new Rhythm(rhythmData[n-1]);
     }
 
-
+    public static int getLastPossibleRhythmNumber(){
+        return rhythmData.length;
+    }
 
 
 }

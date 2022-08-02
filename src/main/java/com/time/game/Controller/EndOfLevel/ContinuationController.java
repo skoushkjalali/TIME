@@ -2,9 +2,7 @@ package com.time.game.Controller.EndOfLevel;
 
 import com.time.game.Controller.ScreenController;
 import com.time.game.Model.Level.Level;
-import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -14,7 +12,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class EndOfLevelController implements Initializable {
+public class ContinuationController implements Initializable {
 
     @FXML
     private Text levelCompletionText;

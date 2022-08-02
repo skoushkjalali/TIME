@@ -10,14 +10,12 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -182,7 +180,11 @@ public class MainGamePlayController implements Initializable {
         timeline.getKeyFrames().add(new KeyFrame(Duration.millis(level.getBarDurationInMilliSecs()*4),
                 e-> {
                     try {
-                        ScreenController.changeScreen("end-of-level-view");
+                        String screen = "end-of-level-continuation-view";
+                        if(Level.getLevelNumber() == RhythmFactory.getLastPossibleRhythmNumber()){
+                            screen = "end-of-level-game-completed-view";
+                        }
+                        ScreenController.changeScreen(screen);
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
                     }
