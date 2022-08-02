@@ -10,21 +10,6 @@ import com.time.game.Model.Rhythm.Rhythm;
  */
 public class RhythmFactory {
 
-    // just 4 beats
-    static int[] rhythmData0 = {4,0,1,2,3};
-
-    // example rhythm 1
-    static int[] rhythmData1 = {8,0,3,4,6,7};
-
-    // example rhythm 2
-    static int[] rhythmData2 = {16,0,4,7,8,10,12};
-
-    // example rhythm 3
-    static int[] rhythmData3 = {24,0,2,4,6,9,12,14,16,18};
-
-    // Complex Rhythm Example 1
-    static int[] rhythmData4 = {96,0,24,30,36,42,48,56,64,72,84,87,90};
-
     static int[][] rhythmData =
             {       // crotchets and quavers
                     // each beat = 2 segments
@@ -62,6 +47,9 @@ public class RhythmFactory {
                     {240,0,15,30,40,50,80,100,110,120,144,168,180,192,216,228}
             };
 
+    /*
+        returns rhythm corresponding to n. If outside bounds returns first rhythm
+     */
     public static Rhythm getRhythm(int n){
         if(n<0 || n > rhythmData.length){
             n = 1;

@@ -1,4 +1,5 @@
 package com.time.game.Controller.GamePlay;
+import com.time.game.Controller.ScreenController;
 import com.time.game.GameLogic.Rhythm.BeepFactory;
 import com.time.game.GameLogic.Rhythm.RhythmListener;
 import com.time.game.GameLogic.Scorer.Scorer;
@@ -16,6 +17,8 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -173,8 +176,18 @@ public class MainGamePlayController implements Initializable {
         KeyFrame setScore = new KeyFrame(Duration.millis((level.getBarDurationInMilliSecs()*3) +
                 level.getUPPER_BOUND()), e -> setScore());
         timeline.getKeyFrames().add(setScore);
-        timeline.play();
 
+
+        // switch to end of level screen at the end of the 4th bar
+        timeline.getKeyFrames().add(new KeyFrame(Duration.millis(level.getBarDurationInMilliSecs()*4),
+                e-> {
+                    try {
+                        ScreenController.changeScreen("end-of-level-view");
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }));
+        timeline.play();
     }
 
     /*

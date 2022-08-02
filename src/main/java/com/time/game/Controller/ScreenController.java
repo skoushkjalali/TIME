@@ -1,35 +1,19 @@
 package com.time.game.Controller;
-
 import com.time.game.TimeApplication;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
-
 
 public class ScreenController {
 
-    public static void switchToGamePlayScreen() throws IOException {
-        FXMLLoader loader = new FXMLLoader(ScreenController.class.getResource("/com/time/game/game-play-view.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
+    public static void changeScreen(String fxmlFile) throws IOException {
+        FXMLLoader loader = new FXMLLoader(ScreenController.class.getResource("/com/time/game/"+fxmlFile+".fxml"));
+        Scene scene = new Scene(loader.load());
         Stage stage = TimeApplication.primaryStage;
         stage.setScene(scene);
-        stage.setMaxHeight(868);
-        stage.setMinHeight(868);
-        stage.setMaxWidth(1300);
-        stage.setMinWidth(1300);
-        stage.setTitle("Play");
-        stage.show();
-
         // allows keyboard input to be monitored
         scene.getRoot().requestFocus();
     }
-
-
-
-
 
 }

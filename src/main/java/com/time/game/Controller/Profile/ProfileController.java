@@ -51,7 +51,7 @@ public class ProfileController implements Initializable {
 
     @FXML
     protected void onPlayButtonClick() throws IOException {
-        ScreenController.switchToGamePlayScreen();
+        ScreenController.changeScreen("game-play-view");
     }
 
     @FXML
