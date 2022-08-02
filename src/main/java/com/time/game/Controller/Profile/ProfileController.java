@@ -1,8 +1,8 @@
 package com.time.game.Controller.Profile;
 
 import com.time.game.Controller.ScreenController;
-//import com.time.game.GameLogic.Level.LevelDriver;
 import com.time.game.Model.Level.Level;
+import com.time.game.Model.Profile.UserProfile;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -34,6 +34,8 @@ public class ProfileController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        username.setText(UserProfile.getUsername());
 
         // populate dropdown menu for levelSelector
         for(int i = 1; i<= 25; i++) {

@@ -1,35 +1,54 @@
 package com.time.game.Model.Profile;
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class UserProfile {
 
-    private final String name;
-    private int lastLevelScore;
+    private static String username;
+    private static int lastLevelScore;
 
-    private HashMap<Integer,Integer> levelScores;
+    private static HashMap<Integer,Integer> levelScores = new HashMap<>();
 
-    public UserProfile(String name){
-        this.name = name;
-        this.levelScores = new HashMap<>();
+    private static HashSet<Integer> levelsCompleted = new HashSet<>();
+
+    public static void setUsername(String name){
+        username = name;
     }
 
-    public int getLastLevelScore(){
+    public static int getLastLevelScore(){
         return lastLevelScore;
     }
 
-    public void setLastLevelScore(double score) {
-        this.lastLevelScore = (int) score * 100;
+    public static void setLastLevelScore(double score) {
+        UserProfile.lastLevelScore = (int) score * 100;
     }
 
-    public void updateUserLevelScores(double score, int level){
+    public static void updateUserLevelScores(int level, double score){
         levelScores.put(level,(int)score*100);
     }
 
-    public int getLevelScore(int level){
+    public static void updateLevelsCompleted(int level){
+        levelsCompleted.add(level);
+    }
+
+    public static String getUsername() {
+        return username;
+    }
+
+    public static int getLevelScore(int level){
         if(levelScores.containsKey(level)) {
             return levelScores.get(level);
         }
         return 0;
+    }
+
+    public static double getAverageScore(){
+        int sum = 0;
+        double divisor = levelsCompleted.size();
+        for(var level : levelsCompleted){
+            sum += levelScores.get(level);
+        }
+        return sum / divisor;
     }
 
 }
