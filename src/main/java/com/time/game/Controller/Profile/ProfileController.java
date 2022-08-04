@@ -64,6 +64,7 @@ public class ProfileController implements Initializable {
         // populate and setup bindings for level selector and BPM dropdown menus
         setupLevelAndBpmDropdownSelectors();
 
+        // populate bar chart with high score values for each level
         setupBarChart();
 
     }
@@ -78,7 +79,6 @@ public class ProfileController implements Initializable {
         yAxis.setLabel("Highest Score");
         yAxis.tickLabelFontProperty().set(Font.font(20));
         yAxis.setStyle("-fx-font-size: 30");
-
 
 
 
