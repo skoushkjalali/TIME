@@ -33,27 +33,27 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="705.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score on last level">
+      <Text layoutX="695.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score on Last Level">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="729.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Average Score">
+      <Text layoutX="667.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Average Highest Score">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text fx:id="levelsCompletedText" layoutX="877.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2/25" textAlignment="CENTER">
+      <Text fx:id="levelsCompletedText" layoutX="877.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0/25" textAlignment="CENTER">
          <font>
             <Font size="49.0" />
          </font>
       </Text>
-      <Text layoutX="877.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="97%" textAlignment="CENTER">
+      <Text fx:id="lastLevelScoreText" layoutX="877.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="--%" textAlignment="CENTER">
          <font>
             <Font size="49.0" />
          </font>
       </Text>
-      <Text layoutX="877.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="57%" textAlignment="CENTER">
+      <Text fx:id="averageHighestScoreText" layoutX="877.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="--%" textAlignment="CENTER">
          <font>
             <Font size="49.0" />
          </font>

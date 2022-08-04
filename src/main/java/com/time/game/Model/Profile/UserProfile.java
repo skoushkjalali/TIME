@@ -11,6 +11,7 @@ import java.util.stream.Stream;
 public class UserProfile {
 
     private final String username;
+    private String scoreOnLastLevel = "--%";
 
     /*
         Holds user scores for all attempts of all levels as a key of 1-25 (all rhythms) and either an empty arraylist
@@ -53,8 +54,11 @@ public class UserProfile {
         the highest score recorded for that level.
      */
     public int getHighestLevelScore(int level){
-        Optional<Integer> score = levelScores.get(level).stream().reduce(Integer::max);
-        return score.orElse(-1);
+        int highestScore = -1;
+        if(levelScores.get(level).stream().reduce(Integer::max).isPresent()) {
+            highestScore = levelScores.get(level).stream().reduce(Integer::max).get();
+        }
+        return highestScore;
     }
 
     /*
@@ -81,5 +85,32 @@ public class UserProfile {
         return numLevelsCompleted;
     }
 
+    public String getScoreOnLastLevel() {
+        return scoreOnLastLevel;
+    }
 
+    public void setScoreOnLastLevel(int score) {
+        this.scoreOnLastLevel = score + "%";
+    }
+
+    public ArrayList<Integer> getHighScores(){
+        ArrayList<Integer> highScores = new ArrayList<>();
+        for(int i = 1; i <= levelScores.size(); i++){
+            if(getHighestLevelScore(i) !=-1){
+                highScores.add(getHighestLevelScore(i));
+            }
+        }
+
+        return highScores;
+    }
+
+    public int getAverageHighestScore(){
+        double average = 0;
+        ArrayList<Integer> highScores = getHighScores();
+        if(highScores.size() != 0){
+            double sum = highScores.stream().reduce(Integer::sum).get();
+            average = sum / highScores.size();
+        }
+        return (int)Math.round(average);
+    }
 }

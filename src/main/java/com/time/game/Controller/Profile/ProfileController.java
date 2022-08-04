@@ -36,6 +36,10 @@ public class ProfileController implements Initializable {
 
     @FXML
     private Text levelsCompletedText;
+    @FXML
+    private Text lastLevelScoreText;
+    @FXML
+    private Text averageHighestScoreText;
 
     private UserProfile userProfile;
 
@@ -43,11 +47,7 @@ public class ProfileController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         // populate page with current user data
-        userProfile = TimeApplication.userProfile;
-        username.setText(userProfile.getUsername());
-        levelsCompletedText.setText(userProfile.getNumLevelsCompleted()+"/"+ RhythmFactory.getLastPossibleRhythmNumber());
-
-
+        showCurrentUserProfileData();
 
         // populate dropdown menu for levelSelector
         for(int i = 1; i<= 25; i++) {
@@ -62,6 +62,17 @@ public class ProfileController implements Initializable {
         }
         // link onLevelSelection method with levelSelector ChoiceBox
         bpmSelector.setOnAction(this::onBpmSelection);
+    }
+
+    protected void showCurrentUserProfileData(){
+        userProfile = TimeApplication.userProfile;
+        username.setText(userProfile.getUsername());
+        levelsCompletedText.setText(userProfile.getNumLevelsCompleted()+"/"+ RhythmFactory.getLastPossibleRhythmNumber());
+        lastLevelScoreText.setText(userProfile.getScoreOnLastLevel());
+
+        if (userProfile.getNumLevelsCompleted()!=0) {
+            averageHighestScoreText.setText(userProfile.getAverageHighestScore() + "%");
+        }
     }
 
     @FXML

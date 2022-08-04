@@ -131,7 +131,12 @@ public class MainGamePlayController implements Initializable {
         int score = scoreLevel();
         Level.setLastScore(score);
         centralText.setText(score +"%");
-        TimeApplication.userProfile.updateUserScores(Level.getLevelNumber(), score);
+        updateUserProfile();
+    }
+
+    protected void updateUserProfile(){
+        TimeApplication.userProfile.updateUserScores(Level.getLevelNumber(), Level.getLastScore());
+        TimeApplication.userProfile.setScoreOnLastLevel(Level.getLastScore());
     }
 
 
