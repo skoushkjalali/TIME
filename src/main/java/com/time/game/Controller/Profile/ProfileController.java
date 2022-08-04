@@ -9,8 +9,13 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -43,13 +48,68 @@ public class ProfileController implements Initializable {
 
     private UserProfile userProfile;
 
+    @FXML
+    private BarChart<String, Number> levelScoresBarChart;
+    @FXML
+    private CategoryAxis xAxis;
+    @FXML
+    private NumberAxis yAxis;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         // populate page with current user data
         showCurrentUserProfileData();
 
-        // populate dropdown menu for levelSelector
+        // populate and setup bindings for level selector and BPM dropdown menus
+        setupLevelAndBpmDropdownSelectors();
+
+        setupBarChart();
+
+    }
+
+    protected void setupBarChart(){
+
+        // todo get y axis ticks to show when chart empty
+        xAxis.setLabel("Level");
+        xAxis.tickLabelFontProperty().set(Font.font(20));
+        xAxis.setStyle("-fx-font-size: 30");
+
+        yAxis.setLabel("Highest Score");
+        yAxis.tickLabelFontProperty().set(Font.font(20));
+        yAxis.setStyle("-fx-font-size: 30");
+
+
+
+
+        for(int i = 1; i<= RhythmFactory.getLastPossibleRhythmNumber(); i++) {
+            XYChart.Series<String, Number> scoreData = new XYChart.Series<>();
+            if(userProfile.getLevelScoreAttempts(i) != null) {
+                XYChart.Data<String, Number> levelScore =  new XYChart.Data<>(""+i, userProfile.getHighestLevelScore(i));
+                scoreData.getData().add(levelScore);
+                levelScoresBarChart.getData().add(scoreData);
+            }
+            else{
+                XYChart.Data<String, Number> levelScore =  new XYChart.Data<>(""+i, 0);
+                scoreData.getData().add(levelScore);
+                levelScoresBarChart.getData().add(scoreData);
+            }
+        }
+
+        levelScoresBarChart.setCategoryGap(10);
+        levelScoresBarChart.setBarGap(-20);
+        levelScoresBarChart.setLegendVisible(false);
+
+
+
+
+
+
+
+
+    }
+
+    protected void setupLevelAndBpmDropdownSelectors(){
         for(int i = 1; i<= 25; i++) {
             levelSelector.getItems().add(i);
         }
