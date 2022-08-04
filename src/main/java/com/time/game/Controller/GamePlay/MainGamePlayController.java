@@ -6,8 +6,10 @@ import com.time.game.GameLogic.Scorer.Scorer;
 import com.time.game.Model.Level.Level;
 import com.time.game.Model.Rhythm.Rhythm;
 import com.time.game.Model.Rhythm.RhythmFactory;
+import com.time.game.TimeApplication;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.Pane;
@@ -62,6 +64,7 @@ public class MainGamePlayController implements Initializable {
     private Scorer scorer;
 
     private BeepFactory beepFactory;
+
 
     protected KeyFrame[] getMetronomeKeyFrames(int numOfBars, int flashLength){
 
@@ -121,16 +124,20 @@ public class MainGamePlayController implements Initializable {
         return (int)(score*100);
     }
 
+    /*
+        Method sets the score on the gamePlay screen and updates the userProfile with the score
+     */
     protected void setScore(){
-        Level.setLastScore(scoreLevel());
-        centralText.setText(Level.getLastScore() +"%");
+        int score = scoreLevel();
+        Level.setLastScore(score);
+        centralText.setText(score +"%");
+        TimeApplication.userProfile.updateUserScores(Level.getLevelNumber(), score);
     }
 
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         level = new Level(RhythmFactory.getRhythm(Level.getLevelNumber()));
         levelID.setText("Level "+Level.getLevelNumber());
         beepFactory = new BeepFactory();
@@ -190,6 +197,7 @@ public class MainGamePlayController implements Initializable {
                     }
                 }));
         timeline.play();
+
     }
 
     /*

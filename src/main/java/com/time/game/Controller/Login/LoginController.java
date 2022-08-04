@@ -2,6 +2,8 @@ package com.time.game.Controller.Login;
 
 import com.time.game.Controller.ScreenController;
 import com.time.game.Model.Profile.UserProfile;
+import com.time.game.TimeApplication;
+import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -34,8 +36,8 @@ public class LoginController {
 
     @FXML
     protected void onExistingUserLoginButtonClick() throws IOException {
-
-        UserProfile.setUsername(existingUsername.getText());
+        // initialize userProfile held as static variable in main TimeApplication class
+        TimeApplication.userProfile = new UserProfile(existingUsername.getText());
         ScreenController.changeScreen("profile-view");
     }
 

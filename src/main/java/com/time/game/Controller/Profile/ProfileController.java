@@ -3,6 +3,8 @@ package com.time.game.Controller.Profile;
 import com.time.game.Controller.ScreenController;
 import com.time.game.Model.Level.Level;
 import com.time.game.Model.Profile.UserProfile;
+import com.time.game.Model.Rhythm.RhythmFactory;
+import com.time.game.TimeApplication;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,10 +34,20 @@ public class ProfileController implements Initializable {
     @FXML
     private Text username;
 
+    @FXML
+    private Text levelsCompletedText;
+
+    private UserProfile userProfile;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        username.setText(UserProfile.getUsername());
+        // populate page with current user data
+        userProfile = TimeApplication.userProfile;
+        username.setText(userProfile.getUsername());
+        levelsCompletedText.setText(userProfile.getNumLevelsCompleted()+"/"+ RhythmFactory.getLastPossibleRhythmNumber());
+
+
 
         // populate dropdown menu for levelSelector
         for(int i = 1; i<= 25; i++) {
@@ -73,6 +85,10 @@ public class ProfileController implements Initializable {
         int bpmSelection = bpmSelector.getValue();
         Level.setBpm(bpmSelection);
     }
+
+
+
+
 
 
 
