@@ -17,7 +17,7 @@
             <Font size="49.0" />
          </font>
       </Text>
-      <Text fx:id="levelAccuracyText" layoutX="345.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Accuracy Score 100%" textAlignment="CENTER" wrappingWidth="640.0">
+      <Text fx:id="levelAccuracyText" layoutX="345.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score 100%" textAlignment="CENTER" wrappingWidth="640.0">
          <font>
             <Font size="49.0" />
          </font>
@@ -27,7 +27,7 @@
             <Font size="26.0" />
          </font>
       </Button>
-      <Text fx:id="aggregateAccuracyText" layoutX="359.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aggregate accuracy score: n/a" textAlignment="CENTER" wrappingWidth="631.357421875">
+      <Text fx:id="levelHighScoreText" layoutX="359.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level High Score" textAlignment="CENTER" wrappingWidth="631.357421875">
          <font>
             <Font size="49.0" />
          </font>

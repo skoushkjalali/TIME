@@ -2,6 +2,7 @@ package com.time.game.Controller.EndOfLevel;
 
 import com.time.game.Controller.ScreenController;
 import com.time.game.Model.Level.Level;
+import com.time.game.TimeApplication;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,7 +20,7 @@ public class ContinuationController implements Initializable {
     @FXML
     private Text levelAccuracyText;
     @FXML
-    private Text aggregateAccuracyText;
+    private Text levelHighScoreText;
     @FXML
     private Button repeatLevelButton;
     @FXML
@@ -29,10 +30,16 @@ public class ContinuationController implements Initializable {
     @FXML
     private Button exitButton;
 
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
         levelCompletionText.setText("Level "+Level.getLevelNumber()+" Complete");
         levelAccuracyText.setText("Accuracy score "+Level.getLastScore() + "%");
+        int highScore = TimeApplication.userProfile.getHighestLevelScore(Level.getLevelNumber());
+        levelHighScoreText.setText("Level High Score "+highScore+"%");
+
+
     }
 
 

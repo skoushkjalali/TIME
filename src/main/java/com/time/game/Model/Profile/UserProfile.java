@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 public class UserProfile {
 
     private final String username;
-    private String scoreOnLastLevel = "--%";
+    private String scoreOnLastLevel;
 
     /*
         Holds user scores for all attempts of all levels as a key of 1-25 (all rhythms) and either an empty arraylist
@@ -75,6 +75,7 @@ public class UserProfile {
         for(int i = 1; i <= RhythmFactory.getLastPossibleRhythmNumber(); i++){
             levelScores.put(i, null);
         }
+        this.scoreOnLastLevel = "--%";
     }
 
     public int getNumLevelsCompleted(){
@@ -113,4 +114,6 @@ public class UserProfile {
         }
         return (int)Math.round(average);
     }
+
+
 }
