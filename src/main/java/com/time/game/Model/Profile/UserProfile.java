@@ -55,8 +55,8 @@ public class UserProfile {
      */
     public int getHighestLevelScore(int level){
         int highestScore = -1;
-        if(levelScores.get(level).stream().reduce(Integer::max).isPresent()) {
-            highestScore = levelScores.get(level).stream().reduce(Integer::max).get();
+        if(levelScores.get(level) != null) {
+            highestScore = levelScores.get(level).stream().reduce(Integer::max).orElse(-1); // null check already done
         }
         return highestScore;
     }
