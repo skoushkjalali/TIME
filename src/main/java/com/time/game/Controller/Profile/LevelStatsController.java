@@ -57,13 +57,6 @@ public class LevelStatsController implements Initializable {
 
     protected void setupLineGraph(){
 
-        // for testing
-
-        userProfile.updateUserScores(1,50);
-        userProfile.updateUserScores(1,70);
-        userProfile.updateUserScores(1,75);
-        userProfile.updateUserScores(1,91);
-
         xAxis.setLabel("Attempt");
         xAxis.tickLabelFontProperty().set(Font.font(20));
         xAxis.setStyle("-fx-font-size: 30");
@@ -71,9 +64,9 @@ public class LevelStatsController implements Initializable {
         yAxis.setLabel("Score");
         yAxis.tickLabelFontProperty().set(Font.font(20));
         yAxis.setStyle("-fx-font-size: 30");
-//        yAxis.setAutoRanging(false);
-//        yAxis.setUpperBound(100);
-//        yAxis.setLowerBound(0);
+        yAxis.setAutoRanging(false);
+        yAxis.setUpperBound(100);
+        yAxis.setLowerBound(0);
 
 
 
@@ -88,6 +81,7 @@ public class LevelStatsController implements Initializable {
             }
         }
         levelStatsGraph.getData().add(dataSeries);
+        levelStatsGraph.setLegendVisible(false);
     }
 
     @FXML
