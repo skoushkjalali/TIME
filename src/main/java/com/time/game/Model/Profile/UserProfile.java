@@ -115,5 +115,10 @@ public class UserProfile {
         return (int)Math.round(average);
     }
 
+    public void resetMetrics(){
+        setupBlankScoreData();
+
+    }
+
 
 }

@@ -66,7 +66,7 @@
           <NumberAxis fx:id="yAxis" side="LEFT" />
         </yAxis>
       </BarChart>
-      <Button layoutX="1124.0" layoutY="716.0" mnemonicParsing="false" text="Reset Metrics -&gt;">
+      <Button fx:id="resetMetricsButton" layoutX="1124.0" layoutY="716.0" mnemonicParsing="false" onAction="#onResetMetricsButtonClick" text="Reset Metrics -&gt;">
          <font>
             <Font size="18.0" />
          </font>

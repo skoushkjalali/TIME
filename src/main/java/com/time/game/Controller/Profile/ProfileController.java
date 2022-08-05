@@ -34,6 +34,9 @@ public class ProfileController implements Initializable {
     private Button exitButton;
 
     @FXML
+    private Button resetMetricsButton;
+
+    @FXML
     private ChoiceBox<Integer> bpmSelector;
 
     @FXML
@@ -71,7 +74,6 @@ public class ProfileController implements Initializable {
 
     protected void setupBarChart(){
 
-        // todo get y axis ticks to show when chart empty
         xAxis.setLabel("Level");
         xAxis.tickLabelFontProperty().set(Font.font(20));
         xAxis.setStyle("-fx-font-size: 30");
@@ -79,7 +81,9 @@ public class ProfileController implements Initializable {
         yAxis.setLabel("Highest Score");
         yAxis.tickLabelFontProperty().set(Font.font(20));
         yAxis.setStyle("-fx-font-size: 30");
-
+        yAxis.setAutoRanging(false);
+        yAxis.setUpperBound(100);
+        yAxis.setLowerBound(0);
 
 
         for(int i = 1; i<= RhythmFactory.getLastPossibleRhythmNumber(); i++) {
@@ -96,16 +100,10 @@ public class ProfileController implements Initializable {
             }
         }
 
+
         levelScoresBarChart.setCategoryGap(10);
         levelScoresBarChart.setBarGap(-20);
         levelScoresBarChart.setLegendVisible(false);
-
-
-
-
-
-
-
 
     }
 
@@ -157,10 +155,14 @@ public class ProfileController implements Initializable {
         Level.setBpm(bpmSelection);
     }
 
+    @FXML
+    protected void onResetMetricsButtonClick() throws IOException {
+        userProfile.resetMetrics();
+        ScreenController.changeScreen("profile-view");
 
 
 
-
+    }
 
 
 }
