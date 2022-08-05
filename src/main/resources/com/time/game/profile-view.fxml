@@ -76,5 +76,10 @@
             <Font size="18.0" />
          </font>
       </Button>
+      <Button fx:id="viewLevelStatsButton" layoutX="1191.0" layoutY="409.0" mnemonicParsing="false" onAction="#onViewLevelStatsButtonClicked" text="View Level Stats">
+         <font>
+            <Font size="8.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

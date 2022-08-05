@@ -13,6 +13,10 @@ public class UserProfile {
     private final String username;
     private String scoreOnLastLevel;
 
+
+
+    private int levelStatRequestNumber;
+
     /*
         Holds user scores for all attempts of all levels as a key of 1-25 (all rhythms) and either an empty arraylist
         or all the attempts of that level as its value.
@@ -118,6 +122,14 @@ public class UserProfile {
     public void resetMetrics(){
         setupBlankScoreData();
 
+    }
+
+    public int getLevelStatRequestNumber() {
+        return levelStatRequestNumber;
+    }
+
+    public void setLevelStatRequestNumber(int levelStatRequestNumber) {
+        this.levelStatRequestNumber = levelStatRequestNumber;
     }
 
 

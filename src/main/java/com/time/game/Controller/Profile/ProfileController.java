@@ -58,6 +58,9 @@ public class ProfileController implements Initializable {
     @FXML
     private NumberAxis yAxis;
 
+    @FXML
+    private Button viewLevelStatsButton;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -70,6 +73,19 @@ public class ProfileController implements Initializable {
         // populate bar chart with high score values for each level
         setupBarChart();
 
+    }
+
+    @FXML
+    protected void onViewLevelStatsButtonClicked() throws IOException {
+        int statLevelRequest = 1;
+        try{
+            statLevelRequest = levelSelector.getValue();
+        }catch (Exception ignored){
+        }
+        finally{
+            userProfile.setLevelStatRequestNumber(statLevelRequest);
+        }
+        ScreenController.changeScreen("level-stats-view");
     }
 
     protected void setupBarChart(){
