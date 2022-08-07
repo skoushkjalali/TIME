@@ -90,6 +90,7 @@ public class ProfileController implements Initializable {
 
     protected void setupBarChart(){
 
+
         xAxis.setLabel("Level");
         xAxis.tickLabelFontProperty().set(Font.font(20));
         xAxis.setStyle("-fx-font-size: 30");

@@ -54,6 +54,7 @@ public class LevelStatsController implements Initializable {
 
     protected void setupLineGraph(){
 
+
         xAxis.setLabel("Attempt");
         xAxis.tickLabelFontProperty().set(Font.font(20));
         xAxis.setStyle("-fx-font-size: 30");
@@ -76,6 +77,7 @@ public class LevelStatsController implements Initializable {
         }
         levelStatsGraph.getData().add(dataSeries);
         levelStatsGraph.setLegendVisible(false);
+
     }
 
     @FXML

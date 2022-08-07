@@ -1,12 +1,7 @@
 package com.time.game.GameLogic.Rhythm;
-
-
-import com.time.game.Model.Rhythm.RhythmFactory;
 import javafx.scene.media.AudioClip;
-
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
+
 
 /*
     This class generates the sounds required for the application. The option to change the
