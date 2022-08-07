@@ -1,6 +1,8 @@
 package com.time.game.Controller.EndOfLevel;
 
 import com.time.game.Controller.ScreenController;
+import com.time.game.Model.Level.Level;
+import com.time.game.Model.Profile.UserProfile;
 import com.time.game.Model.Rhythm.RhythmFactory;
 import com.time.game.TimeApplication;
 import javafx.application.Platform;
@@ -30,9 +32,17 @@ public class GameCompletedController implements Initializable {
     @FXML
     private Text levelHighScoreText;
 
+    private UserProfile userProfile;
+
+    @FXML
+    private Button viewLevelStatsButton;
+
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
+        userProfile = TimeApplication.userProfile;
         scoreText.setText("Score " + TimeApplication.userProfile.getScoreOnLastLevel());
         levelHighScoreText.setText("Level High Score "+TimeApplication.userProfile.getHighestLevelScore(
                 RhythmFactory.getLastPossibleRhythmNumber()) + "%");
@@ -51,5 +61,10 @@ public class GameCompletedController implements Initializable {
     @FXML
     protected void onRepeatLevelButtonClicked() throws IOException {
         ScreenController.changeScreen("game-play-view");
+    }
+    @FXML
+    protected void onViewLevelStatsButtonClicked() throws IOException {
+        userProfile.setLevelStatRequestNumber(Level.getLevelNumber());
+        ScreenController.changeScreen("level-stats-view");
     }
 }
