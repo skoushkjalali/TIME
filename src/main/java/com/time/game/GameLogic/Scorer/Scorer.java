@@ -69,7 +69,10 @@ public class Scorer {
 
         The method calculates effective delta for each present tap using its nearest sample onset.
         It then calculates an onset handicap for each tap as the percentage of the upper bound
-        effective delta represents. This handicap is then summed, and subtracted from 100, with a floor of 0.
+        effective delta represents. Each onset carries a maximum onset handicap of 1/(number of sample onsets).
+        This handicap is summed and subtracted from 100, with a floor of 0.
+
+        An additional handicap of 1/number of sample onsets is applied to each extra onset.
      */
     public double scoreTooManyTaps(double[] sampleRhythm, ArrayList<Integer> userInput){
         double tooManyTapsScore = 1.0;
@@ -84,12 +87,24 @@ public class Scorer {
             double effectiveDelta = calculateEffectiveDelta(delta);
 
             // calculate onset handicap
-            double onsetHandicap = effectiveDelta / (float) UPPER_BOUND;
+            double onsetHandicap = (effectiveDelta / (float) UPPER_BOUND) / (double) sampleRhythm.length;
 
             // update score
             tooManyTapsScore -= onsetHandicap;
 
         }
+
+        // apply a handicap for each additional onset with respect to the correct number of onsets
+        int numOfExtraOnsets = userInput.size() - sampleRhythm.length; // num extra
+
+        // a sample rhythm with 4 onsets = handicap of 25% per extra onset in user
+        double additionalHandicapPerExtraOnset = 1 / (double) sampleRhythm.length;
+
+        // apply handicap per extra onset in userInput
+        double totalRhythmHandicapForExtraOnsets = numOfExtraOnsets * additionalHandicapPerExtraOnset;
+
+        tooManyTapsScore -= totalRhythmHandicapForExtraOnsets;
+
         // cap the lowest score possible at 0
         double result = Math.max(tooManyTapsScore, 0);
         return Math.round(result*100)/100.0;
