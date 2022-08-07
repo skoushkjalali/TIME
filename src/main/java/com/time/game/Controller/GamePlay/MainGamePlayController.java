@@ -9,7 +9,6 @@ import com.time.game.Model.Rhythm.RhythmFactory;
 import com.time.game.TimeApplication;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.Pane;

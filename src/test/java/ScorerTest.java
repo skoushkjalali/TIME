@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.testng.AssertJUnit.assertEquals;
 
 
@@ -241,7 +240,7 @@ class ScorerTest {
     @Test
     void scoreTooManyUserTapsZeroPercent2() {
         double[] sampleRhythm7 = {1000, 2000, 2500};
-        ArrayList<Integer> userInput21 = new ArrayList<>(List.of(1000, 2000, 2500, 4500));
+        ArrayList<Integer> userInput21 = new ArrayList<>(List.of(1000, 2000, 4500, 4600, 4700));
         double score = scorer.scoreInput(sampleRhythm7, userInput21);
         assertEquals(0.0, score);
     }
@@ -251,7 +250,7 @@ class ScorerTest {
         double[] sampleRhythm5 = {533.34, 1200, 1733.34, 1866.67, 2266.67};
         ArrayList<Integer> userInput18 = new ArrayList<>(List.of(160, 507, 693, 1360, 1653, 1947, 2187));
         double score = scorer.scoreInput(sampleRhythm5, userInput18);
-        assertEquals(0.53, score);
+        assertEquals(0.51, score);
     }
 
 
@@ -260,7 +259,7 @@ class ScorerTest {
         double[] sampleRhythm6 = {0, 300, 600, 900};
         ArrayList<Integer> userInput19 = new ArrayList<>(List.of(300, 350, 600, 650, 750, 800));
         double score = scorer.scoreInput(sampleRhythm6, userInput19);
-        assertEquals(0.83, score);
+        assertEquals(0.46, score);
     }
 
     @Test
@@ -269,7 +268,7 @@ class ScorerTest {
         ArrayList<Integer> userInput = new ArrayList<>(List.of(500, 1000, 1075, 2000, 1975));
 
         double score = scorer.scoreInput(sampleRhythm, userInput);
-        assertEquals(0.91, score);
+        assertEquals(0.73, score);
     }
 
 
@@ -366,7 +365,7 @@ class ScorerTest {
         double[] sampleRhythm6 = {0, 300, 600, 900};
         ArrayList<Integer> userInput19 = new ArrayList<>(List.of(300, 350, 600, 650, 750, 800));
         double score = scorer.scoreInput(sampleRhythm6, userInput19);
-        assertEquals(0.83, score);
+        assertEquals(0.46, score);
     }
 
     @Test
@@ -400,12 +399,6 @@ class ScorerTest {
         double result = scorer.getNearestOnset(sampleRhythm, userOnset);
         assertEquals(0.0, result);
     }
-
-
-
-
-
-
 
 
 
