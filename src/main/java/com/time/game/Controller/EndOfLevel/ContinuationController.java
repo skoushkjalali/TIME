@@ -2,6 +2,7 @@ package com.time.game.Controller.EndOfLevel;
 
 import com.time.game.Controller.ScreenController;
 import com.time.game.Model.Level.Level;
+import com.time.game.Model.Profile.UserProfile;
 import com.time.game.TimeApplication;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -30,10 +31,16 @@ public class ContinuationController implements Initializable {
     @FXML
     private Button exitButton;
 
+    @FXML
+    private Button viewLevelStatsButton;
+
+    private UserProfile userProfile;
+
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
+        userProfile = TimeApplication.userProfile;
         levelCompletionText.setText("Level "+Level.getLevelNumber()+" Complete");
         levelAccuracyText.setText("Accuracy score "+Level.getLastScore() + "%");
         int highScore = TimeApplication.userProfile.getHighestLevelScore(Level.getLevelNumber());
@@ -64,6 +71,11 @@ public class ContinuationController implements Initializable {
         ScreenController.changeScreen("profile-view");
     }
 
+    @FXML
+    protected void onViewLevelStatsButtonClicked() throws IOException {
+        userProfile.setLevelStatRequestNumber(Level.getLevelNumber());
+        ScreenController.changeScreen("level-stats-view");
+    }
 
 
 
