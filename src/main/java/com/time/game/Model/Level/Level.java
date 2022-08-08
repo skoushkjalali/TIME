@@ -47,7 +47,7 @@ public class Level {
         return sampleRhythm;
     }
 
-    public int getBpm() {
+    public static int getBpm() {
         return bpm;
     }
 

@@ -33,7 +33,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="967.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score on Last Level">
+      <Text fx:id="lastLevelText" layoutX="950.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Level Played: n/a">
          <font>
             <Font size="18.0" />
          </font>
@@ -76,10 +76,6 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="viewLevelStatsButton" layoutX="1191.0" layoutY="409.0" mnemonicParsing="false" onAction="#onViewLevelStatsButtonClicked" text="View Level Stats">
-         <font>
-            <Font size="8.0" />
-         </font>
-      </Button>
+      <Button fx:id="viewLevelStatsButton" layoutX="1153.0" layoutY="386.0" mnemonicParsing="false" onAction="#onViewLevelStatsButtonClicked" text="View Level Stats" />
    </children>
 </AnchorPane>

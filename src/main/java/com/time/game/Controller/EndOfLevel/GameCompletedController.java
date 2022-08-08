@@ -6,9 +6,11 @@ import com.time.game.Model.Profile.UserProfile;
 import com.time.game.Model.Rhythm.RhythmFactory;
 import com.time.game.TimeApplication;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -37,6 +39,8 @@ public class GameCompletedController implements Initializable {
     @FXML
     private Button viewLevelStatsButton;
 
+    @FXML
+    private ChoiceBox<Integer> bpmSelector;
 
 
 
@@ -46,6 +50,26 @@ public class GameCompletedController implements Initializable {
         scoreText.setText("Score " + TimeApplication.userProfile.getScoreOnLastLevel());
         levelHighScoreText.setText("Level High Score "+TimeApplication.userProfile.getHighestLevelScore(
                 RhythmFactory.getLastPossibleRhythmNumber()) + "%");
+
+        setupBPMSelector();
+    }
+
+    protected void setupBPMSelector(){
+        // populate dropdown menu for bpmSelector
+        for(int i = 10; i<= 200; i+=10) {
+            bpmSelector.getItems().add(i);
+        }
+        // link onLevelSelection method with levelSelector ChoiceBox
+        bpmSelector.setOnAction(this::onBpmSelection);
+        bpmSelector.setValue(Level.getBpm());
+
+    }
+
+
+    @FXML
+    protected void onBpmSelection(ActionEvent event) {
+        int bpmSelection = bpmSelector.getValue();
+        Level.setBpm(bpmSelection);
     }
 
     @FXML

@@ -5,9 +5,11 @@ import com.time.game.Model.Level.Level;
 import com.time.game.Model.Profile.UserProfile;
 import com.time.game.TimeApplication;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -36,6 +38,9 @@ public class ContinuationController implements Initializable {
 
     private UserProfile userProfile;
 
+    @FXML
+    private ChoiceBox<Integer> bpmSelector;
+
 
 
     @Override
@@ -46,7 +51,26 @@ public class ContinuationController implements Initializable {
         int highScore = TimeApplication.userProfile.getHighestLevelScore(Level.getLevelNumber());
         levelHighScoreText.setText("Level High Score "+highScore+"%");
 
+        setupBPMSelector();
 
+    }
+
+    protected void setupBPMSelector(){
+        // populate dropdown menu for bpmSelector
+        for(int i = 10; i<= 200; i+=10) {
+            bpmSelector.getItems().add(i);
+        }
+        // link onLevelSelection method with levelSelector ChoiceBox
+        bpmSelector.setOnAction(this::onBpmSelection);
+        bpmSelector.setValue(Level.getBpm());
+
+    }
+
+
+    @FXML
+    protected void onBpmSelection(ActionEvent event) {
+        int bpmSelection = bpmSelector.getValue();
+        Level.setBpm(bpmSelection);
     }
 
 

@@ -187,8 +187,8 @@ public class MainGamePlayController implements Initializable {
         timeline.getKeyFrames().add(setScore);
 
 
-        // switch to end of level screen at the end of the 4th bar
-        timeline.getKeyFrames().add(new KeyFrame(Duration.millis(level.getBarDurationInMilliSecs()*4),
+        // switch to end of level screen 1700ms after the score is shown
+        timeline.getKeyFrames().add(new KeyFrame(Duration.millis((level.getBarDurationInMilliSecs()*3) + 1700),
                 e-> {
                     try {
                         String screen = "end-of-level-continuation-view";

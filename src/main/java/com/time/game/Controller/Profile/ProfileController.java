@@ -61,6 +61,9 @@ public class ProfileController implements Initializable {
     @FXML
     private Button viewLevelStatsButton;
 
+    @FXML
+    private Text lastLevelText;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -125,11 +128,12 @@ public class ProfileController implements Initializable {
     }
 
     protected void setupLevelAndBpmDropdownSelectors(){
-        for(int i = 1; i<= 25; i++) {
+        for(int i = 1; i<= RhythmFactory.getLastPossibleRhythmNumber(); i++) {
             levelSelector.getItems().add(i);
         }
         // link onLevelSelection method with levelSelector ChoiceBox
         levelSelector.setOnAction(this::onLevelSelection);
+        levelSelector.setValue(1);
 
         // populate dropdown menu for bpmSelector
         for(int i = 10; i<= 200; i+=10) {
@@ -137,6 +141,7 @@ public class ProfileController implements Initializable {
         }
         // link onLevelSelection method with levelSelector ChoiceBox
         bpmSelector.setOnAction(this::onBpmSelection);
+        bpmSelector.setValue(Level.getBpm());
     }
 
     protected void showCurrentUserProfileData(){
@@ -147,6 +152,12 @@ public class ProfileController implements Initializable {
 
         if (userProfile.getNumLevelsCompleted()!=0) {
             averageHighestScoreText.setText(userProfile.getAverageHighestScore() + "%");
+            if(Level.getLevelNumber() < 10){
+                lastLevelText.setText("Last Level Played:  L"+Level.getLevelNumber());
+            }
+            else{
+                lastLevelText.setText("Last Level Played: L"+Level.getLevelNumber());
+            }
         }
     }
 
