@@ -39,17 +39,17 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="viewNextLevelButton" layoutX="714.0" layoutY="797.0" mnemonicParsing="false" onAction="#onViewNextLevelButtonClicked" text="View Next Level -&gt;">
+      <Button fx:id="viewNextLevelButton" layoutX="679.0" layoutY="750.0" mnemonicParsing="false" onAction="#onViewNextLevelButtonClicked" text="View Next Level -&gt;">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="viewPreviousLevelButton" layoutX="490.0" layoutY="797.0" mnemonicParsing="false" onAction="#onViewPreviousLevelButtonClicked" text="&lt;- View Previous Level">
+      <Button fx:id="viewPreviousLevelButton" layoutX="455.0" layoutY="750.0" mnemonicParsing="false" onAction="#onViewPreviousLevelButtonClicked" text="&lt;- View Previous Level">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <ChoiceBox fx:id="bpmSelector" layoutX="1227.0" layoutY="603.0" prefHeight="25.0" prefWidth="53.0" />
-      <Text layoutX="1158.0" layoutY="620.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select BPM" />
+      <ChoiceBox fx:id="bpmSelector" layoutX="1217.0" layoutY="603.0" prefHeight="25.0" prefWidth="63.0" />
+      <Text layoutX="1143.0" layoutY="621.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select BPM" />
    </children>
 </AnchorPane>

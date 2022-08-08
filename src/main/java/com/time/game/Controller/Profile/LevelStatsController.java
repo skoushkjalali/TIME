@@ -14,6 +14,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.effect.Effect;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import java.io.IOException;
@@ -87,7 +88,6 @@ public class LevelStatsController implements Initializable {
 
         protected void setupLineGraph(){
 
-
         xAxis.setLabel("Attempt");
         xAxis.tickLabelFontProperty().set(Font.font(20));
         xAxis.setStyle("-fx-font-size: 30");
@@ -98,6 +98,7 @@ public class LevelStatsController implements Initializable {
         yAxis.setAutoRanging(false);
         yAxis.setUpperBound(100);
         yAxis.setLowerBound(0);
+
 
 
         ArrayList<Integer> levelScores = userProfile.getLevelScoreAttempts(userProfile.getLevelStatRequestNumber());

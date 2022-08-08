@@ -23,7 +23,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="532.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Profile">
+      <Text layoutX="596.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TIME">
          <font>
             <Font size="49.0" />
          </font>
