@@ -1,4 +1,7 @@
 package com.time.game.Database;
+import com.time.game.Model.Profile.UserProfile;
+import com.time.game.Model.Rhythm.RhythmFactory;
+
 import java.sql.*;
 
 
@@ -18,10 +21,7 @@ public class DatabaseUtils {
         }
     }
 
-    public static void main(String[] args) throws SQLException {
 
-        System.out.println(validateExistingUser("SashaKJ", "admin"));
-    }
 
 
     public static boolean validateExistingUser(String username, String password) throws SQLException {
@@ -126,4 +126,45 @@ public class DatabaseUtils {
         }
         return userLevelScores;
     }
+
+    /*
+        Compresses all user scores per level as one string, and returns these strings in an arraylist.
+     */
+    public static ArrayList<String> getUserProfileScoreDataAsStrings(UserProfile userProfile){
+        ArrayList<String> allUserScores = new ArrayList<>();
+
+        for(int i = 1; i <= RhythmFactory.getLastPossibleRhythmNumber(); i++){
+            String compressedLevelScores = compressUserLevelScores(userProfile.getLevelScoreAttempts(i));
+            allUserScores.add(compressedLevelScores);
+        }
+        return allUserScores;
+    }
+
+
+    /*
+        Updates all scores of all levels on the database for the user specified . If a level hasn't been played,
+        an empty string is set.
+     */
+    public static void updateAllUserData(UserProfile userProfile) throws SQLException {
+        for(int i = 1; i <= RhythmFactory.getLastPossibleRhythmNumber(); i++){
+            updateUserLevelScoreData(userProfile, i);
+        }
+    }
+
+
+    /*
+        Updates the level specified for the user specified  on the database.
+     */
+    public static void updateUserLevelScoreData(UserProfile userProfile, int level) throws SQLException {
+
+        String colName = "Rhythm_"+level;
+        String levelScoreData = DatabaseUtils.compressUserLevelScores(userProfile.getLevelScoreAttempts(level));
+
+        String sql = "UPDATE USER_SCORES SET " + colName+ "= ? WHERE USERNAME = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, levelScoreData);
+        preparedStatement.setString(2, userProfile.getUsername());
+        preparedStatement.executeUpdate();
+    }
+
 }

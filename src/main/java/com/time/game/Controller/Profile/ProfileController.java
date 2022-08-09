@@ -1,6 +1,7 @@
 package com.time.game.Controller.Profile;
 
 import com.time.game.Controller.ScreenController;
+import com.time.game.Database.DatabaseUtils;
 import com.time.game.Model.Level.Level;
 import com.time.game.Model.Profile.UserProfile;
 import com.time.game.Model.Rhythm.RhythmFactory;
@@ -20,6 +21,7 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class ProfileController implements Initializable {
@@ -161,7 +163,8 @@ public class ProfileController implements Initializable {
     }
 
     @FXML
-    protected void onExitButtonClicked(){
+    protected void onExitButtonClicked() throws SQLException {
+        DatabaseUtils.updateAllUserData(userProfile);
         Platform.exit();
     }
 
