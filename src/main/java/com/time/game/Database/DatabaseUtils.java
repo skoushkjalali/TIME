@@ -25,23 +25,23 @@ public class DatabaseUtils {
     }
 
 
-    public static boolean validateExistingUser(String userUsername, String userPassword) throws SQLException {
+    public static boolean validateExistingUser(String username, String password) throws SQLException {
         boolean validated = false;
 
-        String sql = "SELECT * FROM USER " +
-                "WHERE USERNAME = '" +userUsername+ "' AND PASSWORD = '"+ userPassword+"'";
+        String sql = "SELECT * FROM USER WHERE USERNAME = ? AND PASSWORD = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1,username);
+        preparedStatement.setString(2,password);
         ResultSet rs = preparedStatement.executeQuery();
 
         try {
             rs.next();
-            if(Objects.equals(rs.getString("USERNAME"), userUsername)){
+            if(Objects.equals(rs.getString("USERNAME"), username)){
                 validated = true;
             }
         }
         catch (SQLException ignored){
         }
-
         return validated;
     }
 
