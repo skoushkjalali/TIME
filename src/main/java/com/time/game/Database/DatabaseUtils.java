@@ -3,6 +3,7 @@ import java.sql.*;
 
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class DatabaseUtils {
 
@@ -11,29 +12,37 @@ public class DatabaseUtils {
     static {
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/TIME",
-                    "root", "Slimline87!");
+                    "root", "guest");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
     public static void main(String[] args) throws SQLException {
-        String sql = "SELECT * FROM USER";
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        ResultSet rs = preparedStatement.executeQuery();
-        while(rs.next()) {
-            System.out.println(rs.getString("USERNAME"));
-            System.out.println(rs.getString("PASSWORD"));
-        }
+
+        System.out.println(validateExistingUser("SashaKJ", "admin"));
+
     }
 
 
+    public static boolean validateExistingUser(String userUsername, String userPassword) throws SQLException {
+        boolean validated = false;
 
+        String sql = "SELECT * FROM USER " +
+                "WHERE USERNAME = '" +userUsername+ "' AND PASSWORD = '"+ userPassword+"'";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        ResultSet rs = preparedStatement.executeQuery();
 
+        try {
+            rs.next();
+            if(Objects.equals(rs.getString("USERNAME"), userUsername)){
+                validated = true;
+            }
+        }
+        catch (SQLException ignored){
+        }
 
-    public static boolean validateExistingUser(String username, String password){
-
-        return true;
+        return validated;
     }
 
 

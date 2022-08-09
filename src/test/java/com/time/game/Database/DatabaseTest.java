@@ -1,7 +1,6 @@
 package com.time.game.Database;
-
 import org.junit.jupiter.api.Test;
-
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,13 +54,13 @@ class DatabaseTest {
 
 
     @Test
-    void testValidateExistingUserTrue(){
+    void testValidateExistingUserTrue() throws SQLException {
         assertTrue(DatabaseUtils.validateExistingUser("SashaKJ", "admin"));
     }
 
     @Test
-    void testValidateExistingUserFalse(){
-        assertTrue(DatabaseUtils.validateExistingUser("Simon", "Kablamo"));
+    void testValidateExistingUserFalse() throws SQLException {
+        assertFalse(DatabaseUtils.validateExistingUser("Simon", "Kablamo"));
     }
 
 

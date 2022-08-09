@@ -1,6 +1,7 @@
 package com.time.game.Controller.Login;
 
 import com.time.game.Controller.ScreenController;
+import com.time.game.Database.DatabaseUtils;
 import com.time.game.Model.Profile.UserProfile;
 import com.time.game.TimeApplication;
 import javafx.application.Application;
@@ -8,8 +9,10 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class LoginController {
 
@@ -35,10 +38,22 @@ public class LoginController {
     private Button exitButton;
 
     @FXML
-    protected void onExistingUserLoginButtonClick() throws IOException {
-        // initialize userProfile held as static variable in main TimeApplication class
-        TimeApplication.userProfile = new UserProfile(existingUsername.getText());
-        ScreenController.changeScreen("profile-view");
+    private Text invalidLoginText;
+
+    @FXML
+    protected void onExistingUserLoginButtonClick() throws IOException, SQLException {
+        String username = existingUsername.getText();
+        String password = existingPassword.getText();
+
+        // if username and password match database
+        if(DatabaseUtils.validateExistingUser(username, password)){
+            // initialize userProfile held as static variable in main TimeApplication class
+            TimeApplication.userProfile = new UserProfile(existingUsername.getText());
+            ScreenController.changeScreen("profile-view");
+        }
+        else {
+            invalidLoginText.setText("invalid username and/or password");
+        }
     }
 
     @FXML
