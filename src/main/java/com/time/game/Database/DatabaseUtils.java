@@ -73,6 +73,13 @@ public class DatabaseUtils {
         preparedStatement.executeUpdate();
     }
 
+    public static void addNewUserToScoresTable(String username) throws SQLException {
+        String sql = "INSERT INTO USER_SCORES (USERNAME) VALUES (?)";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, username);
+        preparedStatement.executeUpdate();
+    }
+
 
     /*
         Method converts integer values held in an arraylist to a single string. The string comprises a string of codes.

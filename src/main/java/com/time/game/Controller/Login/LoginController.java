@@ -63,8 +63,8 @@ public class LoginController {
         }
         else {
             if(numInvalidExistingLoginAttempts % 2 == 0) {
-                invalidLoginText.setFill(Color.RED);
-                invalidLoginText.setFill(Color.RED);
+                invalidLoginText.setFill(Color.RED); // toggle red/blue for multiple wrong attempts
+                invalidLoginText.setFill(Color.RED); // otherwise text popup appears not to change
             }
             else{
                 invalidNewUserTextLine1.setFill(Color.BLUE);
@@ -80,11 +80,11 @@ public class LoginController {
         String username = newUsername.getText();
         String password = newPassword.getText();
 
-
+        // check username and password will fil in varchar(24) in database column
         if(username.length() > 24 || password.length() > 24){
             if(numInvalidNewUserAttempts % 2 ==0) {
-                invalidNewUserTextLine1.setFill(Color.RED);
-                invalidNewUserTextLine2.setFill(Color.RED);
+                invalidNewUserTextLine1.setFill(Color.RED); // toggle red/blue for multiple wrong attempts
+                invalidNewUserTextLine2.setFill(Color.RED); // otherwise text popup appears not to change
             }
             else{
                 invalidNewUserTextLine1.setFill(Color.BLUE);
@@ -100,6 +100,7 @@ public class LoginController {
         if(DatabaseUtils.checkNewUsernameIsAvailable(username)) {
             // create new user in database
             DatabaseUtils.createNewUserProfile(username, password);
+            DatabaseUtils.addNewUserToScoresTable(username);
             TimeApplication.userProfile = new UserProfile(existingUsername.getText());
             ScreenController.changeScreen("profile-view");
         }
