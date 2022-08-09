@@ -36,5 +36,7 @@
          </font>
       </Button>
       <Text fx:id="invalidLoginText" fill="#f50b0b" layoutX="517.0" layoutY="407.0" strokeType="OUTSIDE" strokeWidth="0.0" text="                                                                   " />
+      <Text fx:id="invalidNewUserTextLine1" fill="#f50b0b" layoutX="517.0" layoutY="531.0" strokeType="OUTSIDE" strokeWidth="0.0" text="                                                                   " />
+      <Text fx:id="invalidNewUserTextLine2" fill="#f50b0b" layoutX="517.0" layoutY="548.0" strokeType="OUTSIDE" strokeWidth="0.0" text="                                                                   " />
    </children>
 </AnchorPane>

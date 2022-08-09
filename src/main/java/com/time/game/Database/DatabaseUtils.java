@@ -21,7 +21,6 @@ public class DatabaseUtils {
     public static void main(String[] args) throws SQLException {
 
         System.out.println(validateExistingUser("SashaKJ", "admin"));
-
     }
 
 
@@ -43,6 +42,35 @@ public class DatabaseUtils {
         catch (SQLException ignored){
         }
         return validated;
+    }
+
+
+    public static boolean checkNewUsernameIsAvailable(String newUsername) throws SQLException {
+
+        boolean usernameAvailable = true;
+
+        String sql = "SELECT USERNAME FROM USER WHERE USERNAME = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1,newUsername);
+        ResultSet rs = preparedStatement.executeQuery();
+
+        try {
+            rs.next();
+            if(Objects.equals(rs.getString("USERNAME"), newUsername)){
+                usernameAvailable = false;
+            }
+        }
+        catch (SQLException ignored){
+        }
+        return usernameAvailable;
+    }
+
+    public static void createNewUserProfile(String username, String password) throws SQLException {
+        String sql = "INSERT INTO USER VALUES (?, ?)";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, username);
+        preparedStatement.setString(2, password);
+        preparedStatement.executeUpdate();
     }
 
 

@@ -52,7 +52,6 @@ class DatabaseTest {
         assertEquals(expected,result);
     }
 
-
     @Test
     void testValidateExistingUserTrue() throws SQLException {
         assertTrue(DatabaseUtils.validateExistingUser("SashaKJ", "admin"));
@@ -62,6 +61,23 @@ class DatabaseTest {
     void testValidateExistingUserFalse() throws SQLException {
         assertFalse(DatabaseUtils.validateExistingUser("Simon", "Kablamo"));
     }
+
+    @Test
+    void testNewUsernameIsAvailableTrue() throws SQLException {
+        assertTrue(DatabaseUtils.checkNewUsernameIsAvailable("JohnOTheGroats"));
+    }
+
+    @Test
+    void testNewUsernameIsAvailableFalse1() throws SQLException {
+        assertFalse(DatabaseUtils.checkNewUsernameIsAvailable("PhillippaKJ"));
+    }
+
+    @Test
+    void testNewUsernameIsAvailableFalse() throws SQLException {
+        assertFalse(DatabaseUtils.checkNewUsernameIsAvailable("SashaKJ"));
+    }
+
+
 
 
 }
