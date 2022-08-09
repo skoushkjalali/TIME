@@ -4,6 +4,7 @@ module time {
     requires javafx.media;
     requires java.desktop;
     requires org.testng;
+    requires java.sql;
 
     opens com.time.game to javafx.fxml;
     opens com.time.game.Controller.GamePlay to javafx.fxml;
