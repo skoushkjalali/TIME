@@ -117,9 +117,9 @@ public class DatabaseUtils {
         for(int i = 0; i < compressedUserLevelScores.length();){
             numberOfDigits = Integer.parseInt(Character.toString(compressedUserLevelScores.charAt(i)));
             for(int j = 1; j <= numberOfDigits; j++) {
-                scoreStr += compressedUserLevelScores.charAt(i + j);
-            }
-            score = Integer.parseInt(scoreStr);
+                scoreStr += compressedUserLevelScores.charAt(i + j);    // not using StringBuilder here as only ever
+            }                                                           // concatenating 3 characters before deleting
+            score = Integer.parseInt(scoreStr);                         // the string and starting again. Not worth the overhead.
             userLevelScores.add(score);
             scoreStr = "";
             i+= numberOfDigits + 1;
@@ -146,9 +146,28 @@ public class DatabaseUtils {
         an empty string is set.
      */
     public static void updateAllUserData(UserProfile userProfile) throws SQLException {
-        for(int i = 1; i <= RhythmFactory.getLastPossibleRhythmNumber(); i++){
-            updateUserLevelScoreData(userProfile, i);
+        ArrayList<String> userLevelData = getUserProfileScoreDataAsStrings(userProfile);
+
+        StringBuilder sql = new StringBuilder("UPDATE USER_SCORES SET ");
+        String colName;
+        String data;
+
+        for(int i = 0; i<userLevelData.size(); i++){
+            colName = "Rhythm_"+(i+1);
+            data = userLevelData.get(i);
+            sql.append(colName)
+                    .append(" = ")
+                    .append("'")
+                    .append(data)
+                    .append("'");
+            if(i < userLevelData.size()-1){
+                sql.append(", ");
+            }
         }
+        sql.append(" WHERE USERNAME = ?");
+        PreparedStatement preparedStatement = connection.prepareStatement(sql.toString());
+        preparedStatement.setString(1, userProfile.getUsername());
+        preparedStatement.executeUpdate();
     }
 
 
@@ -166,5 +185,24 @@ public class DatabaseUtils {
         preparedStatement.setString(2, userProfile.getUsername());
         preparedStatement.executeUpdate();
     }
+
+
+    public static void loadUserDataToLocalProfile(UserProfile userProfile) throws SQLException {
+        String sql = "SELECT * FROM USER_SCORES WHERE USERNAME = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, userProfile.getUsername());
+        ResultSet rs = preparedStatement.executeQuery();
+
+        // move to the username column, so that the next call to rs.next() returns the first rhythm column, col2
+        rs.next();
+
+        // iterate through each rhythm column and place an uncompressed arrayList of scores in the local userProfile object
+        for(int columnNumber = 2; columnNumber <= RhythmFactory.getLastPossibleRhythmNumber()+1; columnNumber++) {
+            String compressedLevelData = rs.getString(columnNumber);
+            ArrayList<Integer> uncompressedLevelData = DatabaseUtils.decompressUserLevelScores(compressedLevelData);
+            userProfile.getLevelScores().put(columnNumber-1,uncompressedLevelData);
+        }
+    }
+
 
 }

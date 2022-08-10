@@ -58,13 +58,16 @@ public class LoginController {
         // if username and password match database
         if(DatabaseUtils.validateExistingUser(username, password)){
             // initialize userProfile held as static variable in main TimeApplication class
-            TimeApplication.userProfile = new UserProfile(existingUsername.getText());
+            TimeApplication.userProfile = new UserProfile(username);
+            // Load existing user data from database to local userProfile instance
+            loadUserProfileDataFromDatabase(TimeApplication.userProfile);
+            // go to profile screen
             ScreenController.changeScreen("profile-view");
         }
         else {
             if(numInvalidExistingLoginAttempts % 2 == 0) {
                 invalidLoginText.setFill(Color.RED); // toggle red/blue for multiple wrong attempts
-                invalidLoginText.setFill(Color.RED); // otherwise text popup appears not to change
+                invalidLoginText.setFill(Color.RED); // otherwise text popup appears static on repeat tries
             }
             else{
                 invalidNewUserTextLine1.setFill(Color.BLUE);
@@ -80,19 +83,19 @@ public class LoginController {
         String username = newUsername.getText();
         String password = newPassword.getText();
 
-        // check username and password will fil in varchar(24) in database column
-        if(username.length() > 24 || password.length() > 24){
+        // check username and password will fil in varchar(24) in database column and is not 0 length
+        if(username.length() > 24 || password.length() > 24 || username.length() < 1 || password.length() < 1){
             if(numInvalidNewUserAttempts % 2 ==0) {
                 invalidNewUserTextLine1.setFill(Color.RED); // toggle red/blue for multiple wrong attempts
-                invalidNewUserTextLine2.setFill(Color.RED); // otherwise text popup appears not to change
+                invalidNewUserTextLine2.setFill(Color.RED); // otherwise text popup appears static on repeat tries
             }
             else{
                 invalidNewUserTextLine1.setFill(Color.BLUE);
                 invalidNewUserTextLine2.setFill(Color.BLUE);
             }
 
-            invalidNewUserTextLine1.setText("username and/or password too long");
-            invalidNewUserTextLine2.setText("usernames and passwords can each only be up to 24 characters");
+            invalidNewUserTextLine1.setText("invalid username and/or password lengths");
+            invalidNewUserTextLine2.setText("username and password must each be between 1 and 24 characters");
             numInvalidNewUserAttempts +=1;
             return;
         }
@@ -101,7 +104,7 @@ public class LoginController {
             // create new user in database
             DatabaseUtils.createNewUserProfile(username, password);
             DatabaseUtils.addNewUserToScoresTable(username);
-            TimeApplication.userProfile = new UserProfile(existingUsername.getText());
+            TimeApplication.userProfile = new UserProfile(username);
             ScreenController.changeScreen("profile-view");
         }
         else{
@@ -110,10 +113,20 @@ public class LoginController {
         }
     }
 
+    /*
+        Exit without saving data, no data has been updated
+     */
     @FXML
     protected void onExitButtonClick(){
         Platform.exit();
     }
 
+    /*
+        access user data and populate local user scores
+     */
+    protected void loadUserProfileDataFromDatabase(UserProfile userProfile) throws SQLException {
+       DatabaseUtils.loadUserDataToLocalProfile(userProfile);
+
+    }
 
 }

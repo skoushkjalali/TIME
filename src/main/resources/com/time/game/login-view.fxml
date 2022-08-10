@@ -20,17 +20,17 @@
       <TextField fx:id="newUsername" layoutX="515.0" layoutY="461.0" prefHeight="25.0" prefWidth="256.0" text="username" />
       <TextField fx:id="newPassword" layoutX="515.0" layoutY="492.0" prefHeight="25.0" prefWidth="256.0" text="password" />
       <Text layoutX="517.0" layoutY="457.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign up below" textAlignment="CENTER" />
-      <Button fx:id="existingUserLoginButton" layoutX="790.0" layoutY="336.0" mnemonicParsing="false" onAction="#onExistingUserLoginButtonClick" prefHeight="58.0" prefWidth="105.0" text="Login -&gt;">
+      <Button fx:id="existingUserLoginButton" layoutX="790.0" layoutY="336.0" mnemonicParsing="false" onAction="#onExistingUserLoginButtonClick" prefHeight="58.0" prefWidth="107.0" text="Login -&gt;">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="newUserLoginButton" layoutX="790.0" layoutY="460.0" mnemonicParsing="false" onAction="#onNewUserLoginButtonClick" prefHeight="58.0" prefWidth="105.0" text="Login -&gt;">
+      <Button fx:id="newUserLoginButton" layoutX="790.0" layoutY="460.0" mnemonicParsing="false" onAction="#onNewUserLoginButtonClick" prefHeight="58.0" prefWidth="107.0" text="Sign Up -&gt;">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="exitButton" layoutX="1127.0" layoutY="757.0" mnemonicParsing="false" onAction="#onExitButtonClick" prefHeight="58.0" prefWidth="105.0" text="Exit -&gt;">
+      <Button fx:id="exitButton" layoutX="1127.0" layoutY="757.0" mnemonicParsing="false" onAction="#onExitButtonClick" prefHeight="58.0" prefWidth="107.0" text="Exit -&gt;">
          <font>
             <Font size="18.0" />
          </font>

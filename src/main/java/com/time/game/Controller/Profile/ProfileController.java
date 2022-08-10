@@ -78,6 +78,17 @@ public class ProfileController implements Initializable {
         // populate bar chart with high score values for each level
         setupBarChart();
 
+        // if the red cross is used to exit the game, then user data is still stored
+        setSaveUserDataIfWindowClosed();
+    }
+
+    protected void setSaveUserDataIfWindowClosed(){
+        TimeApplication.primaryStage.setOnCloseRequest(e -> {
+            try {
+                DatabaseUtils.updateAllUserData(userProfile);
+            } catch (SQLException ignored) {
+            }
+        });
     }
 
     @FXML
@@ -147,6 +158,16 @@ public class ProfileController implements Initializable {
 
     protected void showCurrentUserProfileData(){
         userProfile = TimeApplication.userProfile;
+
+
+        // testing update time
+
+//        for(int i = 1; i<= 25; i++){
+//            for (int j = 0; j<=100; j++){
+//                userProfile.updateUserScores(i, j);
+//            }
+//        }
+
         username.setText(userProfile.getUsername());
         levelsCompletedText.setText(userProfile.getNumLevelsCompleted()+"/"+ RhythmFactory.getLastPossibleRhythmNumber());
         lastLevelScoreText.setText(userProfile.getScoreOnLastLevel());
