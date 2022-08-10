@@ -20,7 +20,6 @@ public class TimeApplication extends Application {
         stage.setMinWidth(1300);
         stage.setTitle("TIME APPLICATION");
 
-
         ScreenController.changeScreen("login-view");
 
         primaryStage.show();

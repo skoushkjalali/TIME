@@ -113,6 +113,8 @@ public class LevelStatsController implements Initializable {
         }
         levelStatsGraph.getData().add(dataSeries);
         levelStatsGraph.setLegendVisible(false);
+        levelStatsGraph.setVerticalGridLinesVisible(false);
+        levelStatsGraph.lookup(".chart-plot-background").setStyle("-fx-background-color: transparent;");
 
     }
 

@@ -12,12 +12,15 @@
 
 <AnchorPane focusTraversable="true" prefHeight="868.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.time.game.Controller.Profile.ProfileController">
    <children>
-      <Button fx:id="playButton" layoutX="1178.0" layoutY="570.0" mnemonicParsing="false" onAction="#onPlayButtonClick" prefHeight="84.0" prefWidth="95.0" text="Play" />
-      <ChoiceBox fx:id="levelSelector" layoutX="1188.0" layoutY="424.0" prefHeight="25.0" prefWidth="72.0" />
-      <ChoiceBox fx:id="bpmSelector" layoutX="1189.0" layoutY="493.0" prefHeight="25.0" prefWidth="72.0" />
-      <Text layoutX="1111.0" layoutY="441.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Level" />
-      <Text layoutX="1112.0" layoutY="510.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select BPM" />
-      <Circle fill="WHITE" layoutX="132.0" layoutY="131.0" radius="118.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+      <Button fx:id="playButton" layoutX="1114.0" layoutY="540.0" mnemonicParsing="false" onAction="#onPlayButtonClick" prefHeight="80.0" prefWidth="150.0" text="Play -&gt;">
+         <font>
+            <Font name="American Typewriter" size="18.0" />
+         </font></Button>
+      <ChoiceBox fx:id="levelSelector" layoutX="1191.0" layoutY="441.0" prefHeight="25.0" prefWidth="72.0" />
+      <ChoiceBox fx:id="bpmSelector" layoutX="1191.0" layoutY="493.0" prefHeight="25.0" prefWidth="72.0" />
+      <Text layoutX="1115.0" layoutY="458.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Level" />
+      <Text layoutX="1115.0" layoutY="510.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select BPM" />
+      <Circle fill="#cccccc" layoutX="132.0" layoutY="131.0" radius="118.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
       <Text fx:id="username" layoutX="14.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" textAlignment="CENTER" wrappingWidth="236.0">
          <font>
             <Font size="18.0" />
@@ -45,7 +48,7 @@
       </Text>
       <Text fx:id="levelsCompletedText" layoutX="1149.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0/25" textAlignment="CENTER">
          <font>
-            <Font size="49.0" />
+            <Font name="American Typewriter" size="49.0" />
          </font>
       </Text>
       <Text fx:id="lastLevelScoreText" layoutX="1167.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="--%" textAlignment="CENTER">
@@ -58,24 +61,27 @@
             <Font size="49.0" />
          </font>
       </Text>
-      <BarChart fx:id="levelScoresBarChart" animated="false" layoutX="61.0" layoutY="268.0" legendVisible="false" prefHeight="547.0" prefWidth="1023.0">
+      <BarChart fx:id="levelScoresBarChart" animated="false" layoutX="61.0" layoutY="268.0" legendVisible="false" prefHeight="547.0" prefWidth="1023.0" stylesheets="@../../../TimeLessStyle.css">
         <xAxis>
           <CategoryAxis side="BOTTOM" fx:id="xAxis" />
         </xAxis>
         <yAxis>
-          <NumberAxis fx:id="yAxis" side="LEFT" />
+          <NumberAxis fx:id="yAxis" minorTickCount="1" side="LEFT" />
         </yAxis>
       </BarChart>
-      <Button fx:id="resetMetricsButton" layoutX="1124.0" layoutY="716.0" mnemonicParsing="false" onAction="#onResetMetricsButtonClick" text="Reset Metrics -&gt;">
+      <Button fx:id="resetMetricsButton" layoutX="1114.0" layoutY="719.0" mnemonicParsing="false" onAction="#onResetMetricsButtonClick" prefHeight="40.0" prefWidth="150.0" text="Reset Metrics -&gt;">
          <font>
-            <Font size="18.0" />
+            <Font name="American Typewriter" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="exitButton" layoutX="1199.0" layoutY="780.0" mnemonicParsing="false" onAction="#onExitButtonClicked" text="Exit -&gt;">
+      <Button fx:id="exitButton" layoutX="1114.0" layoutY="768.0" mnemonicParsing="false" onAction="#onExitButtonClicked" prefHeight="40.0" prefWidth="150.0" text="Exit -&gt;">
          <font>
-            <Font size="18.0" />
+            <Font name="American Typewriter" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="viewLevelStatsButton" layoutX="1153.0" layoutY="386.0" mnemonicParsing="false" onAction="#onViewLevelStatsButtonClicked" text="View Level Stats" />
+      <Button fx:id="viewLevelStatsButton" layoutX="1114.0" layoutY="372.0" mnemonicParsing="false" onAction="#onViewLevelStatsButtonClicked" prefHeight="40.0" prefWidth="150.0" text="View Level Stats -&gt;">
+         <font>
+            <Font name="American Typewriter" size="13.0" />
+         </font></Button>
    </children>
 </AnchorPane>

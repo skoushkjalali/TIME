@@ -45,6 +45,8 @@ public class LoginController {
     private Text invalidNewUserTextLine1;
     @FXML
     private Text invalidNewUserTextLine2;
+    @FXML
+    private Text gameTitleText;
 
     private int numInvalidExistingLoginAttempts;
     private int numInvalidNewUserAttempts;

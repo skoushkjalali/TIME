@@ -80,6 +80,8 @@ public class ProfileController implements Initializable {
 
         // if the red cross is used to exit the game, then user data is still stored
         setSaveUserDataIfWindowClosed();
+
+
     }
 
     protected void setSaveUserDataIfWindowClosed(){
@@ -136,6 +138,9 @@ public class ProfileController implements Initializable {
         levelScoresBarChart.setCategoryGap(10);
         levelScoresBarChart.setBarGap(-20);
         levelScoresBarChart.setLegendVisible(false);
+        levelScoresBarChart.lookup(".chart-plot-background").setStyle("-fx-background-color: transparent;");
+//        levelScoresBarChart.setHorizontalGridLinesVisible(false);
+        levelScoresBarChart.setVerticalGridLinesVisible(false);
 
     }
 

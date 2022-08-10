@@ -8,17 +8,17 @@
 
 <AnchorPane prefHeight="868.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.time.game.Controller.EndOfLevel.GameCompletedController">
    <children>
-      <Button fx:id="profileButton" layoutX="1127.0" layoutY="685.0" mnemonicParsing="false" onAction="#onProfileButtonClick" prefHeight="49.0" prefWidth="105.0" text="Profile -&gt;">
+      <Button fx:id="profileButton" layoutX="1114.0" layoutY="719.0" mnemonicParsing="false" onAction="#onProfileButtonClick" prefHeight="40.0" prefWidth="150.0" text="Profile -&gt;">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="exitButton" layoutX="1127.0" layoutY="757.0" mnemonicParsing="false" onAction="#onExitButtonClick" prefHeight="49.0" prefWidth="105.0" text="Exit -&gt;">
+      <Button fx:id="exitButton" layoutX="1114.0" layoutY="768.0" mnemonicParsing="false" onAction="#onExitButtonClick" prefHeight="40.0" prefWidth="150.0" text="Exit -&gt;">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="repeatLevelButton" layoutX="608.0" layoutY="416.0" mnemonicParsing="false" onAction="#onRepeatLevelButtonClicked" prefHeight="35.0" prefWidth="122.0" text="Repeat level">
+      <Button fx:id="repeatLevelButton" layoutX="550.0" layoutY="418.0" mnemonicParsing="false" onAction="#onRepeatLevelButtonClicked" prefHeight="80.0" prefWidth="200.0" text="Repeat level -&gt;">
          <font>
             <Font size="18.0" />
          </font>
@@ -38,12 +38,12 @@
             <Font size="49.0" />
          </font>
       </Text>
-      <Button fx:id="viewLevelStatsButton" layoutX="1084.0" layoutY="630.0" mnemonicParsing="false" onAction="#onViewLevelStatsButtonClicked" text="View Level Stats">
+      <Button fx:id="viewLevelStatsButton" layoutX="1114.0" layoutY="669.0" mnemonicParsing="false" onAction="#onViewLevelStatsButtonClicked" text="View Level Stats">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <ChoiceBox fx:id="bpmSelector" layoutX="678.0" layoutY="451.0" prefHeight="25.0" prefWidth="52.0" />
-      <Text layoutX="609.0" layoutY="468.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select BPM" />
+      <ChoiceBox fx:id="bpmSelector" layoutX="1189.0" layoutY="636.0" prefHeight="25.0" prefWidth="70.0" />
+      <Text layoutX="1120.0" layoutY="653.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select BPM" />
    </children>
 </AnchorPane>

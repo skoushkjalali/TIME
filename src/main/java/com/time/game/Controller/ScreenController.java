@@ -10,6 +10,7 @@ public class ScreenController {
     public static void changeScreen(String fxmlFile) throws IOException {
         FXMLLoader loader = new FXMLLoader(ScreenController.class.getResource("/com/time/game/"+fxmlFile+".fxml"));
         Scene scene = new Scene(loader.load());
+        scene.getStylesheets().add("TimeLessStyle.css");
         Stage stage = TimeApplication.primaryStage;
         stage.setScene(scene);
         // allows keyboard input to be monitored
