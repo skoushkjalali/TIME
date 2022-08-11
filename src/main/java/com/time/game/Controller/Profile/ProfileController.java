@@ -22,6 +22,7 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class ProfileController implements Initializable {
@@ -61,6 +62,9 @@ public class ProfileController implements Initializable {
     private NumberAxis yAxis;
 
     @FXML
+    private Text highScoreText;
+
+    @FXML
     private Button viewLevelStatsButton;
 
     @FXML
@@ -80,6 +84,10 @@ public class ProfileController implements Initializable {
 
         // if the red cross is used to exit the game, then user data is still stored
         setSaveUserDataIfWindowClosed();
+
+        playButton.setStyle("-fx-background-color: #90ff00; -fx-text-fill: black");
+
+
 
 
     }
@@ -108,16 +116,18 @@ public class ProfileController implements Initializable {
 
     protected void setupBarChart(){
 
-        xAxis.setLabel("Level");
+
         xAxis.tickLabelFontProperty().set(Font.font(20));
         xAxis.setStyle("-fx-font-size: 30");
+        xAxis.setStyle("-fx-text-fill: #ffff; -fx-tick-label-fill: white");
 
-        yAxis.setLabel("Highest Score");
+        highScoreText.setRotate(-90);
         yAxis.tickLabelFontProperty().set(Font.font(20));
         yAxis.setStyle("-fx-font-size: 30");
         yAxis.setAutoRanging(false);
         yAxis.setUpperBound(100);
         yAxis.setLowerBound(0);
+        yAxis.setStyle("-fx-text-fill: #ffff; -fx-tick-label-fill: white");
 
 
         for(int i = 1; i<= RhythmFactory.getLastPossibleRhythmNumber(); i++) {
@@ -126,6 +136,8 @@ public class ProfileController implements Initializable {
                 XYChart.Data<String, Number> levelScore =  new XYChart.Data<>(""+i, userProfile.getHighestLevelScore(i));
                 scoreData.getData().add(levelScore);
                 levelScoresBarChart.getData().add(scoreData);
+
+
             }
             else{
                 XYChart.Data<String, Number> levelScore =  new XYChart.Data<>(""+i, 0);
@@ -138,9 +150,16 @@ public class ProfileController implements Initializable {
         levelScoresBarChart.setCategoryGap(10);
         levelScoresBarChart.setBarGap(-20);
         levelScoresBarChart.setLegendVisible(false);
-        levelScoresBarChart.lookup(".chart-plot-background").setStyle("-fx-background-color: transparent;");
-//        levelScoresBarChart.setHorizontalGridLinesVisible(false);
+        levelScoresBarChart.lookup(".chart-plot-background").setStyle("-fx-background-color: transparent");
+
+        levelScoresBarChart.setHorizontalGridLinesVisible(false);
         levelScoresBarChart.setVerticalGridLinesVisible(false);
+
+
+        // todo debug this
+//        levelScoresBarChart.lookup(".data0.chart-bar").setStyle("-fx-bar-fill: #0010ff");
+//        levelScoresBarChart.lookup(".data21.chart-bar").setStyle("-fx-bar-fill: #0010ff");
+//        levelScoresBarChart.lookup(".data24.chart-bar").setStyle("-fx-bar-fill: #0010ff");
 
     }
 

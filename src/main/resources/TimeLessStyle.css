@@ -1,16 +1,26 @@
 .root{
-    -fx-background-color: #CCCCCC;
-    -fx-font-family: "American Typewriter";
+    -fx-background-color: #121212;
+    -fx-font-family: "PT Sans";
+
 }
 
 .button{
-    -fx-effect: dropshadow(gaussian,#424242, 10, 0.5, 0.5, 0.3);
+    -fx-background-color: #616161;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian,black, 10, 0.5, 0.5, 0.3);
 }
 
 
 Text{
-    -fx-font-family: "American Typewriter";
+    -fx-font-family: "PT Sans";
 }
+
+.choice-box{
+    -fx-background-color: #616161;
+    -fx-text-fill: white;
+}
+
+
 
 
 
