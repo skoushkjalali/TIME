@@ -17,19 +17,15 @@ Text{
 
 .choice-box{
     -fx-background-color: #616161;
-    -fx-text-fill: white;
+
 }
 
 .choice-box .label{
-    -fx-text-fill: #6dcff6;
+    -fx-text-fill: white;
+
+
 }
 
-
-
-
-
-
-
-
-
-
+.choice-box .context-menu{
+    -fx-background-color: #616161;
+}

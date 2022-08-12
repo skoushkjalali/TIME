@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="868.0" prefWidth="1300.0" stylesheets="@../../../TimeLessStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.time.game.Controller.Login.LoginController">
+<AnchorPane prefHeight="868.0" prefWidth="1300.0" stylesheets="@../../../LoginStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.time.game.Controller.Login.LoginController">
    <children>
       <Rectangle arcHeight="18.0" arcWidth="18.0" fill="WHITE" height="288.0" layoutX="431.0" layoutY="293.0" opacity="0.05" stroke="BLACK" strokeType="INSIDE" width="445.0" />
       <Text fx:id="gameTitleText" fill="WHITE" layoutX="7.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TIME Rhythm Training Game" textAlignment="CENTER" wrappingWidth="1293.0340576171875">

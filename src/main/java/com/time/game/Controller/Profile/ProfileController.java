@@ -16,6 +16,9 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
@@ -70,6 +73,12 @@ public class ProfileController implements Initializable {
     @FXML
     private Text lastLevelText;
 
+    @FXML
+    private Circle userCircle;
+
+    @FXML
+    private Rectangle statsSurfaceRectangle;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -85,9 +94,7 @@ public class ProfileController implements Initializable {
         // if the red cross is used to exit the game, then user data is still stored
         setSaveUserDataIfWindowClosed();
 
-        playButton.setStyle("-fx-background-color: #90ff00; -fx-text-fill: black");
-
-
+        playButton.setStyle("-fx-background-color: #d5a72a; -fx-text-fill: black;");
 
 
     }
@@ -115,6 +122,10 @@ public class ProfileController implements Initializable {
     }
 
     protected void setupBarChart(){
+
+        for(int i = 1; i<= 25; i++ ){
+            userProfile.updateUserScores(i, i*4);
+        }
 
 
         xAxis.tickLabelFontProperty().set(Font.font(20));
