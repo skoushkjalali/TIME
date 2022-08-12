@@ -14,3 +14,8 @@
 Text{
     -fx-font-family: "PT Sans";
 }
+
+#viewLevelStatsButton{
+    -fx-background-color: #616161;
+    -fx-text-fill: white;
+}

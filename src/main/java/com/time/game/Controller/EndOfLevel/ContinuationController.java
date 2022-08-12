@@ -49,9 +49,9 @@ public class ContinuationController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle){
         userProfile = TimeApplication.userProfile;
         levelCompletionText.setText("Level "+Level.getLevelNumber()+" Complete");
-        levelAccuracyText.setText("Accuracy score "+Level.getLastScore() + "%");
+        levelAccuracyText.setText(Level.getLastScore() + "%");
         int highScore = TimeApplication.userProfile.getHighestLevelScore(Level.getLevelNumber());
-        levelHighScoreText.setText("Level High Score "+highScore+"%");
+        levelHighScoreText.setText(highScore+"%");
 
         setupBPMSelector();
 
