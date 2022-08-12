@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane focusTraversable="true" prefHeight="868.0" prefWidth="1300.0" stylesheets="@../../../ProfileStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.time.game.Controller.Profile.ProfileController">
+<AnchorPane focusTraversable="true" prefHeight="868.0" prefWidth="1300.0" stylesheets="@../../../CSS/ProfileStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.time.game.Controller.Profile.ProfileController">
    <children>
       <Circle fx:id="userCircle" fill="#1b1b1b" layoutX="134.0" layoutY="138.0" radius="125.0" stroke="#d5a72a" strokeType="INSIDE" strokeWidth="0.75" />
       <Rectangle fx:id="statsSurfaceRectangle" arcHeight="18.0" arcWidth="18.0" fill="#1b1b1b" height="200.0" layoutX="914.0" layoutY="52.0" stroke="#d5a72a" strokeType="OUTSIDE" strokeWidth="0.0" width="372.0" />
@@ -21,8 +21,8 @@
          <font>
             <Font name="American Typewriter" size="18.0" />
          </font></Button>
-      <ChoiceBox fx:id="levelSelector" layoutX="1186.0" layoutY="384.0" prefHeight="25.0" prefWidth="72.0" stylesheets="@../../../ProfileStyle.css" />
-      <ChoiceBox fx:id="bpmSelector" layoutX="1186.0" layoutY="436.0" prefHeight="25.0" prefWidth="72.0" stylesheets="@../../../ProfileStyle.css" />
+      <ChoiceBox fx:id="levelSelector" layoutX="1186.0" layoutY="384.0" prefHeight="25.0" prefWidth="72.0" stylesheets="@../../../CSS/ProfileStyle.css" />
+      <ChoiceBox fx:id="bpmSelector" layoutX="1186.0" layoutY="436.0" prefHeight="25.0" prefWidth="72.0" stylesheets="@../../../CSS/ProfileStyle.css" />
       <Text fill="WHITE" layoutX="1110.0" layoutY="401.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Level" />
       <Text fill="WHITE" layoutX="1110.0" layoutY="453.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select BPM" />
       <Text fx:id="username" fill="WHITE" layoutX="13.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username" textAlignment="CENTER" wrappingWidth="243.0">
@@ -65,7 +65,7 @@
             <Font size="49.0" />
          </font>
       </Text>
-      <BarChart fx:id="levelScoresBarChart" animated="false" layoutX="61.0" layoutY="268.0" legendVisible="false" prefHeight="547.0" prefWidth="1023.0" stylesheets="@../../../BarChart.css">
+      <BarChart fx:id="levelScoresBarChart" animated="false" layoutX="61.0" layoutY="268.0" legendVisible="false" prefHeight="547.0" prefWidth="1023.0" stylesheets="@../../../CSS/BarChart.css">
         <xAxis>
           <CategoryAxis side="BOTTOM" fx:id="xAxis" />
         </xAxis>

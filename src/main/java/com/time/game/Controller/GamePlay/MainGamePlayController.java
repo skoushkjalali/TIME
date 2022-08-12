@@ -73,29 +73,29 @@ public class MainGamePlayController implements Initializable {
         // beat1 in all bars
         for(int i = 0; i < metronomeEvents.length; i+=8){
             int cumulativeDuration = (i/2)*clickIOI;
-            metronomeEvents[i] = new KeyFrame(Duration.millis(cumulativeDuration), actionEvent -> makeBeat1Black());
-            metronomeEvents[i+1] = new KeyFrame(Duration.millis(cumulativeDuration+flashLength), actionEvent -> makeBeat1White());
+            metronomeEvents[i] = new KeyFrame(Duration.millis(cumulativeDuration), actionEvent -> makeBeat1StartFlash());
+            metronomeEvents[i+1] = new KeyFrame(Duration.millis(cumulativeDuration+flashLength), actionEvent -> makeBeat1FinishFlash());
         }
 
         // beat2 in all bars
         for(int i = 2; i < metronomeEvents.length; i+=8){
             int cumulativeDuration = (i/2)*clickIOI;
-            metronomeEvents[i] = new KeyFrame(Duration.millis(cumulativeDuration), actionEvent -> makeBeat2Black());
-            metronomeEvents[i+1] = new KeyFrame(Duration.millis(cumulativeDuration+flashLength), actionEvent -> makeBeat2White());
+            metronomeEvents[i] = new KeyFrame(Duration.millis(cumulativeDuration), actionEvent -> makeBeat2StartFlash());
+            metronomeEvents[i+1] = new KeyFrame(Duration.millis(cumulativeDuration+flashLength), actionEvent -> makeBeat2FinishFlash());
         }
 
         // beat3 in all bars
         for(int i = 4; i < metronomeEvents.length; i+=8){
             int cumulativeDuration = (i/2)*clickIOI;
-            metronomeEvents[i] = new KeyFrame(Duration.millis(cumulativeDuration), actionEvent -> makeBeat3Black());
-            metronomeEvents[i+1] = new KeyFrame(Duration.millis(cumulativeDuration+flashLength), actionEvent -> makeBeat3White());
+            metronomeEvents[i] = new KeyFrame(Duration.millis(cumulativeDuration), actionEvent -> makeBeat3StartFlash());
+            metronomeEvents[i+1] = new KeyFrame(Duration.millis(cumulativeDuration+flashLength), actionEvent -> makeBeat3FinishFlash());
         }
 
         // beat4 in all bars
         for(int i = 6; i < metronomeEvents.length; i+=8){
             int cumulativeDuration = (i/2)*clickIOI;
-            metronomeEvents[i] = new KeyFrame(Duration.millis(cumulativeDuration), actionEvent -> makeBeat4Black());
-            metronomeEvents[i+1] = new KeyFrame(Duration.millis(cumulativeDuration+flashLength), actionEvent -> makeBeat4White());
+            metronomeEvents[i] = new KeyFrame(Duration.millis(cumulativeDuration), actionEvent -> makeBeat4StartFlash());
+            metronomeEvents[i+1] = new KeyFrame(Duration.millis(cumulativeDuration+flashLength), actionEvent -> makeBeat4FinishFlash());
         }
 
         return metronomeEvents;
@@ -216,7 +216,7 @@ public class MainGamePlayController implements Initializable {
 
     protected void drawSampleOnsets(){
         for(double onset : getSampleOnsetXCoordinates(1000, 230)){
-            drawOnsetLine(onset, 467);
+            drawOnsetLine(onset, 467, Color.WHITE);
         }
     }
 
@@ -228,11 +228,11 @@ public class MainGamePlayController implements Initializable {
         if(Level.isUserInputCaptureEnabled()) {
             double delayFromStartOfBar = (System.nanoTime() / 1_000_000.0) - (RhythmListener.startTime + level.getBarDurationInMilliSecs());
             double xAxisLocation = ((delayFromStartOfBar / level.getBarDurationInMilliSecs()) * 1000) + 230;
-            drawOnsetLine(xAxisLocation, 582);
+            drawOnsetLine(xAxisLocation, 582, Color.web("#2a35d5"));
         }
     }
 
-    private void drawOnsetLine(double xAxisLocation, double yAxisLocation) {
+    private void drawOnsetLine(double xAxisLocation, double yAxisLocation, Color lineColor ) {
         Line newOnset = new Line();
         newOnset.setLayoutX(xAxisLocation);
         newOnset.setLayoutY(yAxisLocation);
@@ -240,7 +240,8 @@ public class MainGamePlayController implements Initializable {
         newOnset.setStartY(6);
         newOnset.setEndX(-100);
         newOnset.setEndY(60);
-        newOnset.setStrokeWidth(2);
+        newOnset.setStrokeWidth(4);
+        newOnset.setStroke(lineColor);
         mainPane.getChildren().add(newOnset);
     }
 
@@ -253,7 +254,7 @@ public class MainGamePlayController implements Initializable {
     protected void userInputKeyPressed(){
         beepFactory.getBeep3();
         drawUserOnset();
-        makeTapPadBlack();
+        makeTapPadStartFlash();
         if(Level.isUserInputCaptureEnabled()) {
             RhythmListener.userInput.add((int) ((System.nanoTime() / 1_000_000) - RhythmListener.startTime));
         }
@@ -262,62 +263,62 @@ public class MainGamePlayController implements Initializable {
 
     @FXML
     protected void userInputKeyReleased(){
-        makeTapPadWhite();
+        makeTapPadFinishFlash();
     }
 
     @FXML
-    protected void makeTapPadBlack(){
-        tapPad.setFill(Color.BLACK);
-    }
-
-    @FXML
-    protected void makeTapPadWhite(){
+    protected void makeTapPadStartFlash(){
         tapPad.setFill(Color.WHITE);
     }
 
     @FXML
-    protected void makeBeat1Black() {
-        beepFactory.getBeep2();
-        beat1.setFill(Color.BLACK);
+    protected void makeTapPadFinishFlash(){
+        tapPad.setFill(Color.web("121212"));
     }
 
     @FXML
-    protected void makeBeat1White(){
+    protected void makeBeat1StartFlash() {
+        beepFactory.getBeep2();
         beat1.setFill(Color.WHITE);
     }
 
-
     @FXML
-    protected void makeBeat2Black(){
-        beepFactory.getBeep2();
-        beat2.setFill(Color.BLACK);
+    protected void makeBeat1FinishFlash(){
+        beat1.setFill(Color.web("121212"));
     }
 
+
     @FXML
-    protected void makeBeat2White(){
+    protected void makeBeat2StartFlash(){
+        beepFactory.getBeep2();
         beat2.setFill(Color.WHITE);
     }
 
     @FXML
-    protected void makeBeat3Black(){
-        beepFactory.getBeep2();
-        beat3.setFill(Color.BLACK);
+    protected void makeBeat2FinishFlash(){
+        beat2.setFill(Color.web("121212"));
     }
 
     @FXML
-    protected void makeBeat3White(){
+    protected void makeBeat3StartFlash(){
+        beepFactory.getBeep2();
         beat3.setFill(Color.WHITE);
     }
 
     @FXML
-    protected void makeBeat4Black(){
-        beepFactory.getBeep2();
-        beat4.setFill(Color.BLACK);
+    protected void makeBeat3FinishFlash(){
+        beat3.setFill(Color.web("121212"));
     }
 
     @FXML
-    protected void makeBeat4White(){
+    protected void makeBeat4StartFlash(){
+        beepFactory.getBeep2();
         beat4.setFill(Color.WHITE);
+    }
+
+    @FXML
+    protected void makeBeat4FinishFlash(){
+        beat4.setFill(Color.web("121212"));
     }
 
 
