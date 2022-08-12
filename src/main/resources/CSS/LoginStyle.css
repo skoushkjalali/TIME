@@ -10,6 +10,14 @@
     -fx-effect: dropshadow(gaussian,black, 10, 0.5, 0.5, 0.3);
 }
 
+#existingUserLoginButton:hover{
+    -fx-background-color: #a07800;
+}
+
+#newUserLoginButton:hover{
+    -fx-background-color: #a07800;
+}
+
 
 Text{
     -fx-font-family: "PT Sans";

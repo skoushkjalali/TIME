@@ -13,11 +13,11 @@
 
 <AnchorPane focusTraversable="true" prefHeight="868.0" prefWidth="1300.0" stylesheets="@../../../CSS/ProfileStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.time.game.Controller.Profile.ProfileController">
    <children>
-      <Circle fx:id="userCircle" fill="#1b1b1b" layoutX="134.0" layoutY="138.0" radius="125.0" stroke="#d5a72a" strokeType="INSIDE" strokeWidth="0.75" />
-      <Rectangle fx:id="statsSurfaceRectangle" arcHeight="18.0" arcWidth="18.0" fill="#1b1b1b" height="200.0" layoutX="914.0" layoutY="52.0" stroke="#d5a72a" strokeType="OUTSIDE" strokeWidth="0.0" width="372.0" />
-      <Rectangle arcHeight="18.0" arcWidth="18.0" fill="#1b1b1b" height="169.0" layoutX="1084.0" layoutY="622.0" stroke="#d5a72a" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
-      <Rectangle arcHeight="18.0" arcWidth="18.0" fill="#1b1b1b" height="314.0" layoutX="1084.0" layoutY="282.0" stroke="#d5a72a" strokeType="INSIDE" strokeWidth="0.75" width="200.0" />
-      <Button fx:id="playButton" layoutX="1109.0" layoutY="483.0" mnemonicParsing="false" onAction="#onPlayButtonClick" prefHeight="80.0" prefWidth="150.0" text="Play -&gt;">
+      <Circle fx:id="userCircle" fill="#1e1e1e" layoutX="134.0" layoutY="138.0" radius="125.0" stroke="#d5a72a" strokeType="INSIDE" strokeWidth="0.75" />
+      <Rectangle fx:id="statsSurfaceRectangle" arcHeight="18.0" arcWidth="18.0" fill="#1e1e1e" height="200.0" layoutX="914.0" layoutY="36.0" stroke="#d5a72a" strokeType="OUTSIDE" strokeWidth="0.0" width="372.0" />
+      <Rectangle arcHeight="18.0" arcWidth="18.0" fill="#1e1e1e" height="156.0" layoutX="1084.0" layoutY="643.0" stroke="#d5a72a" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+      <Rectangle arcHeight="18.0" arcWidth="18.0" fill="#1e1e1e" height="314.0" layoutX="1084.0" layoutY="282.0" stroke="#d5a72a" strokeType="INSIDE" strokeWidth="0.75" width="200.0" />
+      <Button fx:id="playButton" layoutX="1109.0" layoutY="483.0" mnemonicParsing="false" onAction="#onPlayButtonClick" prefHeight="80.0" prefWidth="150.0" stylesheets="@../../../CSS/ProfileStyle.css" text="Play">
          <font>
             <Font name="American Typewriter" size="18.0" />
          </font></Button>
@@ -35,37 +35,37 @@
             <Font size="49.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="976.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Levels Completed">
+      <Text fill="WHITE" layoutX="976.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Levels Completed">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text fx:id="lastLevelText" fill="WHITE" layoutX="949.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Level Played: n/a">
+      <Text fx:id="lastLevelText" fill="WHITE" layoutX="949.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Level Played: n/a">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="938.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Average Highest Score">
+      <Text fill="WHITE" layoutX="938.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Average Highest Score">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text fx:id="levelsCompletedText" fill="WHITE" layoutX="1148.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0/25" textAlignment="CENTER">
+      <Text fx:id="levelsCompletedText" fill="WHITE" layoutX="1148.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0/25" textAlignment="RIGHT">
          <font>
             <Font name="American Typewriter" size="49.0" />
          </font>
       </Text>
-      <Text fx:id="lastLevelScoreText" fill="WHITE" layoutX="1166.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="--%" textAlignment="CENTER">
+      <Text fx:id="lastLevelScoreText" fill="WHITE" layoutX="1153.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="---%" textAlignment="RIGHT">
          <font>
             <Font size="49.0" />
          </font>
       </Text>
-      <Text fx:id="averageHighestScoreText" fill="WHITE" layoutX="1166.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="--%" textAlignment="CENTER">
+      <Text fx:id="averageHighestScoreText" fill="WHITE" layoutX="1153.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="---%" textAlignment="RIGHT">
          <font>
             <Font size="49.0" />
          </font>
       </Text>
-      <BarChart fx:id="levelScoresBarChart" animated="false" layoutX="61.0" layoutY="268.0" legendVisible="false" prefHeight="547.0" prefWidth="1023.0" stylesheets="@../../../CSS/BarChart.css">
+      <BarChart fx:id="levelScoresBarChart" animated="false" layoutX="55.0" layoutY="268.0" legendVisible="false" prefHeight="547.0" prefWidth="1023.0" stylesheets="@../../../CSS/BarChart.css">
         <xAxis>
           <CategoryAxis side="BOTTOM" fx:id="xAxis" />
         </xAxis>
@@ -73,21 +73,21 @@
           <NumberAxis fx:id="yAxis" minorTickCount="1" side="LEFT" />
         </yAxis>
       </BarChart>
-      <Button fx:id="resetMetricsButton" layoutX="1109.0" layoutY="651.0" mnemonicParsing="false" onAction="#onResetMetricsButtonClick" prefHeight="40.0" prefWidth="150.0" text="Reset Metrics -&gt;">
+      <Button fx:id="resetMetricsButton" layoutX="1109.0" layoutY="672.0" mnemonicParsing="false" onAction="#onResetMetricsButtonClick" prefHeight="40.0" prefWidth="150.0" text="Reset Metrics">
          <font>
             <Font name="American Typewriter" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="viewLevelStatsButton" layoutX="1109.0" layoutY="315.0" mnemonicParsing="false" onAction="#onViewLevelStatsButtonClicked" prefHeight="40.0" prefWidth="150.0" text="View Level Stats -&gt;">
+      <Button fx:id="viewLevelStatsButton" layoutX="1109.0" layoutY="315.0" mnemonicParsing="false" onAction="#onViewLevelStatsButtonClicked" prefHeight="40.0" prefWidth="150.0" text="View Level Stats">
          <font>
             <Font name="American Typewriter" size="13.0" />
          </font></Button>
-      <Button fx:id="exitButton" layoutX="1109.0" layoutY="716.0" mnemonicParsing="false" onAction="#onExitButtonClicked" prefHeight="40.0" prefWidth="150.0" text="Exit -&gt;">
+      <Button fx:id="exitButton" layoutX="1109.0" layoutY="733.0" mnemonicParsing="false" onAction="#onExitButtonClicked" prefHeight="40.0" prefWidth="150.0" text="Exit">
          <font>
             <Font name="American Typewriter" size="18.0" />
          </font>
       </Button>
-      <Text fx:id="highScoreText" fill="WHITE" layoutX="12.0" layoutY="524.0" strokeType="OUTSIDE" strokeWidth="0.0" text="High Score" wrappingWidth="97.46100616455078">
+      <Text fx:id="highScoreText" fill="WHITE" layoutX="8.0" layoutY="524.0" strokeType="OUTSIDE" strokeWidth="0.0" text="High Score" wrappingWidth="97.46100616455078">
          <font>
             <Font size="20.0" />
          </font>

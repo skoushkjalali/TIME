@@ -36,8 +36,6 @@ public class LoginController {
     @FXML
     private Button newUserLoginButton;
 
-    @FXML
-    private Button exitButton;
 
     @FXML
     private Text invalidLoginText;
@@ -113,14 +111,6 @@ public class LoginController {
             invalidNewUserTextLine1.setText("username is already in use");
             invalidNewUserTextLine2.setText("");
         }
-    }
-
-    /*
-        Exit without saving data, no data has been updated
-     */
-    @FXML
-    protected void onExitButtonClick(){
-        Platform.exit();
     }
 
     /*

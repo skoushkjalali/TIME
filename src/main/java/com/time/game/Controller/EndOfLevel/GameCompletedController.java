@@ -49,8 +49,8 @@ public class GameCompletedController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
         userProfile = TimeApplication.userProfile;
-        scoreText.setText("Score " + TimeApplication.userProfile.getScoreOnLastLevel());
-        levelHighScoreText.setText("Level High Score "+TimeApplication.userProfile.getHighestLevelScore(
+        scoreText.setText(TimeApplication.userProfile.getScoreOnLastLevel());
+        levelHighScoreText.setText(TimeApplication.userProfile.getHighestLevelScore(
                 RhythmFactory.getLastPossibleRhythmNumber()) + "%");
 
         setupBPMSelector();

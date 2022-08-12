@@ -94,7 +94,7 @@ public class ProfileController implements Initializable {
         // if the red cross is used to exit the game, then user data is still stored
         setSaveUserDataIfWindowClosed();
 
-        playButton.setStyle("-fx-background-color: #d5a72a; -fx-text-fill: black;");
+
 
 
     }
@@ -122,11 +122,6 @@ public class ProfileController implements Initializable {
     }
 
     protected void setupBarChart(){
-
-        for(int i = 1; i<= 25; i++ ){
-            userProfile.updateUserScores(i, i*4);
-        }
-
 
         xAxis.tickLabelFontProperty().set(Font.font(20));
         xAxis.setStyle("-fx-font-size: 30");

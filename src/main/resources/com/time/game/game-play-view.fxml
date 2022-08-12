@@ -38,8 +38,8 @@
                </font></Text>
             <Line fx:id="startOfBarLine" endX="-100.0" endY="194.0" fill="WHITE" layoutX="230.0" layoutY="420.0" opacity="0.3" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
             <Line endX="-100.0" endY="173.0" fill="WHITE" layoutX="980.0" layoutY="439.0" opacity="0.3" startX="-100.0" startY="-21.0" stroke="WHITE" strokeWidth="2.0" />
-            <Line fx:id="endOfBarLine" endX="-100.0" endY="194.0" layoutX="1230.0" layoutY="420.0" opacity="0.14" startX="-100.0" strokeWidth="2.0" />
-            <Text fx:id="centralText" boundsType="LOGICAL_VERTICAL_CENTER" fill="WHITE" layoutX="573.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="148.048828125">
+            <Line fx:id="endOfBarLine" endX="-100.0" endY="194.0" layoutX="1230.0" layoutY="420.0" opacity="0.3" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
+            <Text fx:id="centralText" boundsType="LOGICAL_VERTICAL_CENTER" fill="WHITE" layoutX="14.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="1294.0">
                <font>
                   <Font size="49.0" />
                </font>

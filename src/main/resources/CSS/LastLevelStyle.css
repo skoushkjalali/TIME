@@ -25,7 +25,7 @@ Text{
     -fx-text-fill: white;
 }
 
-#goToProfileButton{
+#profileButton{
     -fx-background-color: #616161;
     -fx-text-fill: white;
 }
@@ -54,23 +54,15 @@ Text{
     -fx-background-color: #a07800;
 }
 
-#playNextLevelButton:hover{
-    -fx-background-color: #a07800;
-}
 
 #viewLevelStatsButton:hover{
     -fx-background-color: #424242;
 }
 
-#goToProfileButton:hover{
+#profileButton:hover{
     -fx-background-color: #424242;
 }
 
 #exitButton:hover{
     -fx-background-color: #424242;
 }
-
-
-
-
-

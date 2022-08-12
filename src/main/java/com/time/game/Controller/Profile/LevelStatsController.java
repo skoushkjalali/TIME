@@ -53,6 +53,9 @@ public class LevelStatsController implements Initializable {
     private Text statsPageTitle;
 
     @FXML
+    private Text scoreLabelText;
+
+    @FXML
     private ChoiceBox<Integer> bpmSelector;
 
     private UserProfile userProfile;
@@ -90,13 +93,14 @@ public class LevelStatsController implements Initializable {
 
         protected void setupLineGraph(){
 
-        xAxis.setLabel("Attempt");
-        xAxis.tickLabelFontProperty().set(Font.font(20));
-        xAxis.setStyle("-fx-font-size: 30");
 
-        yAxis.setLabel("Score");
+
+        xAxis.tickLabelFontProperty().set(Font.font(20));
+        xAxis.setStyle("-fx-font-size: 30; -fx-text-fill: #ffff; -fx-tick-label-fill: white ");
+
+        scoreLabelText.setRotate(-90);
         yAxis.tickLabelFontProperty().set(Font.font(20));
-        yAxis.setStyle("-fx-font-size: 30");
+        yAxis.setStyle("-fx-font-size: 30; -fx-text-fill: #ffff; -fx-tick-label-fill: white ");
         yAxis.setAutoRanging(false);
         yAxis.setUpperBound(100);
         yAxis.setLowerBound(0);
@@ -114,6 +118,7 @@ public class LevelStatsController implements Initializable {
         levelStatsGraph.getData().add(dataSeries);
         levelStatsGraph.setLegendVisible(false);
         levelStatsGraph.setVerticalGridLinesVisible(false);
+        levelStatsGraph.setHorizontalGridLinesVisible(false);
         levelStatsGraph.lookup(".chart-plot-background").setStyle("-fx-background-color: transparent;");
 
     }

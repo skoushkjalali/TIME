@@ -8,6 +8,28 @@
     -fx-background-color: #616161;
     -fx-text-fill: white;
     -fx-effect: dropshadow(gaussian,black, 10, 0.5, 0.5, 0.3);
+
+}
+
+#playButton{
+    -fx-background-color: #d5a72a;
+    -fx-text-fill: black;
+}
+
+#playButton:hover{
+    -fx-background-color: #a07800;
+}
+
+#viewLevelStatsButton:hover{
+    -fx-background-color: #424242;
+}
+
+#resetMetricsButton:hover{
+    -fx-background-color: #424242;
+}
+
+#exitButton:hover{
+    -fx-background-color: #424242;
 }
 
 
@@ -22,10 +44,16 @@ Text{
 
 .choice-box .label{
     -fx-text-fill: white;
-
-
 }
 
 .choice-box .context-menu{
     -fx-background-color: #616161;
+}
+
+.choice-box .menu-item:focused {
+    -fx-background-color: #757575;
+}
+
+.choice-box:hover{
+    -fx-background-color: #424242;
 }

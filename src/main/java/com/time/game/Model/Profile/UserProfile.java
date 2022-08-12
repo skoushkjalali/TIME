@@ -79,7 +79,7 @@ public class UserProfile {
         for(int i = 1; i <= RhythmFactory.getLastPossibleRhythmNumber(); i++){
             levelScores.put(i, null);
         }
-        this.scoreOnLastLevel = "--%";
+        this.scoreOnLastLevel = "---%";
     }
 
     public int getNumLevelsCompleted(){
