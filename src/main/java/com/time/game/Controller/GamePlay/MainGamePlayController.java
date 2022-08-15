@@ -228,7 +228,7 @@ public class MainGamePlayController implements Initializable {
         if(Level.isUserInputCaptureEnabled()) {
             double delayFromStartOfBar = (System.nanoTime() / 1_000_000.0) - (RhythmListener.startTime + level.getBarDurationInMilliSecs());
             double xAxisLocation = ((delayFromStartOfBar / level.getBarDurationInMilliSecs()) * 1000) + 230;
-            drawOnsetLine(xAxisLocation, 582, Color.web("#2a35d5"));
+            drawOnsetLine(xAxisLocation, 582, Color.web("#d5522a"));
         }
     }
 
@@ -268,7 +268,7 @@ public class MainGamePlayController implements Initializable {
 
     @FXML
     protected void makeTapPadStartFlash(){
-        tapPad.setFill(Color.WHITE);
+        tapPad.setFill(Color.web("d5522a"));
     }
 
     @FXML

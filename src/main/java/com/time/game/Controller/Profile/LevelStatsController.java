@@ -92,20 +92,14 @@ public class LevelStatsController implements Initializable {
 
 
         protected void setupLineGraph(){
-
-
-
         xAxis.tickLabelFontProperty().set(Font.font(20));
         xAxis.setStyle("-fx-font-size: 30; -fx-text-fill: #ffff; -fx-tick-label-fill: white ");
-
         scoreLabelText.setRotate(-90);
         yAxis.tickLabelFontProperty().set(Font.font(20));
         yAxis.setStyle("-fx-font-size: 30; -fx-text-fill: #ffff; -fx-tick-label-fill: white ");
         yAxis.setAutoRanging(false);
         yAxis.setUpperBound(100);
         yAxis.setLowerBound(0);
-
-
 
         ArrayList<Integer> levelScores = userProfile.getLevelScoreAttempts(userProfile.getLevelStatRequestNumber());
         XYChart.Series<String, Number> dataSeries = new XYChart.Series<>();

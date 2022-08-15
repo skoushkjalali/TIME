@@ -14,9 +14,13 @@
     -fx-background-color: #a07800;
 }
 
+
+
 #newUserLoginButton:hover{
     -fx-background-color: #a07800;
 }
+
+
 
 
 Text{

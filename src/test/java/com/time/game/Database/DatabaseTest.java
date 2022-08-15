@@ -25,7 +25,7 @@ class DatabaseTest {
     void testCompressUserLevelScores1(){
         ArrayList<Integer> userScores = null;
         String result = DatabaseUtils.compressUserLevelScores(userScores);
-        assertEquals("", result);
+        assertNull(result);
     }
 
     @Test
@@ -134,7 +134,35 @@ class DatabaseTest {
         assertEquals("223", output.get(22));
         assertEquals("224", output.get(23));
         assertEquals("225", output.get(24));
+    }
 
+    @Test
+    void testGetUserProfileScoreDataAsStrings2(){
+        userProfile = new UserProfile("James");
+        ArrayList<String>  output = getUserProfileScoreDataAsStrings(userProfile);
+        for(var score : output) {
+            assertNull(score);
+        }
+    }
+
+    @Test
+    void testUpdateAllUserData() throws SQLException {
+        userProfile = new UserProfile("Tester");
+        userProfile.updateUserScores(1,67);
+        DatabaseUtils.updateAllUserData(userProfile);
+
+    }
+
+    @Test
+    void testUpdateAllUserData1() throws SQLException {
+        userProfile = new UserProfile("Tester");
+        userProfile.updateUserScores(1,67);
+        userProfile.updateUserScores(2,100);
+        userProfile.updateUserScores(3,33);
+        userProfile.updateUserScores(4,77);
+        userProfile.updateUserScores(5,9);
+        userProfile.updateUserScores(6,10);
+        DatabaseUtils.updateAllUserData(userProfile);
 
     }
 

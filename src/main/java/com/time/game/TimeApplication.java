@@ -4,6 +4,8 @@ import com.time.game.Database.DatabaseUtils;
 import com.time.game.Model.Profile.UserProfile;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
 import java.io.IOException;
 
 public class TimeApplication extends Application {
@@ -18,11 +20,12 @@ public class TimeApplication extends Application {
         stage.setMinHeight(868);
         stage.setMaxWidth(1300);
         stage.setMinWidth(1300);
-        stage.setTitle("TIME APPLICATION");
+        stage.setTitle("TIME");
+
 
         ScreenController.changeScreen("login-view");
 
-        primaryStage.show();
+//        primaryStage.show();
     }
 
 

@@ -66,50 +66,53 @@ public class LoginController {
         }
         else {
             if(numInvalidExistingLoginAttempts % 2 == 0) {
-                invalidLoginText.setFill(Color.RED); // toggle red/blue for multiple wrong attempts
-                invalidLoginText.setFill(Color.RED); // otherwise text popup appears static on repeat tries
+                invalidLoginText.setFill(Color.web("#B00020")); // toggle red/blue for multiple wrong attempts
+                                                    // otherwise text popup appears static on repeat tries
             }
             else{
-                invalidNewUserTextLine1.setFill(Color.BLUE);
-                invalidNewUserTextLine2.setFill(Color.BLUE);
+                invalidLoginText.setFill(Color.web("#e94948"));
             }
 
             invalidLoginText.setText("invalid username and/or password");
+            numInvalidExistingLoginAttempts +=1;
         }
     }
 
     @FXML
     protected void onNewUserLoginButtonClick() throws IOException, SQLException {
+
         String username = newUsername.getText();
         String password = newPassword.getText();
 
-        // check username and password will fil in varchar(24) in database column and is not 0 length
-        if(username.length() > 24 || password.length() > 24 || username.length() < 1 || password.length() < 1){
-            if(numInvalidNewUserAttempts % 2 ==0) {
-                invalidNewUserTextLine1.setFill(Color.RED); // toggle red/blue for multiple wrong attempts
-                invalidNewUserTextLine2.setFill(Color.RED); // otherwise text popup appears static on repeat tries
-            }
-            else{
-                invalidNewUserTextLine1.setFill(Color.BLUE);
-                invalidNewUserTextLine2.setFill(Color.BLUE);
-            }
+        // set colour of error messages;
+        if(numInvalidNewUserAttempts % 2 == 0) {
+            invalidNewUserTextLine1.setFill(Color.web("#B00020")); // toggle red/blue for multiple wrong attempts
+            invalidNewUserTextLine2.setFill(Color.web("#B00020")); // otherwise text popup appears static on repeat tries
+        }
+        else{
+            invalidNewUserTextLine1.setFill(Color.web("#e94948"));
+            invalidNewUserTextLine2.setFill(Color.web("#e94948"));
+        }
 
+        // check username and password will fit in varchar(24) in database columns and are not 0 length
+        if(username.length() > 24 || password.length() > 24 || username.length() < 1 || password.length() < 1){
             invalidNewUserTextLine1.setText("invalid username and/or password lengths");
             invalidNewUserTextLine2.setText("username and password must each be between 1 and 24 characters");
             numInvalidNewUserAttempts +=1;
             return;
         }
 
+        // check username is available, if so create new user in database
         if(DatabaseUtils.checkNewUsernameIsAvailable(username)) {
-            // create new user in database
+
             DatabaseUtils.createNewUserProfile(username, password);
             DatabaseUtils.addNewUserToScoresTable(username);
             TimeApplication.userProfile = new UserProfile(username);
             ScreenController.changeScreen("profile-view");
-        }
-        else{
+        } else{
             invalidNewUserTextLine1.setText("username is already in use");
             invalidNewUserTextLine2.setText("");
+            numInvalidNewUserAttempts +=1;
         }
     }
 
@@ -118,7 +121,5 @@ public class LoginController {
      */
     protected void loadUserProfileDataFromDatabase(UserProfile userProfile) throws SQLException {
        DatabaseUtils.loadUserDataToLocalProfile(userProfile);
-
     }
-
 }

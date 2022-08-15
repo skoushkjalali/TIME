@@ -89,7 +89,7 @@ public class DatabaseUtils {
      */
     public static String compressUserLevelScores(ArrayList<Integer> userLevelScores){
         if(userLevelScores == null){
-            return "";
+            return null;
         }
         StringBuilder compressedScores = new StringBuilder();
         String scoreStr;
@@ -110,6 +110,12 @@ public class DatabaseUtils {
         Therefore, a string of "10256310016" = ArrayList of {0, 56, 100, 6}
      */
     public static ArrayList<Integer> decompressUserLevelScores(String compressedUserLevelScores){
+
+        // user has not played this level yet
+        if(compressedUserLevelScores == null){
+            return null;
+        }
+
         ArrayList<Integer> userLevelScores = new ArrayList<>();
         int numberOfDigits;
         int score;
@@ -135,39 +141,46 @@ public class DatabaseUtils {
 
         for(int i = 1; i <= RhythmFactory.getLastPossibleRhythmNumber(); i++){
             String compressedLevelScores = compressUserLevelScores(userProfile.getLevelScoreAttempts(i));
-            allUserScores.add(compressedLevelScores);
+
+            if(compressedLevelScores!=null){
+                allUserScores.add(compressedLevelScores);
+            }
+            else{
+                allUserScores.add(null);
+            }
         }
         return allUserScores;
     }
 
 
     /*
-        Updates all scores of all levels on the database for the user specified . If a level hasn't been played,
-        an empty string is set.
+        Updates all scores of all levels on the database for the user specified. If a level hasn't been played i.e.,
+        its ArrayList of scores is null, no update statement is run.
      */
     public static void updateAllUserData(UserProfile userProfile) throws SQLException {
         ArrayList<String> userLevelData = getUserProfileScoreDataAsStrings(userProfile);
 
-        StringBuilder sql = new StringBuilder("UPDATE USER_SCORES SET ");
-        String colName;
-        String data;
 
-        for(int i = 0; i<userLevelData.size(); i++){
-            colName = "Rhythm_"+(i+1);
-            data = userLevelData.get(i);
-            sql.append(colName)
-                    .append(" = ")
-                    .append("'")
-                    .append(data)
-                    .append("'");
-            if(i < userLevelData.size()-1){
-                sql.append(", ");
+        for (int i = 0; i < userLevelData.size(); i++) {
+
+            StringBuilder sql = new StringBuilder("UPDATE USER_SCORES SET ");
+            String colName;
+            String data;
+
+            if (userLevelData.get(i) != null) {
+                colName = "Rhythm_" + (i + 1);
+                data = userLevelData.get(i);
+                sql.append(colName)
+                        .append(" = ")
+                        .append("'")
+                        .append(data)
+                        .append("'");
+                sql.append(" WHERE USERNAME = ?");
+                PreparedStatement preparedStatement = connection.prepareStatement(sql.toString());
+                preparedStatement.setString(1, userProfile.getUsername());
+                preparedStatement.executeUpdate();
             }
         }
-        sql.append(" WHERE USERNAME = ?");
-        PreparedStatement preparedStatement = connection.prepareStatement(sql.toString());
-        preparedStatement.setString(1, userProfile.getUsername());
-        preparedStatement.executeUpdate();
     }
 
 

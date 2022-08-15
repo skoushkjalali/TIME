@@ -19,7 +19,7 @@
             <Line fx:id="userLine" endX="1132.0" layoutX="122.0" layoutY="615.0" startX="-117.0" stroke="WHITE" strokeWidth="2.0" />
             <Line endX="-100.0" endY="194.0" fill="WHITE" layoutX="480.0" layoutY="420.0" opacity="0.3" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
             <Line endX="-100.0" endY="194.0" layoutX="730.0" layoutY="419.0" opacity="0.3" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
-            <Rectangle fx:id="tapPad" arcHeight="5.0" arcWidth="5.0" fill="#121212" height="73.0" layoutX="385.0" layoutY="700.0" stroke="#2a35d5" strokeType="INSIDE" strokeWidth="0.75" width="487.4" />
+            <Rectangle fx:id="tapPad" arcHeight="5.0" arcWidth="5.0" fill="#121212" height="73.0" layoutX="385.0" layoutY="700.0" stroke="#d5522a" strokeType="INSIDE" strokeWidth="0.75" width="487.4" />
             <Text fill="WHITE" layoutX="182.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="5.0" text="1">
                <font>
                   <Font size="30.0" />

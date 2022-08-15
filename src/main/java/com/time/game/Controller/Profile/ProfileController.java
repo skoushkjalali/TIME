@@ -16,6 +16,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
@@ -94,9 +95,6 @@ public class ProfileController implements Initializable {
         // if the red cross is used to exit the game, then user data is still stored
         setSaveUserDataIfWindowClosed();
 
-
-
-
     }
 
     protected void setSaveUserDataIfWindowClosed(){
@@ -157,15 +155,8 @@ public class ProfileController implements Initializable {
         levelScoresBarChart.setBarGap(-20);
         levelScoresBarChart.setLegendVisible(false);
         levelScoresBarChart.lookup(".chart-plot-background").setStyle("-fx-background-color: transparent");
-
         levelScoresBarChart.setHorizontalGridLinesVisible(false);
         levelScoresBarChart.setVerticalGridLinesVisible(false);
-
-
-        // todo debug this
-//        levelScoresBarChart.lookup(".data0.chart-bar").setStyle("-fx-bar-fill: #0010ff");
-//        levelScoresBarChart.lookup(".data21.chart-bar").setStyle("-fx-bar-fill: #0010ff");
-//        levelScoresBarChart.lookup(".data24.chart-bar").setStyle("-fx-bar-fill: #0010ff");
 
     }
 
@@ -188,16 +179,6 @@ public class ProfileController implements Initializable {
 
     protected void showCurrentUserProfileData(){
         userProfile = TimeApplication.userProfile;
-
-
-        // testing update time
-
-//        for(int i = 1; i<= 25; i++){
-//            for (int j = 0; j<=100; j++){
-//                userProfile.updateUserScores(i, j);
-//            }
-//        }
-
         username.setText(userProfile.getUsername());
         levelsCompletedText.setText(userProfile.getNumLevelsCompleted()+"/"+ RhythmFactory.getLastPossibleRhythmNumber());
         lastLevelScoreText.setText(userProfile.getScoreOnLastLevel());
