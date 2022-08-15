@@ -10,21 +10,14 @@ import java.io.IOException;
 
 public class ScreenController {
 
-    public static Scene currentScene;
+    static Stage stage = TimeApplication.primaryStage;
+
 
     public static void changeScreen(String fxmlFile) throws IOException {
-        Stage stage = TimeApplication.primaryStage;
+
         FXMLLoader loader = new FXMLLoader(ScreenController.class.getResource("/com/time/game/"+fxmlFile+".fxml"));
-        Scene scene = new Scene(loader.load());
-        currentScene = scene;
-        scene.getStylesheets().add("TimeLessStyle.css");
-        stage.setScene(scene);
-        // allows keyboard input to be monitored
-        scene.getRoot().requestFocus();
-        stage.show();
-
-
-
+        stage.getScene().setRoot(loader.load());
+        stage.getScene().getRoot().requestFocus(); // allows keyboard input to be monitored
     }
 
 }

@@ -152,6 +152,7 @@ public class LevelStatsController implements Initializable {
         userProfile.setLevelStatRequestNumber(level);
         Level.setLevelNumber(level);
         ScreenController.changeScreen("level-stats-view");
+
     }
 
 

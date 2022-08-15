@@ -15,12 +15,9 @@
 }
 
 
-
 #newUserLoginButton:hover{
     -fx-background-color: #a07800;
 }
-
-
 
 
 Text{

@@ -3,6 +3,9 @@ import com.time.game.Controller.ScreenController;
 import com.time.game.Database.DatabaseUtils;
 import com.time.game.Model.Profile.UserProfile;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -16,16 +19,21 @@ public class TimeApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         primaryStage = stage;
+
         stage.setMaxHeight(868);
         stage.setMinHeight(868);
         stage.setMaxWidth(1300);
         stage.setMinWidth(1300);
         stage.setTitle("TIME");
 
+        FXMLLoader loader = new FXMLLoader(ScreenController.class.getResource("/com/time/game/login-view.fxml"));
+        Scene scene = new Scene(loader.load());
+        scene.getStylesheets().add("TimeLessStyle.css");
+        scene.setFill(Color.web("#121212"));
+        stage.setScene(scene);
+        scene.getRoot().requestFocus(); // allows keyboard input to be monitored
+        stage.show();
 
-        ScreenController.changeScreen("login-view");
-
-//        primaryStage.show();
     }
 
 

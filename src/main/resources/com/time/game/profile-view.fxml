@@ -13,7 +13,7 @@
 
 <AnchorPane focusTraversable="true" prefHeight="868.0" prefWidth="1300.0" stylesheets="@../../../CSS/ProfileStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.time.game.Controller.Profile.ProfileController">
    <children>
-      <Circle fx:id="userCircle" fill="#1e1e1e" layoutX="134.0" layoutY="138.0" radius="125.0" stroke="#d5a72a" strokeType="INSIDE" strokeWidth="0.75" />
+      <Circle fx:id="userCircle" fill="#1e1e1e" layoutX="137.0" layoutY="138.0" radius="128.0" stroke="#d5a72a" strokeType="INSIDE" strokeWidth="0.75" />
       <Rectangle fx:id="statsSurfaceRectangle" arcHeight="18.0" arcWidth="18.0" fill="#1e1e1e" height="200.0" layoutX="914.0" layoutY="36.0" stroke="#d5a72a" strokeType="OUTSIDE" strokeWidth="0.0" width="372.0" />
       <Rectangle arcHeight="18.0" arcWidth="18.0" fill="#1e1e1e" height="156.0" layoutX="1084.0" layoutY="643.0" stroke="#d5a72a" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
       <Rectangle arcHeight="18.0" arcWidth="18.0" fill="#1e1e1e" height="314.0" layoutX="1084.0" layoutY="282.0" stroke="#d5a72a" strokeType="INSIDE" strokeWidth="0.75" width="200.0" />

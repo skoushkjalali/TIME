@@ -53,8 +53,6 @@ public class LoginController {
     @FXML
     protected void onExistingUserLoginButtonClick() throws IOException, SQLException {
 
-
-
         String username = existingUsername.getText();
         String password = existingPassword.getText();
 
