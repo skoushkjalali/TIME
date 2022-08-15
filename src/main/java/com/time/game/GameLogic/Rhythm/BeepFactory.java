@@ -27,13 +27,13 @@ public class BeepFactory {
         This method generates a metronome sound
      */
     public void getBeep2(){
-        metronome1AudioClip.play();
+        metronome1AudioClip.play(0.80);
     }
     /*
         This method generates a snare drum sound
      */
     public void getBeep3(){
-        userTap1AudioClip.play(0.85); // volume 85% max - reduces clipping
+        userTap1AudioClip.play(0.80); // volume 80% max - reduces clipping
     }
 
 

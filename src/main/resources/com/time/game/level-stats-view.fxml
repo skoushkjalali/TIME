@@ -20,7 +20,7 @@
             <Font size="49.0" />
          </font>
       </Text>
-      <LineChart fx:id="levelStatsGraph" layoutX="36.0" layoutY="177.0" prefHeight="616.0" prefWidth="1061.0">
+      <LineChart fx:id="levelStatsGraph" animated="false" layoutX="36.0" layoutY="177.0" prefHeight="616.0" prefWidth="1061.0">
         <xAxis>
           <CategoryAxis side="BOTTOM" fx:id="xAxis" />
         </xAxis>
