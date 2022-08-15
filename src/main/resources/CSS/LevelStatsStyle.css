@@ -14,6 +14,8 @@ Text{
     -fx-font-family: "PT Sans";
 }
 
+.default-color0.chart-series-line { -fx-stroke: #d5522a; }
+
 
 .choice-box{
     -fx-background-color: #616161;

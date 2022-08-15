@@ -22,8 +22,6 @@ public class DatabaseUtils {
     }
 
 
-
-
     public static boolean validateExistingUser(String username, String password) throws SQLException {
         boolean validated = false;
 

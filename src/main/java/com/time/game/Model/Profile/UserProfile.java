@@ -69,7 +69,7 @@ public class UserProfile {
         returns all the attempts of a given level. If none have been made will return null.
      */
     public ArrayList<Integer> getLevelScoreAttempts(int level){
-        return this.levelScores.get(level);
+        return levelScores.get(level);
     }
 
     /*
