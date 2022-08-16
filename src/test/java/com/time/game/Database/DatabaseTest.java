@@ -151,6 +151,8 @@ class DatabaseTest {
         userProfile.updateUserScores(1,67);
         DatabaseUtils.updateAllUserData(userProfile);
 
+        assertEquals(67, userProfile.getLevelScoreAttempts(1).get(0));
+
     }
 
     @Test
@@ -163,6 +165,42 @@ class DatabaseTest {
         userProfile.updateUserScores(5,9);
         userProfile.updateUserScores(6,10);
         DatabaseUtils.updateAllUserData(userProfile);
+        assertEquals(67, userProfile.getLevelScoreAttempts(1).get(0));
+        assertEquals(100, userProfile.getLevelScoreAttempts(2).get(0));
+        assertEquals(33, userProfile.getLevelScoreAttempts(3).get(0));
+        assertEquals(77, userProfile.getLevelScoreAttempts(4).get(0));
+        assertEquals(9, userProfile.getLevelScoreAttempts(5).get(0));
+        assertEquals(10, userProfile.getLevelScoreAttempts(6).get(0));
+
+
+    }
+
+    @Test
+    void testUpdateAllUserData2() throws SQLException {
+        userProfile = new UserProfile("James Franco");
+
+        for(int i = 1; i<=25; i++ ){
+            if(i%2==0) {
+                userProfile.updateUserScores(i, i);
+            }
+        }
+        DatabaseUtils.updateAllUserData(userProfile);
+        assertEquals(2, userProfile.getLevelScoreAttempts(2).get(0));
+        assertNull(userProfile.getLevelScoreAttempts(3));
+        assertEquals(4, userProfile.getLevelScoreAttempts(4).get(0));
+        assertNull(userProfile.getLevelScoreAttempts(5));
+        assertEquals(6, userProfile.getLevelScoreAttempts(6).get(0));
+    }
+
+    @Test
+    void testUpdateAllUserData3() throws SQLException {
+        userProfile = new UserProfile("Jo");
+
+        DatabaseUtils.updateAllUserData(userProfile);
+
+        for(var scores: userProfile.getLevelScores().values()){
+            assertNull(scores);
+        }
 
     }
 

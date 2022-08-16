@@ -6,6 +6,7 @@ import java.sql.*;
 
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class DatabaseUtils {
@@ -156,12 +157,22 @@ public class DatabaseUtils {
         its ArrayList of scores is null, no update statement is run.
      */
     public static void updateAllUserData(UserProfile userProfile) throws SQLException {
+
         ArrayList<String> userLevelData = getUserProfileScoreDataAsStrings(userProfile);
 
+        // count all non-null objects in userLevelData
+        int numLevelsToUpdate = (int) userLevelData.stream().filter(Objects::nonNull).count();
+
+        // no update needed
+        if(numLevelsToUpdate == 0){
+            return;
+        }
+
+        // build one query string for all updates
+        StringBuilder sql = new StringBuilder("UPDATE USER_SCORES SET ");
 
         for (int i = 0; i < userLevelData.size(); i++) {
 
-            StringBuilder sql = new StringBuilder("UPDATE USER_SCORES SET ");
             String colName;
             String data;
 
@@ -173,29 +184,35 @@ public class DatabaseUtils {
                         .append("'")
                         .append(data)
                         .append("'");
-                sql.append(" WHERE USERNAME = ?");
-                PreparedStatement preparedStatement = connection.prepareStatement(sql.toString());
-                preparedStatement.setString(1, userProfile.getUsername());
-                preparedStatement.executeUpdate();
+
+                // add a comma for the next data element if it exists
+                if(numLevelsToUpdate > 1){
+                    sql.append(", ");
+                    numLevelsToUpdate -=1;
+                }
             }
         }
-    }
-
-
-    /*
-        Updates the level specified for the user specified  on the database.
-     */
-    public static void updateUserLevelScoreData(UserProfile userProfile, int level) throws SQLException {
-
-        String colName = "Rhythm_"+level;
-        String levelScoreData = DatabaseUtils.compressUserLevelScores(userProfile.getLevelScoreAttempts(level));
-
-        String sql = "UPDATE USER_SCORES SET " + colName+ "= ? WHERE USERNAME = ?";
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1, levelScoreData);
-        preparedStatement.setString(2, userProfile.getUsername());
+        sql.append(" WHERE USERNAME = ?");
+        PreparedStatement preparedStatement = connection.prepareStatement(sql.toString());
+        preparedStatement.setString(1, userProfile.getUsername());
         preparedStatement.executeUpdate();
     }
+
+
+//    /*
+//        Updates the level specified for the user specified  on the database.
+//     */
+//    public static void updateUserLevelScoreData(UserProfile userProfile, int level) throws SQLException {
+//
+//        String colName = "Rhythm_"+level;
+//        String levelScoreData = DatabaseUtils.compressUserLevelScores(userProfile.getLevelScoreAttempts(level));
+//
+//        String sql = "UPDATE USER_SCORES SET " + colName+ "= ? WHERE USERNAME = ?";
+//        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+//        preparedStatement.setString(1, levelScoreData);
+//        preparedStatement.setString(2, userProfile.getUsername());
+//        preparedStatement.executeUpdate();
+//    }
 
 
     public static void loadUserDataToLocalProfile(UserProfile userProfile) throws SQLException {
