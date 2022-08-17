@@ -80,6 +80,9 @@ public class ProfileController implements Initializable {
     @FXML
     private Rectangle statsSurfaceRectangle;
 
+    @FXML
+    private Button gameInstructionsButton;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -222,7 +225,11 @@ public class ProfileController implements Initializable {
         userProfile.resetMetrics();
         ScreenController.changeScreen("profile-view");
 
+    }
 
+    @FXML
+    protected void onGameInstructionsButtonClick() throws IOException {
+        ScreenController.changeScreen("instruction-view");
 
     }
 

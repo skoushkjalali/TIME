@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="868.0" maxWidth="1300.0" minHeight="868.0" minWidth="1300.0" prefHeight="868.0" prefWidth="1300.0" stylesheets="@../../../CSS/InstructionsStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.time.game.Controller.Profile.InstructionsController">
+   <children>
+      <Rectangle arcHeight="18.0" arcWidth="18.0" fill="#1e1e1e" height="85.0" layoutX="1086.0" layoutY="735.0" stroke="#d5a72a" strokeType="OUTSIDE" strokeWidth="0.75" width="193.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#121212" height="434.0" layoutX="323.0" layoutY="289.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.75" width="650.0" />
+      <Rectangle fx:id="beat1" arcHeight="5.0" arcWidth="5.0" fill="#121212" height="270.0" layoutX="371.0" layoutY="289.0" scaleX="0.5" scaleY="0.5" stroke="#d5a72a" strokeType="OUTSIDE" strokeWidth="1.5" width="115.0" />
+      <Rectangle fx:id="beat2" arcHeight="5.0" arcWidth="5.0" fill="#121212" height="167.0" layoutX="497.0" layoutY="366.0" scaleX="0.5" scaleY="0.5" stroke="#d5a72a" strokeType="OUTSIDE" strokeWidth="1.5" width="115.0" />
+      <Rectangle fx:id="beat3" arcHeight="5.0" arcWidth="5.0" fill="#121212" height="167.0" layoutX="621.0" layoutY="366.0" scaleX="0.5" scaleY="0.5" stroke="#d5a72a" strokeType="OUTSIDE" strokeWidth="1.5" width="115.0" />
+      <Rectangle fx:id="beat4" arcHeight="5.0" arcWidth="5.0" fill="#121212" height="167.0" layoutX="746.0" layoutY="366.0" scaleX="0.5" scaleY="0.5" stroke="#d5a72a" strokeType="OUTSIDE" strokeWidth="1.5" width="115.0" />
+      <Line fx:id="sampleLine" endX="1132.0" fill="WHITE" layoutX="142.0" layoutY="531.0" scaleX="0.5" scaleY="0.5" startX="-117.0" stroke="WHITE" strokeWidth="4.0" />
+      <Line fx:id="userLine" endX="1132.0" layoutX="141.0" layoutY="591.0" scaleX="0.5" scaleY="0.5" startX="-117.0" stroke="WHITE" strokeWidth="4.0" />
+      <Line endX="-100.0" endY="194.0" fill="WHITE" layoutX="500.0" layoutY="443.0" opacity="0.3" scaleY="0.5" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="-100.0" endY="194.0" layoutX="750.0" layoutY="443.0" opacity="0.3" scaleY="0.5" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
+      <Rectangle fx:id="tapPad" arcHeight="5.0" arcWidth="5.0" fill="#121212" height="73.0" layoutX="406.0" layoutY="618.0" scaleX="0.5" scaleY="0.5" stroke="#d5522a" strokeType="OUTSIDE" strokeWidth="1.5" width="487.4" />
+      <Line fx:id="startOfBarLine" endX="-100.0" endY="194.0" fill="WHITE" layoutX="626.0" layoutY="443.0" opacity="0.3" scaleY="0.5" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="-100.0" endY="173.0" fill="WHITE" layoutX="875.0" layoutY="464.0" opacity="0.3" scaleY="0.5" startX="-100.0" startY="-21.0" stroke="WHITE" strokeWidth="2.0" />
+      <Line fx:id="endOfBarLine" endX="-100.0" endY="194.0" layoutX="1001.0" layoutY="443.0" opacity="0.3" scaleY="0.5" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
+      <Text fx:id="twoText" fill="WHITE" layoutX="546.0" layoutY="402.0" scaleX="0.5" scaleY="0.5" strokeType="OUTSIDE" strokeWidth="2.0" text="2">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Text fx:id="threeText" fill="WHITE" layoutX="670.0" layoutY="401.0" scaleX="0.5" scaleY="0.5" strokeType="OUTSIDE" strokeWidth="2.0" text="3">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Text fx:id="fourText" fill="WHITE" layoutX="796.0" layoutY="401.0" scaleX="0.5" scaleY="0.5" strokeType="OUTSIDE" strokeWidth="2.0" text="4">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Text fx:id="oneText" fill="WHITE" layoutX="420.0" layoutY="350.0" scaleX="0.5" scaleY="0.5" strokeType="OUTSIDE" strokeWidth="2.0" text="1">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="465.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Game Instructions" textAlignment="CENTER">
+         <font>
+            <Font size="49.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="77.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to TIME! Below is the game-play screen. Take a moment to familiarise yourself with the elements and their descriptions. Each level in the game has this visual structure, and is split into three consecutive bars of four. In bar one you will hear four metronome clicks at the tempo you selected (the default BPM is 100). This metronome click will continue through bars two and three. In bar two you will hear a rhythm played by the computer. In bar three you should tap back the rhythm you just heard. After bar three your rhythm accuracy score will be displayed. Remember to stay in time by focusing on the pulse of the metronome! " wrappingWidth="1152.3779983520508">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="metronomeText" fill="WHITE" layoutX="1012.0" layoutY="311.0" onMouseEntered="#highlightMetronomeElements" onMouseExited="#unHighlightMetronomeElements" strokeType="OUTSIDE" strokeWidth="0.0" text="These are the metronome beats. They flash in time to the tempo you select. You can change the speed of the metronome by selecting a different BPM. " wrappingWidth="245.1999969482422">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="sampleLineText" fill="WHITE" layoutX="39.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This is the level rhythm line. On it are small vertical lines that represent the rhythm that you must copy" wrappingWidth="228.41421508789062">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="userLineText" fill="WHITE" layoutX="39.0" layoutY="578.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This is the input line. When it is your time to tap back the rhythm, any keyboard taps will appear on it as orange vertical lines." wrappingWidth="245.1999969482422">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="tapPadText" fill="WHITE" layoutX="248.0" layoutY="758.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This is the tap-pad. When you tap it lights up to show you the tap has been registered." wrappingWidth="461.1999969482422">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Line endX="254.0" endY="1.0" fill="WHITE" layoutX="121.0" layoutY="525.0" startX="120.0" startY="-140.0" stroke="WHITE" />
+      <Line endX="208.0" endY="22.0" fill="WHITE" layoutX="154.0" layoutY="575.0" startX="110.0" startY="61.0" stroke="WHITE" />
+      <Line fx:id="sampleOnset1" endX="84.0" endY="7.0" fill="WHITE" layoutX="377.0" layoutY="544.0" startX="84.0" startY="-34.0" stroke="WHITE" strokeWidth="3.0" />
+      <Line fx:id="sampleOnset3" endX="84.0" endY="7.0" fill="WHITE" layoutX="566.0" layoutY="543.0" startX="84.0" startY="-34.0" stroke="WHITE" strokeWidth="3.0" />
+      <Line fx:id="sampleOnset2" endX="84.0" endY="7.0" fill="WHITE" layoutX="501.0" layoutY="543.0" startX="84.0" startY="-34.0" stroke="WHITE" strokeWidth="3.0" />
+      <Line fx:id="sampleOnset4" endX="84.0" endY="7.0" fill="WHITE" layoutX="691.0" layoutY="543.0" startX="84.0" startY="-34.0" stroke="WHITE" strokeWidth="3.0" />
+      <Line endX="141.0" endY="-23.5999755859375" fill="WHITE" layoutX="360.0" layoutY="760.0" startX="208.0" startY="-80.0" stroke="WHITE" />
+      <Line fx:id="userOnset1" endX="84.0" endY="7.0" fill="WHITE" layoutX="386.0" layoutY="604.0" startX="84.0" startY="-34.0" stroke="#d5522a" strokeWidth="3.0" />
+      <Line fx:id="userOnset2" endX="84.0" endY="7.0" fill="WHITE" layoutX="497.0" layoutY="603.0" startX="84.0" startY="-34.0" stroke="#d5522a" strokeWidth="3.0" />
+      <Line fx:id="userOnset3" endX="84.0" endY="7.0" fill="WHITE" layoutX="569.0" layoutY="603.0" startX="84.0" startY="-34.0" stroke="#d5522a" strokeWidth="3.0" />
+      <Line fx:id="userOnset4" endX="84.0" endY="7.0" fill="WHITE" layoutX="688.0" layoutY="603.0" startX="84.0" startY="-34.0" stroke="#d5522a" strokeWidth="3.0" />
+      <Text fx:id="computerOnsetLineText" fill="WHITE" layoutX="1012.0" layoutY="580.0" onMouseEntered="#highlightSampleRhythmOnsetElements" onMouseExited="#unHighlightSampleRhythmOnsetElements" strokeType="OUTSIDE" strokeWidth="0.0" text="These small vertical white lines are the perfect tap locations for the rhythm you should tap back in bar three." wrappingWidth="245.1999969482422">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <Text fx:id="userOnsetLineText" fill="WHITE" layoutX="779.0" layoutY="763.0" strokeType="OUTSIDE" strokeWidth="0.0" text="These are your taps." wrappingWidth="245.1999969482422">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Line endX="114.0" endY="-1.0" fill="WHITE" layoutX="765.0" layoutY="741.0" startX="12.0" startY="-128.0" stroke="WHITE" />
+      <Line fx:id="sampleOnsetPointer" endX="195.0" endY="-126.0" fill="WHITE" layoutX="809.0" layoutY="716.0" startX="-29.0" startY="-172.0" stroke="WHITE" />
+      <Line fx:id="metronomePointer" endX="199.0" endY="-190.0" fill="WHITE" layoutX="806.0" layoutY="520.0" startX="35.0" startY="-80.0" stroke="WHITE" />
+      <Button fx:id="profileButton" layoutX="1108.0" layoutY="757.0" mnemonicParsing="false" onAction="#onProfileButtonClick" prefHeight="40.0" prefWidth="150.0" text="Profile">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

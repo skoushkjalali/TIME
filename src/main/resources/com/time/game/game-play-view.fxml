@@ -11,10 +11,10 @@
    <children>
       <Pane fx:id="mainPane" layoutX="14.0" layoutY="20.0" prefHeight="848.0" prefWidth="1294.0" stylesheets="@../../../CSS/GamePlayStyle.css">
          <children>
-            <Rectangle fx:id="beat1" arcHeight="5.0" arcWidth="5.0" fill="#121212" height="270.0" layoutX="131.0" layoutY="147.0" stroke="#d5a72a" strokeType="OUTSIDE" strokeWidth="0.75" width="115.0" />
-            <Rectangle fx:id="beat2" arcHeight="5.0" arcWidth="5.0" fill="#121212" height="167.0" layoutX="378.0" layoutY="251.0" stroke="#d5a72a" strokeType="INSIDE" strokeWidth="0.75" width="115.0" />
-            <Rectangle fx:id="beat3" arcHeight="5.0" arcWidth="5.0" fill="#121212" height="167.0" layoutX="630.0" layoutY="251.0" stroke="#d5a72a" strokeType="INSIDE" strokeWidth="0.75" width="115.0" />
-            <Rectangle fx:id="beat4" arcHeight="5.0" arcWidth="5.0" fill="#121212" height="167.0" layoutX="879.0" layoutY="251.0" stroke="#d5a72a" strokeType="INSIDE" strokeWidth="0.75" width="115.0" />
+            <Rectangle fx:id="beat1" arcHeight="5.0" arcWidth="5.0" fill="#121212" height="270.0" layoutX="131.0" layoutY="148.0" stroke="#d5a72a" strokeType="OUTSIDE" strokeWidth="0.75" width="115.0" />
+            <Rectangle fx:id="beat2" arcHeight="5.0" arcWidth="5.0" fill="#121212" height="167.0" layoutX="380.0" layoutY="251.0" stroke="#d5a72a" strokeType="OUTSIDE" strokeWidth="0.75" width="115.0" />
+            <Rectangle fx:id="beat3" arcHeight="5.0" arcWidth="5.0" fill="#121212" height="167.0" layoutX="630.0" layoutY="251.0" stroke="#d5a72a" strokeType="OUTSIDE" strokeWidth="0.75" width="115.0" />
+            <Rectangle fx:id="beat4" arcHeight="5.0" arcWidth="5.0" fill="#121212" height="167.0" layoutX="880.0" layoutY="251.0" stroke="#d5a72a" strokeType="OUTSIDE" strokeWidth="0.75" width="115.0" />
             <Line fx:id="sampleLine" endX="1132.0" layoutX="122.0" layoutY="500.0" startX="-117.0" stroke="WHITE" strokeWidth="2.0" />
             <Line fx:id="userLine" endX="1132.0" layoutX="122.0" layoutY="615.0" startX="-117.0" stroke="WHITE" strokeWidth="2.0" />
             <Line endX="-100.0" endY="194.0" fill="WHITE" layoutX="480.0" layoutY="420.0" opacity="0.3" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />

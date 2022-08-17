@@ -9,10 +9,10 @@ import java.net.URL;
  */
 public class BeepFactory {
 
-    URL metronome1Path = getClass().getResource("/sounds/MetronomeSound1.mp3");
+    URL metronome1Path = getClass().getResource("/sounds/MetronomeClick#1.mp3");
     private final AudioClip metronome1AudioClip = new AudioClip(metronome1Path.toString());
 
-    URL userTap1Path = getClass().getResource("/sounds/Snare11.mp3");
+    URL userTap1Path = getClass().getResource("/sounds/Snare#2.mp3");
     private final AudioClip userTap1AudioClip = new AudioClip(userTap1Path.toString());
 
 
@@ -27,13 +27,13 @@ public class BeepFactory {
         This method generates a metronome sound
      */
     public void getBeep2(){
-        metronome1AudioClip.play(0.9);
+        metronome1AudioClip.play();
     }
     /*
         This method generates a snare drum sound
      */
     public void getBeep3(){
-        userTap1AudioClip.play(0.9); // volume 80% max - reduces clipping
+        userTap1AudioClip.play(); // volume 80% max - reduces clipping
     }
 
 

@@ -57,3 +57,7 @@ Text{
 .choice-box:hover{
     -fx-background-color: #424242;
 }
+
+#gameInstructionsButton:hover{
+    -fx-background-color: #424242;
+}

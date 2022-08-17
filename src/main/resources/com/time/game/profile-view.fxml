@@ -15,8 +15,8 @@
    <children>
       <Circle fx:id="userCircle" fill="#1e1e1e" layoutX="137.0" layoutY="138.0" radius="128.0" stroke="#d5a72a" strokeType="INSIDE" strokeWidth="0.75" />
       <Rectangle fx:id="statsSurfaceRectangle" arcHeight="18.0" arcWidth="18.0" fill="#1e1e1e" height="200.0" layoutX="914.0" layoutY="36.0" stroke="#d5a72a" strokeType="OUTSIDE" strokeWidth="0.0" width="372.0" />
-      <Rectangle arcHeight="18.0" arcWidth="18.0" fill="#1e1e1e" height="156.0" layoutX="1084.0" layoutY="643.0" stroke="#d5a72a" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
-      <Rectangle arcHeight="18.0" arcWidth="18.0" fill="#1e1e1e" height="314.0" layoutX="1084.0" layoutY="282.0" stroke="#d5a72a" strokeType="INSIDE" strokeWidth="0.75" width="200.0" />
+      <Rectangle arcHeight="18.0" arcWidth="18.0" fill="#1e1e1e" height="152.0" layoutX="1084.0" layoutY="681.0" stroke="#d5a72a" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+      <Rectangle arcHeight="18.0" arcWidth="18.0" fill="#1e1e1e" height="372.0" layoutX="1084.0" layoutY="282.0" stroke="#d5a72a" strokeType="INSIDE" strokeWidth="0.75" width="200.0" />
       <Button fx:id="playButton" layoutX="1109.0" layoutY="483.0" mnemonicParsing="false" onAction="#onPlayButtonClick" prefHeight="80.0" prefWidth="150.0" stylesheets="@../../../CSS/ProfileStyle.css" text="Play">
          <font>
             <Font name="American Typewriter" size="18.0" />
@@ -73,7 +73,7 @@
           <NumberAxis fx:id="yAxis" minorTickCount="1" side="LEFT" />
         </yAxis>
       </BarChart>
-      <Button fx:id="resetMetricsButton" layoutX="1109.0" layoutY="672.0" mnemonicParsing="false" onAction="#onResetMetricsButtonClick" prefHeight="40.0" prefWidth="150.0" text="Reset Metrics">
+      <Button fx:id="resetMetricsButton" layoutX="1109.0" layoutY="706.0" mnemonicParsing="false" onAction="#onResetMetricsButtonClick" prefHeight="40.0" prefWidth="150.0" text="Reset Metrics">
          <font>
             <Font name="American Typewriter" size="13.0" />
          </font>
@@ -82,7 +82,7 @@
          <font>
             <Font name="American Typewriter" size="13.0" />
          </font></Button>
-      <Button fx:id="exitButton" layoutX="1109.0" layoutY="733.0" mnemonicParsing="false" onAction="#onExitButtonClicked" prefHeight="40.0" prefWidth="150.0" text="Exit">
+      <Button fx:id="exitButton" layoutX="1109.0" layoutY="767.0" mnemonicParsing="false" onAction="#onExitButtonClicked" prefHeight="40.0" prefWidth="150.0" text="Exit">
          <font>
             <Font name="American Typewriter" size="18.0" />
          </font>
@@ -97,5 +97,6 @@
             <Font size="20.0" />
          </font>
       </Text>
+      <Button fx:id="gameInstructionsButton" layoutX="1111.0" layoutY="585.0" mnemonicParsing="false" onAction="#onGameInstructionsButtonClick" prefHeight="40.0" prefWidth="150.0" text="Game Instructions" />
    </children>
 </AnchorPane>
