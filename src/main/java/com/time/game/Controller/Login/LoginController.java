@@ -56,7 +56,11 @@ public class LoginController implements Initializable {
 
 
 
-
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        // set up enter key as login and signup button press (if password field is selected)
+        setupEnterKeyBinding();
+    }
 
 
     @FXML
@@ -133,13 +137,12 @@ public class LoginController implements Initializable {
        DatabaseUtils.loadUserDataToLocalProfile(userProfile);
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void setupEnterKeyBinding(){
 
-        // set up enter key as login and signup button press (if password field is selected)
         existingPassword.setOnKeyPressed(e-> {
             if(e.getCode() == KeyCode.ENTER){
-                Platform.runLater(() -> existingUserLoginButton.setStyle("-fx-background-color: #a07800; -fx-effect: innershadow(gaussian,black,2,2,0.5,0.5)"));
+                Platform.runLater(() -> existingUserLoginButton.setStyle("-fx-background-color: #a07800; " +
+                        "-fx-effect: innershadow(gaussian,black,2,2,0.5,0.5)"));
             }
         });
         existingPassword.setOnKeyReleased(e-> {
@@ -147,8 +150,11 @@ public class LoginController implements Initializable {
                 Platform.runLater(() -> {
                     existingUserLoginButton.setStyle("-fx-background-color: #d5a72a");
 
-                    existingUserLoginButton.setOnMouseEntered(event -> existingUserLoginButton.setStyle("-fx-background-color: #a07800; -fx-effect: innershadow(gaussian,black,2,2,0.5,0.5)"));
-                    existingUserLoginButton.setOnMouseExited(event -> existingUserLoginButton.setStyle("-fx-background-color: #d5a72a"));
+                    existingUserLoginButton.setOnMouseEntered(event ->
+                            existingUserLoginButton.setStyle("-fx-background-color: #a07800; " +
+                                    "-fx-effect: innershadow(gaussian,black,2,2,0.5,0.5)"));
+                    existingUserLoginButton.setOnMouseExited(event ->
+                            existingUserLoginButton.setStyle("-fx-background-color: #d5a72a"));
 
                 });
                 try {
@@ -160,7 +166,8 @@ public class LoginController implements Initializable {
 
         newPassword.setOnKeyPressed(e-> {
             if(e.getCode() == KeyCode.ENTER){
-                Platform.runLater(() -> newUserLoginButton.setStyle("-fx-background-color: #a07800; -fx-effect: innershadow(gaussian,black,2,2,0.5,0.5)"));
+                Platform.runLater(() -> newUserLoginButton.setStyle("-fx-background-color: #a07800; " +
+                        "-fx-effect: innershadow(gaussian,black,2,2,0.5,0.5)"));
             }
         });
         newPassword.setOnKeyReleased(e-> {
@@ -168,8 +175,11 @@ public class LoginController implements Initializable {
                 Platform.runLater(() -> {
                     newUserLoginButton.setStyle("-fx-background-color: #d5a72a");
 
-                    newUserLoginButton.setOnMouseEntered(event -> newUserLoginButton.setStyle("-fx-background-color: #a07800; -fx-effect: innershadow(gaussian,black,2,2,0.5,0.5)"));
-                    newUserLoginButton.setOnMouseExited(event -> newUserLoginButton.setStyle("-fx-background-color: #d5a72a"));
+                    newUserLoginButton.setOnMouseEntered(event ->
+                            newUserLoginButton.setStyle("-fx-background-color: #a07800; " +
+                                    "-fx-effect: innershadow(gaussian,black,2,2,0.5,0.5)"));
+                    newUserLoginButton.setOnMouseExited(event ->
+                            newUserLoginButton.setStyle("-fx-background-color: #d5a72a"));
 
                 });
                 try {
@@ -178,7 +188,7 @@ public class LoginController implements Initializable {
                 }
             }
         });
-
-
     }
+
+
 }
