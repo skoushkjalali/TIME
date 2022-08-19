@@ -48,7 +48,7 @@
             <Font size="49.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="77.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to TIME! Below is the game-play screen. Take a moment to familiarise yourself with the elements and their description. Each level in the game has this visual structure and is split into three consecutive bars of four. In bar one you will hear four metronome clicks at the tempo you selected (the default BPM is 100). This metronome click will continue through bars two and three. In bar two you will hear a rhythm played by the computer. In bar three you should tap back the rhythm you just heard. After bar three your rhythm accuracy score will be displayed. Remember to stay in time by focusing on the pulse of the metronome! " wrappingWidth="1152.3779983520508">
+      <Text fill="WHITE" layoutX="78.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to TIME! Below is the game-play screen. Take a moment to familiarise yourself with the elements and their description. Each level in the game has this visual structure and is split into three consecutive bars of four. In bar one you will hear four metronome clicks at the tempo selected (default BPM is 100). This metronome click will continue through bars two and three. In bar two you will hear a rhythm played by the computer. In bar three tap back the rhythm you just heard using any key on the keyboard. After bar three your rhythm accuracy score will be displayed. Try to stay in time by focusing on the pulse of the metronome. " wrappingWidth="1152.3779983520508">
          <font>
             <Font size="24.0" />
          </font>

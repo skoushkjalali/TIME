@@ -7,16 +7,21 @@ import com.time.game.TimeApplication;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class LoginController {
+public class LoginController implements Initializable {
 
     @FXML
     private TextField existingUsername;
@@ -48,6 +53,10 @@ public class LoginController {
 
     private int numInvalidExistingLoginAttempts;
     private int numInvalidNewUserAttempts;
+
+
+
+
 
 
     @FXML
@@ -122,5 +131,54 @@ public class LoginController {
      */
     protected void loadUserProfileDataFromDatabase(UserProfile userProfile) throws SQLException {
        DatabaseUtils.loadUserDataToLocalProfile(userProfile);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        // set up enter key as login and signup button press (if password field is selected)
+        existingPassword.setOnKeyPressed(e-> {
+            if(e.getCode() == KeyCode.ENTER){
+                Platform.runLater(() -> existingUserLoginButton.setStyle("-fx-background-color: #a07800; -fx-effect: innershadow(gaussian,black,2,2,0.5,0.5)"));
+            }
+        });
+        existingPassword.setOnKeyReleased(e-> {
+            if(e.getCode() == KeyCode.ENTER){
+                Platform.runLater(() -> {
+                    existingUserLoginButton.setStyle("-fx-background-color: #d5a72a");
+
+                    existingUserLoginButton.setOnMouseEntered(event -> existingUserLoginButton.setStyle("-fx-background-color: #a07800; -fx-effect: innershadow(gaussian,black,2,2,0.5,0.5)"));
+                    existingUserLoginButton.setOnMouseExited(event -> existingUserLoginButton.setStyle("-fx-background-color: #d5a72a"));
+
+                });
+                try {
+                    onExistingUserLoginButtonClick();
+                } catch (IOException | SQLException ignored) {
+                }
+            }
+        });
+
+        newPassword.setOnKeyPressed(e-> {
+            if(e.getCode() == KeyCode.ENTER){
+                Platform.runLater(() -> newUserLoginButton.setStyle("-fx-background-color: #a07800; -fx-effect: innershadow(gaussian,black,2,2,0.5,0.5)"));
+            }
+        });
+        newPassword.setOnKeyReleased(e-> {
+            if(e.getCode() == KeyCode.ENTER){
+                Platform.runLater(() -> {
+                    newUserLoginButton.setStyle("-fx-background-color: #d5a72a");
+
+                    newUserLoginButton.setOnMouseEntered(event -> newUserLoginButton.setStyle("-fx-background-color: #a07800; -fx-effect: innershadow(gaussian,black,2,2,0.5,0.5)"));
+                    newUserLoginButton.setOnMouseExited(event -> newUserLoginButton.setStyle("-fx-background-color: #d5a72a"));
+
+                });
+                try {
+                    onNewUserLoginButtonClick();
+                } catch (IOException | SQLException ignored) {
+                }
+            }
+        });
+
+
     }
 }
