@@ -33,7 +33,7 @@ public class BeepFactory {
         This method generates a snare drum sound
      */
     public void getBeep3(){
-        userTap1AudioClip.play(); // volume 80% max - reduces clipping
+        userTap1AudioClip.play();
     }
 
 

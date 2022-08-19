@@ -1,5 +1,4 @@
 package com.time.game.GameLogic.Scorer;
-
 import java.util.ArrayList;
 
 /*

@@ -230,7 +230,7 @@ public class ProfileController implements Initializable {
 
     @FXML
     protected void onGameInstructionsButtonClick() throws IOException {
-        ScreenController.changeScreen("instruction-view");
+        ScreenController.changeScreen("instructions-view");
 
     }
 

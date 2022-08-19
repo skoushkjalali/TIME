@@ -4,7 +4,6 @@ import com.time.game.Controller.ScreenController;
 import com.time.game.Database.DatabaseUtils;
 import com.time.game.Model.Profile.UserProfile;
 import com.time.game.TimeApplication;
-import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,10 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -48,8 +44,6 @@ public class LoginController implements Initializable {
     private Text invalidNewUserTextLine1;
     @FXML
     private Text invalidNewUserTextLine2;
-    @FXML
-    private Text gameTitleText;
 
     private int numInvalidExistingLoginAttempts;
     private int numInvalidNewUserAttempts;

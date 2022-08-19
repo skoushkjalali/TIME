@@ -118,8 +118,8 @@ public class MainGamePlayController implements Initializable {
     }
 
     protected int scoreLevel(){
-        double score = scorer.scoreInput(level.getSampleRhythm().getAbsoluteRhythm(level.getBpm()),
-                rhythmListener.getShiftedUserInput(level.getBpm(), 1));
+        double score = scorer.scoreInput(level.getSampleRhythm().getAbsoluteRhythm(Level.getBpm()),
+                rhythmListener.getShiftedUserInput(Level.getBpm(), 1));
         return (int)(score*100);
     }
 

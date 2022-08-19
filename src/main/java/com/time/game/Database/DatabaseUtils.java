@@ -1,12 +1,8 @@
 package com.time.game.Database;
 import com.time.game.Model.Profile.UserProfile;
 import com.time.game.Model.Rhythm.RhythmFactory;
-
 import java.sql.*;
-
-
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class DatabaseUtils {
@@ -197,23 +193,6 @@ public class DatabaseUtils {
         preparedStatement.setString(1, userProfile.getUsername());
         preparedStatement.executeUpdate();
     }
-
-
-//    /*
-//        Updates the level specified for the user specified  on the database.
-//     */
-//    public static void updateUserLevelScoreData(UserProfile userProfile, int level) throws SQLException {
-//
-//        String colName = "Rhythm_"+level;
-//        String levelScoreData = DatabaseUtils.compressUserLevelScores(userProfile.getLevelScoreAttempts(level));
-//
-//        String sql = "UPDATE USER_SCORES SET " + colName+ "= ? WHERE USERNAME = ?";
-//        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-//        preparedStatement.setString(1, levelScoreData);
-//        preparedStatement.setString(2, userProfile.getUsername());
-//        preparedStatement.executeUpdate();
-//    }
-
 
     public static void loadUserDataToLocalProfile(UserProfile userProfile) throws SQLException {
         String sql = "SELECT * FROM USER_SCORES WHERE USERNAME = ?";

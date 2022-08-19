@@ -10,7 +10,7 @@ public class Level {
 
     private static boolean userInputCaptureEnabled = false;
 
-    private static int bpm = 100; // default
+    private static int bpm = 100; // default. bpm = 0 breaks the application
     private final int barDurationInMilliSecs = (int)((60 / (float)bpm) * 1000 * 4);
 
     private int LOWER_BOUND = 20;
@@ -23,7 +23,6 @@ public class Level {
     Rhythm sampleRhythm;
 
     public Level(Rhythm sampleRhythm){
-        // bpm = 0 breaks the application
         this.sampleRhythm = sampleRhythm;
     }
 

@@ -1,12 +1,7 @@
 package com.time.game.Model.Profile;
 import com.time.game.Model.Rhythm.RhythmFactory;
-import javafx.util.converter.IntegerStringConverter;
-
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.stream.Stream;
 
 public class UserProfile {
 
@@ -14,7 +9,6 @@ public class UserProfile {
     private String scoreOnLastLevel;
 
     private int levelStatRequestNumber;
-
 
 
     private boolean hasPlayedALevelSinceSignIn = false;

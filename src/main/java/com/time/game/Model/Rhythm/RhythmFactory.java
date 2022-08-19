@@ -1,12 +1,8 @@
 package com.time.game.Model.Rhythm;
-
-import com.time.game.Model.Rhythm.Rhythm;
-
 /*
     This is a mock class to allow RhythmListener and RhythmPlayer to bew built and tested.
-    This class will be replaced with a scalable solution using a database.
-    rhythmData objects represent the total number of equal length segments, or bits in a rhythm as the first
-    index, and onset locations.
+    rhythm data objects represent the total number of equal length segments, or bits in a rhythm as the first
+    index, and onset locations as the remaining indices.
  */
 public class RhythmFactory {
 
