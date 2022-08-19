@@ -11,15 +11,15 @@
    <children>
       <Rectangle arcHeight="18.0" arcWidth="18.0" fill="#1e1e1e" height="85.0" layoutX="1086.0" layoutY="735.0" stroke="#d5a72a" strokeType="OUTSIDE" strokeWidth="0.75" width="193.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#121212" height="434.0" layoutX="323.0" layoutY="289.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.75" width="650.0" />
-      <Rectangle fx:id="beat1" arcHeight="5.0" arcWidth="5.0" fill="#121212" height="270.0" layoutX="371.0" layoutY="289.0" onMouseEntered="#highlightMetronomeElements" onMouseExited="#unHighlightMetronomeElements" scaleX="0.5" scaleY="0.5" stroke="#d5a72a" strokeType="OUTSIDE" strokeWidth="1.5" width="115.0" />
-      <Rectangle fx:id="beat2" arcHeight="5.0" arcWidth="5.0" fill="#121212" height="167.0" layoutX="497.0" layoutY="366.0" onMouseEntered="#highlightMetronomeElements" onMouseExited="#unHighlightMetronomeElements" scaleX="0.5" scaleY="0.5" stroke="#d5a72a" strokeType="OUTSIDE" strokeWidth="1.5" width="115.0" />
-      <Rectangle fx:id="beat3" arcHeight="5.0" arcWidth="5.0" fill="#121212" height="167.0" layoutX="621.0" layoutY="366.0" onMouseEntered="#highlightMetronomeElements" onMouseExited="#unHighlightMetronomeElements" scaleX="0.5" scaleY="0.5" stroke="#d5a72a" strokeType="OUTSIDE" strokeWidth="1.5" width="115.0" />
-      <Rectangle fx:id="beat4" arcHeight="5.0" arcWidth="5.0" fill="#121212" height="167.0" layoutX="746.0" layoutY="366.0" onMouseEntered="#highlightMetronomeElements" onMouseExited="#unHighlightMetronomeElements" scaleX="0.5" scaleY="0.5" stroke="#d5a72a" strokeType="OUTSIDE" strokeWidth="1.5" width="115.0" />
-      <Line fx:id="sampleLine" endX="1132.0" fill="WHITE" layoutX="142.0" layoutY="531.0" onMouseEntered="#highlightSampleRhythmLineElements" onMouseExited="#unHighlightSampleRhythmLineElements" scaleX="0.5" scaleY="0.5" startX="-117.0" stroke="WHITE" strokeWidth="4.0" />
-      <Line fx:id="userLine" endX="1132.0" layoutX="141.0" layoutY="591.0" onMouseEntered="#highlightUserInputLineElements" onMouseExited="#unHighlightUserInputLineElements" scaleX="0.5" scaleY="0.5" startX="-117.0" stroke="WHITE" strokeWidth="4.0" />
+      <Rectangle fx:id="beat1" arcHeight="5.0" arcWidth="5.0" fill="#121212" height="270.0" layoutX="371.0" layoutY="289.0" scaleX="0.5" scaleY="0.5" stroke="#d5a72a" strokeType="OUTSIDE" strokeWidth="1.5" width="115.0" />
+      <Rectangle fx:id="beat2" arcHeight="5.0" arcWidth="5.0" fill="#121212" height="167.0" layoutX="497.0" layoutY="366.0" scaleX="0.5" scaleY="0.5" stroke="#d5a72a" strokeType="OUTSIDE" strokeWidth="1.5" width="115.0" />
+      <Rectangle fx:id="beat3" arcHeight="5.0" arcWidth="5.0" fill="#121212" height="167.0" layoutX="621.0" layoutY="366.0" scaleX="0.5" scaleY="0.5" stroke="#d5a72a" strokeType="OUTSIDE" strokeWidth="1.5" width="115.0" />
+      <Rectangle fx:id="beat4" arcHeight="5.0" arcWidth="5.0" fill="#121212" height="167.0" layoutX="746.0" layoutY="366.0" scaleX="0.5" scaleY="0.5" stroke="#d5a72a" strokeType="OUTSIDE" strokeWidth="1.5" width="115.0" />
+      <Line fx:id="sampleLine" endX="1132.0" fill="WHITE" layoutX="142.0" layoutY="531.0" scaleX="0.5" scaleY="0.5" startX="-117.0" stroke="WHITE" strokeWidth="4.0" />
+      <Line fx:id="userLine" endX="1132.0" layoutX="141.0" layoutY="591.0" scaleX="0.5" scaleY="0.5" startX="-117.0" stroke="WHITE" strokeWidth="4.0" />
       <Line fx:id="beat1Marker" endX="-100.0" endY="194.0" fill="WHITE" layoutX="500.0" layoutY="443.0" opacity="0.3" scaleY="0.5" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
       <Line fx:id="beat3Marker" endX="-100.0" endY="194.0" layoutX="750.0" layoutY="443.0" opacity="0.3" scaleY="0.5" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
-      <Rectangle fx:id="tapPad" arcHeight="5.0" arcWidth="5.0" fill="#121212" height="73.0" layoutX="406.0" layoutY="618.0" onMouseEntered="#highlightTapPadElements" onMouseExited="#unHighlightTapPadElements" scaleX="0.5" scaleY="0.5" stroke="#d5522a" strokeType="OUTSIDE" strokeWidth="1.5" width="487.4" />
+      <Rectangle fx:id="tapPad" arcHeight="5.0" arcWidth="5.0" fill="#121212" height="73.0" layoutX="406.0" layoutY="618.0" scaleX="0.5" scaleY="0.5" stroke="#d5522a" strokeType="OUTSIDE" strokeWidth="1.5" width="487.4" />
       <Line fx:id="beat2Marker" endX="-100.0" endY="194.0" fill="WHITE" layoutX="626.0" layoutY="443.0" opacity="0.3" scaleY="0.5" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
       <Line fx:id="beat4Marker" endX="-100.0" endY="173.0" fill="WHITE" layoutX="875.0" layoutY="464.0" opacity="0.3" scaleY="0.5" startX="-100.0" startY="-21.0" stroke="WHITE" strokeWidth="2.0" />
       <Line fx:id="endOfBarMarker" endX="-100.0" endY="194.0" layoutX="1001.0" layoutY="443.0" opacity="0.3" scaleY="0.5" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
@@ -75,15 +75,15 @@
       </Text>
       <Line fx:id="sampleLinePointer" endX="254.0" endY="1.0" fill="WHITE" layoutX="121.0" layoutY="525.0" startX="120.0" startY="-140.0" stroke="WHITE" />
       <Line fx:id="userLinePointer" endX="208.0" endY="22.0" fill="WHITE" layoutX="154.0" layoutY="575.0" startX="110.0" startY="61.0" stroke="WHITE" />
-      <Line fx:id="sampleOnset1" endX="84.0" endY="7.0" fill="WHITE" layoutX="377.0" layoutY="544.0" onMouseEntered="#highlightSampleRhythmOnsetElements" onMouseExited="#unHighlightSampleRhythmOnsetElements" startX="84.0" startY="-34.0" stroke="WHITE" strokeWidth="3.0" />
-      <Line fx:id="sampleOnset3" endX="84.0" endY="7.0" fill="WHITE" layoutX="566.0" layoutY="543.0" onMouseEntered="#highlightSampleRhythmOnsetElements" onMouseExited="#unHighlightSampleRhythmOnsetElements" startX="84.0" startY="-34.0" stroke="WHITE" strokeWidth="3.0" />
-      <Line fx:id="sampleOnset2" endX="84.0" endY="7.0" fill="WHITE" layoutX="501.0" layoutY="543.0" onMouseEntered="#highlightSampleRhythmOnsetElements" onMouseExited="#unHighlightSampleRhythmOnsetElements" startX="84.0" startY="-34.0" stroke="WHITE" strokeWidth="3.0" />
-      <Line fx:id="sampleOnset4" endX="84.0" endY="7.0" fill="WHITE" layoutX="691.0" layoutY="543.0" onMouseEntered="#highlightSampleRhythmOnsetElements" onMouseExited="#unHighlightSampleRhythmOnsetElements" startX="84.0" startY="-34.0" stroke="WHITE" strokeWidth="3.0" />
+      <Line fx:id="sampleOnset1" endX="84.0" endY="7.0" fill="WHITE" layoutX="377.0" layoutY="544.0" startX="84.0" startY="-34.0" stroke="WHITE" strokeWidth="3.0" />
+      <Line fx:id="sampleOnset3" endX="84.0" endY="7.0" fill="WHITE" layoutX="566.0" layoutY="543.0" startX="84.0" startY="-34.0" stroke="WHITE" strokeWidth="3.0" />
+      <Line fx:id="sampleOnset2" endX="84.0" endY="7.0" fill="WHITE" layoutX="501.0" layoutY="543.0" startX="84.0" startY="-34.0" stroke="WHITE" strokeWidth="3.0" />
+      <Line fx:id="sampleOnset4" endX="84.0" endY="7.0" fill="WHITE" layoutX="691.0" layoutY="543.0" startX="84.0" startY="-34.0" stroke="WHITE" strokeWidth="3.0" />
       <Line fx:id="tapPadPointer" endX="141.0" endY="-23.5999755859375" fill="WHITE" layoutX="360.0" layoutY="760.0" startX="208.0" startY="-80.0" stroke="WHITE" />
-      <Line fx:id="userOnset1" endX="84.0" endY="7.0" fill="WHITE" layoutX="386.0" layoutY="604.0" onMouseEntered="#highlightUserOnsetElements" onMouseExited="#unHighlightUserOnsetElements" startX="84.0" startY="-34.0" stroke="#d5522a" strokeWidth="3.0" />
-      <Line fx:id="userOnset2" endX="84.0" endY="7.0" fill="WHITE" layoutX="497.0" layoutY="603.0" onMouseEntered="#highlightUserOnsetElements" onMouseExited="#unHighlightUserOnsetElements" startX="84.0" startY="-34.0" stroke="#d5522a" strokeWidth="3.0" />
-      <Line fx:id="userOnset3" endX="84.0" endY="7.0" fill="WHITE" layoutX="569.0" layoutY="603.0" onMouseEntered="#highlightUserOnsetElements" onMouseExited="#unHighlightUserOnsetElements" startX="84.0" startY="-34.0" stroke="#d5522a" strokeWidth="3.0" />
-      <Line fx:id="userOnset4" endX="84.0" endY="7.0" fill="WHITE" layoutX="688.0" layoutY="603.0" onMouseEntered="#highlightUserOnsetElements" onMouseExited="#unHighlightUserOnsetElements" startX="84.0" startY="-34.0" stroke="#d5522a" strokeWidth="3.0" />
+      <Line fx:id="userOnset1" endX="84.0" endY="7.0" fill="WHITE" layoutX="386.0" layoutY="604.0" startX="84.0" startY="-34.0" stroke="#d5522a" strokeWidth="3.0" />
+      <Line fx:id="userOnset2" endX="84.0" endY="7.0" fill="WHITE" layoutX="497.0" layoutY="603.0" startX="84.0" startY="-34.0" stroke="#d5522a" strokeWidth="3.0" />
+      <Line fx:id="userOnset3" endX="84.0" endY="7.0" fill="WHITE" layoutX="569.0" layoutY="603.0" startX="84.0" startY="-34.0" stroke="#d5522a" strokeWidth="3.0" />
+      <Line fx:id="userOnset4" endX="84.0" endY="7.0" fill="WHITE" layoutX="688.0" layoutY="603.0" startX="84.0" startY="-34.0" stroke="#d5522a" strokeWidth="3.0" />
       <Text fx:id="computerOnsetLineText" fill="WHITE" layoutX="1012.0" layoutY="580.0" onMouseEntered="#highlightSampleRhythmOnsetElements" onMouseExited="#unHighlightSampleRhythmOnsetElements" strokeType="OUTSIDE" strokeWidth="0.0" text="These small vertical white lines are the perfect tap locations for the rhythm you should tap back in bar three." wrappingWidth="245.1999969482422">
          <font>
             <Font size="22.0" />
