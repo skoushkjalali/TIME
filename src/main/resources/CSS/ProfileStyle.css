@@ -66,3 +66,7 @@ Text{
 #gameInstructionsButton:hover{
     -fx-background-color: #a07800;
 }
+
+#logoutButton:hover{
+    -fx-background-color: #424242;
+}

@@ -15,16 +15,16 @@
    <children>
       <Circle fx:id="userCircle" fill="#1e1e1e" layoutX="136.0" layoutY="138.0" radius="128.0" stroke="#d5a72a" strokeType="INSIDE" strokeWidth="0.75" />
       <Rectangle fx:id="statsSurfaceRectangle" arcHeight="18.0" arcWidth="18.0" fill="#1e1e1e" height="198.0" layoutX="914.0" layoutY="12.0" stroke="#d5a72a" strokeType="OUTSIDE" strokeWidth="0.0" width="372.0" />
-      <Rectangle arcHeight="18.0" arcWidth="18.0" fill="#1e1e1e" height="213.0" layoutX="1084.0" layoutY="611.0" stroke="#d5a72a" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
-      <Rectangle arcHeight="18.0" arcWidth="18.0" fill="#1e1e1e" height="309.0" layoutX="1084.0" layoutY="284.0" stroke="#d5a72a" strokeType="INSIDE" strokeWidth="0.75" width="200.0" />
-      <Button fx:id="playButton" layoutX="1109.0" layoutY="416.0" mnemonicParsing="false" onAction="#onPlayButtonClick" prefHeight="80.0" prefWidth="150.0" stylesheets="@../../../CSS/ProfileStyle.css" text="Play">
+      <Rectangle arcHeight="18.0" arcWidth="18.0" fill="#1e1e1e" height="271.0" layoutX="1084.0" layoutY="553.0" stroke="#d5a72a" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+      <Rectangle arcHeight="18.0" arcWidth="18.0" fill="#1e1e1e" height="309.0" layoutX="1084.0" layoutY="227.0" stroke="#d5a72a" strokeType="INSIDE" strokeWidth="0.75" width="200.0" />
+      <Button fx:id="playButton" layoutX="1109.0" layoutY="359.0" mnemonicParsing="false" onAction="#onPlayButtonClick" prefHeight="80.0" prefWidth="150.0" stylesheets="@../../../CSS/ProfileStyle.css" text="Play">
          <font>
             <Font name="American Typewriter" size="18.0" />
          </font></Button>
-      <ChoiceBox fx:id="levelSelector" layoutX="1186.0" layoutY="308.0" prefHeight="25.0" prefWidth="72.0" stylesheets="@../../../CSS/ProfileStyle.css" />
-      <ChoiceBox fx:id="bpmSelector" layoutX="1186.0" layoutY="360.0" prefHeight="25.0" prefWidth="72.0" stylesheets="@../../../CSS/ProfileStyle.css" />
-      <Text fill="WHITE" layoutX="1110.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Level" />
-      <Text fill="WHITE" layoutX="1110.0" layoutY="377.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select BPM" />
+      <ChoiceBox fx:id="levelSelector" layoutX="1186.0" layoutY="251.0" prefHeight="25.0" prefWidth="72.0" stylesheets="@../../../CSS/ProfileStyle.css" />
+      <ChoiceBox fx:id="bpmSelector" layoutX="1186.0" layoutY="303.0" prefHeight="25.0" prefWidth="72.0" stylesheets="@../../../CSS/ProfileStyle.css" />
+      <Text fill="WHITE" layoutX="1110.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Level" />
+      <Text fill="WHITE" layoutX="1110.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select BPM" />
       <Text fx:id="username" fill="WHITE" layoutX="15.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username" textAlignment="CENTER" wrappingWidth="243.0">
          <font>
             <Font size="18.0" />
@@ -73,16 +73,16 @@
           <NumberAxis fx:id="yAxis" minorTickCount="1" side="LEFT" />
         </yAxis>
       </BarChart>
-      <Button fx:id="resetMetricsButton" layoutX="1109.0" layoutY="636.0" mnemonicParsing="false" onAction="#onResetMetricsButtonClick" prefHeight="40.0" prefWidth="150.0" text="Reset Metrics">
+      <Button fx:id="resetMetricsButton" layoutX="1109.0" layoutY="581.0" mnemonicParsing="false" onAction="#onResetMetricsButtonClick" prefHeight="40.0" prefWidth="150.0" text="Reset Metrics">
          <font>
             <Font name="American Typewriter" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="viewLevelStatsButton" layoutX="1109.0" layoutY="524.0" mnemonicParsing="false" onAction="#onViewLevelStatsButtonClicked" prefHeight="40.0" prefWidth="150.0" text="View Level Stats">
+      <Button fx:id="viewLevelStatsButton" layoutX="1109.0" layoutY="467.0" mnemonicParsing="false" onAction="#onViewLevelStatsButtonClicked" prefHeight="40.0" prefWidth="150.0" text="View Level Stats">
          <font>
             <Font name="American Typewriter" size="13.0" />
          </font></Button>
-      <Button fx:id="exitButton" layoutX="1109.0" layoutY="697.0" mnemonicParsing="false" onAction="#onExitButtonClicked" prefHeight="40.0" prefWidth="150.0" text="Exit">
+      <Button fx:id="exitButton" layoutX="1109.0" layoutY="699.0" mnemonicParsing="false" onAction="#onExitButtonClicked" prefHeight="40.0" prefWidth="150.0" text="Exit">
          <font>
             <Font name="American Typewriter" size="18.0" />
          </font>
@@ -98,5 +98,10 @@
          </font>
       </Text>
       <Button fx:id="gameInstructionsButton" layoutX="1111.0" layoutY="759.0" mnemonicParsing="false" onAction="#onGameInstructionsButtonClick" prefHeight="40.0" prefWidth="150.0" text="Game Instructions" />
+      <Button fx:id="logoutButton" layoutX="1111.0" layoutY="641.0" mnemonicParsing="false" onAction="#onLogoutButtonClick" prefHeight="40.0" prefWidth="150.0" text="Logout">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

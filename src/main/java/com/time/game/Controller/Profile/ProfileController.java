@@ -79,6 +79,9 @@ public class ProfileController implements Initializable {
     @FXML
     private Button gameInstructionsButton;
 
+    @FXML
+    private Button logoutButton;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -231,5 +234,11 @@ public class ProfileController implements Initializable {
 
     }
 
+    @FXML
+    protected void onLogoutButtonClick() throws IOException, SQLException {
+        DatabaseUtils.updateAllUserData(userProfile);
+        ScreenController.changeScreen("login-view");
+        TimeApplication.userProfile = null;
+    }
 
-}
+    }
