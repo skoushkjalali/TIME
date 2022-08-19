@@ -13,9 +13,11 @@ public class UserProfile {
     private final String username;
     private String scoreOnLastLevel;
 
-
-
     private int levelStatRequestNumber;
+
+
+
+    private boolean hasPlayedALevelSinceSignIn = false;
 
     /*
         Holds user scores for all attempts of all levels as a key of 1-25 (all rhythms) and either an empty arraylist
@@ -47,6 +49,14 @@ public class UserProfile {
         else {
             this.levelScores.get(level).add(score);
         }
+    }
+
+    public boolean getHasPlayedALevelSinceSignIn() {
+        return hasPlayedALevelSinceSignIn;
+    }
+
+    public void setHasPlayedALevelSinceSignIn(boolean hasPlayedALevelSinceSignIn) {
+        this.hasPlayedALevelSinceSignIn = hasPlayedALevelSinceSignIn;
     }
 
     public String getUsername() {

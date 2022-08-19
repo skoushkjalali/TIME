@@ -184,11 +184,13 @@ public class ProfileController implements Initializable {
 
         if (userProfile.getNumLevelsCompleted()!=0) {
             averageHighestScoreText.setText(userProfile.getAverageHighestScore() + "%");
-            if(Level.getLevelNumber() < 10){
-                lastLevelText.setText("Last Level Played:  L"+Level.getLevelNumber());
-            }
-            else{
-                lastLevelText.setText("Last Level Played: L"+Level.getLevelNumber());
+
+            if (userProfile.getHasPlayedALevelSinceSignIn()) {
+                if (Level.getLevelNumber() < 10) {
+                    lastLevelText.setText("Last Level Played:  L" + Level.getLevelNumber());
+                } else {
+                    lastLevelText.setText("Last Level Played: L" + Level.getLevelNumber());
+                }
             }
         }
     }

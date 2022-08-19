@@ -16,8 +16,8 @@
          </font>
       </Text>
       <Text fill="WHITE" layoutX="460.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Existing user Login" textAlignment="CENTER" textOrigin="CENTER" />
-      <TextField fx:id="existingUsername" layoutX="458.0" layoutY="353.0" prefHeight="25.0" prefWidth="256.0" promptText="username" text="SashaKJ" />
-      <TextField fx:id="existingPassword" layoutX="458.0" layoutY="384.0" prefHeight="25.0" prefWidth="256.0" promptText="password" text="admin" />
+      <TextField fx:id="existingUsername" layoutX="458.0" layoutY="353.0" prefHeight="25.0" prefWidth="256.0" promptText="username" />
+      <TextField fx:id="existingPassword" layoutX="458.0" layoutY="384.0" prefHeight="25.0" prefWidth="256.0" promptText="password" />
       <Text fill="WHITE" layoutX="460.0" layoutY="455.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?" textAlignment="CENTER" />
       <TextField fx:id="newUsername" layoutX="458.0" layoutY="477.0" prefHeight="25.0" prefWidth="256.0" promptText="username" />
       <TextField fx:id="newPassword" layoutX="458.0" layoutY="508.0" prefHeight="25.0" prefWidth="256.0" promptText="password" />

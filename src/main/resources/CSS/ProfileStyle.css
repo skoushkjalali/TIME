@@ -58,6 +58,11 @@ Text{
     -fx-background-color: #424242;
 }
 
+#gameInstructionsButton{
+    -fx-background-color: #d5a72a;
+    -fx-text-fill: black;
+}
+
 #gameInstructionsButton:hover{
-    -fx-background-color: #424242;
+    -fx-background-color: #a07800;
 }
