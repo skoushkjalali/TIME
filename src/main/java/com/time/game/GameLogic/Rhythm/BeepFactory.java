@@ -8,16 +8,24 @@ import java.net.URL;
     type of sound, and the process by which it is generated is done here.
  */
 public class BeepFactory {
-
     URL metronome1Path = getClass().getResource("/sounds/MetronomeClick#1.mp3");
-    private final AudioClip metronome1AudioClip = new AudioClip(metronome1Path.toString());
+    private final AudioClip metronome1AudioClip;
+
+    {
+        assert metronome1Path != null;
+        metronome1AudioClip = new AudioClip(metronome1Path.toString());
+    }
 
     URL userTap1Path = getClass().getResource("/sounds/Snare#2.mp3");
-    private final AudioClip userTap1AudioClip = new AudioClip(userTap1Path.toString());
+    private final AudioClip userTap1AudioClip;
 
+    {
+        assert userTap1Path != null;
+        userTap1AudioClip = new AudioClip(userTap1Path.toString());
+    }
 
     /*
-        This method generates a beep sound.
+        This method generates a default beep sound.
      */
     public static void getBeep(){
         java.awt.Toolkit.getDefaultToolkit().beep();
@@ -35,6 +43,5 @@ public class BeepFactory {
     public void getBeep3(){
         userTap1AudioClip.play();
     }
-
 
 }

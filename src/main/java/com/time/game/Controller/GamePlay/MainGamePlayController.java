@@ -1,4 +1,5 @@
 package com.time.game.Controller.GamePlay;
+
 import com.time.game.Controller.ScreenController;
 import com.time.game.GameLogic.Rhythm.BeepFactory;
 import com.time.game.GameLogic.Rhythm.RhythmListener;
@@ -25,10 +26,8 @@ import java.util.ResourceBundle;
 
 
 public class MainGamePlayController implements Initializable {
-
     @FXML
     private Pane mainPane;
-
     @FXML
     private Rectangle tapPad;
     @FXML
@@ -39,7 +38,6 @@ public class MainGamePlayController implements Initializable {
     private Rectangle beat3;
     @FXML
     private Rectangle beat4;
-
     @FXML
     private Line sampleLine;
     @FXML
@@ -48,60 +46,53 @@ public class MainGamePlayController implements Initializable {
     private Line startOfBarLine;
     @FXML
     private Line endOfBarLine;
-
     @FXML
     private Text levelID;
-
     @FXML
     private Text centralText;
-
     Timeline timeline;
-
     private Level level;
-
     private RhythmListener rhythmListener;
     private Scorer scorer;
 
     private BeepFactory beepFactory;
 
+    protected KeyFrame[] getMetronomeKeyFrames(int numOfBars, int flashLength) {
 
-    protected KeyFrame[] getMetronomeKeyFrames(int numOfBars, int flashLength){
-
-        KeyFrame[] metronomeEvents = new KeyFrame[numOfBars*4*2];
+        KeyFrame[] metronomeEvents = new KeyFrame[numOfBars * 4 * 2];
         int clickIOI = level.getBeatDurationInMilliSecs();
 
         // beat1 in all bars
-        for(int i = 0; i < metronomeEvents.length; i+=8){
-            int cumulativeDuration = (i/2)*clickIOI;
+        for (int i = 0; i < metronomeEvents.length; i += 8) {
+            int cumulativeDuration = (i / 2) * clickIOI;
             metronomeEvents[i] = new KeyFrame(Duration.millis(cumulativeDuration), actionEvent -> makeBeat1StartFlash());
-            metronomeEvents[i+1] = new KeyFrame(Duration.millis(cumulativeDuration+flashLength), actionEvent -> makeBeat1FinishFlash());
+            metronomeEvents[i + 1] = new KeyFrame(Duration.millis(cumulativeDuration + flashLength), actionEvent -> makeBeat1FinishFlash());
         }
 
         // beat2 in all bars
-        for(int i = 2; i < metronomeEvents.length; i+=8){
-            int cumulativeDuration = (i/2)*clickIOI;
+        for (int i = 2; i < metronomeEvents.length; i += 8) {
+            int cumulativeDuration = (i / 2) * clickIOI;
             metronomeEvents[i] = new KeyFrame(Duration.millis(cumulativeDuration), actionEvent -> makeBeat2StartFlash());
-            metronomeEvents[i+1] = new KeyFrame(Duration.millis(cumulativeDuration+flashLength), actionEvent -> makeBeat2FinishFlash());
+            metronomeEvents[i + 1] = new KeyFrame(Duration.millis(cumulativeDuration + flashLength), actionEvent -> makeBeat2FinishFlash());
         }
 
         // beat3 in all bars
-        for(int i = 4; i < metronomeEvents.length; i+=8){
-            int cumulativeDuration = (i/2)*clickIOI;
+        for (int i = 4; i < metronomeEvents.length; i += 8) {
+            int cumulativeDuration = (i / 2) * clickIOI;
             metronomeEvents[i] = new KeyFrame(Duration.millis(cumulativeDuration), actionEvent -> makeBeat3StartFlash());
-            metronomeEvents[i+1] = new KeyFrame(Duration.millis(cumulativeDuration+flashLength), actionEvent -> makeBeat3FinishFlash());
+            metronomeEvents[i + 1] = new KeyFrame(Duration.millis(cumulativeDuration + flashLength), actionEvent -> makeBeat3FinishFlash());
         }
 
         // beat4 in all bars
-        for(int i = 6; i < metronomeEvents.length; i+=8){
-            int cumulativeDuration = (i/2)*clickIOI;
+        for (int i = 6; i < metronomeEvents.length; i += 8) {
+            int cumulativeDuration = (i / 2) * clickIOI;
             metronomeEvents[i] = new KeyFrame(Duration.millis(cumulativeDuration), actionEvent -> makeBeat4StartFlash());
-            metronomeEvents[i+1] = new KeyFrame(Duration.millis(cumulativeDuration+flashLength), actionEvent -> makeBeat4FinishFlash());
+            metronomeEvents[i + 1] = new KeyFrame(Duration.millis(cumulativeDuration + flashLength), actionEvent -> makeBeat4FinishFlash());
         }
-
         return metronomeEvents;
     }
 
-    public void setLevel(int i){
+    public void setLevel(int i) {
         level = new Level(RhythmFactory.getRhythm(i));
     }
 
@@ -114,37 +105,35 @@ public class MainGamePlayController implements Initializable {
         for (var onset : sampleOnsets) {
             sampleOnsetEvents.add(new KeyFrame(Duration.millis(onset + oneBarOffsetDuration), actionEvent -> sampleOnsetBeep()));
         }
-    return sampleOnsetEvents;
+        return sampleOnsetEvents;
     }
 
-    protected int scoreLevel(){
+    protected int scoreLevel() {
         double score = scorer.scoreInput(level.getSampleRhythm().getAbsoluteRhythm(Level.getBpm()),
                 rhythmListener.getShiftedUserInput(Level.getBpm(), 1));
-        return (int)(score*100);
+        return (int) (score * 100);
     }
 
     /*
         Method sets the score on the gamePlay screen and updates the userProfile with the score
      */
-    protected void setScore(){
+    protected void setScore() {
         int score = scoreLevel();
         Level.setLastScore(score);
-        centralText.setText(score +"%");
+        centralText.setText(score + "%");
         updateUserProfile();
     }
 
-    protected void updateUserProfile(){
+    protected void updateUserProfile() {
         TimeApplication.userProfile.updateUserScores(Level.getLevelNumber(), Level.getLastScore());
         TimeApplication.userProfile.setScoreOnLastLevel(Level.getLastScore());
         TimeApplication.userProfile.setHasPlayedALevelSinceSignIn(true);
     }
 
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         level = new Level(RhythmFactory.getRhythm(Level.getLevelNumber()));
-        levelID.setText("Level "+Level.getLevelNumber());
+        levelID.setText("Level " + Level.getLevelNumber());
         beepFactory = new BeepFactory();
         rhythmListener = new RhythmListener();
         scorer = new Scorer(level.getLOWER_BOUND(), level.getUPPER_BOUND());
@@ -153,7 +142,7 @@ public class MainGamePlayController implements Initializable {
 
 
         // add all metronome clicks and flashes to timeline
-        timeline.getKeyFrames().addAll(getMetronomeKeyFrames(3,50));
+        timeline.getKeyFrames().addAll(getMetronomeKeyFrames(3, 50));
         // add all sample onsets to timeline
         timeline.getKeyFrames().addAll(getSampleRhythmKeyFrames());
 
@@ -161,7 +150,7 @@ public class MainGamePlayController implements Initializable {
         timeline.getKeyFrames().add(new KeyFrame(Duration.ZERO, e -> centralText.setText("Ready")));
         timeline.getKeyFrames().add(new KeyFrame(Duration.millis(level.getBarDurationInMilliSecs()),
                 e -> centralText.setText("Listen")));
-        timeline.getKeyFrames().add(new KeyFrame(Duration.millis(level.getBarDurationInMilliSecs()*2),
+        timeline.getKeyFrames().add(new KeyFrame(Duration.millis(level.getBarDurationInMilliSecs() * 2),
                 e -> centralText.setText("Play")));
 
 
@@ -172,28 +161,28 @@ public class MainGamePlayController implements Initializable {
 
         // start userInput 1/2 a beat before the start of the 3rd Bar
         // i.e will only draw an onset up to 1/2 a beat early
-        KeyFrame startUserInput = new KeyFrame(Duration.millis(((level.getBarDurationInMilliSecs()*2) -
-                (0.5 * level.getBeatDurationInMilliSecs()))), e-> Level.setUserInputCaptureEnabled(true));
+        KeyFrame startUserInput = new KeyFrame(Duration.millis(((level.getBarDurationInMilliSecs() * 2) -
+                (0.5 * level.getBeatDurationInMilliSecs()))), e -> Level.setUserInputCaptureEnabled(true));
         timeline.getKeyFrames().add(startUserInput);
 
         // end userInput 1/2 a beat after end of 3rd bar
         // i.e will only draw an onset up to 1/2 a beat late
-        KeyFrame endUserInput = new KeyFrame(Duration.millis((level.getBarDurationInMilliSecs()*3) +
-                (0.5 * level.getBeatDurationInMilliSecs())), e-> Level.setUserInputCaptureEnabled(false));
+        KeyFrame endUserInput = new KeyFrame(Duration.millis((level.getBarDurationInMilliSecs() * 3) +
+                (0.5 * level.getBeatDurationInMilliSecs())), e -> Level.setUserInputCaptureEnabled(false));
         timeline.getKeyFrames().add(endUserInput);
 
         // score level
-        KeyFrame setScore = new KeyFrame(Duration.millis((level.getBarDurationInMilliSecs()*3) +
+        KeyFrame setScore = new KeyFrame(Duration.millis((level.getBarDurationInMilliSecs() * 3) +
                 level.getUPPER_BOUND()), e -> setScore());
         timeline.getKeyFrames().add(setScore);
 
 
         // switch to end of level screen 1700ms after the score is shown
-        timeline.getKeyFrames().add(new KeyFrame(Duration.millis((level.getBarDurationInMilliSecs()*3) + 1700),
-                e-> {
+        timeline.getKeyFrames().add(new KeyFrame(Duration.millis((level.getBarDurationInMilliSecs() * 3) + 1700),
+                e -> {
                     try {
                         String screen = "end-of-level-continuation-view";
-                        if(Level.getLevelNumber() == RhythmFactory.getLastPossibleRhythmNumber()){
+                        if (Level.getLevelNumber() == RhythmFactory.getLastPossibleRhythmNumber()) {
                             screen = "end-of-level-game-completed-view";
                         }
                         ScreenController.changeScreen(screen);
@@ -202,21 +191,20 @@ public class MainGamePlayController implements Initializable {
                     }
                 }));
         timeline.play();
-
     }
 
     /*
         This function calculates the GUI x-coordinate locations of the sample rhythm for the level currently selected
      */
-    protected double[] getSampleOnsetXCoordinates(double pixelsPerBar, double startOfBarXCoordinate){
+    protected double[] getSampleOnsetXCoordinates(double pixelsPerBar, double startOfBarXCoordinate) {
         double pixelsPerSegment = pixelsPerBar / level.getSampleRhythm().getSegments();
 
         return Arrays.stream(level.getSampleRhythm().getRelativeRhythm()).mapToDouble(relOnset -> (pixelsPerSegment * relOnset) +
                 startOfBarXCoordinate).toArray();
     }
 
-    protected void drawSampleOnsets(){
-        for(double onset : getSampleOnsetXCoordinates(1000, 230)){
+    protected void drawSampleOnsets() {
+        for (double onset : getSampleOnsetXCoordinates(1000, 230)) {
             drawOnsetLine(onset, 467, Color.WHITE);
         }
     }
@@ -225,15 +213,15 @@ public class MainGamePlayController implements Initializable {
         This method draws a user tap onset during the 3rd bar of the level. It allows an onset to be draws a maximum
         of a half a beat before the first beat, and a half a beat after the bar has ended.
      */
-    protected void drawUserOnset(){
-        if(Level.isUserInputCaptureEnabled()) {
+    protected void drawUserOnset() {
+        if (Level.isUserInputCaptureEnabled()) {
             double delayFromStartOfBar = (System.nanoTime() / 1_000_000.0) - (RhythmListener.startTime + level.getBarDurationInMilliSecs());
             double xAxisLocation = ((delayFromStartOfBar / level.getBarDurationInMilliSecs()) * 1000) + 230;
             drawOnsetLine(xAxisLocation, 582, Color.web("#d5522a"));
         }
     }
 
-    private void drawOnsetLine(double xAxisLocation, double yAxisLocation, Color lineColor ) {
+    private void drawOnsetLine(double xAxisLocation, double yAxisLocation, Color lineColor) {
         Line newOnset = new Line();
         newOnset.setLayoutX(xAxisLocation);
         newOnset.setLayoutY(yAxisLocation);
@@ -246,34 +234,33 @@ public class MainGamePlayController implements Initializable {
         mainPane.getChildren().add(newOnset);
     }
 
-    protected void sampleOnsetBeep(){
+    protected void sampleOnsetBeep() {
         beepFactory.getBeep3();
     }
 
 
     @FXML
-    protected void userInputKeyPressed(){
+    protected void userInputKeyPressed() {
         beepFactory.getBeep3();
         drawUserOnset();
         makeTapPadStartFlash();
-        if(Level.isUserInputCaptureEnabled()) {
+        if (Level.isUserInputCaptureEnabled()) {
             RhythmListener.userInput.add((int) ((System.nanoTime() / 1_000_000) - RhythmListener.startTime));
         }
-
     }
 
     @FXML
-    protected void userInputKeyReleased(){
+    protected void userInputKeyReleased() {
         makeTapPadFinishFlash();
     }
 
     @FXML
-    protected void makeTapPadStartFlash(){
+    protected void makeTapPadStartFlash() {
         tapPad.setFill(Color.web("d5522a"));
     }
 
     @FXML
-    protected void makeTapPadFinishFlash(){
+    protected void makeTapPadFinishFlash() {
         tapPad.setFill(Color.web("121212"));
     }
 
@@ -284,43 +271,41 @@ public class MainGamePlayController implements Initializable {
     }
 
     @FXML
-    protected void makeBeat1FinishFlash(){
+    protected void makeBeat1FinishFlash() {
         beat1.setFill(Color.web("121212"));
     }
 
-
     @FXML
-    protected void makeBeat2StartFlash(){
+    protected void makeBeat2StartFlash() {
         beepFactory.getBeep2();
         beat2.setFill(Color.WHITE);
     }
 
     @FXML
-    protected void makeBeat2FinishFlash(){
+    protected void makeBeat2FinishFlash() {
         beat2.setFill(Color.web("121212"));
     }
 
     @FXML
-    protected void makeBeat3StartFlash(){
+    protected void makeBeat3StartFlash() {
         beepFactory.getBeep2();
         beat3.setFill(Color.WHITE);
     }
 
     @FXML
-    protected void makeBeat3FinishFlash(){
+    protected void makeBeat3FinishFlash() {
         beat3.setFill(Color.web("121212"));
     }
 
     @FXML
-    protected void makeBeat4StartFlash(){
+    protected void makeBeat4StartFlash() {
         beepFactory.getBeep2();
         beat4.setFill(Color.WHITE);
     }
 
     @FXML
-    protected void makeBeat4FinishFlash(){
+    protected void makeBeat4FinishFlash() {
         beat4.setFill(Color.web("121212"));
     }
-
 
 }

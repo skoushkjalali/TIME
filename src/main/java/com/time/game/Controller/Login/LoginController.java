@@ -18,37 +18,26 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
-
     @FXML
     private TextField existingUsername;
-
     @FXML
     private  TextField existingPassword;
-
     @FXML
     private TextField newUsername;
-
     @FXML
     private TextField newPassword;
-
     @FXML
     private Button existingUserLoginButton;
-
     @FXML
     private Button newUserLoginButton;
-
-
     @FXML
     private Text invalidLoginText;
     @FXML
     private Text invalidNewUserTextLine1;
     @FXML
     private Text invalidNewUserTextLine2;
-
     private int numInvalidExistingLoginAttempts;
     private int numInvalidNewUserAttempts;
-
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -56,10 +45,8 @@ public class LoginController implements Initializable {
         setupEnterKeyBinding();
     }
 
-
     @FXML
     protected void onExistingUserLoginButtonClick() throws IOException, SQLException {
-
         String username = existingUsername.getText();
         String password = existingPassword.getText();
 
@@ -80,7 +67,6 @@ public class LoginController implements Initializable {
             else{
                 invalidLoginText.setFill(Color.web("#e94948"));
             }
-
             invalidLoginText.setText("invalid username and/or password");
             numInvalidExistingLoginAttempts +=1;
         }
@@ -88,7 +74,6 @@ public class LoginController implements Initializable {
 
     @FXML
     protected void onNewUserLoginButtonClick() throws IOException, SQLException {
-
         String username = newUsername.getText();
         String password = newPassword.getText();
 
@@ -132,7 +117,6 @@ public class LoginController implements Initializable {
     }
 
     public void setupEnterKeyBinding(){
-
         existingPassword.setOnKeyPressed(e-> {
             if(e.getCode() == KeyCode.ENTER){
                 Platform.runLater(() -> existingUserLoginButton.setStyle("-fx-background-color: #a07800; " +
@@ -183,6 +167,4 @@ public class LoginController implements Initializable {
             }
         });
     }
-
-
 }

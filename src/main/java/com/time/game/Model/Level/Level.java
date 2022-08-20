@@ -7,19 +7,13 @@ import com.time.game.Model.Rhythm.Rhythm;
     This class represents a level of a rhythm at a prescribed bpm.
  */
 public class Level {
-
     private static boolean userInputCaptureEnabled = false;
-
-    private static int bpm = 100; // default. bpm = 0 breaks the application
+    private static int bpm = 100; // default. bpm = 0 breaks the applicatio
     private final int barDurationInMilliSecs = (int)((60 / (float)bpm) * 1000 * 4);
-
     private int LOWER_BOUND = 20;
     private int UPPER_BOUND = 500;
-
     private static int levelNumber = 1; // default
-
     private static int lastScore = 0;
-
     Rhythm sampleRhythm;
 
     public Level(Rhythm sampleRhythm){
@@ -62,6 +56,7 @@ public class Level {
         return barDurationInMilliSecs / 4;
     }
 
+    // for next version -> will include multiple game play difficulty modes
     public void setBounds(int LOWER_BOUND, int UPPER_BOUND){
         this.LOWER_BOUND = LOWER_BOUND;
         this.UPPER_BOUND = UPPER_BOUND;
@@ -75,7 +70,6 @@ public class Level {
         return UPPER_BOUND;
     }
 
-
     public static boolean isUserInputCaptureEnabled() {
         return userInputCaptureEnabled;
     }
@@ -83,4 +77,5 @@ public class Level {
     public static void setUserInputCaptureEnabled(boolean status) {
         Level.userInputCaptureEnabled = status;
     }
+
 }

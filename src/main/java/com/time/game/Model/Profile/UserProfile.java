@@ -4,13 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class UserProfile {
-
     private final String username;
     private String scoreOnLastLevel;
-
     private int levelStatRequestNumber;
-
-
     private boolean hasPlayedALevelSinceSignIn = false;
 
     /*
@@ -18,7 +14,6 @@ public class UserProfile {
         or all the attempts of that level as its value.
      */
     private final HashMap<Integer, ArrayList<Integer>> levelScores = new HashMap<>();
-
 
     public UserProfile(String username){
         this.username = username;
@@ -135,6 +130,5 @@ public class UserProfile {
     public void setLevelStatRequestNumber(int levelStatRequestNumber) {
         this.levelStatRequestNumber = levelStatRequestNumber;
     }
-
 
 }

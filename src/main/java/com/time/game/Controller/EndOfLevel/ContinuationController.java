@@ -12,7 +12,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.text.Text;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -43,8 +42,6 @@ public class ContinuationController implements Initializable {
     @FXML
     private ChoiceBox<Integer> bpmSelector;
 
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
         userProfile = TimeApplication.userProfile;
@@ -54,7 +51,6 @@ public class ContinuationController implements Initializable {
         levelHighScoreText.setText(highScore+"%");
 
         setupBPMSelector();
-
     }
 
     protected void setupBPMSelector(){
@@ -68,14 +64,11 @@ public class ContinuationController implements Initializable {
 
     }
 
-
     @FXML
     protected void onBpmSelection(ActionEvent event) {
         int bpmSelection = bpmSelector.getValue();
         Level.setBpm(bpmSelection);
     }
-
-
 
     @FXML
     protected void onRepeatLevelButtonClick() throws IOException {
@@ -103,7 +96,5 @@ public class ContinuationController implements Initializable {
         userProfile.setLevelStatRequestNumber(Level.getLevelNumber());
         ScreenController.changeScreen("level-stats-view");
     }
-
-
 
 }

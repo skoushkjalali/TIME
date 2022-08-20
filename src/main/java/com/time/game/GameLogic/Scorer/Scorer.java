@@ -1,4 +1,5 @@
 package com.time.game.GameLogic.Scorer;
+
 import java.util.ArrayList;
 
 /*
@@ -41,7 +42,6 @@ public class Scorer {
     public double scoreTooFewTaps(double[] sampleRhythm, ArrayList<Integer> userInput){
         double tooFewTapsScore = 0.0;
         double onsetWeight = 1.0 / sampleRhythm.length;
-
 
         // iterate through each user tap
         for (int userTap : userInput) {

@@ -13,7 +13,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.text.Text;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -66,7 +65,6 @@ public class GameCompletedController implements Initializable {
         bpmSelector.setValue(Level.getBpm());
 
     }
-
 
     @FXML
     protected void onBpmSelection(ActionEvent event) {

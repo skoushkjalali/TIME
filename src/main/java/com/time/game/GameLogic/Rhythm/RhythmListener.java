@@ -1,17 +1,13 @@
 package com.time.game.GameLogic.Rhythm;
 
-
 import java.util.ArrayList;
 
 /*
     This class receives keyboard input from the UI representing a rhythm and records the temporal locations of the keyboard taps
  */
 public class RhythmListener {
-
     public static long startTime;
-
     public static ArrayList<Integer> userInput = new ArrayList<>();
-
 
     public void setupForNewRhythmInput(){
         startTime = System.nanoTime() / 1_000_000;

@@ -1,4 +1,5 @@
 package com.time.game.Controller.Profile;
+
 import com.time.game.Controller.ScreenController;
 import com.time.game.Database.DatabaseUtils;
 import com.time.game.Model.Level.Level;
@@ -15,7 +16,6 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.effect.Effect;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import java.io.IOException;
@@ -25,44 +25,29 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class LevelStatsController implements Initializable {
-
     @FXML
     private LineChart<String, Number> levelStatsGraph;
-
     @FXML
     private CategoryAxis xAxis;
     @FXML
     private NumberAxis yAxis;
-
     @FXML
     private Button viewNextLevelButton;
-
     @FXML
     private Button viewPreviousLevelButton;
-
     @FXML
     private Button playLevelButton;
-
     @FXML
     private Button profileButton;
-
     @FXML
     private Button exitButton;
-
     @FXML
     private Text statsPageTitle;
-
     @FXML
     private Text scoreLabelText;
-
     @FXML
     private ChoiceBox<Integer> bpmSelector;
-
     private UserProfile userProfile;
-
-
-
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -70,7 +55,6 @@ public class LevelStatsController implements Initializable {
         statsPageTitle.setText("Level " + userProfile.getLevelStatRequestNumber() + " Progress Report");
         setupLineGraph();
         setupBPMSelector();
-
     }
 
     protected void setupBPMSelector(){
@@ -83,13 +67,11 @@ public class LevelStatsController implements Initializable {
         bpmSelector.setValue(Level.getBpm());
     }
 
-
     @FXML
     protected void onBpmSelection(ActionEvent event) {
         int bpmSelection = bpmSelector.getValue();
         Level.setBpm(bpmSelection);
     }
-
 
         protected void setupLineGraph(){
         xAxis.tickLabelFontProperty().set(Font.font(20));
@@ -114,7 +96,6 @@ public class LevelStatsController implements Initializable {
         levelStatsGraph.setVerticalGridLinesVisible(false);
         levelStatsGraph.setHorizontalGridLinesVisible(false);
         levelStatsGraph.lookup(".chart-plot-background").setStyle("-fx-background-color: transparent;");
-
     }
 
     @FXML
@@ -152,8 +133,6 @@ public class LevelStatsController implements Initializable {
         userProfile.setLevelStatRequestNumber(level);
         Level.setLevelNumber(level);
         ScreenController.changeScreen("level-stats-view");
-
     }
-
 
 }

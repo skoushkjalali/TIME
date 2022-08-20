@@ -6,18 +6,14 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class DatabaseUtils {
-
     public static Connection connection;
 
     static {
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/TIME",
                     "root", "guest");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        } catch (SQLException ignored) {}
     }
-
 
     public static boolean validateExistingUser(String username, String password) throws SQLException {
         boolean validated = false;
@@ -38,7 +34,6 @@ public class DatabaseUtils {
         }
         return validated;
     }
-
 
     public static boolean checkNewUsernameIsAvailable(String newUsername) throws SQLException {
 
@@ -74,7 +69,6 @@ public class DatabaseUtils {
         preparedStatement.setString(1, username);
         preparedStatement.executeUpdate();
     }
-
 
     /*
         Method converts integer values held in an arraylist to a single string. The string comprises a string of codes.
@@ -147,7 +141,6 @@ public class DatabaseUtils {
         return allUserScores;
     }
 
-
     /*
         Updates all scores of all levels on the database for the user specified. If a level hasn't been played i.e.,
         its ArrayList of scores is null, no update statement is run.
@@ -210,6 +203,5 @@ public class DatabaseUtils {
             userProfile.getLevelScores().put(columnNumber-1,uncompressedLevelData);
         }
     }
-
 
 }

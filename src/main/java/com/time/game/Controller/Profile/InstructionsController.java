@@ -19,10 +19,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class InstructionsController implements Initializable{
-
     @FXML
     private Button profileButton;
-
     @FXML
     private Rectangle tapPad;
     @FXML
@@ -41,7 +39,6 @@ public class InstructionsController implements Initializable{
     private Line userOnset3;
     @FXML
     private Line userOnset4;
-
     @FXML
     private Line sampleOnset1;
     @FXML
@@ -55,7 +52,6 @@ public class InstructionsController implements Initializable{
     private Line sampleLine;
     @FXML
     private Line userLine;
-
     @FXML
     private Text tapPadText;
     @FXML
@@ -74,7 +70,6 @@ public class InstructionsController implements Initializable{
     private Line sampleLinePointer;
     @FXML
     private Line sampleOnsetPointer;
-
     @FXML
     private Line metronomePointer;
     @FXML
@@ -99,34 +94,18 @@ public class InstructionsController implements Initializable{
     private Line beat4Marker;
     @FXML
     private Line endOfBarMarker;
-
-
-
-
     private final Color primaryYellow = Color.web("#d5a72a"); // primary yellow
     private final Color lightYellow = Color.web("#ffd85d"); // secondary yellow, light variant
-
     private final Color primaryOrange = Color.web("#d5522a"); // primary orange
     private final Color lightOrange = Color.web("#ff8356"); // primary orange, light variant
-
-    private final Color background = Color.web("#121212");
-
+    private final Color backgroundOffBlack = Color.web("#121212");
     private  final Color highlight = lightYellow;
-
     private ArrayList<Node> metronomeNodes;
-
     private ArrayList<Node> sampleRhythmOnsetNodes;
-
     private ArrayList<Node> userOnsetNodes;
-
     private ArrayList<Node> tapPadNodes;
-
     private ArrayList<Node> userLineNodes;
-
     private ArrayList<Node> sampleLineNodes;
-
-
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -170,7 +149,6 @@ public class InstructionsController implements Initializable{
         endOfBarMarker.setStyle("-fx-opacity: 0.3");
     }
 
-
     @FXML
     protected void onProfileButtonClick() throws IOException {
         ScreenController.changeScreen("profile-view");
@@ -178,7 +156,6 @@ public class InstructionsController implements Initializable{
 
     @FXML
     protected void highlightMetronomeElements(){
-
         setOpacityToLowForAllNonDesiredNodes(metronomeNodes);
 
         beat1.setFill(highlight);
@@ -202,14 +179,14 @@ public class InstructionsController implements Initializable{
     protected void unHighlightMetronomeElements(){
         resetOpacityForAllNodes();
 
-        beat1.setFill(Color.web("#121212"));
-        beat1.setStroke(Color.web("#ffd85d"));
-        beat2.setFill(Color.web("#121212"));
-        beat2.setStroke(Color.web("#ffd85d"));
-        beat3.setFill(Color.web("#121212"));
-        beat3.setStroke(Color.web("#ffd85d"));
-        beat4.setFill(Color.web("#121212"));
-        beat4.setStroke(Color.web("#ffd85d"));
+        beat1.setFill(backgroundOffBlack);
+        beat1.setStroke(lightYellow);
+        beat2.setFill(backgroundOffBlack);
+        beat2.setStroke(lightYellow);
+        beat3.setFill(backgroundOffBlack);
+        beat3.setStroke(lightYellow);
+        beat4.setFill(backgroundOffBlack);
+        beat4.setStroke(lightYellow);
         metronomePointer.setStroke(Color.WHITE);
         metronomeText.setFill(Color.WHITE);
         oneText.setFill(Color.WHITE);
@@ -278,7 +255,7 @@ public class InstructionsController implements Initializable{
     @FXML
     protected void unHighlightTapPadElements(){
         resetOpacityForAllNodes();
-        tapPad.setFill(background);
+        tapPad.setFill(backgroundOffBlack);
         tapPad.setStroke(primaryOrange);
         tapPadText.setFill(Color.WHITE);
         tapPadPointer.setStroke(Color.WHITE);
@@ -313,6 +290,5 @@ public class InstructionsController implements Initializable{
         sampleLineText.setFill(Color.WHITE);
         sampleLinePointer.setStroke(Color.WHITE);
     }
-
 
 }

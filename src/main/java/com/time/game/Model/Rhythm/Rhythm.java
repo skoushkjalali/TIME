@@ -1,6 +1,6 @@
 package com.time.game.Model.Rhythm;
-import java.util.Arrays;
 
+import java.util.Arrays;
 
 /*
     This class represents a rhythm in its relative form, as an int array of onsets, and the corresponding number of

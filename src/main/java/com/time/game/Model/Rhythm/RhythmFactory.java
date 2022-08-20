@@ -1,11 +1,11 @@
 package com.time.game.Model.Rhythm;
+
 /*
     This is a mock class to allow RhythmListener and RhythmPlayer to bew built and tested.
     rhythm data objects represent the total number of equal length segments, or bits in a rhythm as the first
     index, and onset locations as the remaining indices.
  */
 public class RhythmFactory {
-
     static int[][] rhythmData =
             {       // crotchets and quavers
                     // each beat = 2 segments
@@ -56,7 +56,6 @@ public class RhythmFactory {
     public static int getLastPossibleRhythmNumber(){
         return rhythmData.length;
     }
-
 
 }
 

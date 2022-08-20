@@ -26,65 +26,48 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class ProfileController implements Initializable {
-
     @FXML
     private ChoiceBox<Integer> levelSelector;
-
     @FXML
     private Button playButton;
-
     @FXML
     private Button exitButton;
-
     @FXML
     private Button resetMetricsButton;
-
     @FXML
     private ChoiceBox<Integer> bpmSelector;
-
     @FXML
     private Text username;
-
     @FXML
     private Text levelsCompletedText;
     @FXML
     private Text lastLevelScoreText;
     @FXML
     private Text averageHighestScoreText;
-
     private UserProfile userProfile;
-
     @FXML
     private BarChart<String, Number> levelScoresBarChart;
     @FXML
     private CategoryAxis xAxis;
     @FXML
     private NumberAxis yAxis;
-
     @FXML
     private Text highScoreText;
-
     @FXML
     private Button viewLevelStatsButton;
-
     @FXML
     private Text lastLevelText;
-
     @FXML
     private Circle userCircle;
-
     @FXML
     private Rectangle statsSurfaceRectangle;
-
     @FXML
     private Button gameInstructionsButton;
-
     @FXML
     private Button logoutButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         // populate page with current user data
         showCurrentUserProfileData();
 
@@ -96,7 +79,6 @@ public class ProfileController implements Initializable {
 
         // if the red cross is used to exit the game, then user data is still stored
         setSaveUserDataIfWindowClosed();
-
     }
 
     protected void setSaveUserDataIfWindowClosed(){
@@ -142,8 +124,6 @@ public class ProfileController implements Initializable {
                 XYChart.Data<String, Number> levelScore =  new XYChart.Data<>(""+i, userProfile.getHighestLevelScore(i));
                 scoreData.getData().add(levelScore);
                 levelScoresBarChart.getData().add(scoreData);
-
-
             }
             else{
                 XYChart.Data<String, Number> levelScore =  new XYChart.Data<>(""+i, 0);
@@ -152,14 +132,12 @@ public class ProfileController implements Initializable {
             }
         }
 
-
         levelScoresBarChart.setCategoryGap(10);
         levelScoresBarChart.setBarGap(-20);
         levelScoresBarChart.setLegendVisible(false);
         levelScoresBarChart.lookup(".chart-plot-background").setStyle("-fx-background-color: transparent");
         levelScoresBarChart.setHorizontalGridLinesVisible(false);
         levelScoresBarChart.setVerticalGridLinesVisible(false);
-
     }
 
     protected void setupLevelAndBpmDropdownSelectors(){
@@ -225,13 +203,11 @@ public class ProfileController implements Initializable {
     protected void onResetMetricsButtonClick() throws IOException {
         userProfile.resetMetrics();
         ScreenController.changeScreen("profile-view");
-
     }
 
     @FXML
     protected void onGameInstructionsButtonClick() throws IOException {
         ScreenController.changeScreen("instructions-view");
-
     }
 
     @FXML
@@ -241,4 +217,4 @@ public class ProfileController implements Initializable {
         TimeApplication.userProfile = null;
     }
 
-    }
+}
