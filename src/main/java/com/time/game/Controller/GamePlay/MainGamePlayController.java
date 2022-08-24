@@ -66,28 +66,32 @@ public class MainGamePlayController implements Initializable {
         for (int i = 0; i < metronomeEvents.length; i += 8) {
             int cumulativeDuration = (i / 2) * clickIOI;
             metronomeEvents[i] = new KeyFrame(Duration.millis(cumulativeDuration), actionEvent -> makeBeat1StartFlash());
-            metronomeEvents[i + 1] = new KeyFrame(Duration.millis(cumulativeDuration + flashLength), actionEvent -> makeBeat1FinishFlash());
+            metronomeEvents[i + 1] = new KeyFrame(Duration.millis(cumulativeDuration + flashLength),
+                    actionEvent -> makeBeat1FinishFlash());
         }
 
         // beat2 in all bars
         for (int i = 2; i < metronomeEvents.length; i += 8) {
             int cumulativeDuration = (i / 2) * clickIOI;
             metronomeEvents[i] = new KeyFrame(Duration.millis(cumulativeDuration), actionEvent -> makeBeat2StartFlash());
-            metronomeEvents[i + 1] = new KeyFrame(Duration.millis(cumulativeDuration + flashLength), actionEvent -> makeBeat2FinishFlash());
+            metronomeEvents[i + 1] = new KeyFrame(Duration.millis(cumulativeDuration + flashLength), actionEvent
+                    -> makeBeat2FinishFlash());
         }
 
         // beat3 in all bars
         for (int i = 4; i < metronomeEvents.length; i += 8) {
             int cumulativeDuration = (i / 2) * clickIOI;
             metronomeEvents[i] = new KeyFrame(Duration.millis(cumulativeDuration), actionEvent -> makeBeat3StartFlash());
-            metronomeEvents[i + 1] = new KeyFrame(Duration.millis(cumulativeDuration + flashLength), actionEvent -> makeBeat3FinishFlash());
+            metronomeEvents[i + 1] = new KeyFrame(Duration.millis(cumulativeDuration + flashLength), actionEvent
+                    -> makeBeat3FinishFlash());
         }
 
         // beat4 in all bars
         for (int i = 6; i < metronomeEvents.length; i += 8) {
             int cumulativeDuration = (i / 2) * clickIOI;
             metronomeEvents[i] = new KeyFrame(Duration.millis(cumulativeDuration), actionEvent -> makeBeat4StartFlash());
-            metronomeEvents[i + 1] = new KeyFrame(Duration.millis(cumulativeDuration + flashLength), actionEvent -> makeBeat4FinishFlash());
+            metronomeEvents[i + 1] = new KeyFrame(Duration.millis(cumulativeDuration + flashLength), actionEvent
+                    -> makeBeat4FinishFlash());
         }
         return metronomeEvents;
     }
@@ -138,8 +142,8 @@ public class MainGamePlayController implements Initializable {
         rhythmListener = new RhythmListener();
         scorer = new Scorer(level.getLOWER_BOUND(), level.getUPPER_BOUND());
         timeline = new Timeline();
-        drawSampleOnsets();
 
+        drawSampleOnsets();
 
         // add all metronome clicks and flashes to timeline
         timeline.getKeyFrames().addAll(getMetronomeKeyFrames(3, 50));

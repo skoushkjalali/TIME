@@ -64,9 +64,4 @@ class MainGamePlayControllerTest {
         assert Arrays.equals(result, expected);
     }
 
-
-
-
-
-
 }
