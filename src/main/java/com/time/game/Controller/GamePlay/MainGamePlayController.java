@@ -175,14 +175,15 @@ public class MainGamePlayController implements Initializable {
                 (0.5 * level.getBeatDurationInMilliSecs())), e -> Level.setUserInputCaptureEnabled(false));
         timeline.getKeyFrames().add(endUserInput);
 
-        // score level
+        // score level and display score 1 a beat after user input is ended
         KeyFrame setScore = new KeyFrame(Duration.millis((level.getBarDurationInMilliSecs() * 3) +
-                level.getUPPER_BOUND()), e -> setScore());
+                level.getBeatDurationInMilliSecs() * 1.5), e -> setScore());
         timeline.getKeyFrames().add(setScore);
 
 
-        // switch to end of level screen 1700ms after the score is shown
-        timeline.getKeyFrames().add(new KeyFrame(Duration.millis((level.getBarDurationInMilliSecs() * 3) + 1700),
+        // switch to end of level screen 1700ms score is displayed
+        timeline.getKeyFrames().add(new KeyFrame(Duration.millis((level.getBarDurationInMilliSecs() * 3) +
+                level.getBeatDurationInMilliSecs() + 1700),
                 e -> {
                     try {
                         String screen = "end-of-level-continuation-view";

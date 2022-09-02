@@ -58,7 +58,7 @@ class DatabaseTest {
 
     @Test
     void testValidateExistingUserTrue() throws SQLException {
-        assertTrue(DatabaseUtils.validateExistingUser("SashaKJ", "admin"));
+        assertTrue(DatabaseUtils.validateExistingUser("JimiH", "guest"));
     }
 
     @Test
@@ -78,7 +78,7 @@ class DatabaseTest {
 
     @Test
     void testNewUsernameIsAvailableFalse() throws SQLException {
-        assertFalse(DatabaseUtils.checkNewUsernameIsAvailable("SashaKJ"));
+        assertFalse(DatabaseUtils.checkNewUsernameIsAvailable("JimiH"));
     }
 
     @Test
