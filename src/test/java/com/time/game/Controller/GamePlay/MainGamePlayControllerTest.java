@@ -1,11 +1,8 @@
 package com.time.game.Controller.GamePlay;
 
 import com.time.game.Model.Level.Level;
-import com.time.game.Model.Rhythm.RhythmFactory;
 import javafx.animation.KeyFrame;
 import org.junit.jupiter.api.Test;
-
-import java.time.Duration;
 import java.util.Arrays;
 
 

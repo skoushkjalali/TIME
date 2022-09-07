@@ -164,13 +164,13 @@ public class MainGamePlayController implements Initializable {
         timeline.getKeyFrames().add(userInputStartLocation);
 
         // start userInput 1/2 a beat before the start of the 3rd Bar
-        // i.e will only draw an onset up to 1/2 a beat early
+        // i.e., will only draw an onset up to 1/2 a beat early
         KeyFrame startUserInput = new KeyFrame(Duration.millis(((level.getBarDurationInMilliSecs() * 2) -
                 (0.5 * level.getBeatDurationInMilliSecs()))), e -> Level.setUserInputCaptureEnabled(true));
         timeline.getKeyFrames().add(startUserInput);
 
         // end userInput 1/2 a beat after end of 3rd bar
-        // i.e will only draw an onset up to 1/2 a beat late
+        // i.e., will only draw an onset up to 1/2 a beat late
         KeyFrame endUserInput = new KeyFrame(Duration.millis((level.getBarDurationInMilliSecs() * 3) +
                 (0.5 * level.getBeatDurationInMilliSecs())), e -> Level.setUserInputCaptureEnabled(false));
         timeline.getKeyFrames().add(endUserInput);
@@ -240,13 +240,13 @@ public class MainGamePlayController implements Initializable {
     }
 
     protected void sampleOnsetBeep() {
-        beepFactory.getBeep3();
+        beepFactory.playOnsetSound();
     }
 
 
     @FXML
     protected void userInputKeyPressed() {
-        beepFactory.getBeep3();
+        beepFactory.playOnsetSound();
         drawUserOnset();
         makeTapPadStartFlash();
         if (Level.isUserInputCaptureEnabled()) {
@@ -271,7 +271,7 @@ public class MainGamePlayController implements Initializable {
 
     @FXML
     protected void makeBeat1StartFlash() {
-        beepFactory.getBeep2();
+        beepFactory.playMetronomeClickSound();
         beat1.setFill(Color.WHITE);
     }
 
@@ -282,7 +282,7 @@ public class MainGamePlayController implements Initializable {
 
     @FXML
     protected void makeBeat2StartFlash() {
-        beepFactory.getBeep2();
+        beepFactory.playMetronomeClickSound();
         beat2.setFill(Color.WHITE);
     }
 
@@ -293,7 +293,7 @@ public class MainGamePlayController implements Initializable {
 
     @FXML
     protected void makeBeat3StartFlash() {
-        beepFactory.getBeep2();
+        beepFactory.playMetronomeClickSound();
         beat3.setFill(Color.WHITE);
     }
 
@@ -304,7 +304,7 @@ public class MainGamePlayController implements Initializable {
 
     @FXML
     protected void makeBeat4StartFlash() {
-        beepFactory.getBeep2();
+        beepFactory.playMetronomeClickSound();
         beat4.setFill(Color.WHITE);
     }
 

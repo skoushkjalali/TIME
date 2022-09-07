@@ -37,13 +37,10 @@ public class Rhythm {
         Each value is the number of milliseconds from 0 that the onset occurs, at the bpm that is passed as @param bpm.
      */
     public double[] getAbsoluteRhythm(double bpm){
-
         // total duration of rhythm in milliseconds
         double totalDurationOfRhythm = (4 / bpm) * 60 * 1000;
-
         // total duration of each bit (or segment) in milliseconds
         double durationOfEachBit = totalDurationOfRhythm / this.segments;
-
         // array holds the temporal location of each onset from a zero point in time.
         return Arrays.stream(onsets).mapToDouble(o -> o*durationOfEachBit).toArray();
     }

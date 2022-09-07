@@ -11,7 +11,7 @@ public class Level {
     private static int bpm = 100; // default. bpm = 0 breaks the applicatio
     private final int barDurationInMilliSecs = (int)((60 / (float)bpm) * 1000 * 4);
     private int LOWER_BOUND = 20;
-    private int UPPER_BOUND = 500;
+    private int UPPER_BOUND = 250;
     private static int levelNumber = 1; // default
     private static int lastScore = 0;
     Rhythm sampleRhythm;

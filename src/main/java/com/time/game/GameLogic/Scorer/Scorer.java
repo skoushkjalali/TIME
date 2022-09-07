@@ -1,5 +1,4 @@
 package com.time.game.GameLogic.Scorer;
-
 import java.util.ArrayList;
 
 /*
@@ -90,7 +89,6 @@ public class Scorer {
 
             // update score
             tooManyTapsScore -= onsetHandicap;
-
         }
 
         // apply a handicap for each additional onset with respect to the correct number of onsets
@@ -146,11 +144,8 @@ public class Scorer {
             double onsetScore = 1 - (effectiveDelta / (double) UPPER_BOUND);
             sumOfScores += onsetScore;
         }
-
         double score = sumOfScores / sampleRhythm.length;
-
         return Math.round(score*100)/100.0;
-
     }
 
     public double calculateDelta(double sampleOnset, double userOnset){
@@ -162,5 +157,4 @@ public class Scorer {
         if(delta < LOWER_BOUND) return 0;
         return delta;
     }
-
 }

@@ -400,8 +400,21 @@ class ScorerTest {
         assertEquals(0.0, result);
     }
 
+    @Test
+    void extraTest1(){
+        Scorer toughScorer = new Scorer(20,250);
+        double[] sampleRhythm = {0, 1000, 2000, 3000, 4000, 5000};
+        ArrayList<Integer> userInput = new ArrayList<>(List.of(73, 1026, 2011, 3029, 4008, 5022, 5024));
+        double score = toughScorer.scoreInput(sampleRhythm, userInput);
+        assertEquals(0.72, score);
+    }
 
-
-
-
+    @Test
+    void extraTest2(){
+        Scorer toughScorer = new Scorer(20,250);
+        double[] sampleRhythm = {1000, 2000, 3000, 4000, 5000};
+        ArrayList<Integer> userInput = new ArrayList<>(List.of(1018, 2053, 3029, 4080, 5012));
+        double score = toughScorer.scoreInput(sampleRhythm, userInput);
+        assertEquals(0.87, score);
+    }
 }
