@@ -1,5 +1,4 @@
 package com.time.game.GameLogic.Rhythm;
-
 import java.util.ArrayList;
 
 /*
