@@ -50,7 +50,7 @@ public class MainGamePlayController implements Initializable {
     private Text levelID;
     @FXML
     private Text centralText;
-    Timeline timeline;
+    private Timeline timeline;
     private Level level;
     private RhythmListener rhythmListener;
     private Scorer scorer;
@@ -220,7 +220,7 @@ public class MainGamePlayController implements Initializable {
     protected void drawUserOnset() {
         if (level.isUserInputCaptureEnabled()) {
             double delayFromStartOfBar = (System.nanoTime() / 1_000_000.0) -
-                    (RhythmListener.startTime + level.getBarDurationInMilliSecs());
+                    (rhythmListener.getStartTime() + level.getBarDurationInMilliSecs());
             double xAxisLocation = ((delayFromStartOfBar / level.getBarDurationInMilliSecs()) * 1000) + 230;
             drawOnsetLine(xAxisLocation, 582, Color.web("#d5522a"));
         }
@@ -250,7 +250,7 @@ public class MainGamePlayController implements Initializable {
         drawUserOnset();
         makeTapPadStartFlash();
         if (level.isUserInputCaptureEnabled()) {
-            RhythmListener.userInput.add((int) ((System.nanoTime() / 1_000_000) - RhythmListener.startTime));
+            rhythmListener.getUserInput().add((int) ((System.nanoTime() / 1_000_000) - rhythmListener.getStartTime()));
         }
     }
 
