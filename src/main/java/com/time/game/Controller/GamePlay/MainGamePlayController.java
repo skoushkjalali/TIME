@@ -5,6 +5,7 @@ import com.time.game.GameLogic.Rhythm.BeepFactory;
 import com.time.game.GameLogic.Rhythm.RhythmListener;
 import com.time.game.GameLogic.Scorer.Scorer;
 import com.time.game.Model.Level.Level;
+import com.time.game.Model.Profile.UserProfile;
 import com.time.game.Model.Rhythm.Rhythm;
 import com.time.game.Model.Rhythm.RhythmFactory;
 import com.time.game.TimeApplication;
@@ -55,6 +56,7 @@ public class MainGamePlayController implements Initializable {
     private RhythmListener rhythmListener;
     private Scorer scorer;
     private BeepFactory beepFactory;
+    private UserProfile userProfile;
 
     protected KeyFrame[] getMetronomeKeyFrames(int numOfBars, int flashLength) {
 
@@ -128,13 +130,14 @@ public class MainGamePlayController implements Initializable {
     }
 
     protected void updateUserProfile() {
-        TimeApplication.userProfile.updateUserScores(Level.getLevelNumber(), Level.getLastScore());
-        TimeApplication.userProfile.setScoreOnLastLevel(Level.getLastScore());
-        TimeApplication.userProfile.setHasPlayedALevelSinceSignIn(true);
+        userProfile.updateUserScores(Level.getLevelNumber(), Level.getLastScore());
+        userProfile.setScoreOnLastLevel(Level.getLastScore());
+        userProfile.setHasPlayedALevelSinceSignIn(true);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        userProfile = TimeApplication.userProfile;
         level = new Level(RhythmFactory.getRhythm(Level.getLevelNumber()));
         levelID.setText("Level " + Level.getLevelNumber());
         beepFactory = new BeepFactory();
