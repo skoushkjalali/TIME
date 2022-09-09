@@ -58,11 +58,10 @@ public class MainGamePlayController implements Initializable {
     private BeepFactory beepFactory;
     private UserProfile userProfile;
 
-    protected KeyFrame[] getMetronomeKeyFrames(int numOfBars, int flashLength) {
-
+    protected KeyFrame[] getMetronomeKeyFrames(int numOfBars) {
+        int flashLength = 50;
         KeyFrame[] metronomeEvents = new KeyFrame[numOfBars * 4 * 2];
         int clickIOI = level.getBeatDurationInMilliSecs();
-
         // beat1 in all bars
         for (int i = 0; i < metronomeEvents.length; i += 8) {
             int cumulativeDuration = (i / 2) * clickIOI;
@@ -70,7 +69,6 @@ public class MainGamePlayController implements Initializable {
             metronomeEvents[i + 1] = new KeyFrame(Duration.millis(cumulativeDuration + flashLength),
                     actionEvent -> makeBeat1FinishFlash());
         }
-
         // beat2 in all bars
         for (int i = 2; i < metronomeEvents.length; i += 8) {
             int cumulativeDuration = (i / 2) * clickIOI;
@@ -78,7 +76,6 @@ public class MainGamePlayController implements Initializable {
             metronomeEvents[i + 1] = new KeyFrame(Duration.millis(cumulativeDuration + flashLength), actionEvent
                     -> makeBeat2FinishFlash());
         }
-
         // beat3 in all bars
         for (int i = 4; i < metronomeEvents.length; i += 8) {
             int cumulativeDuration = (i / 2) * clickIOI;
@@ -86,7 +83,6 @@ public class MainGamePlayController implements Initializable {
             metronomeEvents[i + 1] = new KeyFrame(Duration.millis(cumulativeDuration + flashLength), actionEvent
                     -> makeBeat3FinishFlash());
         }
-
         // beat4 in all bars
         for (int i = 6; i < metronomeEvents.length; i += 8) {
             int cumulativeDuration = (i / 2) * clickIOI;
@@ -108,7 +104,8 @@ public class MainGamePlayController implements Initializable {
         double[] sampleOnsets = r.getAbsoluteRhythm(Level.getBpm());
 
         for (var onset : sampleOnsets) {
-            sampleOnsetEvents.add(new KeyFrame(Duration.millis(onset + oneBarOffsetDuration), actionEvent -> sampleOnsetBeep()));
+            sampleOnsetEvents.add(new KeyFrame(Duration.millis(onset + oneBarOffsetDuration),
+                    actionEvent -> sampleOnsetBeep()));
         }
         return sampleOnsetEvents;
     }
@@ -148,7 +145,7 @@ public class MainGamePlayController implements Initializable {
         drawSampleOnsets();
 
         // add all metronome clicks and flashes to timeline
-        timeline.getKeyFrames().addAll(getMetronomeKeyFrames(3, 50));
+        timeline.getKeyFrames().addAll(getMetronomeKeyFrames(3));
         // add all sample onsets to timeline
         timeline.getKeyFrames().addAll(getSampleRhythmKeyFrames());
 
@@ -203,7 +200,9 @@ public class MainGamePlayController implements Initializable {
     /*
         This function calculates the GUI x-coordinate locations of the sample rhythm for the level currently selected
      */
-    protected double[] getSampleOnsetXCoordinates(double pixelsPerBar, double startOfBarXCoordinate) {
+    protected double[] getSampleOnsetXCoordinates() {
+        double pixelsPerBar = endOfBarLine.getLayoutX()  - startOfBarLine.getLayoutX();
+        double startOfBarXCoordinate = startOfBarLine.getLayoutX();
         double pixelsPerSegment = pixelsPerBar / level.getSampleRhythm().getSegments();
 
         return Arrays.stream(level.getSampleRhythm().getRelativeRhythm())
@@ -211,8 +210,11 @@ public class MainGamePlayController implements Initializable {
     }
 
     protected void drawSampleOnsets() {
-        for (double onset : getSampleOnsetXCoordinates(1000, 230)) {
-            drawOnsetLine(onset, 467, Color.WHITE);
+        double drawingOffset = 33; // each vertical drawn onset starts 33 pixels above the horizontal sample line
+        double sampleOnsetYLocation = sampleLine.getLayoutY() - drawingOffset;
+
+        for (double onset : getSampleOnsetXCoordinates()) {
+            drawOnsetLine(onset, sampleOnsetYLocation, Color.WHITE);
         }
     }
 
@@ -221,12 +223,11 @@ public class MainGamePlayController implements Initializable {
         of a half a beat before the first beat, and a half a beat after the bar has ended.
      */
     protected void drawUserOnset() {
-        if (level.isUserInputCaptureEnabled()) {
-            double delayFromStartOfBar = (System.nanoTime() / 1_000_000.0) -
-                    (rhythmListener.getStartTime() + level.getBarDurationInMilliSecs());
-            double xAxisLocation = ((delayFromStartOfBar / level.getBarDurationInMilliSecs()) * 1000) + 230;
-            drawOnsetLine(xAxisLocation, 582, Color.web("#d5522a"));
-        }
+        double delayFromStartOfBar = (System.nanoTime() / 1_000_000.0) -
+                (rhythmListener.getStartTime() + level.getBarDurationInMilliSecs());
+        double xAxisLocation = ((delayFromStartOfBar / level.getBarDurationInMilliSecs()) * 1000) + 230;
+        drawOnsetLine(xAxisLocation, 582, Color.web("#d5522a"));
+
     }
 
     private void drawOnsetLine(double xAxisLocation, double yAxisLocation, Color lineColor) {
@@ -246,13 +247,12 @@ public class MainGamePlayController implements Initializable {
         beepFactory.playOnsetSound();
     }
 
-
     @FXML
     protected void userInputKeyPressed() {
         beepFactory.playOnsetSound();
-        drawUserOnset();
         makeTapPadStartFlash();
         if (level.isUserInputCaptureEnabled()) {
+            drawUserOnset();
             rhythmListener.getUserInput().add((int) ((System.nanoTime() / 1_000_000) - rhythmListener.getStartTime()));
         }
     }
