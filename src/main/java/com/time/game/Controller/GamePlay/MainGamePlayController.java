@@ -223,11 +223,18 @@ public class MainGamePlayController implements Initializable {
         of a half a beat before the first beat, and a half a beat after the bar has ended.
      */
     protected void drawUserOnset() {
+        double startOfBarXCoordinate = startOfBarLine.getLayoutX();
+        double pixelsPerBar = endOfBarLine.getLayoutX()  - startOfBarXCoordinate;
+
         double delayFromStartOfBar = (System.nanoTime() / 1_000_000.0) -
                 (rhythmListener.getStartTime() + level.getBarDurationInMilliSecs());
-        double xAxisLocation = ((delayFromStartOfBar / level.getBarDurationInMilliSecs()) * 1000) + 230;
-        drawOnsetLine(xAxisLocation, 582, Color.web("#d5522a"));
 
+        double xAxisLocation = ((delayFromStartOfBar / level.getBarDurationInMilliSecs()) * pixelsPerBar)
+                + startOfBarXCoordinate;
+
+        double drawingOffset = 33; // each vertical drawn onset starts 33 pixels above the horizontal user line
+        double userOnsetYLocation = userLine.getLayoutY() - drawingOffset;
+        drawOnsetLine(xAxisLocation, userOnsetYLocation, Color.web("#d5522a"));
     }
 
     private void drawOnsetLine(double xAxisLocation, double yAxisLocation, Color lineColor) {
