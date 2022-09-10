@@ -260,7 +260,7 @@ public class MainGamePlayController implements Initializable {
         makeTapPadStartFlash();
         if (level.isUserInputCaptureEnabled()) {
             drawUserOnset();
-            rhythmListener.getUserInput().add((int) ((System.nanoTime() / 1_000_000) - rhythmListener.getStartTime()));
+            rhythmListener.getUserInput().add((int) (System.nanoTime() / 1_000_000));
         }
     }
 

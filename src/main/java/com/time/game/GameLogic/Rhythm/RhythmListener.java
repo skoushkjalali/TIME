@@ -5,11 +5,11 @@ import java.util.ArrayList;
     This class receives keyboard input from the UI representing a rhythm and records the temporal locations of the keyboard taps
  */
 public class RhythmListener {
-    private long startTime;
+    private int startTime;
     private final ArrayList<Integer> userInput = new ArrayList<>();
 
     public void setupForNewRhythmInput(){
-        startTime = System.nanoTime() / 1_000_000;
+        startTime = (int) (System.nanoTime() / 1_000_000);
         userInput.clear();
     }
 
@@ -22,18 +22,20 @@ public class RhythmListener {
     }
 
     /*
-                This method shifts the user tap input information forward by the number of bars specified using
-                @param bars at the speed of @param bpm.
-             */
+       This method shifts the startTime forward by the number of bars specified using
+       @param bars at the speed of @param bpm, then calculates the time from the start of the play bar
+       for each onset
+    */
     public ArrayList<Integer> getShiftedUserInput(double bpm, double bars){
 
-        // number of milliseconds to shift each userTap
+        // length of the number of bars passed as @param bars in milliseconds
         int shift = (int) ((60 / bpm) * 1000 * 4 * bars);
+        int startOfPlayBar = startTime + shift;
 
         ArrayList<Integer> shiftedInput = new ArrayList<>();
 
         for (int tap : userInput){
-            shiftedInput.add(tap - shift);
+            shiftedInput.add(tap - startOfPlayBar);
         }
         return shiftedInput;
     }
