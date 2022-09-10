@@ -119,6 +119,7 @@ public class MainGamePlayController implements Initializable {
     /*
         Method sets the score on the gamePlay screen and updates the userProfile with the score
      */
+
     protected void setScore() {
         int score = scoreLevel();
         Level.setLastScore(score);
@@ -175,6 +176,7 @@ public class MainGamePlayController implements Initializable {
         timeline.getKeyFrames().add(endUserInput);
 
         // score level and display score 1 a beat after user input is ended
+
         KeyFrame setScore = new KeyFrame(Duration.millis((level.getBarDurationInMilliSecs() * 3) +
                 level.getBeatDurationInMilliSecs() * 1.5), e -> setScore());
         timeline.getKeyFrames().add(setScore);
@@ -260,7 +262,7 @@ public class MainGamePlayController implements Initializable {
         makeTapPadStartFlash();
         if (level.isUserInputCaptureEnabled()) {
             drawUserOnset();
-            rhythmListener.getUserInput().add((int) (System.nanoTime() / 1_000_000));
+            rhythmListener.getUserInput().add( (int) (System.nanoTime() / 1_000_000));
         }
     }
 

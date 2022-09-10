@@ -99,12 +99,10 @@ public class DatabaseUtils {
         Therefore, a string of "10256310016" = ArrayList of {0, 56, 100, 6}
      */
     public static ArrayList<Integer> decompressUserLevelScores(String compressedUserLevelScores){
-
-        // user has not played this level yet
+        // user has not played this level
         if(compressedUserLevelScores == null){
             return null;
         }
-
         ArrayList<Integer> userLevelScores = new ArrayList<>();
         int numberOfDigits;
         int score;
@@ -112,9 +110,9 @@ public class DatabaseUtils {
         for(int i = 0; i < compressedUserLevelScores.length();){
             numberOfDigits = Integer.parseInt(Character.toString(compressedUserLevelScores.charAt(i)));
             for(int j = 1; j <= numberOfDigits; j++) {
-                scoreStr += compressedUserLevelScores.charAt(i + j);    // not using StringBuilder here as only ever
-            }                                                           // concatenating 3 characters before deleting
-            score = Integer.parseInt(scoreStr);                         // the string and starting again. Not worth the overhead.
+                scoreStr += compressedUserLevelScores.charAt(i + j);
+            }
+            score = Integer.parseInt(scoreStr);
             userLevelScores.add(score);
             scoreStr = "";
             i+= numberOfDigits + 1;
@@ -127,16 +125,9 @@ public class DatabaseUtils {
      */
     public static ArrayList<String> getUserProfileScoreDataAsStrings(UserProfile userProfile){
         ArrayList<String> allUserScores = new ArrayList<>();
-
         for(int i = 1; i <= RhythmFactory.getLastPossibleRhythmNumber(); i++){
             String compressedLevelScores = compressUserLevelScores(userProfile.getLevelScoreAttempts(i));
-
-            if(compressedLevelScores!=null){
-                allUserScores.add(compressedLevelScores);
-            }
-            else{
-                allUserScores.add(null);
-            }
+            allUserScores.add(compressedLevelScores);
         }
         return allUserScores;
     }
@@ -146,25 +137,18 @@ public class DatabaseUtils {
         its ArrayList of scores is null, no update statement is run.
      */
     public static void updateAllUserData(UserProfile userProfile) throws SQLException {
-
         ArrayList<String> userLevelData = getUserProfileScoreDataAsStrings(userProfile);
-
         // count all non-null objects in userLevelData
         int numLevelsToUpdate = (int) userLevelData.stream().filter(Objects::nonNull).count();
-
         // no update needed
         if(numLevelsToUpdate == 0){
             return;
         }
-
         // build one query string for all updates
         StringBuilder sql = new StringBuilder("UPDATE USER_SCORES SET ");
-
         for (int i = 0; i < userLevelData.size(); i++) {
-
             String colName;
             String data;
-
             if (userLevelData.get(i) != null) {
                 colName = "Rhythm_" + (i + 1);
                 data = userLevelData.get(i);
@@ -173,7 +157,6 @@ public class DatabaseUtils {
                         .append("'")
                         .append(data)
                         .append("'");
-
                 // add a comma for the next data element if it exists
                 if(numLevelsToUpdate > 1){
                     sql.append(", ");
@@ -193,10 +176,12 @@ public class DatabaseUtils {
         preparedStatement.setString(1, userProfile.getUsername());
         ResultSet rs = preparedStatement.executeQuery();
 
-        // move to the username column, so that the next call to rs.next() returns the first rhythm column, col2
+        // move to the username column, so that the next call to rs.next()
+        // returns the first rhythm column, col2
         rs.next();
 
-        // iterate through each rhythm column and place an uncompressed arrayList of scores in the local userProfile object
+        // iterate through each rhythm column and place an uncompressed
+        // arrayList of scores in the local userProfile object
         for(int columnNumber = 2; columnNumber <= RhythmFactory.getLastPossibleRhythmNumber()+1; columnNumber++) {
             String compressedLevelData = rs.getString(columnNumber);
             ArrayList<Integer> uncompressedLevelData = DatabaseUtils.decompressUserLevelScores(compressedLevelData);

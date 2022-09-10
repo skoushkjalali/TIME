@@ -104,11 +104,9 @@ public class ProfileController implements Initializable {
     }
 
     protected void setupBarChart(){
-
         xAxis.tickLabelFontProperty().set(Font.font(20));
         xAxis.setStyle("-fx-font-size: 30");
         xAxis.setStyle("-fx-text-fill: #ffff; -fx-tick-label-fill: white");
-
         highScoreText.setRotate(-90);
         yAxis.tickLabelFontProperty().set(Font.font(20));
         yAxis.setStyle("-fx-font-size: 30");
@@ -117,11 +115,11 @@ public class ProfileController implements Initializable {
         yAxis.setLowerBound(0);
         yAxis.setStyle("-fx-text-fill: #ffff; -fx-tick-label-fill: white");
 
-
         for(int i = 1; i<= RhythmFactory.getLastPossibleRhythmNumber(); i++) {
             XYChart.Series<String, Number> scoreData = new XYChart.Series<>();
             if(userProfile.getLevelScoreAttempts(i) != null) {
-                XYChart.Data<String, Number> levelScore =  new XYChart.Data<>(""+i, userProfile.getHighestLevelScore(i));
+                XYChart.Data<String, Number> levelScore =  new XYChart.Data<>(""+i,
+                        userProfile.getHighestLevelScore(i));
                 scoreData.getData().add(levelScore);
                 levelScoresBarChart.getData().add(scoreData);
             }
@@ -131,7 +129,6 @@ public class ProfileController implements Initializable {
                 levelScoresBarChart.getData().add(scoreData);
             }
         }
-
         levelScoresBarChart.setCategoryGap(10);
         levelScoresBarChart.setBarGap(-20);
         levelScoresBarChart.setLegendVisible(false);

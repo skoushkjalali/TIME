@@ -10,14 +10,14 @@ public class UserProfile {
     private boolean hasPlayedALevelSinceSignIn = false;
 
     /*
-        Holds user scores for all attempts of all levels as a key of 1-25 (all rhythms) and either an empty arraylist
-        or all the attempts of that level as its value.
+        Holds user scores for all attempts of all levels as a key of 1-25 (all rhythms) and either an empty
+        arraylist or all the attempts of that level as its value.
      */
     private final HashMap<Integer, ArrayList<Integer>> levelScores = new HashMap<>();
 
     public UserProfile(String username){
         this.username = username;
-        this.setupBlankScoreData();
+        setupBlankScoreData();
     }
 
     public HashMap<Integer, ArrayList<Integer>> getLevelScores(){
@@ -59,7 +59,7 @@ public class UserProfile {
     public int getHighestLevelScore(int level){
         int highestScore = -1;
         if(levelScores.get(level) != null) {
-            highestScore = levelScores.get(level).stream().reduce(Integer::max).orElse(-1); // null check already done
+            highestScore = levelScores.get(level).stream().reduce(Integer::max).orElse(-1);
         }
         return highestScore;
     }
@@ -104,7 +104,6 @@ public class UserProfile {
                 highScores.add(getHighestLevelScore(i));
             }
         }
-
         return highScores;
     }
 
@@ -115,12 +114,11 @@ public class UserProfile {
             double sum = highScores.stream().reduce(Integer::sum).get();
             average = sum / highScores.size();
         }
-        return (int)Math.round(average);
+        return (int) Math.round(average);
     }
 
     public void resetMetrics(){
         setupBlankScoreData();
-
     }
 
     public int getLevelStatRequestNumber() {
