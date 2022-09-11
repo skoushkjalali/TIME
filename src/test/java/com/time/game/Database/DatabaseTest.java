@@ -23,9 +23,7 @@ class DatabaseTest {
 
     @Test
     void testCompressUserLevelScores1(){
-        ArrayList<Integer> userScores = null;
-        String result = DatabaseUtils.compressUserLevelScores(userScores);
-        assertNull(result);
+        assertNull(DatabaseUtils.compressUserLevelScores(null));
     }
 
     @Test
@@ -44,8 +42,7 @@ class DatabaseTest {
 
     @Test
     void testDecompressUserLevelScores4(){
-        ArrayList<Integer> result = DatabaseUtils.decompressUserLevelScores(null);
-        assertNull(result);
+        assertNull(DatabaseUtils.decompressUserLevelScores(null));
     }
 
     @Test
