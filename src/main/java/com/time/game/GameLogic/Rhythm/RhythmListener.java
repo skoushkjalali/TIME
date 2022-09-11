@@ -4,13 +4,13 @@ import java.util.ArrayList;
 /*
     This class receives keyboard input from the UI representing a rhythm and records the temporal locations of the keyboard taps
  */
+
 public class RhythmListener {
     private int startTime;
     private final ArrayList<Integer> userInput = new ArrayList<>();
 
     public void setupForNewRhythmInput(){
         startTime = (int) (System.nanoTime() / 1_000_000);
-        userInput.clear();
     }
 
     public long getStartTime() {

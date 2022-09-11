@@ -70,5 +70,12 @@ class RhythmListenerTest {
         assertEquals(21000, result.get(2));
     }
 
+    @Test
+    void testSetupForNewRhythmInput(){
+        long timeNow = System.nanoTime() / 1_000_000;
+        listener.setupForNewRhythmInput();
+        assertEquals(timeNow, listener.getStartTime());
+    }
+
 
 }

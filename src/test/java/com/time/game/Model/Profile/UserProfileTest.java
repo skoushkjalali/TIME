@@ -176,4 +176,40 @@ class UserProfileTest {
         assertEquals(0, score);
     }
 
+    @Test
+    void testSetAndGetHasPlayedALevelSinceSignInTrue(){
+        UserProfile newUser = new UserProfile("James");
+        userProfile.setHasPlayedALevelSinceSignIn(true);
+        assertTrue(userProfile.getHasPlayedALevelSinceSignIn());
+    }
+
+    @Test
+    void testSetAndGetHasPlayedALevelSinceSignInFalse(){
+        UserProfile newUser = new UserProfile("John");
+        assertFalse(newUser.getHasPlayedALevelSinceSignIn());
+    }
+
+    @Test
+    void testGetScoreOnLastLevel(){
+        UserProfile newUser = new UserProfile("James");
+        assertEquals("---%", userProfile.getScoreOnLastLevel());
+    }
+
+    @Test
+    void testGetAndSetScoreOnLastLevel(){
+        userProfile.setScoreOnLastLevel(100);
+        assertEquals("100%", userProfile.getScoreOnLastLevel());
+    }
+
+    @Test
+    void testGetLevelStatsRequestNumber(){
+        assertEquals(0, userProfile.getLevelStatRequestNumber());
+    }
+
+    @Test
+    void testSetAndGetLevelStatsRequestNumber(){
+        userProfile.setLevelStatRequestNumber(17);
+        assertEquals(17, userProfile.getLevelStatRequestNumber());
+    }
+
 }

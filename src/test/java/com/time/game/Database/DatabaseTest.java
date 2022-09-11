@@ -44,9 +44,8 @@ class DatabaseTest {
 
     @Test
     void testDecompressUserLevelScores4(){
-        ArrayList<Integer> result = DatabaseUtils.decompressUserLevelScores("");
-        ArrayList<Integer> expected = new ArrayList<>();
-        assertEquals(expected,result);
+        ArrayList<Integer> result = DatabaseUtils.decompressUserLevelScores(null);
+        assertNull(result);
     }
 
     @Test
@@ -201,10 +200,40 @@ class DatabaseTest {
         for(var scores: userProfile.getLevelScores().values()){
             assertNull(scores);
         }
-
     }
 
+    @Test
+    void testLoadUserDataToLocalProfile() throws SQLException {
+        UserProfile unitTesterUser = new UserProfile("unitTesting");
+        DatabaseUtils.loadUserDataToLocalProfile(unitTesterUser);
+        assertEquals(49, unitTesterUser.getHighestLevelScore(17));
+    }
 
+    @Test
+    void testCreateNewUserProfile() throws SQLException {
+        String randomUserName = String.valueOf(Math.random() * Math.random() * Math.random());
+        if (randomUserName.length() > 24){
+            randomUserName = randomUserName.substring(0,23);
+        }
+        DatabaseUtils.createNewUserProfile(randomUserName, "ADMIN");
+        assertTrue(DatabaseUtils.validateExistingUser(randomUserName, "ADMIN"));
+    }
 
+    @Test
+    void testAddNewUserToScoresTable() throws SQLException {
+        String randomUserName = String.valueOf(Math.random() * Math.random() * Math.random());
+        if (randomUserName.length() > 24){
+            randomUserName = randomUserName.substring(0,23);
+        }
+        DatabaseUtils.createNewUserProfile(randomUserName, "ADMIN");
+        DatabaseUtils.addNewUserToScoresTable(randomUserName);
 
+        UserProfile randomUserProfile = new UserProfile(randomUserName);
+        randomUserProfile.updateUserScores(1, 99);
+        DatabaseUtils.updateAllUserData(randomUserProfile);
+
+        randomUserProfile.resetMetrics();
+        DatabaseUtils.loadUserDataToLocalProfile(randomUserProfile);
+        assertEquals(99, randomUserProfile.getHighestLevelScore(1));
+    }
 }
