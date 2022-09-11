@@ -25,7 +25,6 @@ module time {
     exports com.time.game.Model.Profile;
     exports com.time.game.GameLogic.Rhythm;
 
-
 }
 
 
