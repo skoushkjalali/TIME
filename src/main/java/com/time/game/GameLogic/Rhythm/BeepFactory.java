@@ -8,7 +8,7 @@ import java.net.URL;
     type of sound, and the process by which it is generated is done here.
  */
     public class BeepFactory {
-        URL metronome1Path = getClass().getResource("/sounds/MetronomeClick.mp3");
+        private final URL metronome1Path = getClass().getResource("/sounds/MetronomeClick.mp3");
         private final AudioClip metronome1AudioClip;
 
         {
@@ -16,7 +16,7 @@ import java.net.URL;
             metronome1AudioClip = new AudioClip(metronome1Path.toString());
         }
 
-        URL userTap1Path = getClass().getResource("/sounds/Onset.mp3");
+        private final URL userTap1Path = getClass().getResource("/sounds/Onset.mp3");
         private final AudioClip onsetAudioClip;
 
         {

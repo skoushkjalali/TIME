@@ -8,7 +8,7 @@ import java.util.Arrays;
     index, and onset locations as the remaining indices.
  */
 public class RhythmFactory {
-    static int[][] rhythmData =
+    private static final int[][] rhythmData =
             {       // block 1 =  crotchets and quavers
                     {8,0,2,3,4,6},
                     {8,0,1,2,4,5,6},

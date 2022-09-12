@@ -10,8 +10,8 @@ import com.time.game.Model.Rhythm.Rhythm;
 public class Level {
     private boolean userInputCaptureEnabled = false;
     private static int bpm = 100;
-    final int LOWER_BOUND = 20;
-    final int UPPER_BOUND = 250;
+    private final int LOWER_BOUND = 20;
+    private final int UPPER_BOUND = 250;
     private static int levelNumber = 1;
     private static int lastScore = 0;
     private final Rhythm sampleRhythm;

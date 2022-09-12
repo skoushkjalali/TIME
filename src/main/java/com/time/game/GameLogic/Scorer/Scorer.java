@@ -5,8 +5,8 @@ import java.util.ArrayList;
     This class will score the user input against the sample.
  */
 public class Scorer {
-    int LOWER_BOUND;
-    int UPPER_BOUND;
+    private final int LOWER_BOUND;
+    private final int UPPER_BOUND;
 
     public Scorer(int LOWER_BOUND, int UPPER_BOUND){
         this.LOWER_BOUND = LOWER_BOUND;
