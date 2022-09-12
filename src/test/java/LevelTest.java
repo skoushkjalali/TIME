@@ -183,94 +183,64 @@ class LevelTest {
 
     @Test
     void testGetLastScore() {
-        if (order == 3) {
-            assertEquals(0, Level.getLastScore());
-        }
-        order +=4;
+        assertEquals(0, Level.getLastScore());
     }
 
     @Test
-    void testsetLastScore() {
-        if (order == 4) {
-            Level.setLastScore(99);
-            assertEquals(99, Level.getLastScore());
-        }
-        order +=1;
+    void testSetLastScore() {
+        Level.setLastScore(99);
+        assertEquals(99, Level.getLastScore());
     }
 
     @Test
     void testGetLevelNumber() {
-        if (order == 5) {
+        Level.setLevelNumber(1);
         assertEquals(1, Level.getLevelNumber());
-        }
-        order +=1;
     }
 
     @Test
     void testSetLevelNumber() {
-        if (order == 6) {
-            Level.setLevelNumber(25);
-            assertEquals(25, Level.getLevelNumber());
-        }
-        order +=1;
+        Level.setLevelNumber(25);
+        assertEquals(25, Level.getLevelNumber());
     }
 
     @Test
     void testGetBpm() {
-            if (order == 7) {
-                assertEquals(100, Level.getBpm());
-            }
+        Level.setBpm(100);
+        assertEquals(100, Level.getBpm());
     }
 
     @Test
     void testSetBpm(){
-        if (order == 8) {
-            Level.setBpm(130);
-            assertEquals(130, Level.getBpm());
-        }
-        order +=1;
+        Level.setBpm(130);
+        assertEquals(130, Level.getBpm());
     }
 
     @Test
     void testGetLOWER_BOUND(){
-        if (order == 9) {
-            assertEquals(20, level.getLOWER_BOUND());
-        }
-        order +=1;
+        assertEquals(20, level.getLOWER_BOUND());
     }
 
     @Test
     void testGetUPPER_BOUND(){
-        if (order == 10) {
-            assertEquals(250, level.getUPPER_BOUND());
-        }
-        order +=1;
+        assertEquals(250, level.getUPPER_BOUND());
     }
 
     @Test
     void testUserInputCaptureEnabled(){
-        if (order == 11) {
-            assertFalse(level.isUserInputCaptureEnabled());
-        }
-        order +=1;
+        assertFalse(level.isUserInputCaptureEnabled());
     }
 
     @Test
     void testSetUserInputCaptureEnabled(){
-        if (order == 12) {
-            level.setUserInputCaptureEnabled(true);
-            assertTrue(level.isUserInputCaptureEnabled());
-        }
-        order +=1;
+        level.setUserInputCaptureEnabled(true);
+        assertTrue(level.isUserInputCaptureEnabled());
     }
 
     @Test
     void testGetSampleRhythm(){
-        if (order == 13) {
-            Rhythm expectedRhythm = RhythmFactory.getRhythm(10);
-            assertArrayEquals(expectedRhythm.getRelativeRhythm(), level.getSampleRhythm().getRelativeRhythm());
-        }
-        order +=1;
+        Rhythm expectedRhythm = RhythmFactory.getRhythm(10);
+        assertArrayEquals(expectedRhythm.getRelativeRhythm(), level.getSampleRhythm().getRelativeRhythm());
     }
 
 
