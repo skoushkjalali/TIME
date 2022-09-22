@@ -79,9 +79,9 @@ public class LoginController implements Initializable {
 
         // set colour of error messages;
         if(numInvalidNewUserAttempts % 2 == 0) {
-            invalidNewUserTextLine1.setFill(Color.web("#B00020")); // toggle red/blue for multiple wrong attempts
-            invalidNewUserTextLine2.setFill(Color.web("#B00020")); // else text popup appears static on repeat tries
-        }
+            invalidNewUserTextLine1.setFill(Color.web("#B00020")); // switch between red/light red for multiple wrong
+            invalidNewUserTextLine2.setFill(Color.web("#B00020")); // attempts, else error text popup appears static
+        }                                                             // on repeat tries
         else{
             invalidNewUserTextLine1.setFill(Color.web("#e94948"));
             invalidNewUserTextLine2.setFill(Color.web("#e94948"));
