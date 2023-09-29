@@ -10,8 +10,8 @@ public class DatabaseUtils {
 
     static {
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/TIME",
-                    "root", "guest");
+            connection = DriverManager.getConnection("jdbc:mysql://time-database.coma9drmtxem.eu-west-2.rds.amazonaws.com:3306/TIMEdb",
+                    HiddenDBLogin.getDBUsername(), HiddenDBLogin.getDBPassword());
         } catch (SQLException ignored) {}
     }
 
