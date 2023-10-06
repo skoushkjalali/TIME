@@ -90,7 +90,7 @@ class ScorerTest {
     }
 
     @Test
-    void scoreEqualK100Percent1() {
+    void testScoreEqualK100Percent1() {
         double[] sampleRhythm = {0, 100, 200, 300};
         ArrayList<Integer> userInput1 = new ArrayList<>(List.of(0, 100, 200, 300));
 
@@ -100,7 +100,7 @@ class ScorerTest {
     }
 
     @Test
-    void scoreEqualK100Percent2() {
+    void testScoreEqualK100Percent2() {
         double[] sampleRhythm = {0, 100, 200, 300};
         ArrayList<Integer> userInput2 = new ArrayList<>(List.of(39, 61, 239, 261));
         double score = scorer.scoreEqualK(sampleRhythm, userInput2);
@@ -108,7 +108,7 @@ class ScorerTest {
     }
 
     @Test
-    void scoreEqualK100Percent3() {
+    void testScoreEqualK100Percent3() {
         double[] sampleRhythm = {0, 100, 200, 300};
         ArrayList<Integer> userInput3 = new ArrayList<>(List.of(39, 99, 199, 299));
         double score = scorer.scoreEqualK(sampleRhythm, userInput3);
@@ -116,7 +116,7 @@ class ScorerTest {
     }
 
     @Test
-    void scoreEqualK100Percent4() {
+    void testScoreEqualK100Percent4() {
         double[] sampleRhythm = {0, 100, 200, 300};
         ArrayList<Integer> userInput4 = new ArrayList<>(List.of(8, 90, 192, 286));
         double score = scorer.scoreEqualK(sampleRhythm, userInput4);
@@ -124,7 +124,7 @@ class ScorerTest {
     }
 
     @Test
-    void scoreEqualK100Percent5() {
+    void testScoreEqualK100Percent5() {
         double[] sampleRhythm = {0, 100, 200, 300};
         ArrayList<Integer> userInput5 = new ArrayList<>(List.of(-20, 70, 165, 268));
         double score = scorer.scoreEqualK(sampleRhythm, userInput5);
@@ -132,7 +132,7 @@ class ScorerTest {
     }
 
     @Test
-    void scoreEqualK100Percent6() {
+    void testScoreEqualK100Percent6() {
         double[] sampleRhythm = {0, 100, 200, 300};
         ArrayList<Integer> userInput6 = new ArrayList<>(List.of(-30, 102, 198, 336));
         double score = scorer.scoreEqualK(sampleRhythm, userInput6);
@@ -140,7 +140,7 @@ class ScorerTest {
     }
 
     @Test
-    void scoreEqualKNot100PercentButClose1(){
+    void testScoreEqualKNot100PercentButClose1(){
         double[] sampleRhythm = {0, 100, 200, 300};
         ArrayList<Integer> userInput7 = new ArrayList<>(List.of(-40, 140, 200, 300));
         double score = scorer.scoreEqualK(sampleRhythm, userInput7);
@@ -148,7 +148,7 @@ class ScorerTest {
     }
 
     @Test
-    void scoreEqualKNot100PercentButClose2(){
+    void testScoreEqualKNot100PercentButClose2(){
         double[] sampleRhythm = {0, 100, 200, 300};
         ArrayList<Integer> userInput8 = new ArrayList<>(List.of(40, 100, 240, 300));
         double score = scorer.scoreEqualK(sampleRhythm, userInput8);
@@ -156,7 +156,7 @@ class ScorerTest {
     }
 
     @Test
-    void scoreEqualKNot100PercentButClose3(){
+    void testScoreEqualKNot100PercentButClose3(){
         double[] sampleRhythm = {0, 100, 200, 300};
         ArrayList<Integer> userInput9 = new ArrayList<>(List.of(40, 140, 240, 300));
         double score = scorer.scoreEqualK(sampleRhythm, userInput9);
@@ -164,7 +164,7 @@ class ScorerTest {
     }
 
     @Test
-    void scoreEqualKNot100PercentButClose4(){
+    void testScoreEqualKNot100PercentButClose4(){
         double[] sampleRhythm = {0, 100, 200, 300};
         ArrayList<Integer> userInput10 = new ArrayList<>(List.of(40, 140, 240, 340));
         double score = scorer.scoreEqualK(sampleRhythm, userInput10);
@@ -172,7 +172,7 @@ class ScorerTest {
     }
 
     @Test
-    void scoreEqualKNot100PercentButClose5(){
+    void testScoreEqualKNot100PercentButClose5(){
         double[] sampleRhythm = {0, 100, 200, 300};
         ArrayList<Integer> userInput11 = new ArrayList<>(List.of(80, 180, 280, 380));
         double score = scorer.scoreEqualK(sampleRhythm, userInput11);
@@ -180,7 +180,7 @@ class ScorerTest {
     }
 
     @Test
-    void scoreEqualK0Percent1(){
+    void testScoreEqualK0Percent1(){
         double[] sampleRhythm = {0, 500, 1000, 2000};
         ArrayList<Integer> userInput12 = new ArrayList<>(List.of(2000, 2500, 3000, 4000));
         double score = scorer.scoreEqualK(sampleRhythm, userInput12);
@@ -188,7 +188,7 @@ class ScorerTest {
     }
 
     @Test
-    void scoreEqualK0Percent2(){
+    void testScoreEqualK0Percent2(){
         double[] sampleRhythm = {0, 500, 1000, 2000};
         ArrayList<Integer> userInput13 = new ArrayList<>(List.of(3000, 4000, 5000, 6000));
         double score = scorer.scoreEqualK(sampleRhythm, userInput13);
@@ -197,7 +197,7 @@ class ScorerTest {
 
 
     @Test
-    void scoreEqualKMiddlingScores1(){
+    void testScoreEqualKMiddlingScores1(){
         double[] sampleRhythm = {200, 201, 202, 203};
         ArrayList<Integer> userInput14 = new ArrayList<>(List.of(10, 150, 300, 1400));
         double score = scorer.scoreEqualK(sampleRhythm, userInput14);
@@ -205,7 +205,7 @@ class ScorerTest {
     }
 
     @Test
-    void scoreEqualKMiddlingScores2(){
+    void testScoreEqualKMiddlingScores2(){
         double[] sampleRhythm = {200, 201, 202, 203};
         ArrayList<Integer> userInput15 = new ArrayList<>(List.of(220, 300, 2200, 2210));
         double score = scorer.scoreEqualK(sampleRhythm, userInput15);
@@ -213,7 +213,7 @@ class ScorerTest {
     }
 
     @Test
-    void scoreEqualKMiddlingScores3(){
+    void testScoreEqualKMiddlingScores3(){
         double[] sampleRhythm = {200, 201, 202, 203};
         ArrayList<Integer> userInput16 = new ArrayList<>(List.of(200, 240, 500, 590));
         double score = scorer.scoreEqualK(sampleRhythm, userInput16);
@@ -221,7 +221,7 @@ class ScorerTest {
     }
 
     @Test
-    void scoreEqualKMiddlingScores4(){
+    void testScoreEqualKMiddlingScores4(){
         double[] sampleRhythm = {200, 201, 202, 203};
         ArrayList<Integer> userInput17 = new ArrayList<>(List.of(0, 100, 300, 700));
         double score = scorer.scoreEqualK(sampleRhythm, userInput17);
@@ -230,7 +230,7 @@ class ScorerTest {
 
 
     @Test
-    void scoreTooManyUserTapsZeroPercent1() {
+    void testScoreTooManyUserTapsZeroPercent1() {
         double[] sampleRhythm7 = {1000, 2000, 2500};
         ArrayList<Integer> userInput20 = new ArrayList<>(List.of(50,100,150,200,250,300,350,400,450));
         double score = scorer.scoreInput(sampleRhythm7, userInput20);
@@ -238,7 +238,7 @@ class ScorerTest {
     }
 
     @Test
-    void scoreTooManyUserTapsZeroPercent2() {
+    void testScoreTooManyUserTapsZeroPercent2() {
         double[] sampleRhythm7 = {1000, 2000, 2500};
         ArrayList<Integer> userInput21 = new ArrayList<>(List.of(1000, 2000, 4500, 4600, 4700));
         double score = scorer.scoreInput(sampleRhythm7, userInput21);
@@ -246,7 +246,7 @@ class ScorerTest {
     }
 
     @Test
-    void scoreTooManyUserTaps1() {
+    void testScoreTooManyUserTaps1() {
         double[] sampleRhythm5 = {533.34, 1200, 1733.34, 1866.67, 2266.67};
         ArrayList<Integer> userInput18 = new ArrayList<>(List.of(160, 507, 693, 1360, 1653, 1947, 2187));
         double score = scorer.scoreInput(sampleRhythm5, userInput18);
@@ -255,7 +255,7 @@ class ScorerTest {
 
 
     @Test
-    void scoreTooManyUserTaps2() {
+    void testScoreTooManyUserTaps2() {
         double[] sampleRhythm6 = {0, 300, 600, 900};
         ArrayList<Integer> userInput19 = new ArrayList<>(List.of(300, 350, 600, 650, 750, 800));
         double score = scorer.scoreInput(sampleRhythm6, userInput19);
@@ -263,7 +263,7 @@ class ScorerTest {
     }
 
     @Test
-    void scoreTooManyUserTapsCloseButNoCigar() {
+    void testScoreTooManyUserTapsCloseButNoCigar() {
         double[] sampleRhythm = {500, 1000.8, 1074.5, 1900};
         ArrayList<Integer> userInput = new ArrayList<>(List.of(500, 1000, 1075, 2000, 1975));
 
@@ -273,7 +273,7 @@ class ScorerTest {
 
 
     @Test
-    void scoreTooFewUserTaps0Percent1() {
+    void testScoreTooFewUserTaps0Percent1() {
         double[] sampleRhythm = {100, 900, 1000, 1500, 2000};
         ArrayList<Integer> userInput = new ArrayList<>(List.of(348, 1036));
 
@@ -282,7 +282,7 @@ class ScorerTest {
     }
 
     @Test
-    void scoreTooFewUserTaps0Percent2() {
+    void testScoreTooFewUserTaps0Percent2() {
         double[] sampleRhythm = {100, 900, 1000, 1500, 2000};
         ArrayList<Integer> userInput = new ArrayList<>(List.of());
 
@@ -291,7 +291,7 @@ class ScorerTest {
     }
 
     @Test
-    void scoreTooFewUserTaps0Percent3() {
+    void testScoreTooFewUserTaps0Percent3() {
         double[] sampleRhythm = {100, 900, 1000, 1500, 2000};
         ArrayList<Integer> userInput = new ArrayList<>(List.of(-2000));
 
@@ -300,7 +300,7 @@ class ScorerTest {
     }
 
     @Test
-    void scoreTooFewUserTapsHighMarks1() {
+    void testScoreTooFewUserTapsHighMarks1() {
         double[] sampleRhythm = {100, 900, 1000, 1500, 2000};
         ArrayList<Integer> userInput = new ArrayList<>(List.of(120,940,1000,1500));
 
@@ -309,7 +309,7 @@ class ScorerTest {
     }
 
     @Test
-    void scoreTooFewUserTapsHighMarks2() {
+    void testScoreTooFewUserTapsHighMarks2() {
         double[] sampleRhythm = {100, 900, 1000, 1500, 2000};
         ArrayList<Integer> userInput = new ArrayList<>(List.of(100,900, 1000));
 
@@ -318,7 +318,7 @@ class ScorerTest {
     }
 
     @Test
-    void scoreTooFewUserTapsLowMarks1() {
+    void testScoreTooFewUserTapsLowMarks1() {
         double[] sampleRhythm = {50, 100, 274, 800};
         ArrayList<Integer> userInput = new ArrayList<>(List.of(-300, 900));
 
@@ -401,7 +401,7 @@ class ScorerTest {
     }
 
     @Test
-    void extraTest1(){
+    void testExtraTest1(){
         Scorer toughScorer = new Scorer(20,250);
         double[] sampleRhythm = {0, 1000, 2000, 3000, 4000, 5000};
         ArrayList<Integer> userInput = new ArrayList<>(List.of(73, 1026, 2011, 3029, 4008, 5022, 5024));
@@ -410,7 +410,7 @@ class ScorerTest {
     }
 
     @Test
-    void extraTest2(){
+    void testExtraTest2(){
         Scorer toughScorer = new Scorer(20,250);
         double[] sampleRhythm = {1000, 2000, 3000, 4000, 5000};
         ArrayList<Integer> userInput = new ArrayList<>(List.of(1018, 2053, 3029, 4080, 5012));

@@ -11,7 +11,7 @@ class RhythmListenerTest {
 
 
     @Test
-    void getShiftedUserInput0() {
+    void testGetShiftedUserInput0() {
         listener.getUserInput().clear();
         listener.getUserInput().add(4800);
         listener.getUserInput().add(7200);
@@ -21,7 +21,7 @@ class RhythmListenerTest {
     }
 
     @Test
-    void getShiftedUserInput1() {
+    void testGetShiftedUserInput1() {
         listener.getUserInput().clear();
         listener.getUserInput().add(4800);
         listener.getUserInput().add(7200);
@@ -31,7 +31,7 @@ class RhythmListenerTest {
     }
 
     @Test
-    void getShiftedUserInput2() {
+    void testGetShiftedUserInput2() {
         listener.getUserInput().clear();
         listener.getUserInput().add(4800);
         listener.getUserInput().add(7200);
@@ -41,7 +41,7 @@ class RhythmListenerTest {
     }
 
     @Test
-    void getShiftedUserInput3() {
+    void testGetShiftedUserInput3() {
         listener.getUserInput().clear();
         listener.getUserInput().add(7000);
         listener.getUserInput().add(20000);
@@ -51,7 +51,7 @@ class RhythmListenerTest {
     }
 
     @Test
-    void getShiftedUserInput4() {
+    void testGetShiftedUserInput4() {
         listener.getUserInput().clear();
         listener.getUserInput().add(10000);
         listener.getUserInput().add(20000);
@@ -61,7 +61,7 @@ class RhythmListenerTest {
     }
 
     @Test
-    void getShiftedUserInput5() {
+    void testGetShiftedUserInput5() {
         listener.getUserInput().clear();
         listener.getUserInput().add(10000);
         listener.getUserInput().add(20000);
