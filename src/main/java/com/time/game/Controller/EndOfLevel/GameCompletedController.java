@@ -1,7 +1,6 @@
 package com.time.game.Controller.EndOfLevel;
 
 import com.time.game.Controller.ScreenController;
-import com.time.game.Database.DatabaseUtils;
 import com.time.game.Model.Level.Level;
 import com.time.game.Model.Profile.UserProfile;
 import com.time.game.Model.Rhythm.RhythmFactory;
@@ -15,7 +14,6 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.text.Text;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class GameCompletedController implements Initializable {

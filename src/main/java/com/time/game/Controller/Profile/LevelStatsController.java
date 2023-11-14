@@ -1,12 +1,10 @@
 package com.time.game.Controller.Profile;
 
 import com.time.game.Controller.ScreenController;
-import com.time.game.Database.DatabaseUtils;
 import com.time.game.Model.Level.Level;
 import com.time.game.Model.Profile.UserProfile;
 import com.time.game.Model.Rhythm.RhythmFactory;
 import com.time.game.TimeApplication;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,7 +18,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -122,5 +119,4 @@ public class LevelStatsController implements Initializable {
         Level.setLevelNumber(level);
         ScreenController.changeScreen("level-stats-view");
     }
-
 }
