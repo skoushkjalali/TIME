@@ -23,7 +23,7 @@ public class TimeApplication extends Application {
         stage.setMinWidth(1300);
         stage.setTitle("TIME");
 
-        FXMLLoader loader = new FXMLLoader(ScreenController.class.getResource("/com/time/game/login-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(ScreenController.class.getResource("/com/time/game/instructions-view.fxml"));
         Scene scene = new Scene(loader.load());
         scene.getStylesheets().add("TimeLessStyle.css");
         scene.setFill(Color.web("#121212")); // background off-black
@@ -33,6 +33,7 @@ public class TimeApplication extends Application {
     }
 
     public static void main(String[] args) {
+        TimeApplication.userProfile = new UserProfile("Demo Mode");
         launch(args);
     }
 }
