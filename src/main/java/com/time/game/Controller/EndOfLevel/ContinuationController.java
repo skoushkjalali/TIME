@@ -1,7 +1,6 @@
 package com.time.game.Controller.EndOfLevel;
 
 import com.time.game.Controller.ScreenController;
-import com.time.game.Database.DatabaseUtils;
 import com.time.game.Model.Level.Level;
 import com.time.game.Model.Profile.UserProfile;
 import com.time.game.TimeApplication;
@@ -14,11 +13,19 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.text.Text;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class ContinuationController implements Initializable {
-
+    @FXML
+    public Button playNextLevelButton;
+    @FXML
+    public Button repeatLevelButton;
+    @FXML
+    public Button goToProfileButton;
+    @FXML
+    public Button exitButton;
+    @FXML
+    public Button viewLevelStatsButton;
     @FXML
     private Text levelCompletionText;
     @FXML
@@ -26,21 +33,8 @@ public class ContinuationController implements Initializable {
     @FXML
     private Text levelHighScoreText;
     @FXML
-    private Button repeatLevelButton;
-    @FXML
-    private Button playNextLevelButton;
-    @FXML
-    private Button goToProfileButton;
-    @FXML
-    private Button exitButton;
-
-    @FXML
-    private Button viewLevelStatsButton;
-
-    private UserProfile userProfile;
-
-    @FXML
     private ChoiceBox<Integer> bpmSelector;
+    private UserProfile userProfile;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
@@ -82,8 +76,7 @@ public class ContinuationController implements Initializable {
     }
 
     @FXML
-    protected void onExitButtonClick() throws SQLException {
-        DatabaseUtils.updateAllUserData(userProfile);
+    protected void onExitButtonClick() {
         Platform.exit();
     }
     @FXML

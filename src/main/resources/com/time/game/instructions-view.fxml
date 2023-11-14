@@ -97,9 +97,9 @@
       <Line fx:id="userOnsetPointer" endX="114.0" endY="-1.0" fill="WHITE" layoutX="765.0" layoutY="741.0" startX="12.0" startY="-128.0" stroke="WHITE" />
       <Line fx:id="sampleOnsetPointer" endX="195.0" endY="-126.0" fill="WHITE" layoutX="809.0" layoutY="716.0" startX="-29.0" startY="-172.0" stroke="WHITE" />
       <Line fx:id="metronomePointer" endX="199.0" endY="-190.0" fill="WHITE" layoutX="806.0" layoutY="520.0" startX="35.0" startY="-80.0" stroke="WHITE" />
-      <Button fx:id="profileButton" layoutX="1108.0" layoutY="757.0" mnemonicParsing="false" onAction="#onProfileButtonClick" prefHeight="40.0" prefWidth="150.0" text="Profile">
+      <Button fx:id="profileButton" layoutX="1108.0" layoutY="757.0" mnemonicParsing="false" onAction="#onProfileButtonClick" prefHeight="40.0" prefWidth="150.0" text="OK got it">
          <font>
-            <Font size="18.0" />
+            <Font size="20.0" />
          </font>
       </Button>
    </children>

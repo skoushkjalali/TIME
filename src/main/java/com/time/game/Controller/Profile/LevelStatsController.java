@@ -25,22 +25,16 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class LevelStatsController implements Initializable {
+    public Button profileButton;
+    public Button playLevelButton;
+    public Button viewNextLevelButton;
+    public Button viewPreviousLevelButton;
     @FXML
     private LineChart<String, Number> levelStatsGraph;
     @FXML
     private CategoryAxis xAxis;
     @FXML
     private NumberAxis yAxis;
-    @FXML
-    private Button viewNextLevelButton;
-    @FXML
-    private Button viewPreviousLevelButton;
-    @FXML
-    private Button playLevelButton;
-    @FXML
-    private Button profileButton;
-    @FXML
-    private Button exitButton;
     @FXML
     private Text statsPageTitle;
     @FXML
@@ -96,12 +90,6 @@ public class LevelStatsController implements Initializable {
     levelStatsGraph.setVerticalGridLinesVisible(false);
     levelStatsGraph.setHorizontalGridLinesVisible(false);
     levelStatsGraph.lookup(".chart-plot-background").setStyle("-fx-background-color: transparent;");
-    }
-
-    @FXML
-    protected void onExitButtonClicked() throws SQLException {
-        DatabaseUtils.updateAllUserData(userProfile);
-        Platform.exit();
     }
 
     @FXML

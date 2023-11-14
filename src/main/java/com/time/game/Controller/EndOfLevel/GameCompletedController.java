@@ -20,30 +20,17 @@ import java.util.ResourceBundle;
 
 public class GameCompletedController implements Initializable {
 
-    @FXML
-    private Button profileButton;
-
-    @FXML
-    private Button exitButton;
-
-    @FXML
-    private Button repeatLevelButton;
-
+    public Button profileButton;
+    public Button exitButton;
+    public Button repeatLevelButton;
+    public Button viewLevelStatsButton;
     @FXML
     private Text scoreText;
-
     @FXML
     private Text levelHighScoreText;
-
     private UserProfile userProfile;
-
-    @FXML
-    private Button viewLevelStatsButton;
-
     @FXML
     private ChoiceBox<Integer> bpmSelector;
-
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
@@ -78,8 +65,7 @@ public class GameCompletedController implements Initializable {
     }
 
     @FXML
-    protected void onExitButtonClick() throws SQLException {
-        DatabaseUtils.updateAllUserData(userProfile);
+    protected void onExitButtonClick(){
         Platform.exit();
     }
 

@@ -14,10 +14,7 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import java.io.IOException;
@@ -28,12 +25,6 @@ import java.util.ResourceBundle;
 public class ProfileController implements Initializable {
     @FXML
     private ChoiceBox<Integer> levelSelector;
-    @FXML
-    private Button playButton;
-    @FXML
-    private Button exitButton;
-    @FXML
-    private Button resetMetricsButton;
     @FXML
     private ChoiceBox<Integer> bpmSelector;
     @FXML
@@ -54,17 +45,7 @@ public class ProfileController implements Initializable {
     @FXML
     private Text highScoreText;
     @FXML
-    private Button viewLevelStatsButton;
-    @FXML
     private Text lastLevelText;
-    @FXML
-    private Circle userCircle;
-    @FXML
-    private Rectangle statsSurfaceRectangle;
-    @FXML
-    private Button gameInstructionsButton;
-    @FXML
-    private Button logoutButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -76,18 +57,6 @@ public class ProfileController implements Initializable {
 
         // populate bar chart with high score values for each level
         setupBarChart();
-
-        // if the red cross is used to exit the game, then user data is still stored
-        setSaveUserDataIfWindowClosed();
-    }
-
-    protected void setSaveUserDataIfWindowClosed(){
-        TimeApplication.primaryStage.setOnCloseRequest(e -> {
-            try {
-                DatabaseUtils.updateAllUserData(userProfile);
-            } catch (SQLException ignored) {
-            }
-        });
     }
 
     @FXML
@@ -174,8 +143,7 @@ public class ProfileController implements Initializable {
     }
 
     @FXML
-    protected void onExitButtonClicked() throws SQLException {
-        DatabaseUtils.updateAllUserData(userProfile);
+    protected void onExitButtonClicked() {
         Platform.exit();
     }
 
@@ -206,12 +174,4 @@ public class ProfileController implements Initializable {
     protected void onGameInstructionsButtonClick() throws IOException {
         ScreenController.changeScreen("instructions-view");
     }
-
-    @FXML
-    protected void onLogoutButtonClick() throws IOException, SQLException {
-        DatabaseUtils.updateAllUserData(userProfile);
-        ScreenController.changeScreen("login-view");
-        TimeApplication.userProfile = null;
-    }
-
 }
