@@ -161,7 +161,7 @@ public class MainGamePlayController implements Initializable {
 
 
         //  initialise rhythm listener 0 marker
-        KeyFrame userInputStartLocation = new KeyFrame(Duration.millis(level.getBarDurationInMilliSecs()),
+        KeyFrame userInputStartLocation = new KeyFrame(Duration.millis(level.getBarDurationInMilliSecs() * 2),
                 e -> rhythmListener.setupForNewRhythmInput());
         timeline.getKeyFrames().add(userInputStartLocation);
 
