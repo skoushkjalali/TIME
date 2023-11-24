@@ -165,9 +165,9 @@ public class MainGamePlayController implements Initializable {
                 e -> rhythmListener.setupForNewRhythmInput());
         timeline.getKeyFrames().add(userInputStartLocation);
 
-        // start userInput 1/2 a beat before the start of the 3rd Bar
+        // start userInput 1/2 a beat before the start of the 4th Bar
         // i.e., will only draw an onset up to 1/2 a beat early
-        KeyFrame startUserInput = new KeyFrame(Duration.millis(((level.getBarDurationInMilliSecs() * 2) -
+        KeyFrame startUserInput = new KeyFrame(Duration.millis(((level.getBarDurationInMilliSecs() * 3) -
                 (0.5 * level.getBeatDurationInMilliSecs()))), e -> level.setUserInputCaptureEnabled(true));
         timeline.getKeyFrames().add(startUserInput);
 
