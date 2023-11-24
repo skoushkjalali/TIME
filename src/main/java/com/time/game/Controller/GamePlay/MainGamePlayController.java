@@ -146,7 +146,7 @@ public class MainGamePlayController implements Initializable {
         drawSampleOnsets();
 
         // add all metronome clicks and flashes to timeline
-        timeline.getKeyFrames().addAll(getMetronomeKeyFrames(3));
+        timeline.getKeyFrames().addAll(getMetronomeKeyFrames(4));
         // add all sample onsets to timeline
         timeline.getKeyFrames().addAll(getSampleRhythmKeyFrames());
 
@@ -155,6 +155,8 @@ public class MainGamePlayController implements Initializable {
         timeline.getKeyFrames().add(new KeyFrame(Duration.millis(level.getBarDurationInMilliSecs()),
                 e -> centralText.setText("Listen")));
         timeline.getKeyFrames().add(new KeyFrame(Duration.millis(level.getBarDurationInMilliSecs() * 2),
+                e -> centralText.setText("Ready")));
+        timeline.getKeyFrames().add(new KeyFrame(Duration.millis(level.getBarDurationInMilliSecs() * 3),
                 e -> centralText.setText("Play")));
 
 
